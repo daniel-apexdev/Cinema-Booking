@@ -67,7 +67,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Austin Abrams", "Paul Walter Hauser"],
             poster_url: "https://image.tmdb.org/t/p/w500/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/3icyRAqgakNcQn6aDVz9libFmBA.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/mNd1gb19A-c?si=w1qBFPdnOwTitP6t",
             is_featured: true,
             status: "now_showing"
         },
@@ -92,7 +92,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Anne Hathaway", "Ewan McGregor"],
             poster_url: "https://image.tmdb.org/t/p/w500/fYXqpgPmHMphSF2W30GbTeJVIa5.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/b9q9VmbXDvJmTziRqkwdEmFdwhr.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/3oB9AxspVow?si=zPMGwgYb0UgLFIae",
             is_featured: false,
             status: "now_showing"
         },
@@ -117,7 +117,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Will Forte", "John Cena", "Lana Condor"],
             poster_url: "https://image.tmdb.org/t/p/w500/kYDCl2y0VPvhT5eYWbMRInPoB03.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/viZqGq9TNvQ5uXSD4ahg2RpRONT.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/H-43VeYGiPM?si=ejoO-qQF98CUret2",
             is_featured: false,
             status: "now_showing"
         },
@@ -142,7 +142,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Matt Damon", "Tom Holland", "Anne Hathaway"],
             poster_url: "https://image.tmdb.org/t/p/w500/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/iuylzRSllrGn7YB322kwKoOVMcq.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/Mzw2ttJD2qQ?si=p2aILFAJQjpq6r0q",
             is_featured: true,
             status: "now_showing"
         },
@@ -767,7 +767,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Robert Downey Jr.", "Chris Evans", "Mark Ruffalo"],
             poster_url: "https://image.tmdb.org/t/p/w500/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/hA6hldpSTF8?si=sCt0wt1MpzZ2FKx1",
             is_featured: true,
             status: "now_showing"
         },
@@ -1167,7 +1167,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Pedro Pascal", "Sigourney Weaver"],
             poster_url: "https://image.tmdb.org/t/p/w500/uwMKWjcNID0D9jjplsjkQS2OrB4.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/ysLlsAxwgNSxBWHCgTKJrmjxpRQ.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/IHWlvwu8t1w?si=eJVVzDl1hnC0_hWj",
             is_featured: true,
             status: "now_showing"
         },
@@ -1267,7 +1267,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Sam Worthington", "Zoe Saldana", "Sigourney Weaver"],
             poster_url: "https://image.tmdb.org/t/p/w500/bRBeSHfGHwkEpImlhxPmOcUsaeg.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/iN41Ccw4DctL8npfmYg1j5Tr1eb.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/nb_fFj_0rq8?si=mp9NhQliwvqrYllO",
             is_featured: true,
             status: "now_showing"
         },
@@ -1467,7 +1467,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Milly Alcock", "Matthias Schoenaerts", "Eve Ridley"],
             poster_url: "https://image.tmdb.org/t/p/w500/uhzRnTW4DM13UQBvZP3eVNzQTuz.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/heZQmyNvkH236ha2M3JckdUQQqb.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/s1-pfiVMKAs?si=wrrt9rszVYd32cPG",
             is_featured: true,
             status: "now_showing"
         },
