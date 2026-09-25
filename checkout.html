@@ -42,7 +42,6 @@
         .nav-links a:hover, .nav-links a.active { color: var(--gold); }
         .nav-right { display: flex; align-items: center; gap: 12px; z-index: 1001; position: relative; }
         .btn-signin { padding: 8px 18px; background: var(--gold); color: var(--ink); border-radius: var(--radius-sm); font-size: clamp(12px, 0.8vw, 14px); font-weight: 500; min-height: 38px; display: inline-flex; align-items: center; gap: 6px; }
-        .btn-signin:hover { background: #F0C369; }
 
         /* HAMBURGER */
         .menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px 6px; min-width: var(--touch-target); min-height: var(--touch-target); justify-content: center; align-items: center; border-radius: var(--radius-sm); }
@@ -76,7 +75,6 @@
         .breadcrumb a:hover { color: var(--gold); }
         .page-title { font-family: var(--font-display); font-size: clamp(26px, 3vw, 40px); font-weight: 500; }
 
-        /* NOTICE */
         .notice {
             display: flex; align-items: flex-start; gap: 14px;
             padding: 16px 20px;
@@ -87,18 +85,10 @@
             font-size: 14px;
         }
         .notice i { color: var(--gold); font-size: 20px; flex-shrink: 0; margin-top: 2px; }
-        .notice strong { color: var(--gold); font-weight: 500; }
         .notice a { color: var(--gold); text-decoration: underline; }
-        .notice a:hover { color: #F0C369; }
 
-        .checkout-grid {
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 40px;
-            align-items: start;
-        }
+        .checkout-grid { display: grid; grid-template-columns: 1fr 400px; gap: 40px; align-items: start; }
 
-        /* CARD */
         .card { background: var(--ink-raised); border: 1px solid var(--ink-line); border-radius: var(--radius-md); padding: 24px; margin-bottom: 24px; }
         .card-title { font-family: var(--font-display); font-size: 20px; font-weight: 500; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         .card-title i { color: var(--gold); font-size: 16px; }
@@ -112,18 +102,33 @@
             width: 100%; padding: 12px 16px; background: var(--ink); border: 1px solid var(--ink-line);
             border-radius: var(--radius-sm); color: var(--paper); font-size: 14px; outline: none; transition: 0.3s ease;
         }
-        .form-input:focus { border-color: var(--gold); }
+        .form-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(232,179,76,0.1); }
         .form-input::placeholder { color: var(--paper-dim); opacity: 0.6; }
-        .form-input.error { border-color: var(--rust); }
-        .form-error { color: var(--rust); font-size: 12px; margin-top: 4px; display: none; }
-        .form-error.show { display: block; }
+        .form-input.error { border-color: var(--rust); background: rgba(179,57,81,0.05); }
+        .form-input.success { border-color: var(--success); }
+
+        .form-hint { font-size: 11px; color: var(--paper-dim); margin-top: 4px; font-family: var(--font-mono); letter-spacing: 0.02em; }
+        .form-error { color: #F48FB1; font-size: 12px; margin-top: 6px; display: none; align-items: center; gap: 6px; }
+        .form-error.show { display: flex; }
+        .form-error i { font-size: 12px; }
+
+        .input-with-status { position: relative; }
+        .input-status {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            display: none;
+            pointer-events: none;
+        }
+        .input-status.show { display: block; }
+        .input-status.valid { color: var(--success); }
+        .input-status.invalid { color: var(--rust); }
 
         /* CONCESSIONS */
         .concessions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
-        .concession-item {
-            padding: 14px; background: var(--ink); border: 1px solid var(--ink-line); border-radius: var(--radius-sm);
-            transition: 0.3s ease;
-        }
+        .concession-item { padding: 14px; background: var(--ink); border: 1px solid var(--ink-line); border-radius: var(--radius-sm); transition: 0.3s ease; }
         .concession-item.added { border-color: var(--gold); background: rgba(232,179,76,0.05); }
         .concession-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
         .concession-price { font-family: var(--font-mono); font-size: 12px; color: var(--gold); }
@@ -134,34 +139,25 @@
 
         /* PAYMENT */
         .payment-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .payment-option {
-            padding: 14px; background: var(--ink); border: 1px solid var(--ink-line); border-radius: var(--radius-sm);
-            cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.3s ease;
-        }
+        .payment-option { padding: 14px; background: var(--ink); border: 1px solid var(--ink-line); border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.3s ease; }
         .payment-option:hover { border-color: var(--gold-dim); }
         .payment-option.selected { border-color: var(--gold); background: rgba(232,179,76,0.05); }
         .payment-option i { color: var(--gold); font-size: 18px; }
         .payment-option-label { font-size: 13px; }
 
         /* SUMMARY */
-        .summary-card {
-            background: var(--ink-raised); border: 1px solid var(--ink-line);
-            border-radius: var(--radius-md); padding: 24px; position: sticky; top: 90px;
-        }
+        .summary-card { background: var(--ink-raised); border: 1px solid var(--ink-line); border-radius: var(--radius-md); padding: 24px; position: sticky; top: 90px; }
         .summary-title { font-family: var(--font-display); font-size: 18px; font-weight: 500; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--ink-line); }
-
         .summary-movie { display: flex; gap: 14px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--ink-line); }
         .summary-poster { width: 60px; height: 90px; border-radius: 6px; object-fit: cover; flex-shrink: 0; background: var(--ink); }
         .summary-movie-info { flex: 1; min-width: 0; }
         .summary-movie-title { font-weight: 500; font-size: 14px; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
         .summary-movie-meta { font-size: 12px; color: var(--paper-dim); font-family: var(--font-mono); line-height: 1.5; }
-
         .summary-line { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; }
         .summary-line-label { color: var(--paper-dim); }
         .summary-line-value { font-family: var(--font-mono); color: var(--paper); }
         .summary-line.total { padding-top: 16px; margin-top: 12px; border-top: 1px solid var(--ink-line); font-size: 18px; }
         .summary-line.total .summary-line-value { font-family: var(--font-display); font-size: 24px; color: var(--gold); font-weight: 500; }
-
         .summary-seats { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0; }
         .summary-seat-tag { padding: 2px 8px; background: rgba(232,179,76,0.1); border: 1px solid var(--gold-dim); border-radius: 4px; font-family: var(--font-mono); font-size: 11px; color: var(--gold); }
         .summary-empty-hint { color: var(--paper-dim); font-size: 12px; font-style: italic; padding: 4px 0; }
@@ -255,42 +251,54 @@
     <div id="noticeWrap"></div>
 
     <div class="checkout-grid">
-        <!-- LEFT: FORMS -->
         <div>
-            <!-- CUSTOMER DETAILS (always shown) -->
             <div class="card">
                 <div class="card-title"><i class="fas fa-user"></i> Your Details</div>
-                <form id="customerForm" onsubmit="return false;">
+                <form id="customerForm" onsubmit="return false;" novalidate>
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label" for="name">Full Name <span class="required">*</span></label>
                             <input type="text" id="name" class="form-input" placeholder="e.g. John Mensah" autocomplete="name">
-                            <div class="form-error" id="errName">Please enter your full name</div>
+                            <div class="form-error" id="errName">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span>Please enter your full name</span>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="phone">Phone <span class="required">*</span></label>
-                            <input type="tel" id="phone" class="form-input" placeholder="e.g. +233 24 000 0000" autocomplete="tel">
-                            <div class="form-error" id="errPhone">Please enter a valid phone number</div>
+                            <div class="input-with-status">
+                                <input type="tel" id="phone" class="form-input" placeholder="e.g. 024 000 0000" autocomplete="tel" inputmode="numeric" maxlength="20">
+                                <i class="fas fa-check-circle input-status valid" id="phoneStatusValid"></i>
+                                <i class="fas fa-times-circle input-status invalid" id="phoneStatusInvalid"></i>
+                            </div>
+                            <div class="form-hint" id="phoneHint">At least 10 digits</div>
+                            <div class="form-error" id="errPhone">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span id="errPhoneText">Please enter a valid phone number (at least 10 digits)</span>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="email">Email <span class="required">*</span></label>
-                        <input type="email" id="email" class="form-input" placeholder="you@example.com" autocomplete="email">
-                        <div class="form-error" id="errEmail">Please enter a valid email address</div>
-                        <p style="font-size:12px;color:var(--paper-dim);margin-top:6px;">
-                            Your confirmation and QR code will be sent here.
-                        </p>
+                        <div class="input-with-status">
+                            <input type="email" id="email" class="form-input" placeholder="you@example.com" autocomplete="email" inputmode="email">
+                            <i class="fas fa-check-circle input-status valid" id="emailStatusValid"></i>
+                            <i class="fas fa-times-circle input-status invalid" id="emailStatusInvalid"></i>
+                        </div>
+                        <div class="form-hint">Your confirmation and QR code will be sent here</div>
+                        <div class="form-error" id="errEmail">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="errEmailText">Please enter a valid email address</span>
+                        </div>
                     </div>
                 </form>
             </div>
 
-            <!-- CONCESSIONS -->
             <div class="card">
                 <div class="card-title"><i class="fas fa-utensils"></i> Add Concessions (Optional)</div>
                 <div class="concessions-grid" id="concessionsGrid"></div>
             </div>
 
-            <!-- PAYMENT -->
             <div class="card">
                 <div class="card-title"><i class="fas fa-credit-card"></i> Payment Method</div>
                 <div class="payment-options">
@@ -314,14 +322,9 @@
             </div>
         </div>
 
-        <!-- RIGHT: SUMMARY -->
         <div class="summary-card">
             <div class="summary-title">Order Summary</div>
-
-            <div id="summaryBody">
-                <!-- Populated by JS -->
-            </div>
-
+            <div id="summaryBody"></div>
             <button class="btn btn-primary" id="payBtn" style="margin-top:20px;">
                 <i class="fas fa-lock"></i> Confirm Booking
             </button>
@@ -354,11 +357,25 @@ const CheckoutPage = {
     paymentMethod: 'cash',
     hasSeats: false,
 
+    // ========================================================
+    // VALIDATION RULES
+    // ========================================================
+    rules: {
+        // Standard email regex (also enforces a single @ and a dot in domain)
+        emailRegex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+
+        // Phone: extract digits only, then check length 10-15
+        minPhoneDigits: 10,
+        maxPhoneDigits: 15,
+
+        // Valid phone characters: digits, +, -, space, ()
+        phoneCharRegex: /^[0-9+\-\s()]*$/
+    },
+
     async init() {
         await SavannahApp.init();
         this.setupMobileMenu();
 
-        // Load booking state
         if (typeof SavannahBooking !== 'undefined') {
             SavannahBooking.loadBookingState();
             this.booking = SavannahBooking.currentBooking;
@@ -366,7 +383,6 @@ const CheckoutPage = {
             this.booking = {};
         }
 
-        // Defensive: ensure booking shape
         this.booking.movie = this.booking.movie || null;
         this.booking.showtime = this.booking.showtime || null;
         this.booking.branch = this.booking.branch || null;
@@ -381,7 +397,11 @@ const CheckoutPage = {
         this.renderConcessions();
         this.setupForm();
         this.setupPayment();
+        this.setupLiveValidation();
         this.updateTotals();
+
+        // Prefill if user is logged in
+        this.prefillUserDetails();
     },
 
     setupMobileMenu() {
@@ -394,6 +414,17 @@ const CheckoutPage = {
         toggle?.addEventListener('click', () => menu.classList.contains('open') ? close() : open());
         closeBtn?.addEventListener('click', close);
         overlay?.addEventListener('click', close);
+    },
+
+    prefillUserDetails() {
+        const user = (typeof SavannahStorage !== 'undefined') ? SavannahStorage.getUser() : null;
+        if (!user) return;
+
+        if (user.name || user.forenames) {
+            document.getElementById('name').value = user.name || `${user.forenames || ''} ${user.surname || ''}`.trim();
+        }
+        if (user.email) document.getElementById('email').value = user.email;
+        if (user.phone) document.getElementById('phone').value = user.phone;
     },
 
     renderBreadcrumbs() {
@@ -417,7 +448,6 @@ const CheckoutPage = {
 
     renderNotice() {
         if (this.hasSeats) return;
-
         document.getElementById('noticeWrap').innerHTML = `
             <div class="notice">
                 <i class="fas fa-info-circle"></i>
@@ -524,12 +554,218 @@ const CheckoutPage = {
         }).join('');
     },
 
+    // ========================================================
+    // VALIDATION HELPERS
+    // ========================================================
+    isValidEmail(email) {
+        if (!email) return false;
+        email = email.trim();
+        if (email.length < 5 || email.length > 254) return false;
+        if (!this.rules.emailRegex.test(email)) return false;
+        // Extra guard: no consecutive dots, no leading/trailing dots in local or domain
+        if (/\.\./.test(email)) return false;
+        if (/^\./.test(email) || /\.$/.test(email)) return false;
+        // Check domain has a dot and TLD is at least 2 letters
+        const parts = email.split('@');
+        if (parts.length !== 2) return false;
+        const domain = parts[1];
+        if (!domain.includes('.')) return false;
+        const tld = domain.split('.').pop();
+        if (!/^[a-zA-Z]{2,}$/.test(tld)) return false;
+        return true;
+    },
+
+    // Extract digits, validate length 10-15
+    isValidPhone(phone) {
+        if (!phone) return false;
+        phone = phone.trim();
+        if (!this.rules.phoneCharRegex.test(phone)) return false;
+        const digits = phone.replace(/\D/g, '');
+        if (digits.length < this.rules.minPhoneDigits) return false;
+        if (digits.length > this.rules.maxPhoneDigits) return false;
+        return true;
+    },
+
+    getPhoneDigitCount(phone) {
+        if (!phone) return 0;
+        return phone.replace(/\D/g, '').length;
+    },
+
+    isValidName(name) {
+        if (!name) return false;
+        name = name.trim();
+        if (name.length < 2) return false;
+        // Must contain at least one letter
+        if (!/[a-zA-Z]/.test(name)) return false;
+        return true;
+    },
+
+    // ========================================================
+    // LIVE VALIDATION
+    // ========================================================
+    setupLiveValidation() {
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const nameInput = document.getElementById('name');
+
+        // Email — validate on blur and on input
+        emailInput.addEventListener('blur', () => this.validateEmailField(true));
+        emailInput.addEventListener('input', () => this.validateEmailField(false));
+
+        // Phone — validate on blur and input, format as user types
+        phoneInput.addEventListener('blur', () => this.validatePhoneField(true));
+        phoneInput.addEventListener('input', () => this.validatePhoneField(false));
+
+        // Name — validate on blur
+        nameInput.addEventListener('blur', () => this.validateNameField(true));
+        nameInput.addEventListener('input', () => this.validateNameField(false));
+    },
+
+    validateEmailField(showError) {
+        const input = document.getElementById('email');
+        const errEl = document.getElementById('errEmail');
+        const errText = document.getElementById('errEmailText');
+        const validIcon = document.getElementById('emailStatusValid');
+        const invalidIcon = document.getElementById('emailStatusInvalid');
+
+        const val = input.value.trim();
+
+        // Reset
+        errEl.classList.remove('show');
+        validIcon.classList.remove('show');
+        invalidIcon.classList.remove('show');
+        input.classList.remove('error', 'success');
+
+        if (!val) {
+            // Empty: only show error if user tried to leave
+            if (showError) {
+                errText.textContent = 'Please enter your email address';
+                errEl.classList.add('show');
+                input.classList.add('error');
+                invalidIcon.classList.add('show');
+                return false;
+            }
+            return null;
+        }
+
+        if (!this.isValidEmail(val)) {
+            errText.textContent = 'Please enter a valid email address (e.g. name@example.com)';
+            errEl.classList.add('show');
+            input.classList.add('error');
+            invalidIcon.classList.add('show');
+            return false;
+        }
+
+        input.classList.add('success');
+        validIcon.classList.add('show');
+        return true;
+    },
+
+    validatePhoneField(showError) {
+        const input = document.getElementById('phone');
+        const errEl = document.getElementById('errPhone');
+        const errText = document.getElementById('errPhoneText');
+        const hint = document.getElementById('phoneHint');
+        const validIcon = document.getElementById('phoneStatusValid');
+        const invalidIcon = document.getElementById('phoneStatusInvalid');
+
+        const val = input.value.trim();
+        const digitCount = this.getPhoneDigitCount(val);
+
+        errEl.classList.remove('show');
+        validIcon.classList.remove('show');
+        invalidIcon.classList.remove('show');
+        input.classList.remove('error', 'success');
+
+        // Update live hint
+        if (val && digitCount < this.rules.minPhoneDigits) {
+            hint.textContent = `${digitCount}/${this.rules.minPhoneDigits} digits — keep typing`;
+            hint.style.color = 'var(--paper-dim)';
+        } else if (digitCount >= this.rules.minPhoneDigits) {
+            hint.textContent = `${digitCount} digits ✓`;
+            hint.style.color = 'var(--success)';
+        } else {
+            hint.textContent = 'At least 10 digits';
+            hint.style.color = '';
+        }
+
+        if (!val) {
+            if (showError) {
+                errText.textContent = 'Please enter your phone number';
+                errEl.classList.add('show');
+                input.classList.add('error');
+                invalidIcon.classList.add('show');
+                return false;
+            }
+            return null;
+        }
+
+        // Check for invalid characters
+        if (!this.rules.phoneCharRegex.test(val)) {
+            errText.textContent = 'Phone can only contain digits, +, -, spaces and ()';
+            errEl.classList.add('show');
+            input.classList.add('error');
+            invalidIcon.classList.add('show');
+            return false;
+        }
+
+        // Check digit count
+        if (digitCount < this.rules.minPhoneDigits) {
+            errText.textContent = `Phone must be at least ${this.rules.minPhoneDigits} digits (you entered ${digitCount})`;
+            errEl.classList.add('show');
+            input.classList.add('error');
+            invalidIcon.classList.add('show');
+            return false;
+        }
+
+        if (digitCount > this.rules.maxPhoneDigits) {
+            errText.textContent = `Phone must be at most ${this.rules.maxPhoneDigits} digits (you entered ${digitCount})`;
+            errEl.classList.add('show');
+            input.classList.add('error');
+            invalidIcon.classList.add('show');
+            return false;
+        }
+
+        input.classList.add('success');
+        validIcon.classList.add('show');
+        return true;
+    },
+
+    validateNameField(showError) {
+        const input = document.getElementById('name');
+        const errEl = document.getElementById('errName');
+
+        const val = input.value.trim();
+        errEl.classList.remove('show');
+        input.classList.remove('error', 'success');
+
+        if (!val) {
+            if (showError) {
+                errEl.classList.add('show');
+                input.classList.add('error');
+                return false;
+            }
+            return null;
+        }
+
+        if (!this.isValidName(val)) {
+            errEl.querySelector('span').textContent = 'Please enter a valid name (at least 2 characters)';
+            errEl.classList.add('show');
+            input.classList.add('error');
+            return false;
+        }
+
+        input.classList.add('success');
+        return true;
+    },
+
+    // ========================================================
+    // SETUP
+    // ========================================================
     setupForm() {
-        // Concessions +/-
         document.getElementById('concessionsGrid').addEventListener('click', (e) => {
             const btn = e.target.closest('.qty-btn');
             if (!btn) return;
-
             const card = btn.closest('.concession-item');
             const productId = card.dataset.productId;
             const action = btn.dataset.action;
@@ -537,7 +773,6 @@ const CheckoutPage = {
             if (!product) return;
 
             if (typeof SavannahBooking === 'undefined') return;
-
             const existing = SavannahBooking.currentBooking.concessions.find(c => c.product_id === productId);
 
             if (action === 'inc') {
@@ -589,7 +824,6 @@ const CheckoutPage = {
         this.totals = { seatsTotal, concessionsTotal, subtotal, bookingFee, tax, total };
 
         const setIfExists = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
-
         setIfExists('sumSeats', SavannahApp.formatCurrency(seatsTotal));
         setIfExists('sumBookingFee', SavannahApp.formatCurrency(bookingFee));
         setIfExists('sumTax', SavannahApp.formatCurrency(tax));
@@ -605,54 +839,42 @@ const CheckoutPage = {
             }
         }
 
-        // Disable pay button if no seats
         const payBtn = document.getElementById('payBtn');
         if (payBtn) {
             payBtn.disabled = !this.hasSeats;
-            if (!this.hasSeats) {
-                payBtn.innerHTML = '<i class="fas fa-lock"></i> Select Seats First';
-            } else {
-                payBtn.innerHTML = '<i class="fas fa-lock"></i> Confirm Booking';
-            }
+            payBtn.innerHTML = this.hasSeats
+                ? '<i class="fas fa-lock"></i> Confirm Booking'
+                : '<i class="fas fa-lock"></i> Select Seats First';
         }
     },
 
+    // ========================================================
+    // SUBMIT
+    // ========================================================
     submit() {
         if (!this.hasSeats) {
             this.toast('Please select seats first');
             return;
         }
 
+        // Force full validation with error display
+        const nameValid = this.validateNameField(true);
+        const emailValid = this.validateEmailField(true);
+        const phoneValid = this.validatePhoneField(true);
+
+        if (!nameValid || !emailValid || !phoneValid) {
+            // Focus the first invalid field
+            if (!nameValid) document.getElementById('name').focus();
+            else if (!phoneValid) document.getElementById('phone').focus();
+            else if (!emailValid) document.getElementById('email').focus();
+
+            this.toast('Please correct the highlighted fields');
+            return;
+        }
+
         const name = document.getElementById('name').value.trim();
         const phone = document.getElementById('phone').value.trim();
         const email = document.getElementById('email').value.trim();
-
-        let valid = true;
-        document.querySelectorAll('.form-error').forEach(e => e.classList.remove('show'));
-        document.querySelectorAll('.form-input').forEach(e => e.classList.remove('error'));
-
-        if (!name) {
-            document.getElementById('errName').classList.add('show');
-            document.getElementById('name').classList.add('error');
-            valid = false;
-        }
-
-        if (!/^[0-9+\-\s()]{10,15}$/.test(phone)) {
-            document.getElementById('errPhone').classList.add('show');
-            document.getElementById('phone').classList.add('error');
-            valid = false;
-        }
-
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            document.getElementById('errEmail').classList.add('show');
-            document.getElementById('email').classList.add('error');
-            valid = false;
-        }
-
-        if (!valid) {
-            this.toast('Please check your details');
-            return;
-        }
 
         const btn = document.getElementById('payBtn');
         btn.disabled = true;
