@@ -1,0 +1,44 @@
+{
+  "cinemas": [
+    {
+      "cinema_id": "CIN001",
+      "cinema_name": "Savannah Cinemas",
+      "logo": "images/logo.svg",
+      "branches": [
+        {
+          "branch_id": "BR001",
+          "branch_code": "ACC-MALL",
+          "branch_name": "Accra Mall Cinema",
+          "city": "Accra",
+          "region": "Greater Accra",
+          "address": "Accra Mall, Spintex Road",
+          "phone": "+233 30 212 3456",
+          "screens": 8,
+          "capacity": 1200
+        },
+        {
+          "branch_id": "BR002",
+          "branch_code": "KUM-CITY",
+          "branch_name": "Kumasi City Cinema",
+          "city": "Kumasi",
+          "region": "Ashanti",
+          "address": "Kumasi City Mall, Lake Road",
+          "phone": "+233 32 212 3456",
+          "screens": 6,
+          "capacity": 850
+        },
+        {
+          "branch_id": "BR003",
+          "branch_code": "TEM-SHOP",
+          "branch_name": "Tema Shopping Cinema",
+          "city": "Tema",
+          "region": "Greater Accra",
+          "address": "Tema Community 25",
+          "phone": "+233 30 312 3456",
+          "screens": 4,
+          "capacity": 500
+        }
+      ]
+    }
+  ]
+}

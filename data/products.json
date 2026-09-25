@@ -1,0 +1,84 @@
+{
+  "products": [
+    {
+      "product_id": "PROD001",
+      "product_name": "Popcorn (Regular)",
+      "product_category": "Popcorn",
+      "product_subcategory": "Regular",
+      "description": "Freshly popped regular popcorn",
+      "price": 15.00,
+      "image_url": "images/products/popcorn.png",
+      "is_available": true
+    },
+    {
+      "product_id": "PROD002",
+      "product_name": "Popcorn (Butter)",
+      "product_category": "Popcorn",
+      "product_subcategory": "Butter",
+      "description": "Freshly popped butter popcorn",
+      "price": 18.00,
+      "image_url": "images/products/popcorn-butter.png",
+      "is_available": true
+    },
+    {
+      "product_id": "PROD003",
+      "product_name": "Coca-Cola (Large)",
+      "product_category": "Beverages",
+      "product_subcategory": "Soda",
+      "description": "Large Coca-Cola beverage",
+      "price": 8.00,
+      "image_url": "images/products/coke.png",
+      "is_available": true
+    },
+    {
+      "product_id": "PROD004",
+      "product_name": "Sprite (Large)",
+      "product_category": "Beverages",
+      "product_subcategory": "Soda",
+      "description": "Large Sprite beverage",
+      "price": 8.00,
+      "image_url": "images/products/sprite.png",
+      "is_available": true
+    },
+    {
+      "product_id": "PROD005",
+      "product_name": "Nachos with Cheese",
+      "product_category": "Snacks",
+      "product_subcategory": "Nachos",
+      "description": "Crispy nachos with cheese sauce",
+      "price": 12.00,
+      "image_url": "images/products/nachos.png",
+      "is_available": true
+    },
+    {
+      "product_id": "PROD006",
+      "product_name": "Hot Dog",
+      "product_category": "Hot Dogs",
+      "product_subcategory": "Classic",
+      "description": "Classic hot dog with bun",
+      "price": 18.00,
+      "image_url": "images/products/hotdog.png",
+      "is_available": true
+    },
+    {
+      "product_id": "PROD007",
+      "product_name": "Family Combo",
+      "product_category": "Combo",
+      "product_subcategory": "Family",
+      "description": "2x Large Popcorn + 2x Large Drinks",
+      "price": 35.00,
+      "image_url": "images/products/combo-family.png",
+      "is_available": true
+    },
+    {
+      "product_id": "PROD008",
+      "product_name": "Chocolate Bar",
+      "product_category": "Candy",
+      "product_subcategory": "Chocolate",
+      "description": "Premium chocolate bar",
+      "price": 8.00,
+      "image_url": "images/products/chocolate.png",
+      "is_available": true
+    }
+  ]
+}
