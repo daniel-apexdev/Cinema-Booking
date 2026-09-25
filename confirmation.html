@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Booking Confirmed — Savannah Cinemas</title>
+    <meta name="theme-color" content="#14141C">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ink: #14141C; --ink-raised: #1D1D28; --ink-line: #2C2C3A;
+            --paper: #F2EFE9; --paper-dim: #B9B6AC;
+            --gold: #E8B34C; --gold-dim: #7A5C22;
+            --rust: #B33951; --success: #4C9A6A;
+            --font-display: 'Oswald', Impact, sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+            --radius-sm: 8px; --radius-md: 14px; --radius-lg: 20px;
+            --container-padding: clamp(16px, 4vw, 60px);
+            --container-max-width: 900px;
+            --touch-target: 44px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--ink); color: var(--paper); font-family: var(--font-body); font-size: 15px; line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; }
+        button { cursor: pointer; border: none; background: none; color: inherit; font-family: inherit; }
+        img { max-width: 100%; display: block; }
+        ::selection { background: var(--gold); color: var(--ink); }
+
+        /* NAV */
+        .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px var(--container-padding); border-bottom: 1px solid var(--ink-line); background: rgba(20,20,28,0.92); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; gap: 12px; min-height: 64px; }
+        .nav-left { display: flex; align-items: center; gap: 12px; }
+        .nav-brand { font-family: var(--font-display); font-size: clamp(18px, 2.4vw, 24px); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+        .nav-brand span { color: var(--gold); }
+        .nav-right { display: flex; align-items: center; gap: 12px; z-index: 1001; position: relative; }
+        .btn-signin { padding: 8px 18px; background: var(--gold); color: var(--ink); border-radius: var(--radius-sm); font-size: clamp(12px, 0.8vw, 14px); font-weight: 500; min-height: 38px; display: inline-flex; align-items: center; gap: 6px; }
+        .btn-signin:hover { background: #F0C369; transform: translateY(-2px); }
+
+        /* HAMBURGER */
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px 6px; min-width: var(--touch-target); min-height: var(--touch-target); justify-content: center; align-items: center; border-radius: var(--radius-sm); }
+        .menu-toggle span { display: block; width: 24px; height: 2.5px; background: var(--paper); transition: 0.3s ease; border-radius: 2px; transform-origin: center; }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* MOBILE MENU */
+        .mobile-menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; opacity: 0; transition: opacity 0.3s ease; }
+        .mobile-menu-overlay.active { display: block; opacity: 1; }
+        .mobile-menu { position: fixed; top: 0; left: -100%; width: 85%; max-width: 380px; height: 100vh; background: var(--ink); z-index: 1000; transition: left 0.4s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; box-shadow: 8px 0 40px rgba(0,0,0,0.6); border-right: 1px solid var(--ink-line); display: flex; flex-direction: column; }
+        .mobile-menu.open { left: 0; }
+        .mobile-menu-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--ink-line); background: var(--ink-raised); }
+        .mobile-menu-brand { font-family: var(--font-display); font-size: 18px; font-weight: 500; text-transform: uppercase; }
+        .mobile-menu-brand span { color: var(--gold); }
+        .mobile-menu-close { padding: 10px; min-width: var(--touch-target); min-height: var(--touch-target); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .mobile-menu-links { list-style: none; padding: 8px 0; flex: 1; }
+        .mobile-menu-links li { padding: 0 16px; margin: 2px 0; }
+        .mobile-menu-links a { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 10px; min-height: var(--touch-target); }
+        .mobile-menu-links a i { width: 24px; text-align: center; color: var(--paper-dim); }
+        .mobile-menu-links a:hover { color: var(--gold); background: rgba(232,179,76,0.06); }
+        .mobile-menu-footer { padding: 14px 20px; border-top: 1px solid var(--ink-line); text-align: center; font-family: var(--font-mono); font-size: 11px; color: var(--paper-dim); margin-top: auto; }
+
+        /* LAYOUT */
+        .confirm-wrap { max-width: var(--container-max-width); margin: 0 auto; padding: 50px var(--container-padding) 60px; }
+
+        /* SUCCESS HEADER */
+        .success-header { text-align: center; margin-bottom: 40px; animation: fadeInUp 0.6s ease; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--success), #2E7D32);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 46px;
+            color: white;
+            box-shadow: 0 20px 60px rgba(76, 154, 106, 0.4);
+            animation: successPulse 2s ease infinite;
+            position: relative;
+        }
+        .success-icon::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 2px solid var(--success);
+            opacity: 0.3;
+            animation: successRing 2s ease infinite;
+        }
+        @keyframes successPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes successRing {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+        .success-title {
+            font-family: var(--font-display);
+            font-size: clamp(30px, 4.5vw, 48px);
+            font-weight: 500;
+            margin-bottom: 10px;
+            letter-spacing: 0.01em;
+        }
+        .success-subtitle {
+            font-size: 15px;
+            color: var(--paper-dim);
+        }
+        .success-subtitle strong {
+            color: var(--gold);
+            font-family: var(--font-mono);
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        /* EMAIL NOTICE */
+        .email-notice {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 20px;
+            background: rgba(232,179,76,0.08);
+            border: 1px solid var(--gold-dim);
+            border-radius: var(--radius-md);
+            margin-bottom: 30px;
+            animation: fadeInUp 0.6s ease 0.1s both;
+        }
+        .email-notice i {
+            font-size: 24px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .email-notice-text {
+            font-size: 14px;
+            flex: 1;
+        }
+        .email-notice-text strong {
+            color: var(--gold);
+            font-weight: 500;
+        }
+        .email-notice-btn {
+            padding: 8px 16px;
+            background: rgba(232,179,76,0.15);
+            border: 1px solid var(--gold-dim);
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            color: var(--gold);
+            font-weight: 500;
+            transition: 0.3s ease;
+            white-space: nowrap;
+        }
+        .email-notice-btn:hover {
+            background: rgba(232,179,76,0.25);
+        }
+
+        /* BOOKING CARD (Ticket style) */
+        .booking-card {
+            background: var(--ink-raised);
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.6s ease 0.15s both;
+            position: relative;
+        }
+
+        /* Film reel perforations on sides (cinematic touch) */
+        .booking-card::before,
+        .booking-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 12px;
+            background-image: repeating-linear-gradient(
+                180deg,
+                var(--ink) 0,
+                var(--ink) 8px,
+                transparent 8px,
+                transparent 16px
+            );
+            opacity: 0.3;
+        }
+        .booking-card::before { left: 0; }
+        .booking-card::after { right: 0; }
+
+        .booking-card-header {
+            padding: 22px 28px;
+            background: linear-gradient(90deg, rgba(232,179,76,0.08) 0%, rgba(232,179,76,0.02) 100%);
+            border-bottom: 1px solid var(--ink-line);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .booking-card-title {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .booking-card-title i { color: var(--gold); }
+        .booking-ref {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            padding: 6px 12px;
+            background: rgba(232,179,76,0.1);
+            border: 1px solid var(--gold-dim);
+            border-radius: 6px;
+        }
+
+        .booking-body { padding: 28px; }
+
+        /* MOVIE ROW */
+        .movie-row {
+            display: flex;
+            gap: 22px;
+            margin-bottom: 26px;
+            padding-bottom: 26px;
+            border-bottom: 1px dashed var(--ink-line);
+        }
+        .movie-poster-mini {
+            width: 100px;
+            height: 150px;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+            background: var(--ink);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .movie-info-mini {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .movie-title-mini {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+        .movie-meta-mini {
+            font-size: 13px;
+            color: var(--paper-dim);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .movie-meta-mini span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .movie-meta-mini i {
+            color: var(--gold);
+            width: 16px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        /* DETAIL GRID */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 26px;
+            padding-bottom: 26px;
+            border-bottom: 1px dashed var(--ink-line);
+        }
+        .detail-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--paper-dim);
+            margin-bottom: 6px;
+        }
+        .detail-value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--paper);
+            word-break: break-word;
+        }
+
+        /* SEATS */
+        .seats-section { margin-bottom: 26px; padding-bottom: 26px; border-bottom: 1px dashed var(--ink-line); }
+        .seats-display {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .seat-chip {
+            padding: 8px 16px;
+            background: rgba(232,179,76,0.1);
+            border: 1px solid var(--gold-dim);
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        /* CONCESSIONS */
+        .concessions-section { margin-bottom: 26px; padding-bottom: 26px; border-bottom: 1px dashed var(--ink-line); }
+        .concessions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .concession-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 6px;
+        }
+        .concession-row-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .concession-row-name i {
+            color: var(--gold);
+            font-size: 12px;
+        }
+        .concession-row-qty {
+            font-family: var(--font-mono);
+            color: var(--paper-dim);
+            font-size: 12px;
+        }
+        .concession-row-price {
+            font-family: var(--font-mono);
+            color: var(--paper);
+            font-weight: 500;
+        }
+
+        /* QR CODE */
+        .qr-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            padding: 32px 20px;
+            background: rgba(255,255,255,0.02);
+            border: 1px dashed var(--ink-line);
+            border-radius: var(--radius-md);
+            margin-bottom: 26px;
+        }
+        .qr-image {
+            width: 180px;
+            height: 180px;
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+        .qr-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--paper-dim);
+            text-align: center;
+        }
+
+        /* TOTALS */
+        .totals-block {
+            padding-top: 8px;
+        }
+        .total-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--paper-dim);
+        }
+        .total-line.grand {
+            padding-top: 18px;
+            margin-top: 14px;
+            border-top: 1px solid var(--ink-line);
+            font-size: 18px;
+            color: var(--paper);
+            font-weight: 500;
+        }
+        .total-line.grand .total-value {
+            font-family: var(--font-display);
+            font-size: 28px;
+            color: var(--gold);
+            font-weight: 500;
+        }
+        .total-value {
+            font-family: var(--font-mono);
+            color: var(--paper);
+        }
+
+        /* ACTIONS */
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease 0.3s both;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            font-size: 14px;
+            transition: 0.3s ease;
+            min-height: 48px;
+        }
+        .btn-primary { background: var(--gold); color: var(--ink); }
+        .btn-primary:hover { background: #F0C369; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,179,76,0.3); }
+        .btn-ghost { background: transparent; color: var(--paper); border: 1px solid var(--ink-line); }
+        .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+        /* HELP TEXT */
+        .help-text {
+            text-align: center;
+            font-size: 13px;
+            color: var(--paper-dim);
+            margin-top: 30px;
+            padding-top: 26px;
+            border-top: 1px dashed var(--ink-line);
+        }
+        .help-text a { color: var(--gold); text-decoration: underline; }
+
+        /* EMPTY STATE */
+        .empty-state { padding: 80px 20px; text-align: center; }
+        .empty-state i { font-size: 56px; color: var(--gold-dim); display: block; margin-bottom: 20px; }
+        .empty-state h3 { font-family: var(--font-display); font-size: 26px; margin-bottom: 10px; }
+        .empty-state p { color: var(--paper-dim); margin-bottom: 24px; }
+
+        /* FOOTER */
+        .footer { max-width: var(--container-max-width); margin: 60px auto 0; padding: 40px var(--container-padding) 0; border-top: 1px solid var(--ink-line); }
+        .footer-bottom { text-align: center; padding: 16px 0 24px; font-family: var(--font-mono); font-size: 11px; color: var(--paper-dim); }
+
+        /* PRINT STYLES */
+        @media print {
+            body { background: white !important; color: black !important; }
+            .nav, .footer, .actions, .email-notice-btn, .help-text, .mobile-menu, .mobile-menu-overlay { display: none !important; }
+            .booking-card { border: 2px solid black !important; box-shadow: none !important; }
+            .booking-card::before, .booking-card::after { display: none; }
+            .booking-card-header { background: #f5f5f5 !important; border-bottom-color: black !important; }
+            .booking-ref { color: black !important; background: #f5f5f5 !important; border-color: black !important; }
+            .movie-title-mini, .detail-value, .success-title, .total-line { color: black !important; }
+            .seat-chip { background: #f5f5f5 !important; color: black !important; border-color: black !important; }
+            .total-line.grand .total-value { color: black !important; }
+            .confirm-wrap { padding: 20px !important; }
+            .success-icon { background: black !important; }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .menu-toggle { display: flex; }
+            .nav-links { display: none; }
+        }
+        @media (max-width: 640px) {
+            .confirm-wrap { padding: 30px var(--container-padding) 40px; }
+            .detail-grid { grid-template-columns: 1fr; gap: 16px; }
+            .movie-row { flex-direction: column; align-items: center; text-align: center; }
+            .movie-meta-mini { align-items: center; }
+            .movie-meta-mini span { justify-content: center; }
+            .actions { flex-direction: column; }
+            .btn { width: 100%; }
+            .booking-card-header { flex-direction: column; align-items: flex-start; }
+            .email-notice { flex-direction: column; align-items: flex-start; }
+            .email-notice-btn { width: 100%; text-align: center; }
+            .seats-display { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+    <div class="nav-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="index.html" class="nav-brand">Savannah <span>Cinemas</span></a>
+    </div>
+    <div class="nav-right">
+        <a href="index.html" class="btn-signin"><i class="fas fa-home"></i> Home</a>
+    </div>
+</nav>
+
+<div class="mobile-menu-overlay" id="mobileOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-header">
+        <div class="mobile-menu-brand">Savannah <span>Cinemas</span></div>
+        <button class="mobile-menu-close" id="mobileMenuClose"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="mobile-menu-links">
+        <li><a href="index.html"><i class="fas fa-film"></i> Now Showing</a></li>
+        <li><a href="coming-soon.html"><i class="fas fa-calendar-alt"></i> Coming Soon</a></li>
+        <li><a href="cinemas.html"><i class="fas fa-map-marker-alt"></i> Cinemas</a></li>
+        <li><a href="events.html"><i class="fas fa-star"></i> Events</a></li>
+        <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+    </ul>
+    <div class="mobile-menu-footer"><p>© 2026 Savannah Cinemas</p></div>
+</aside>
+
+<div class="confirm-wrap" id="confirmWrap">
+    <!-- Populated by JS -->
+</div>
+
+<footer class="footer">
+    <div class="footer-bottom">
+        © 2026 Savannah Cinemas
+    </div>
+</footer>
+
+<script src="data/movies-inline.js"></script>
+<script src="js/app.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/booking.js"></script>
+
+<script>
+// ============================================================
+// CONFIRMATION PAGE CONTROLLER
+// ============================================================
+
+const ConfirmationPage = {
+    booking: null,
+
+    async init() {
+        await SavannahApp.init();
+        this.setupMobileMenu();
+
+        const ref = new URLSearchParams(window.location.search).get('ref');
+
+        // 1. Try LAST_BOOKING
+        this.booking = SavannahStorage.get(SavannahStorage.KEYS.LAST_BOOKING, null);
+
+        // 2. If ref mismatch, search history
+        if ((!this.booking || this.booking.bookingReference !== ref) && ref) {
+            const history = SavannahStorage.get(SavannahStorage.KEYS.BOOKING_HISTORY, []);
+            const found = history.find(b => b.bookingReference === ref);
+            if (found) this.booking = found;
+        }
+
+        // 3. If still nothing, show empty state
+        if (!this.booking) {
+            this.renderEmpty();
+            return;
+        }
+
+        this.render();
+        document.title = `Booking ${this.booking.bookingReference} — Savannah Cinemas`;
+    },
+
+    setupMobileMenu() {
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileOverlay');
+        const closeBtn = document.getElementById('mobileMenuClose');
+
+        const open = () => {
+            menu.classList.add('open');
+            overlay.classList.add('active');
+            toggle.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+        const close = () => {
+            menu.classList.remove('open');
+            overlay.classList.remove('active');
+            toggle.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        toggle?.addEventListener('click', () => menu.classList.contains('open') ? close() : open());
+        closeBtn?.addEventListener('click', close);
+        overlay?.addEventListener('click', close);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    },
+
+    renderEmpty() {
+        document.getElementById('confirmWrap').innerHTML = `
+            <div class="empty-state">
+                <i class="fas fa-ticket-alt"></i>
+                <h3>No booking found</h3>
+                <p>We couldn't find your booking details. It may have been cleared or the link is invalid.</p>
+                <a href="index.html" class="btn btn-primary" style="display:inline-flex;width:auto;">
+                    <i class="fas fa-film"></i> Browse Movies
+                </a>
+            </div>`;
+    },
+
+    render() {
+        const b = this.booking;
+
+        // QR code using public API
+        const qrData = encodeURIComponent(`SVN|${b.bookingReference}|${b.seats?.join(',') || ''}`);
+        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${qrData}&bgcolor=FFFFFF&color=14141C&margin=10`;
+
+        // Concessions block (only if present)
+        const concessions = b.concessions || [];
+        const concessionsBlock = concessions.length ? `
+            <div class="concessions-section">
+                <div class="detail-label">Concessions (${concessions.length})</div>
+                <div class="concessions-list">
+                    ${concessions.map(c => `
+                        <div class="concession-row">
+                            <div class="concession-row-name">
+                                <i class="fas fa-utensils"></i>
+                                <span>${c.product_name}</span>
+                                <span class="concession-row-qty">× ${c.quantity}</span>
+                            </div>
+                            <div class="concession-row-price">
+                                ${SavannahApp.formatCurrency((parseFloat(c.price) || 0) * (c.quantity || 1))}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        ` : '';
+
+        // Payment method label
+        const paymentLabels = {
+            cash: 'Cash at Box Office',
+            momo: 'Mobile Money',
+            card: 'Credit / Debit Card',
+            loyalty: 'Loyalty Points'
+        };
+        const paymentLabel = paymentLabels[b.paymentMethod] || 'Cash';
+
+        document.getElementById('confirmWrap').innerHTML = `
+            <!-- SUCCESS HEADER -->
+            <div class="success-header">
+                <div class="success-icon"><i class="fas fa-check"></i></div>
+                <h1 class="success-title">Booking Confirmed!</h1>
+                <p class="success-subtitle">
+                    Your reference is <strong>${b.bookingReference}</strong>
+                </p>
+            </div>
+
+            <!-- EMAIL NOTICE -->
+            <div class="email-notice">
+                <i class="fas fa-envelope-circle-check"></i>
+                <div class="email-notice-text">
+                    A confirmation email has been sent to <strong>${b.customerEmail}</strong>
+                </div>
+                <button class="email-notice-btn" onclick="ConfirmationPage.previewEmail()">
+                    <i class="fas fa-eye"></i> Preview
+                </button>
+            </div>
+
+            <!-- BOOKING CARD -->
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <div class="booking-card-title">
+                        <i class="fas fa-ticket-alt"></i>
+                        Your Ticket
+                    </div>
+                    <div class="booking-ref">${b.bookingReference}</div>
+                </div>
+
+                <div class="booking-body">
+                    <!-- MOVIE -->
+                    <div class="movie-row">
+                        <img src="${b.moviePoster || ''}" alt="${b.movieTitle}" class="movie-poster-mini"
+                             onerror="this.style.background='var(--ink)';this.src='';">
+                        <div class="movie-info-mini">
+                            <div class="movie-title-mini">${b.movieTitle}</div>
+                            <div class="movie-meta-mini">
+                                <span><i class="fas fa-map-marker-alt"></i> ${b.branchName}${b.branchCity ? ', ' + b.branchCity : ''}</span>
+                                <span><i class="fas fa-tv"></i> ${b.screenName || ''}${b.screenType ? ' (' + b.screenType + ')' : ''}</span>
+                                <span><i class="far fa-clock"></i> ${b.showtimeFormatted}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CUSTOMER DETAILS -->
+                    <div class="detail-grid">
+                        <div>
+                            <div class="detail-label">Name</div>
+                            <div class="detail-value">${b.customerName}</div>
+                        </div>
+                        <div>
+                            <div class="detail-label">Phone</div>
+                            <div class="detail-value">${b.customerPhone}</div>
+                        </div>
+                        <div>
+                            <div class="detail-label">Email</div>
+                            <div class="detail-value">${b.customerEmail}</div>
+                        </div>
+                        <div>
+                            <div class="detail-label">Payment Method</div>
+                            <div class="detail-value">${paymentLabel}</div>
+                        </div>
+                    </div>
+
+                    <!-- SEATS -->
+                    <div class="seats-section">
+                        <div class="detail-label">Seats (${b.seatCount || (b.seats || []).length})</div>
+                        <div class="seats-display">
+                            ${(b.seats || []).sort().map(s => `<span class="seat-chip">${s}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <!-- CONCESSIONS -->
+                    ${concessionsBlock}
+
+                    <!-- QR CODE -->
+                    <div class="qr-block">
+                        <img class="qr-image" src="${qrUrl}" alt="QR Code"
+                             onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\\'color:var(--paper-dim);font-size:13px;text-align:center;\\'>QR code unavailable</div>';">
+                        <div class="qr-label">
+                            Show this QR code at the entrance
+                        </div>
+                    </div>
+
+                    <!-- TOTALS -->
+                    <div class="totals-block">
+                        <div class="total-line">
+                            <span>Subtotal</span>
+                            <span class="total-value">${b.subtotal || SavannahApp.formatCurrency(0)}</span>
+                        </div>
+                        <div class="total-line">
+                            <span>Booking Fee</span>
+                            <span class="total-value">${b.bookingFee || SavannahApp.formatCurrency(0)}</span>
+                        </div>
+                        <div class="total-line">
+                            <span>VAT (12.5%)</span>
+                            <span class="total-value">${b.tax || SavannahApp.formatCurrency(0)}</span>
+                        </div>
+                        <div class="total-line grand">
+                            <span>Total Paid</span>
+                            <span class="total-value">${b.totalAmount || SavannahApp.formatCurrency(0)}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTIONS -->
+            <div class="actions">
+                <button class="btn btn-ghost" onclick="window.print()">
+                    <i class="fas fa-print"></i> Print Ticket
+                </button>
+                <button class="btn btn-ghost" onclick="ConfirmationPage.previewEmail()">
+                    <i class="fas fa-envelope"></i> Preview Email
+                </button>
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-film"></i> Browse More Movies
+                </a>
+            </div>
+
+            <!-- HELP -->
+            <div class="help-text">
+                <p>
+                    Need to make changes? Contact us at
+                    <a href="mailto:support@savannahcinemas.com">support@savannahcinemas.com</a>
+                    or call <strong>+233 30 212 3456</strong>.
+                    <br>Please arrive at least 15 minutes before showtime.
+                </p>
+            </div>
+        `;
+    },
+
+    // ========================================================
+    // EMAIL PREVIEW
+    // ========================================================
+    previewEmail() {
+        const b = this.booking;
+        if (!b) return;
+
+        const qrData = encodeURIComponent(`SVN|${b.bookingReference}|${b.seats?.join(',') || ''}`);
+        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${qrData}&bgcolor=FFFFFF&color=14141C&margin=10`;
+
+        // Build HTML for email preview
+        const emailHtml = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="UTF-8">
+                <title>Email Preview — ${b.bookingReference}</title>
+                <style>
+                    body {
+                        font-family: 'Helvetica Neue', Arial, sans-serif;
+                        background: #f4f4f4;
+                        margin: 0;
+                        padding: 20px;
+                        display: flex;
+                        justify-content: center;
+                    }
+                    .email {
+                        max-width: 600px;
+                        width: 100%;
+                        background: #ffffff;
+                        border-radius: 12px;
+                        overflow: hidden;
+                        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+                    }
+                    .email-header {
+                        background: linear-gradient(135deg, #E50914, #B20710);
+                        padding: 40px 30px;
+                        text-align: center;
+                        color: white;
+                    }
+                    .email-header h1 {
+                        font-family: 'Helvetica Neue', sans-serif;
+                        font-size: 32px;
+                        font-weight: 800;
+                        letter-spacing: 4px;
+                        margin: 0 0 6px 0;
+                        text-transform: uppercase;
+                    }
+                    .email-header p {
+                        margin: 0;
+                        font-size: 13px;
+                        letter-spacing: 2px;
+                        color: #F5C518;
+                        text-transform: uppercase;
+                    }
+                    .email-body {
+                        padding: 30px;
+                        color: #333;
+                    }
+                    .greeting {
+                        font-size: 16px;
+                        margin-bottom: 20px;
+                    }
+                    .greeting strong { color: #E50914; }
+                    .info-box {
+                        background: #f8f8f8;
+                        padding: 24px;
+                        border-radius: 10px;
+                        margin: 20px 0;
+                    }
+                    .movie-title {
+                        font-size: 22px;
+                        font-weight: 700;
+                        color: #14141C;
+                        margin-bottom: 4px;
+                    }
+                    .movie-sub {
+                        font-size: 13px;
+                        color: #888;
+                        margin-bottom: 20px;
+                    }
+                    .info-table {
+                        width: 100%;
+                        font-size: 14px;
+                        border-collapse: collapse;
+                    }
+                    .info-table tr td {
+                        padding: 8px 0;
+                        border-bottom: 1px solid #eee;
+                    }
+                    .info-table tr td:first-child {
+                        color: #888;
+                        width: 40%;
+                    }
+                    .info-table tr td:last-child {
+                        color: #14141C;
+                        font-weight: 600;
+                    }
+                    .info-table tr:last-child td { border-bottom: none; }
+                    .qr-center {
+                        text-align: center;
+                        margin: 30px 0;
+                    }
+                    .qr-center img {
+                        display: inline-block;
+                        border-radius: 10px;
+                        background: white;
+                        padding: 8px;
+                        border: 1px solid #eee;
+                    }
+                    .qr-center p {
+                        font-size: 12px;
+                        color: #999;
+                        margin: 8px 0 0;
+                    }
+                    .cta {
+                        text-align: center;
+                        margin: 30px 0 20px;
+                    }
+                    .cta a {
+                        display: inline-block;
+                        background: #E8B34C;
+                        color: #14141C;
+                        padding: 14px 32px;
+                        border-radius: 8px;
+                        text-decoration: none;
+                        font-weight: 700;
+                        font-size: 14px;
+                    }
+                    .footer {
+                        background: #14141C;
+                        padding: 24px 30px;
+                        text-align: center;
+                        color: #888;
+                        font-size: 12px;
+                    }
+                    .footer a { color: #E8B34C; text-decoration: none; }
+                </style>
+            </head>
+            <body>
+                <div class="email">
+                    <div class="email-header">
+                        <h1>Savannah Cinemas</h1>
+                        <p>Booking Confirmed</p>
+                    </div>
+                    <div class="email-body">
+                        <p class="greeting">Hi <strong>${b.customerName || 'there'}</strong>,</p>
+                        <p>Your booking is confirmed! Here are your ticket details.</p>
+
+                        <div class="info-box">
+                            <div class="movie-title">${b.movieTitle}</div>
+                            <div class="movie-sub">Reference: ${b.bookingReference}</div>
+                            <table class="info-table">
+                                <tr><td>Cinema</td><td>${b.branchName}${b.branchCity ? ', ' + b.branchCity : ''}</td></tr>
+                                <tr><td>Screen</td><td>${b.screenName || '—'}</td></tr>
+                                <tr><td>Date & Time</td><td>${b.showtimeFormatted}</td></tr>
+                                <tr><td>Seats</td><td>${(b.seats || []).join(', ')}</td></tr>
+                                <tr><td>Total Paid</td><td>${b.totalAmount}</td></tr>
+                            </table>
+                        </div>
+
+                        <div class="qr-center">
+                            <img src="${qrUrl}" alt="QR Code" width="180" height="180">
+                            <p>Show this QR code at the entrance</p>
+                        </div>
+
+                        <p style="font-size:13px;color:#888;text-align:center;">
+                            Please arrive at least 15 minutes before showtime.<br>
+                            Bring a valid ID for verification.
+                        </p>
+
+                        <div class="cta">
+                            <a href="#">View Booking</a>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <p>© 2026 Savannah Cinemas</p>
+                        <p>Questions? Contact <a href="mailto:support@savannahcinemas.com">support@savannahcinemas.com</a></p>
+                    </div>
+                </div>
+            </body>
+            </html>
+        `;
+
+        // Open in new window
+        const win = window.open('', '_blank', 'width=700,height=900');
+        if (!win) {
+            alert('Please allow popups to preview the email');
+            return;
+        }
+        win.document.write(emailHtml);
+        win.document.close();
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => ConfirmationPage.init());
+</script>
+</body>
+</html>

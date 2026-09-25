@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Checkout — Savannah Cinemas</title>
+    <meta name="theme-color" content="#14141C">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ink: #14141C; --ink-raised: #1D1D28; --ink-line: #2C2C3A;
+            --paper: #F2EFE9; --paper-dim: #B9B6AC;
+            --gold: #E8B34C; --gold-dim: #7A5C22;
+            --rust: #B33951; --success: #4C9A6A;
+            --font-display: 'Oswald', Impact, sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+            --radius-sm: 8px; --radius-md: 14px;
+            --container-padding: clamp(16px, 4vw, 60px);
+            --container-max-width: 1400px;
+            --touch-target: 44px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--ink); color: var(--paper); font-family: var(--font-body); font-size: 15px; line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; }
+        button, input, select { font-family: inherit; }
+        button { cursor: pointer; border: none; background: none; color: inherit; }
+        ::selection { background: var(--gold); color: var(--ink); }
+
+        /* NAV */
+        .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px var(--container-padding); border-bottom: 1px solid var(--ink-line); background: rgba(20,20,28,0.92); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; gap: 12px; min-height: 64px; }
+        .nav-left { display: flex; align-items: center; gap: 12px; }
+        .nav-brand { font-family: var(--font-display); font-size: clamp(18px, 2.4vw, 24px); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+        .nav-brand span { color: var(--gold); }
+        .nav-links { display: flex; gap: clamp(12px, 2vw, 32px); list-style: none; }
+        .nav-links a { color: var(--paper-dim); font-size: clamp(12px, 0.9vw, 14px); }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-right { display: flex; align-items: center; gap: 12px; z-index: 1001; position: relative; }
+        .btn-signin { padding: 8px 18px; background: var(--gold); color: var(--ink); border-radius: var(--radius-sm); font-size: clamp(12px, 0.8vw, 14px); font-weight: 500; min-height: 38px; display: inline-flex; align-items: center; gap: 6px; }
+        .btn-signin:hover { background: #F0C369; }
+
+        /* HAMBURGER */
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px 6px; min-width: var(--touch-target); min-height: var(--touch-target); justify-content: center; align-items: center; border-radius: var(--radius-sm); }
+        .menu-toggle span { display: block; width: 24px; height: 2.5px; background: var(--paper); transition: 0.3s ease; border-radius: 2px; transform-origin: center; }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* MOBILE MENU */
+        .mobile-menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; opacity: 0; transition: opacity 0.3s ease; }
+        .mobile-menu-overlay.active { display: block; opacity: 1; }
+        .mobile-menu { position: fixed; top: 0; left: -100%; width: 85%; max-width: 380px; height: 100vh; background: var(--ink); z-index: 1000; transition: left 0.4s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; box-shadow: 8px 0 40px rgba(0,0,0,0.6); border-right: 1px solid var(--ink-line); display: flex; flex-direction: column; }
+        .mobile-menu.open { left: 0; }
+        .mobile-menu-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--ink-line); background: var(--ink-raised); }
+        .mobile-menu-brand { font-family: var(--font-display); font-size: 18px; font-weight: 500; text-transform: uppercase; }
+        .mobile-menu-brand span { color: var(--gold); }
+        .mobile-menu-close { padding: 10px; min-width: var(--touch-target); min-height: var(--touch-target); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .mobile-menu-links { list-style: none; padding: 8px 0; flex: 1; }
+        .mobile-menu-links li { padding: 0 16px; margin: 2px 0; }
+        .mobile-menu-links a { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 10px; min-height: var(--touch-target); }
+        .mobile-menu-links a i { width: 24px; text-align: center; color: var(--paper-dim); }
+        .mobile-menu-links a:hover { color: var(--gold); background: rgba(232,179,76,0.06); }
+        .mobile-menu-footer { padding: 14px 20px; border-top: 1px solid var(--ink-line); text-align: center; font-family: var(--font-mono); font-size: 11px; color: var(--paper-dim); margin-top: auto; }
+
+        /* LAYOUT */
+        .section { max-width: var(--container-max-width); margin: 0 auto; padding: 40px var(--container-padding); }
+
+        .page-header { margin-bottom: 30px; }
+        .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--paper-dim); font-family: var(--font-mono); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 12px; flex-wrap: wrap; }
+        .breadcrumb i { font-size: 8px; }
+        .breadcrumb a:hover { color: var(--gold); }
+        .page-title { font-family: var(--font-display); font-size: clamp(26px, 3vw, 40px); font-weight: 500; }
+
+        /* NOTICE */
+        .notice {
+            display: flex; align-items: flex-start; gap: 14px;
+            padding: 16px 20px;
+            background: rgba(232,179,76,0.08);
+            border: 1px solid var(--gold-dim);
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+        .notice i { color: var(--gold); font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+        .notice strong { color: var(--gold); font-weight: 500; }
+        .notice a { color: var(--gold); text-decoration: underline; }
+        .notice a:hover { color: #F0C369; }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* CARD */
+        .card { background: var(--ink-raised); border: 1px solid var(--ink-line); border-radius: var(--radius-md); padding: 24px; margin-bottom: 24px; }
+        .card-title { font-family: var(--font-display); font-size: 20px; font-weight: 500; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .card-title i { color: var(--gold); font-size: 16px; }
+
+        /* FORM */
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .form-group { margin-bottom: 16px; }
+        .form-label { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper-dim); margin-bottom: 6px; }
+        .form-label .required { color: var(--gold); }
+        .form-input {
+            width: 100%; padding: 12px 16px; background: var(--ink); border: 1px solid var(--ink-line);
+            border-radius: var(--radius-sm); color: var(--paper); font-size: 14px; outline: none; transition: 0.3s ease;
+        }
+        .form-input:focus { border-color: var(--gold); }
+        .form-input::placeholder { color: var(--paper-dim); opacity: 0.6; }
+        .form-input.error { border-color: var(--rust); }
+        .form-error { color: var(--rust); font-size: 12px; margin-top: 4px; display: none; }
+        .form-error.show { display: block; }
+
+        /* CONCESSIONS */
+        .concessions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+        .concession-item {
+            padding: 14px; background: var(--ink); border: 1px solid var(--ink-line); border-radius: var(--radius-sm);
+            transition: 0.3s ease;
+        }
+        .concession-item.added { border-color: var(--gold); background: rgba(232,179,76,0.05); }
+        .concession-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+        .concession-price { font-family: var(--font-mono); font-size: 12px; color: var(--gold); }
+        .concession-controls { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+        .qty-btn { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid var(--ink-line); display: flex; align-items: center; justify-content: center; font-size: 12px; transition: 0.2s ease; }
+        .qty-btn:hover { border-color: var(--gold); color: var(--gold); }
+        .qty-value { font-family: var(--font-mono); font-size: 14px; color: var(--paper); min-width: 24px; text-align: center; }
+
+        /* PAYMENT */
+        .payment-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .payment-option {
+            padding: 14px; background: var(--ink); border: 1px solid var(--ink-line); border-radius: var(--radius-sm);
+            cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.3s ease;
+        }
+        .payment-option:hover { border-color: var(--gold-dim); }
+        .payment-option.selected { border-color: var(--gold); background: rgba(232,179,76,0.05); }
+        .payment-option i { color: var(--gold); font-size: 18px; }
+        .payment-option-label { font-size: 13px; }
+
+        /* SUMMARY */
+        .summary-card {
+            background: var(--ink-raised); border: 1px solid var(--ink-line);
+            border-radius: var(--radius-md); padding: 24px; position: sticky; top: 90px;
+        }
+        .summary-title { font-family: var(--font-display); font-size: 18px; font-weight: 500; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--ink-line); }
+
+        .summary-movie { display: flex; gap: 14px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--ink-line); }
+        .summary-poster { width: 60px; height: 90px; border-radius: 6px; object-fit: cover; flex-shrink: 0; background: var(--ink); }
+        .summary-movie-info { flex: 1; min-width: 0; }
+        .summary-movie-title { font-weight: 500; font-size: 14px; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+        .summary-movie-meta { font-size: 12px; color: var(--paper-dim); font-family: var(--font-mono); line-height: 1.5; }
+
+        .summary-line { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; }
+        .summary-line-label { color: var(--paper-dim); }
+        .summary-line-value { font-family: var(--font-mono); color: var(--paper); }
+        .summary-line.total { padding-top: 16px; margin-top: 12px; border-top: 1px solid var(--ink-line); font-size: 18px; }
+        .summary-line.total .summary-line-value { font-family: var(--font-display); font-size: 24px; color: var(--gold); font-weight: 500; }
+
+        .summary-seats { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0; }
+        .summary-seat-tag { padding: 2px 8px; background: rgba(232,179,76,0.1); border: 1px solid var(--gold-dim); border-radius: 4px; font-family: var(--font-mono); font-size: 11px; color: var(--gold); }
+        .summary-empty-hint { color: var(--paper-dim); font-size: 12px; font-style: italic; padding: 4px 0; }
+
+        /* BUTTONS */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 26px; border-radius: var(--radius-sm); font-weight: 500; font-size: 15px; transition: 0.3s ease; min-height: 48px; width: 100%; }
+        .btn-primary { background: var(--gold); color: var(--ink); }
+        .btn-primary:hover:not(:disabled) { background: #F0C369; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,179,76,0.3); }
+        .btn-primary:disabled { background: rgba(232,179,76,0.3); cursor: not-allowed; color: rgba(20,20,28,0.5); }
+        .btn-ghost { background: transparent; color: var(--paper); border: 1px solid var(--ink-line); }
+        .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+        /* FOOTER */
+        .footer { max-width: var(--container-max-width); margin: 60px auto 0; padding: 40px var(--container-padding) 0; border-top: 1px solid var(--ink-line); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 16px 0 24px; font-family: var(--font-mono); font-size: 11px; color: var(--paper-dim); }
+        .footer-bottom .legal a { color: var(--paper-dim); margin-left: 16px; }
+
+        /* TOAST */
+        .toast { position: fixed; top: 20px; right: 20px; background: var(--rust); color: var(--paper); padding: 14px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; box-shadow: 0 10px 40px rgba(0,0,0,0.5); z-index: 9999; display: flex; align-items: center; gap: 10px; }
+        .toast.success { background: var(--success); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .checkout-grid { grid-template-columns: 1fr; gap: 24px; }
+            .summary-card { position: static; }
+        }
+        @media (max-width: 900px) {
+            .menu-toggle { display: flex; }
+            .nav-links { display: none; }
+        }
+        @media (max-width: 640px) {
+            .form-row { grid-template-columns: 1fr; }
+            .payment-options { grid-template-columns: 1fr; }
+            .concessions-grid { grid-template-columns: 1fr 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="index.html" class="nav-brand">Savannah <span>Cinemas</span></a>
+    </div>
+    <ul class="nav-links">
+        <li><a href="index.html" class="active">Now Showing</a></li>
+        <li><a href="coming-soon.html">Coming Soon</a></li>
+        <li><a href="cinemas.html">Cinemas</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="offers.html">Offers</a></li>
+    </ul>
+    <div class="nav-right">
+        <a href="login.html" class="btn-signin"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+    </div>
+</nav>
+
+<div class="mobile-menu-overlay" id="mobileOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-header">
+        <div class="mobile-menu-brand">Savannah <span>Cinemas</span></div>
+        <button class="mobile-menu-close" id="mobileMenuClose"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="mobile-menu-links">
+        <li><a href="index.html"><i class="fas fa-film"></i> Now Showing</a></li>
+        <li><a href="coming-soon.html"><i class="fas fa-calendar-alt"></i> Coming Soon</a></li>
+        <li><a href="cinemas.html"><i class="fas fa-map-marker-alt"></i> Cinemas</a></li>
+        <li><a href="events.html"><i class="fas fa-star"></i> Events</a></li>
+        <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+    </ul>
+    <div class="mobile-menu-footer"><p>© 2026 Savannah Cinemas</p></div>
+</aside>
+
+<div class="section">
+    <div class="page-header">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="#" id="bcMovie">Movie</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="#" id="bcSeats">Seats</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>Checkout</span>
+        </div>
+        <h1 class="page-title">Complete Your Booking</h1>
+    </div>
+
+    <div id="noticeWrap"></div>
+
+    <div class="checkout-grid">
+        <!-- LEFT: FORMS -->
+        <div>
+            <!-- CUSTOMER DETAILS (always shown) -->
+            <div class="card">
+                <div class="card-title"><i class="fas fa-user"></i> Your Details</div>
+                <form id="customerForm" onsubmit="return false;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Full Name <span class="required">*</span></label>
+                            <input type="text" id="name" class="form-input" placeholder="e.g. John Mensah" autocomplete="name">
+                            <div class="form-error" id="errName">Please enter your full name</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone <span class="required">*</span></label>
+                            <input type="tel" id="phone" class="form-input" placeholder="e.g. +233 24 000 0000" autocomplete="tel">
+                            <div class="form-error" id="errPhone">Please enter a valid phone number</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" class="form-input" placeholder="you@example.com" autocomplete="email">
+                        <div class="form-error" id="errEmail">Please enter a valid email address</div>
+                        <p style="font-size:12px;color:var(--paper-dim);margin-top:6px;">
+                            Your confirmation and QR code will be sent here.
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- CONCESSIONS -->
+            <div class="card">
+                <div class="card-title"><i class="fas fa-utensils"></i> Add Concessions (Optional)</div>
+                <div class="concessions-grid" id="concessionsGrid"></div>
+            </div>
+
+            <!-- PAYMENT -->
+            <div class="card">
+                <div class="card-title"><i class="fas fa-credit-card"></i> Payment Method</div>
+                <div class="payment-options">
+                    <div class="payment-option selected" data-method="cash">
+                        <i class="fas fa-money-bill"></i>
+                        <span class="payment-option-label">Cash at Box Office</span>
+                    </div>
+                    <div class="payment-option" data-method="momo">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span class="payment-option-label">Mobile Money</span>
+                    </div>
+                    <div class="payment-option" data-method="card">
+                        <i class="fas fa-credit-card"></i>
+                        <span class="payment-option-label">Credit / Debit Card</span>
+                    </div>
+                    <div class="payment-option" data-method="loyalty">
+                        <i class="fas fa-star"></i>
+                        <span class="payment-option-label">Loyalty Points</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: SUMMARY -->
+        <div class="summary-card">
+            <div class="summary-title">Order Summary</div>
+
+            <div id="summaryBody">
+                <!-- Populated by JS -->
+            </div>
+
+            <button class="btn btn-primary" id="payBtn" style="margin-top:20px;">
+                <i class="fas fa-lock"></i> Confirm Booking
+            </button>
+            <a href="#" id="backBtn" class="btn btn-ghost" style="margin-top:10px;">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-bottom">
+        <span>© 2026 Savannah Cinemas</span>
+        <span class="legal">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+        </span>
+    </div>
+</footer>
+
+<script src="data/movies-inline.js"></script>
+<script src="js/app.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/booking.js"></script>
+
+<script>
+const CheckoutPage = {
+    booking: null,
+    totals: null,
+    paymentMethod: 'cash',
+    hasSeats: false,
+
+    async init() {
+        await SavannahApp.init();
+        this.setupMobileMenu();
+
+        // Load booking state
+        if (typeof SavannahBooking !== 'undefined') {
+            SavannahBooking.loadBookingState();
+            this.booking = SavannahBooking.currentBooking;
+        } else {
+            this.booking = {};
+        }
+
+        // Defensive: ensure booking shape
+        this.booking.movie = this.booking.movie || null;
+        this.booking.showtime = this.booking.showtime || null;
+        this.booking.branch = this.booking.branch || null;
+        this.booking.seats = this.booking.seats || [];
+        this.booking.concessions = this.booking.concessions || [];
+
+        this.hasSeats = this.booking.seats.length > 0;
+
+        this.renderBreadcrumbs();
+        this.renderNotice();
+        this.renderSummary();
+        this.renderConcessions();
+        this.setupForm();
+        this.setupPayment();
+        this.updateTotals();
+    },
+
+    setupMobileMenu() {
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileOverlay');
+        const closeBtn = document.getElementById('mobileMenuClose');
+        const open = () => { menu.classList.add('open'); overlay.classList.add('active'); toggle.classList.add('active'); document.body.style.overflow = 'hidden'; };
+        const close = () => { menu.classList.remove('open'); overlay.classList.remove('active'); toggle.classList.remove('active'); document.body.style.overflow = ''; };
+        toggle?.addEventListener('click', () => menu.classList.contains('open') ? close() : open());
+        closeBtn?.addEventListener('click', close);
+        overlay?.addEventListener('click', close);
+    },
+
+    renderBreadcrumbs() {
+        const bcMovie = document.getElementById('bcMovie');
+        const bcSeats = document.getElementById('bcSeats');
+
+        if (this.booking.movie) {
+            bcMovie.href = `movie.html?id=${this.booking.movie.movie_id}`;
+            bcMovie.textContent = this.booking.movie.title;
+        } else {
+            bcMovie.href = 'index.html';
+            bcMovie.textContent = 'Movie';
+        }
+
+        if (this.booking.showtime) {
+            bcSeats.href = `seats.html?showtime=${this.booking.showtime.showtime_id}`;
+        } else {
+            bcSeats.href = 'index.html';
+        }
+    },
+
+    renderNotice() {
+        if (this.hasSeats) return;
+
+        document.getElementById('noticeWrap').innerHTML = `
+            <div class="notice">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                    You haven't selected any seats yet. You can fill in your details here, but
+                    <a href="index.html">please pick a movie and seats first</a> before confirming.
+                </div>
+            </div>
+        `;
+    },
+
+    renderSummary() {
+        const b = this.booking;
+        const body = document.getElementById('summaryBody');
+
+        let movieBlock = '';
+        if (b.movie && b.showtime) {
+            movieBlock = `
+                <div class="summary-movie">
+                    <img src="${b.movie.poster_url}" alt="${b.movie.title}" class="summary-poster"
+                         onerror="this.style.background='var(--ink)';this.src='';">
+                    <div class="summary-movie-info">
+                        <div class="summary-movie-title">${b.movie.title}</div>
+                        <div class="summary-movie-meta">
+                            ${SavannahApp.formatDateShort(b.showtime.date)} · ${SavannahApp.formatTime(b.showtime.start_time)}<br>
+                            ${b.branch?.branch_name || ''}<br>
+                            ${b.showtime.screen_name || ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            movieBlock = `
+                <div class="summary-empty-hint" style="padding:12px 0;border-bottom:1px solid var(--ink-line);margin-bottom:12px;">
+                    No movie selected yet
+                </div>
+            `;
+        }
+
+        let seatBlock = '';
+        if (this.hasSeats) {
+            const sorted = [...b.seats].sort((a, z) => a.seat_id.localeCompare(z.seat_id));
+            seatBlock = `
+                <div class="summary-line">
+                    <span class="summary-line-label">Seats (${b.seats.length})</span>
+                    <span class="summary-line-value" id="sumSeats">${SavannahApp.formatCurrency(0)}</span>
+                </div>
+                <div class="summary-seats" id="sumSeatTags">
+                    ${sorted.map(s => `<span class="summary-seat-tag">${s.seat_id}</span>`).join('')}
+                </div>
+            `;
+        } else {
+            seatBlock = `
+                <div class="summary-line">
+                    <span class="summary-line-label">Seats</span>
+                    <span class="summary-line-value" id="sumSeats">${SavannahApp.formatCurrency(0)}</span>
+                </div>
+                <div class="summary-empty-hint">No seats selected</div>
+            `;
+        }
+
+        body.innerHTML = `
+            ${movieBlock}
+            ${seatBlock}
+            <div id="sumConcessionsWrap" style="display:none;">
+                <div class="summary-line">
+                    <span class="summary-line-label">Concessions</span>
+                    <span class="summary-line-value" id="sumConcessions">${SavannahApp.formatCurrency(0)}</span>
+                </div>
+            </div>
+            <div class="summary-line">
+                <span class="summary-line-label">Booking Fee</span>
+                <span class="summary-line-value" id="sumBookingFee">${SavannahApp.formatCurrency(0)}</span>
+            </div>
+            <div class="summary-line">
+                <span class="summary-line-label">VAT (12.5%)</span>
+                <span class="summary-line-value" id="sumTax">${SavannahApp.formatCurrency(0)}</span>
+            </div>
+            <div class="summary-line total">
+                <span class="summary-line-label">Total</span>
+                <span class="summary-line-value" id="sumTotal">${SavannahApp.formatCurrency(0)}</span>
+            </div>
+        `;
+    },
+
+    renderConcessions() {
+        const products = SavannahApp.data.products || [];
+        const grid = document.getElementById('concessionsGrid');
+
+        grid.innerHTML = products.map(p => {
+            const existing = (this.booking.concessions || []).find(c => c.product_id === p.product_id);
+            const qty = existing ? existing.quantity : 0;
+            return `
+                <div class="concession-item ${qty > 0 ? 'added' : ''}" data-product-id="${p.product_id}">
+                    <div class="concession-name">${p.product_name}</div>
+                    <div class="concession-price">${SavannahApp.formatCurrency(p.price)}</div>
+                    <div class="concession-controls">
+                        <button type="button" class="qty-btn" data-action="dec"><i class="fas fa-minus"></i></button>
+                        <span class="qty-value" data-qty="${p.product_id}">${qty}</span>
+                        <button type="button" class="qty-btn" data-action="inc"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    },
+
+    setupForm() {
+        // Concessions +/-
+        document.getElementById('concessionsGrid').addEventListener('click', (e) => {
+            const btn = e.target.closest('.qty-btn');
+            if (!btn) return;
+
+            const card = btn.closest('.concession-item');
+            const productId = card.dataset.productId;
+            const action = btn.dataset.action;
+            const product = SavannahApp.getProductById(productId);
+            if (!product) return;
+
+            if (typeof SavannahBooking === 'undefined') return;
+
+            const existing = SavannahBooking.currentBooking.concessions.find(c => c.product_id === productId);
+
+            if (action === 'inc') {
+                SavannahBooking.addConcession(productId, 1);
+            } else {
+                if (existing && existing.quantity > 1) {
+                    SavannahBooking.updateConcessionQuantity(productId, existing.quantity - 1);
+                } else {
+                    SavannahBooking.removeConcession(productId);
+                }
+            }
+
+            this.booking = SavannahBooking.currentBooking;
+            const newQty = (this.booking.concessions.find(c => c.product_id === productId) || {}).quantity || 0;
+            card.querySelector('.qty-value').textContent = newQty;
+            card.classList.toggle('added', newQty > 0);
+            this.updateTotals();
+        });
+    },
+
+    setupPayment() {
+        document.querySelectorAll('.payment-option').forEach(opt => {
+            opt.addEventListener('click', () => {
+                document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+                opt.classList.add('selected');
+                this.paymentMethod = opt.dataset.method;
+            });
+        });
+
+        document.getElementById('payBtn').addEventListener('click', () => this.submit());
+        document.getElementById('backBtn').addEventListener('click', () => {
+            if (this.booking.showtime) {
+                window.location.href = `seats.html?showtime=${this.booking.showtime.showtime_id}`;
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
+    },
+
+    updateTotals() {
+        const b = this.booking;
+        const seatsTotal = (b.seats || []).reduce((sum, s) => sum + (parseFloat(s.price) || 0), 0);
+        const concessionsTotal = (b.concessions || []).reduce((sum, c) => sum + ((parseFloat(c.price) || 0) * (c.quantity || 0)), 0);
+        const subtotal = seatsTotal + concessionsTotal;
+        const bookingFee = (b.seats || []).length * 2.00;
+        const tax = subtotal * 0.125;
+        const total = subtotal + tax + bookingFee;
+
+        this.totals = { seatsTotal, concessionsTotal, subtotal, bookingFee, tax, total };
+
+        const setIfExists = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+
+        setIfExists('sumSeats', SavannahApp.formatCurrency(seatsTotal));
+        setIfExists('sumBookingFee', SavannahApp.formatCurrency(bookingFee));
+        setIfExists('sumTax', SavannahApp.formatCurrency(tax));
+        setIfExists('sumTotal', SavannahApp.formatCurrency(total));
+
+        const wrap = document.getElementById('sumConcessionsWrap');
+        if (wrap) {
+            if (concessionsTotal > 0) {
+                wrap.style.display = 'block';
+                setIfExists('sumConcessions', SavannahApp.formatCurrency(concessionsTotal));
+            } else {
+                wrap.style.display = 'none';
+            }
+        }
+
+        // Disable pay button if no seats
+        const payBtn = document.getElementById('payBtn');
+        if (payBtn) {
+            payBtn.disabled = !this.hasSeats;
+            if (!this.hasSeats) {
+                payBtn.innerHTML = '<i class="fas fa-lock"></i> Select Seats First';
+            } else {
+                payBtn.innerHTML = '<i class="fas fa-lock"></i> Confirm Booking';
+            }
+        }
+    },
+
+    submit() {
+        if (!this.hasSeats) {
+            this.toast('Please select seats first');
+            return;
+        }
+
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+
+        let valid = true;
+        document.querySelectorAll('.form-error').forEach(e => e.classList.remove('show'));
+        document.querySelectorAll('.form-input').forEach(e => e.classList.remove('error'));
+
+        if (!name) {
+            document.getElementById('errName').classList.add('show');
+            document.getElementById('name').classList.add('error');
+            valid = false;
+        }
+
+        if (!/^[0-9+\-\s()]{10,15}$/.test(phone)) {
+            document.getElementById('errPhone').classList.add('show');
+            document.getElementById('phone').classList.add('error');
+            valid = false;
+        }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            document.getElementById('errEmail').classList.add('show');
+            document.getElementById('email').classList.add('error');
+            valid = false;
+        }
+
+        if (!valid) {
+            this.toast('Please check your details');
+            return;
+        }
+
+        const btn = document.getElementById('payBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+        setTimeout(() => {
+            this.finalizeBooking({ name, email, phone });
+        }, 800);
+    },
+
+    async finalizeBooking(customer) {
+        if (typeof SavannahBooking === 'undefined') return;
+
+        SavannahBooking.currentBooking.customer = customer;
+        SavannahBooking.currentBooking.paymentMethod = this.paymentMethod;
+
+        const ref = 'SVN-' + Date.now().toString(36).toUpperCase() + '-' +
+                    Math.random().toString(36).substring(2, 6).toUpperCase();
+
+        const b = SavannahBooking.currentBooking;
+        const totals = this.totals;
+
+        const bookingData = {
+            bookingReference: ref,
+            customerName: customer.name,
+            customerEmail: customer.email,
+            customerPhone: customer.phone,
+            movieId: b.movie.movie_id,
+            movieTitle: b.movie.title,
+            moviePoster: b.movie.poster_url,
+            branchName: b.branch?.branch_name || '',
+            branchCity: b.branch?.city || '',
+            screenName: b.showtime.screen_name,
+            screenType: b.showtime.screen_type,
+            showtimeDate: b.showtime.date,
+            showtimeStart: b.showtime.start_time,
+            showtimeEnd: b.showtime.end_time,
+            showtimeFormatted: `${SavannahApp.formatDate(b.showtime.date)} at ${SavannahApp.formatTime(b.showtime.start_time)}`,
+            seats: (b.seats || []).map(s => s.seat_id),
+            seatCount: (b.seats || []).length,
+            seatDetails: b.seats,
+            concessions: b.concessions || [],
+            subtotal: SavannahApp.formatCurrency(totals.subtotal),
+            tax: SavannahApp.formatCurrency(totals.tax),
+            bookingFee: SavannahApp.formatCurrency(totals.bookingFee),
+            totalAmount: SavannahApp.formatCurrency(totals.total),
+            totalAmountRaw: totals.total,
+            paymentMethod: this.paymentMethod,
+            bookingDate: new Date().toISOString()
+        };
+
+        SavannahStorage.set(SavannahStorage.KEYS.LAST_BOOKING, bookingData);
+
+        const history = SavannahStorage.get(SavannahStorage.KEYS.BOOKING_HISTORY, []);
+        history.unshift(bookingData);
+        SavannahStorage.set(SavannahStorage.KEYS.BOOKING_HISTORY, history.slice(0, 50));
+
+        if (typeof SavannahEmail !== 'undefined' && SavannahEmail.sendBookingEmail) {
+            try { await SavannahEmail.sendBookingEmail(bookingData); } catch (e) {}
+        }
+
+        SavannahStorage.clearCart();
+        if (SavannahBooking.reset) SavannahBooking.reset();
+
+        window.location.href = `confirmation.html?ref=${ref}`;
+    },
+
+    toast(msg) {
+        const el = document.createElement('div');
+        el.className = 'toast';
+        el.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${msg}`;
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 3000);
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => CheckoutPage.init());
+</script>
+</body>
+</html>

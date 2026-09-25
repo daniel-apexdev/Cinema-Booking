@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Movie Details — Savannah Cinemas</title>
+    <meta name="description" content="View movie details, watch the trailer, and book tickets at Savannah Cinemas.">
+    <meta name="theme-color" content="#14141C">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           ROOT VARIABLES
+           ============================================================ */
+        :root {
+            --ink: #14141C;
+            --ink-raised: #1D1D28;
+            --ink-line: #2C2C3A;
+            --paper: #F2EFE9;
+            --paper-dim: #B9B6AC;
+            --gold: #E8B34C;
+            --gold-dim: #7A5C22;
+            --rust: #B33951;
+            --rust-hover: #C94661;
+            --success: #4C9A6A;
+
+            --font-display: 'Oswald', 'Bebas Neue', Impact, sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --container-padding: clamp(16px, 4vw, 60px);
+            --container-max-width: 1400px;
+            --touch-target: 44px;
+        }
+
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--ink);
+            color: var(--paper);
+            font-family: var(--font-body);
+            font-size: 15px;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+        ::selection { background: var(--gold); color: var(--ink); }
+
+        /* ============================================================
+           NAV
+           ============================================================ */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px var(--container-padding);
+            border-bottom: 1px solid var(--ink-line);
+            background: rgba(20, 20, 28, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            gap: 12px;
+            min-height: 64px;
+        }
+        .nav-left { display: flex; align-items: center; gap: 12px; }
+        .nav-brand {
+            font-family: var(--font-display);
+            font-size: clamp(18px, 2.4vw, 24px);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .nav-brand span { color: var(--gold); }
+        .nav-links {
+            display: flex;
+            gap: clamp(12px, 2vw, 32px);
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--paper-dim);
+            font-size: clamp(12px, 0.9vw, 14px);
+            transition: 0.3s ease;
+            white-space: nowrap;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-right { display: flex; align-items: center; gap: 12px; z-index: 1001; position: relative; }
+        .btn-signin {
+            padding: 8px 18px;
+            background: var(--gold);
+            color: var(--ink);
+            border-radius: var(--radius-sm);
+            font-size: clamp(12px, 0.8vw, 14px);
+            font-weight: 500;
+            transition: 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            min-height: 38px;
+            white-space: nowrap;
+        }
+        .btn-signin:hover { background: #F0C369; transform: translateY(-2px); }
+
+        /* ============================================================
+           HAMBURGER MENU
+           ============================================================ */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px 6px;
+            min-width: var(--touch-target);
+            min-height: var(--touch-target);
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--radius-sm);
+            touch-action: manipulation;
+        }
+        .menu-toggle:hover { background: rgba(255,255,255,0.05); }
+        .menu-toggle span {
+            display: block;
+            width: 24px; height: 2.5px;
+            background: var(--paper);
+            transition: 0.3s ease;
+            border-radius: 2px;
+            transform-origin: center;
+        }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ============================================================
+           MOBILE MENU
+           ============================================================ */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .mobile-menu-overlay.active { display: block; opacity: 1; }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0; left: -100%;
+            width: 85%; max-width: 380px;
+            height: 100vh;
+            background: var(--ink);
+            z-index: 1000;
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
+            border-right: 1px solid var(--ink-line);
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-menu.open { left: 0; }
+
+        .mobile-menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--ink-line);
+            background: var(--ink-raised);
+            flex-shrink: 0;
+        }
+        .mobile-menu-brand {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .mobile-menu-brand span { color: var(--gold); }
+        .mobile-menu-close {
+            color: var(--paper);
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 50%;
+            min-width: var(--touch-target);
+            min-height: var(--touch-target);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s ease;
+        }
+        .mobile-menu-close:hover {
+            color: var(--gold);
+            transform: rotate(90deg);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+            padding: 8px 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-menu-links li { padding: 0 16px; margin: 2px 0; }
+        .mobile-menu-links a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 14px;
+            color: var(--paper);
+            font-size: 15px;
+            transition: 0.2s ease;
+            border-radius: 10px;
+            min-height: var(--touch-target);
+        }
+        .mobile-menu-links a i {
+            width: 24px;
+            text-align: center;
+            color: var(--paper-dim);
+            font-size: 17px;
+            transition: 0.2s ease;
+        }
+        .mobile-menu-links a:hover {
+            color: var(--gold);
+            background: rgba(232,179,76,0.06);
+            padding-left: 20px;
+        }
+        .mobile-menu-links a:hover i { color: var(--gold); }
+
+        .mobile-menu-footer {
+            padding: 14px 20px;
+            border-top: 1px solid var(--ink-line);
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--paper-dim);
+            flex-shrink: 0;
+            margin-top: auto;
+        }
+
+        /* ============================================================
+           MOVIE HERO
+           ============================================================ */
+        .movie-hero {
+            position: relative;
+            min-height: 70vh;
+            overflow: hidden;
+            border-bottom: 1px solid var(--ink-line);
+        }
+        .movie-hero-backdrop {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center 20%;
+            filter: blur(2px);
+            transform: scale(1.05);
+            background-color: var(--ink-raised);
+        }
+        .movie-hero-backdrop::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, var(--ink) 0%, rgba(20,20,28,0.7) 40%, rgba(20,20,28,0.4) 70%, rgba(20,20,28,0.85) 100%),
+                linear-gradient(0deg, var(--ink) 0%, transparent 60%);
+        }
+        .movie-hero-inner {
+            position: relative;
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 60px var(--container-padding) 40px;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 60px;
+            align-items: end;
+            min-height: 70vh;
+        }
+
+        .movie-poster-large {
+            position: relative;
+            aspect-ratio: 2/3;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--ink-line);
+            background: var(--ink-raised);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .movie-poster-large:hover { transform: scale(1.02); }
+        .movie-poster-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .movie-poster-badge {
+            position: absolute;
+            top: 12px; left: 12px;
+            padding: 6px 14px;
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid var(--gold-dim);
+            border-radius: 10px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+        }
+        .movie-poster-play {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(232, 179, 76, 0.9);
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            opacity: 0;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+        }
+        .movie-poster-large:hover .movie-poster-play {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .movie-info {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .movie-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .movie-title-large {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 5vw, 64px);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: 0.01em;
+        }
+        .movie-original-title {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: clamp(14px, 1.2vw, 18px);
+            color: var(--paper-dim);
+        }
+        .movie-meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            align-items: center;
+            font-size: 13px;
+            color: var(--paper-dim);
+        }
+        .movie-meta-item { display: flex; align-items: center; gap: 6px; }
+        .movie-meta-item i { color: var(--gold); }
+        .movie-rating-badge {
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+        }
+        .movie-genres { display: flex; flex-wrap: wrap; gap: 8px; }
+        .genre-chip {
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--ink-line);
+            border-radius: 100px;
+            font-size: 12px;
+            color: var(--paper-dim);
+            transition: 0.3s ease;
+        }
+        .genre-chip:hover {
+            border-color: var(--gold-dim);
+            color: var(--gold);
+        }
+        .movie-synopsis {
+            font-size: 15px;
+            line-height: 1.75;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 780px;
+        }
+        .movie-crew {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--ink-line);
+            max-width: 780px;
+        }
+        .movie-crew-item { font-size: 13px; }
+        .movie-crew-item .label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--paper-dim);
+            margin-bottom: 4px;
+        }
+        .movie-crew-item .value {
+            color: var(--paper);
+            font-weight: 500;
+        }
+
+        /* Buttons row */
+        .movie-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        /* ============================================================
+           SECTION
+           ============================================================ */
+        .section {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 50px var(--container-padding);
+        }
+        .section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(22px, 2.4vw, 32px);
+            font-weight: 500;
+        }
+
+        /* ============================================================
+           FILTER BAR
+           ============================================================ */
+        .filter-bar {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 16px;
+            background: var(--ink-raised);
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
+        }
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .filter-group label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--paper-dim);
+        }
+        .filter-select {
+            padding: 8px 12px;
+            background: var(--ink);
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-sm);
+            color: var(--paper);
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+            cursor: pointer;
+            min-width: 160px;
+        }
+        .filter-select:focus { border-color: var(--gold); }
+
+        /* ============================================================
+           SHOWTIMES
+           ============================================================ */
+        .branch-group {
+            margin-bottom: 32px;
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-md);
+            background: var(--ink-raised);
+            overflow: hidden;
+        }
+        .branch-header {
+            padding: 18px 22px;
+            background: rgba(232, 179, 76, 0.05);
+            border-bottom: 1px solid var(--ink-line);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .branch-name {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .branch-name i { color: var(--gold); }
+        .branch-city {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--paper-dim);
+        }
+
+        .showtime-grid {
+            padding: 20px 22px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 14px;
+        }
+        .showtime-card {
+            padding: 16px;
+            background: var(--ink);
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .showtime-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        .showtime-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--gold);
+            opacity: 0;
+            transition: 0.3s ease;
+        }
+        .showtime-card:hover::before { opacity: 1; }
+
+        .showtime-time {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--paper);
+            margin-bottom: 4px;
+            letter-spacing: 0.02em;
+        }
+        .showtime-screen {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: var(--paper-dim);
+            margin-bottom: 10px;
+            font-family: var(--font-mono);
+            letter-spacing: 0.05em;
+            flex-wrap: wrap;
+        }
+        .screen-badge {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .screen-badge.imax { background: rgba(255, 87, 34, 0.2); color: #FF8A65; }
+        .screen-badge.dolby_atmos { background: rgba(33, 150, 243, 0.2); color: #64B5F6; }
+        .screen-badge.dolby { background: rgba(156, 39, 176, 0.2); color: #BA68C8; }
+        .screen-badge.vip { background: rgba(232, 179, 76, 0.2); color: var(--gold); }
+        .screen-badge.standard { background: rgba(255, 255, 255, 0.08); color: var(--paper-dim); }
+
+        .showtime-price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-top: 8px;
+            padding-top: 10px;
+            border-top: 1px solid var(--ink-line);
+        }
+        .showtime-price {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 500;
+        }
+        .showtime-seats {
+            font-size: 11px;
+            color: var(--paper-dim);
+        }
+        .showtime-seats.low { color: var(--rust); }
+
+        .empty-state {
+            padding: 60px 20px;
+            text-align: center;
+            color: var(--paper-dim);
+        }
+        .empty-state i {
+            font-size: 48px;
+            color: var(--gold-dim);
+            margin-bottom: 16px;
+            display: block;
+        }
+        .empty-state h3 {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--paper);
+        }
+
+        /* ============================================================
+           BUTTONS
+           ============================================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 26px;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            font-size: 14px;
+            transition: 0.3s ease;
+            min-height: 42px;
+        }
+        .btn-primary {
+            background: var(--gold);
+            color: var(--ink);
+        }
+        .btn-primary:hover {
+            background: #F0C369;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(232, 179, 76, 0.3);
+        }
+        .btn-ghost {
+            background: transparent;
+            color: var(--paper);
+            border: 1px solid var(--ink-line);
+        }
+        .btn-ghost:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .btn-trailer {
+            background: rgba(232, 179, 76, 0.1);
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+        }
+        .btn-trailer:hover {
+            background: rgba(232, 179, 76, 0.2);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           TRAILER MODAL
+           ============================================================ */
+        .trailer-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .trailer-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .trailer-modal-inner {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            animation: trailerFadeIn 0.4s ease;
+        }
+        @keyframes trailerFadeIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .trailer-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 4px 14px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .trailer-modal-title {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--paper);
+        }
+        .trailer-modal-title span {
+            color: var(--paper-dim);
+            font-weight: 300;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-right: 8px;
+        }
+        .trailer-modal-close {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--paper);
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s ease;
+            flex-shrink: 0;
+        }
+        .trailer-modal-close:hover {
+            background: var(--rust);
+            transform: rotate(90deg);
+        }
+        .trailer-player-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--ink-line);
+        }
+        .trailer-player-wrap iframe,
+        .trailer-player-wrap video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .trailer-no-video {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: var(--paper-dim);
+            padding: 40px;
+            text-align: center;
+        }
+        .trailer-no-video i {
+            font-size: 48px;
+            color: var(--gold-dim);
+        }
+        .trailer-no-video h3 {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--paper);
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .footer {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 50px var(--container-padding) 0;
+            border-top: 1px solid var(--ink-line);
+        }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 16px 0 24px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--paper-dim);
+        }
+        .footer-bottom .legal a {
+            color: var(--paper-dim);
+            margin-left: 16px;
+            transition: 0.3s ease;
+        }
+        .footer-bottom .legal a:hover { color: var(--gold); }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 1024px) {
+            .movie-hero-inner {
+                grid-template-columns: 260px 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .menu-toggle { display: flex; }
+            .nav-links { display: none; }
+
+            .movie-hero-inner {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 40px var(--container-padding) 30px;
+                min-height: auto;
+            }
+            .movie-hero { min-height: auto; }
+            .movie-poster-large {
+                max-width: 220px;
+                margin: 0 auto;
+            }
+            .movie-info { text-align: center; align-items: center; }
+            .movie-meta-row { justify-content: center; }
+            .movie-genres { justify-content: center; }
+            .movie-synopsis { text-align: left; }
+            .movie-crew { text-align: left; }
+            .movie-actions { justify-content: center; }
+        }
+
+        @media (max-width: 640px) {
+            .movie-poster-large { max-width: 180px; }
+            .movie-title-large { font-size: 32px; }
+            .showtime-grid { grid-template-columns: 1fr 1fr; gap: 10px; padding: 16px; }
+            .showtime-time { font-size: 18px; }
+            .filter-bar { flex-direction: column; align-items: stretch; }
+            .filter-group { flex-direction: column; align-items: flex-start; }
+            .filter-select { width: 100%; }
+            .branch-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+            .movie-crew { grid-template-columns: 1fr; }
+
+            .trailer-modal { padding: 12px; }
+            .trailer-modal-title { font-size: 15px; }
+            .trailer-modal-title span { display: none; }
+            .trailer-modal-close { width: 40px; height: 40px; font-size: 18px; }
+        }
+
+        @media (max-width: 480px) {
+            .movie-poster-large { max-width: 160px; }
+            .movie-title-large { font-size: 28px; }
+            .movie-meta-row { gap: 12px; font-size: 12px; }
+            .movie-synopsis { font-size: 14px; }
+            .showtime-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-bottom .legal a { margin: 0 8px; }
+            .btn-signin { padding: 6px 14px; font-size: 12px; }
+            .movie-actions { flex-direction: column; }
+            .movie-actions .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav class="nav">
+    <div class="nav-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <a href="index.html" class="nav-brand">Savannah <span>Cinemas</span></a>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="index.html" class="active">Now Showing</a></li>
+        <li><a href="coming-soon.html">Coming Soon</a></li>
+        <li><a href="cinemas.html">Cinemas</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="offers.html">Offers</a></li>
+    </ul>
+
+    <div class="nav-right">
+        <a href="login.html" class="btn-signin">
+            <i class="fas fa-sign-in-alt"></i> Sign In
+        </a>
+    </div>
+</nav>
+
+<!-- ============================================================
+     MOBILE MENU
+     ============================================================ -->
+<div class="mobile-menu-overlay" id="mobileOverlay"></div>
+
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-header">
+        <div class="mobile-menu-brand">Savannah <span>Cinemas</span></div>
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <ul class="mobile-menu-links">
+        <li><a href="index.html"><i class="fas fa-film"></i> Now Showing</a></li>
+        <li><a href="coming-soon.html"><i class="fas fa-calendar-alt"></i> Coming Soon</a></li>
+        <li><a href="cinemas.html"><i class="fas fa-map-marker-alt"></i> Cinemas</a></li>
+        <li><a href="events.html"><i class="fas fa-star"></i> Events</a></li>
+        <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+    </ul>
+
+    <div class="mobile-menu-footer">
+        <p>© 2026 Savannah Cinemas</p>
+    </div>
+</aside>
+
+<!-- ============================================================
+     MOVIE HERO
+     ============================================================ -->
+<section class="movie-hero">
+    <div class="movie-hero-backdrop" id="movieBackdrop"></div>
+
+    <div class="movie-hero-inner">
+        <div class="movie-poster-large" id="moviePosterWrap" title="Watch trailer">
+            <img id="moviePoster" src="" alt="Movie poster">
+            <span class="movie-poster-badge" id="movieRatingBadge">NR</span>
+            <div class="movie-poster-play" id="posterPlayBtn">
+                <i class="fas fa-play"></i>
+            </div>
+        </div>
+
+        <div class="movie-info">
+            <div class="movie-eyebrow" id="movieStatus">NOW SHOWING</div>
+            <h1 class="movie-title-large" id="movieTitle">Loading…</h1>
+            <div class="movie-original-title" id="movieOriginalTitle"></div>
+
+            <div class="movie-meta-row">
+                <span class="movie-meta-item"><i class="fas fa-star"></i> <span id="movieImdbRating">—</span></span>
+                <span class="movie-meta-item"><i class="far fa-clock"></i> <span id="movieDuration">—</span></span>
+                <span class="movie-meta-item"><i class="far fa-calendar"></i> <span id="movieYear">—</span></span>
+                <span class="movie-rating-badge" id="movieAgeRating">PG-13</span>
+            </div>
+
+            <div class="movie-genres" id="movieGenres"></div>
+
+            <p class="movie-synopsis" id="movieSynopsis">Loading movie details…</p>
+
+            <div class="movie-crew" id="movieCrew"></div>
+
+            <div class="movie-actions">
+                <button class="btn btn-primary" id="bookBtn">
+                    <i class="fas fa-ticket-alt"></i> Book Tickets
+                </button>
+                <button class="btn btn-trailer" id="trailerBtn">
+                    <i class="fas fa-play"></i> Watch Trailer
+                </button>
+                <a href="index.html" class="btn btn-ghost">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     SHOWTIMES
+     ============================================================ -->
+<section class="section" id="showtimes">
+    <div class="section-header">
+        <div>
+            <p class="eyebrow">Book Your Seats</p>
+            <h2 class="section-title">Available Showtimes</h2>
+        </div>
+    </div>
+
+    <div class="filter-bar">
+        <div class="filter-group">
+            <label for="filterBranch">Cinema</label>
+            <select class="filter-select" id="filterBranch">
+                <option value="">All Cinemas</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="filterDate">Date</label>
+            <select class="filter-select" id="filterDate">
+                <option value="">All Dates</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="showtimesContainer"></div>
+</section>
+
+<!-- ============================================================
+     TRAILER MODAL
+     ============================================================ -->
+<div class="trailer-modal" id="trailerModal" aria-hidden="true">
+    <div class="trailer-modal-inner">
+        <div class="trailer-modal-header">
+            <div class="trailer-modal-title">
+                <span>Trailer</span>
+                <span id="trailerMovieTitle"></span>
+            </div>
+            <button class="trailer-modal-close" id="trailerClose" aria-label="Close trailer">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="trailer-player-wrap" id="trailerPlayerWrap">
+            <!-- Player injected by JS -->
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+    <div class="footer-bottom">
+        <span>© 2026 Savannah Cinemas</span>
+        <span class="legal">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="accessibility.html">Accessibility</a>
+        </span>
+    </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script src="data/movies-inline.js"></script>
+<script src="js/app.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/booking.js"></script>
+
+<script>
+// ============================================================
+// MOVIE DETAILS PAGE CONTROLLER
+// ============================================================
+
+const MoviePage = {
+    movie: null,
+    showtimes: [],
+    trailerOpen: false,
+
+    async init() {
+        try {
+            await SavannahApp.init();
+
+            const movieId = this.getMovieIdFromUrl();
+            if (!movieId) { this.redirectToHome('No movie selected'); return; }
+
+            this.movie = SavannahApp.getMovieById(movieId);
+            if (!this.movie) { this.redirectToHome('Movie not found'); return; }
+
+            this.setupMobileMenu();
+            this.renderMovie();
+            this.loadShowtimes();
+            this.setupFilters();
+            this.setupTrailer();
+            this.setupBookButton();
+            document.title = `${this.movie.title} — Savannah Cinemas`;
+
+        } catch (err) {
+            console.error('Movie page init error:', err);
+        }
+    },
+
+    getMovieIdFromUrl() {
+        return new URLSearchParams(window.location.search).get('id');
+    },
+
+    redirectToHome(reason) {
+        console.warn('Redirecting:', reason);
+        window.location.href = 'index.html';
+    },
+
+    // ---- MOBILE MENU ----
+    setupMobileMenu() {
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileOverlay');
+        const closeBtn = document.getElementById('mobileMenuClose');
+
+        const open = () => {
+            menu.classList.add('open');
+            overlay.classList.add('active');
+            toggle.classList.add('active');
+            menu.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        };
+        const close = () => {
+            menu.classList.remove('open');
+            overlay.classList.remove('active');
+            toggle.classList.remove('active');
+            menu.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        };
+
+        toggle?.addEventListener('click', () => menu.classList.contains('open') ? close() : open());
+        closeBtn?.addEventListener('click', close);
+        overlay?.addEventListener('click', close);
+        document.querySelectorAll('.mobile-menu-links a').forEach(a =>
+            a.addEventListener('click', close)
+        );
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') close();
+        });
+    },
+
+    // ---- RENDER MOVIE ----
+    renderMovie() {
+        const m = this.movie;
+
+        const backdrop = m.backdrop_url || m.poster_url || '';
+        document.getElementById('movieBackdrop').style.backgroundImage = `url('${backdrop}')`;
+
+        const poster = document.getElementById('moviePoster');
+        poster.src = m.poster_url || '';
+        poster.alt = m.title;
+        poster.onerror = () => { poster.src = ''; };
+
+        document.getElementById('movieRatingBadge').textContent = m.rating || 'NR';
+        document.getElementById('movieAgeRating').textContent = m.rating || 'NR';
+        document.getElementById('movieTitle').textContent = m.title || 'Untitled';
+
+        const originalTitle = document.getElementById('movieOriginalTitle');
+        if (m.original_title && m.original_title !== m.title) {
+            originalTitle.textContent = m.original_title;
+        } else {
+            originalTitle.style.display = 'none';
+        }
+
+        const statusEl = document.getElementById('movieStatus');
+        if (m.status === 'coming_soon') {
+            statusEl.textContent = 'COMING SOON';
+            statusEl.style.color = 'var(--rust)';
+        }
+
+        document.getElementById('movieImdbRating').textContent =
+            m.imdb_rating ? `${Number(m.imdb_rating).toFixed(1)}/10` : 'Not rated';
+        document.getElementById('movieDuration').textContent = SavannahApp.formatDuration(m.duration_minutes);
+        document.getElementById('movieYear').textContent = m.release_year || '—';
+
+        document.getElementById('movieGenres').innerHTML =
+            (m.genre || []).map(g => `<span class="genre-chip">${g}</span>`).join('');
+
+        document.getElementById('movieSynopsis').textContent = m.synopsis || 'No synopsis available.';
+
+        const crewEl = document.getElementById('movieCrew');
+        let crewHTML = '';
+        if (m.director) {
+            crewHTML += `<div class="movie-crew-item"><div class="label">Director</div><div class="value">${m.director}</div></div>`;
+        }
+        if (m.cast && m.cast.length) {
+            crewHTML += `<div class="movie-crew-item"><div class="label">Cast</div><div class="value">${m.cast.join(', ')}</div></div>`;
+        }
+        if (m.language) {
+            crewHTML += `<div class="movie-crew-item"><div class="label">Language</div><div class="value">${m.language}</div></div>`;
+        }
+        crewEl.innerHTML = crewHTML;
+    },
+
+    // ---- LOAD SHOWTIMES ----
+    loadShowtimes() {
+        const movieId = this.movie.movie_id;
+        this.showtimes = SavannahApp.data.showtimes.filter(s => s.movie_id === movieId);
+
+        const branchFilter = document.getElementById('filterBranch');
+        const branchIds = [...new Set(this.showtimes.map(s => s.branch_id))];
+        branchFilter.innerHTML = '<option value="">All Cinemas</option>';
+        branchIds.forEach(bId => {
+            const branch = SavannahApp.getBranchById(bId);
+            if (branch) {
+                const opt = document.createElement('option');
+                opt.value = bId;
+                opt.textContent = branch.branch_name;
+                branchFilter.appendChild(opt);
+            }
+        });
+
+        const dateFilter = document.getElementById('filterDate');
+        const dates = [...new Set(this.showtimes.map(s => s.date))].sort();
+        dateFilter.innerHTML = '<option value="">All Dates</option>';
+        dates.forEach(d => {
+            const opt = document.createElement('option');
+            opt.value = d;
+            opt.textContent = this.formatDateLabel(d);
+            dateFilter.appendChild(opt);
+        });
+
+        this.renderShowtimes();
+    },
+
+    // ---- RENDER SHOWTIMES ----
+    renderShowtimes() {
+        const container = document.getElementById('showtimesContainer');
+        const branchFilterValue = document.getElementById('filterBranch').value;
+        const dateFilterValue = document.getElementById('filterDate').value;
+
+        let filtered = this.showtimes;
+        if (branchFilterValue) filtered = filtered.filter(s => s.branch_id === branchFilterValue);
+        if (dateFilterValue) filtered = filtered.filter(s => s.date === dateFilterValue);
+
+        if (!filtered.length) {
+            container.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-calendar-times"></i>
+                    <h3>No showtimes available</h3>
+                    <p>Try a different cinema or date.</p>
+                </div>`;
+            return;
+        }
+
+        const grouped = {};
+        filtered.forEach(s => {
+            if (!grouped[s.branch_id]) grouped[s.branch_id] = [];
+            grouped[s.branch_id].push(s);
+        });
+        Object.keys(grouped).forEach(bId => {
+            grouped[bId].sort((a, b) => a.start_time.localeCompare(b.start_time));
+        });
+
+        container.innerHTML = Object.keys(grouped).map(branchId => {
+            const branch = SavannahApp.getBranchById(branchId) || { branch_name: branchId, city: '' };
+            const showtimes = grouped[branchId];
+
+            return `
+                <div class="branch-group">
+                    <div class="branch-header">
+                        <div>
+                            <div class="branch-name">
+                                <i class="fas fa-map-marker-alt"></i> ${branch.branch_name}
+                            </div>
+                            <div class="branch-city">${branch.city || ''}</div>
+                        </div>
+                        <div class="branch-city">${showtimes.length} showtime${showtimes.length !== 1 ? 's' : ''}</div>
+                    </div>
+                    <div class="showtime-grid">
+                        ${showtimes.map(st => this.renderShowtimeCard(st)).join('')}
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        container.querySelectorAll('.showtime-card').forEach(card => {
+            card.addEventListener('click', () => this.selectShowtime(card.dataset.showtimeId));
+        });
+    },
+
+    renderShowtimeCard(st) {
+        const timeLabel = SavannahApp.formatTime(st.start_time);
+        const screenType = (st.screen_type || 'STANDARD').toLowerCase();
+        const seatsAvailable = st.available_seats || 0;
+        const totalSeats = st.total_seats || 1;
+        const seatsLow = seatsAvailable < totalSeats * 0.2;
+
+        return `
+            <div class="showtime-card" data-showtime-id="${st.showtime_id}">
+                <div class="showtime-time">${timeLabel}</div>
+                <div class="showtime-screen">
+                    <span class="screen-badge ${screenType}">${this.screenLabel(st.screen_type)}</span>
+                    <span>${st.screen_name || ''}</span>
+                </div>
+                <div class="showtime-price-row">
+                    <span class="showtime-price">${SavannahApp.formatCurrency(st.base_price)}</span>
+                    <span class="showtime-seats ${seatsLow ? 'low' : ''}">
+                        ${seatsAvailable} seat${seatsAvailable !== 1 ? 's' : ''} left
+                    </span>
+                </div>
+            </div>
+        `;
+    },
+
+    screenLabel(type) {
+        const labels = { IMAX: 'IMAX', DOLBY_ATMOS: 'Atmos', DOLBY: 'Dolby', VIP: 'VIP', STANDARD: 'Standard' };
+        return labels[type] || type || 'Standard';
+    },
+
+    formatDateLabel(dateStr) {
+        const d = new Date(dateStr);
+        if (isNaN(d)) return dateStr;
+        return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+    },
+
+    // ---- SELECT SHOWTIME ----
+    selectShowtime(showtimeId) {
+        if (typeof SavannahBooking !== 'undefined') {
+            SavannahBooking.loadBookingState();
+            SavannahBooking.currentBooking.movie = this.movie;
+            SavannahBooking.currentBooking.showtime = SavannahApp.getShowtimeById(showtimeId);
+            SavannahBooking.currentBooking.branch = SavannahApp.getBranchById(
+                SavannahBooking.currentBooking.showtime.branch_id
+            );
+            SavannahBooking.saveBookingState();
+        }
+        window.location.href = `seats.html?showtime=${showtimeId}`;
+    },
+
+    setupFilters() {
+        document.getElementById('filterBranch').addEventListener('change', () => this.renderShowtimes());
+        document.getElementById('filterDate').addEventListener('change', () => this.renderShowtimes());
+    },
+
+    // ---- BOOK BUTTON ----
+    setupBookButton() {
+        document.getElementById('bookBtn').addEventListener('click', () => {
+            document.getElementById('showtimes').scrollIntoView({ behavior: 'smooth' });
+        });
+    },
+
+    // ========================================================
+    // TRAILER
+    // ========================================================
+    setupTrailer() {
+        const trailerBtn = document.getElementById('trailerBtn');
+        const posterWrap = document.getElementById('moviePosterWrap');
+        const closeBtn = document.getElementById('trailerClose');
+        const modal = document.getElementById('trailerModal');
+
+        trailerBtn?.addEventListener('click', () => this.openTrailer());
+        posterWrap?.addEventListener('click', () => this.openTrailer());
+        closeBtn?.addEventListener('click', () => this.closeTrailer());
+
+        // Click outside player closes
+        modal?.addEventListener('click', (e) => {
+            if (e.target === modal) this.closeTrailer();
+        });
+
+        // ESC closes
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.trailerOpen) this.closeTrailer();
+        });
+    },
+
+    openTrailer() {
+        const modal = document.getElementById('trailerModal');
+        const wrap = document.getElementById('trailerPlayerWrap');
+        const titleEl = document.getElementById('trailerMovieTitle');
+
+        titleEl.textContent = this.movie.title;
+
+        // Detect trailer URL and embed
+        const embedHTML = this.buildEmbed(this.movie.trailer_url);
+
+        if (!embedHTML) {
+            wrap.innerHTML = `
+                <div class="trailer-no-video">
+                    <i class="fas fa-film"></i>
+                    <h3>Trailer Coming Soon</h3>
+                    <p>No trailer available for this film yet.</p>
+                </div>`;
+        } else {
+            wrap.innerHTML = embedHTML;
+        }
+
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        this.trailerOpen = true;
+        document.body.style.overflow = 'hidden';
+    },
+
+    closeTrailer() {
+        const modal = document.getElementById('trailerModal');
+        const wrap = document.getElementById('trailerPlayerWrap');
+
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        this.trailerOpen = false;
+        document.body.style.overflow = '';
+
+        // Stop video by clearing the iframe
+        setTimeout(() => { wrap.innerHTML = ''; }, 300);
+    },
+
+    // ---- BUILD EMBED HTML ----
+    // Detects YouTube / Vimeo / direct MP4
+    buildEmbed(url) {
+        if (!url || typeof url !== 'string') return null;
+        url = url.trim();
+        if (!url) return null;
+
+        // YouTube
+        const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|v\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+        if (ytMatch) {
+            const id = ytMatch[1];
+            return `<iframe
+                src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0"
+                title="Trailer"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>`;
+        }
+
+        // Vimeo
+        const vimeoMatch = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+        if (vimeoMatch) {
+            const id = vimeoMatch[1];
+            return `<iframe
+                src="https://player.vimeo.com/video/${id}?autoplay=1"
+                title="Trailer"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen></iframe>`;
+        }
+
+        // Direct video file
+        if (/\.(mp4|webm|ogg|mov)(\?|$)/i.test(url)) {
+            return `<video controls autoplay playsinline>
+                <source src="${url}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>`;
+        }
+
+        return null;
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => MoviePage.init());
+</script>
+</body>
+</html>

@@ -83,24 +83,23 @@ const SavannahApp = {
     // DATA LOADING
     // ========================================================
     async loadAllData() {
-
-    // ---- Prefer inline data (works with file:// no server needed) ----
+    // ---- Prefer inline data (works with file:// and GitHub Pages) ----
     if (window.SAVANNAH_INLINE_DATA) {
         console.log('📦 Using inline data — no server needed');
         const d = window.SAVANNAH_INLINE_DATA;
 
-        this.data.movies = d.movies || [];
+        this.data.movies     = d.movies     || [];
         this.data.hero_slides = d.hero_slides || [];
-        this.data.cinemas = d.cinemas || [];
-        this.data.showtimes = d.showtimes || [];
-        this.data.seats = d.seats || {};
-        this.data.products = d.products || [];
+        this.data.cinemas    = d.cinemas    || [];
+        this.data.showtimes  = d.showtimes  || [];
+        this.data.seats      = d.seats      || {};
+        this.data.products   = d.products   || [];
 
         this.data.genres = this.extractGenres();
         return true;
     }
 
-    // ---- Fallback: fetch from server ----
+    // ---- Fallback: fetch from server (works on GH Pages too) ----
     try {
         const [movies, cinemas, showtimes, seats, products] = await Promise.all([
             fetch('data/movies.json').then(r => r.json()),
@@ -110,12 +109,12 @@ const SavannahApp = {
             fetch('data/products.json').then(r => r.json())
         ]);
 
-        this.data.movies = movies.movies || [];
+        this.data.movies      = movies.movies || [];
         this.data.hero_slides = movies.hero_slides || [];
-        this.data.cinemas = cinemas.cinemas || [];
-        this.data.showtimes = showtimes.showtimes || [];
-        this.data.seats = seats.seat_layouts || {};
-        this.data.products = products.products || [];
+        this.data.cinemas     = cinemas.cinemas || [];
+        this.data.showtimes   = showtimes.showtimes || [];
+        this.data.seats       = seats.seat_layouts || {};
+        this.data.products    = products.products || [];
 
         this.data.genres = this.extractGenres();
         return true;

@@ -1420,21 +1420,12 @@ const HomePage = {
     const dotsContainer = document.getElementById('heroDots');
 
     let featured = [];
-
-    // 1. Explicit hero_slides (in order)
     const heroList = SavannahApp.data.hero_slides || [];
     if (heroList.length) {
-        featured = heroList
-            .map(id => SavannahApp.getMovieById(id))
-            .filter(Boolean);
+        featured = heroList.map(id => SavannahApp.getMovieById(id)).filter(Boolean);
     }
-
-    // 2. Fallback: is_featured
     if (!featured.length) featured = SavannahApp.getFeaturedMovies();
-
-    // 3. Fallback: first 5 now-showing
     if (!featured.length) featured = SavannahApp.getNowShowingMovies().slice(0, 5);
-
     featured = featured.slice(0, 5);
     this.heroSlides = featured;
 

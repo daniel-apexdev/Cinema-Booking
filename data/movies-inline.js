@@ -1,7 +1,7 @@
 // ============================================================
-// SAVANNAH CINEMAS — INLINE DATA
-// Works with file:// (no server needed)
-// Loaded BEFORE js/app.js
+// SAVANNAH CINEMAS — COMPLETE INLINE DATA
+// Works with file:// AND GitHub Pages — no server needed
+// Load BEFORE js/app.js
 // ============================================================
 
 window.SAVANNAH_INLINE_DATA = {
@@ -11,7 +11,7 @@ window.SAVANNAH_INLINE_DATA = {
     // ========================================================
     hero_slides: [
         "MOV046",   // The Mandalorian and Grogu
-        "MOV001",   // Spiderman Brand New Day
+        "MOV001",   // Spider-Man: Brand New Day
         "MOV050",   // Avatar: Fire and Ash
         "MOV058",   // Supergirl
         "MOV030"    // Avengers: Endgame
@@ -42,7 +42,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Tom Holland", "Zendaya", "Jacob Batalon"],
             poster_url: "https://image.tmdb.org/t/p/w500/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/8TZMtslA3UY?si=mM2e0r7QG-Gd-p8P",
             is_featured: true,
             status: "now_showing"
         },
@@ -162,7 +162,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 8.1,
             vote_count: 874,
             popularity: 266.43,
-            synopsis: "Professor Se-jeong is thrust into a bloody nightmare when a rapidly mutating virus is released during a biotech conference causing authorities to seal the facility. Trapped inside with no escape, Se-jeong along with a small group of survivors must fight to stay alive while the infected undergo horrific transformations.",
+            synopsis: "Professor Se-jeong is thrust into a bloody nightmare when a rapidly mutating virus is released during a biotech conference causing authorities to seal the facility.",
             director: "Yeon Sang-ho",
             cast: ["Jun Ji-hyun", "Koo Kyo-hwan"],
             poster_url: "https://image.tmdb.org/t/p/w500/tN799oUR0f1gUKDYdMNrDaY7I51.jpg",
@@ -187,7 +187,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 0,
             vote_count: 0,
             popularity: 262.54,
-            synopsis: "A falsely accused war hero with nothing to lose leads police on an epic televised cross-country car chase, helped by members of his former Special Forces Army battalion and closely monitored by a fascinated public rooting for his safe getaway.",
+            synopsis: "A falsely accused war hero with nothing to lose leads police on an epic televised cross-country car chase, helped by members of his former Special Forces Army battalion.",
             director: "",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
@@ -262,7 +262,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 7.6,
             vote_count: 14,
             popularity: 183.77,
-            synopsis: "When her ground-breaking pharmaceutical discovery is stolen and partner murdered, researcher Amy must face her fear of heights to escape nefarious attackers, with the only path to salvation being a treacherous aerial runway.",
+            synopsis: "When her ground-breaking pharmaceutical discovery is stolen and partner murdered, researcher Amy must face her fear of heights to escape nefarious attackers.",
             director: "",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/cO7J0XSVKPlAjUCMWC7DVBn1Py2.jpg",
@@ -287,7 +287,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 7.4,
             vote_count: 758,
             popularity: 174.28,
-            synopsis: "Teenage Moana answers the Ocean's call and, for the first time, voyages beyond the reef of her island of Motunui with infamous demigod Maui on an unforgettable journey to restore prosperity to her people.",
+            synopsis: "Teenage Moana answers the Ocean's call and, for the first time, voyages beyond the reef of her island of Motunui with infamous demigod Maui.",
             director: "Thomas Kail",
             cast: ["Dwayne Johnson", "Catherine Laga'aia"],
             poster_url: "https://image.tmdb.org/t/p/w500/gaet1xQ2nxrG0V1Ep9T20ZMNEIC.jpg",
@@ -337,7 +337,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 6.7,
             vote_count: 115,
             popularity: 143.37,
-            synopsis: "Marfil, daughter of a powerful Spanish businessman, sees her life in New York turned upside down when she is kidnapped and released without explanation. Her father hires Sebastian Moore as bodyguard and, forced to spend every minute together, an inevitable attraction ignites in a world where nothing is as it seems.",
+            synopsis: "Marfil, daughter of a powerful Spanish businessman, sees her life in New York turned upside down when she is kidnapped and released without explanation.",
             director: "",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/6rpvddXbaQPOi0fB2HKWbZ3uUSg.jpg",
@@ -462,7 +462,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 6.4,
             vote_count: 174,
             popularity: 132.00,
-            synopsis: "After years of slapdash sequels, the Camp Miasma franchise is handed over to an enthusiastic young director for resurrection. But when she visits the original's star, a now-reclusive actress shrouded in mystery, the two women fall into a blood-soaked world of desire, fear, and delirium.",
+            synopsis: "After years of slapdash sequels, the Camp Miasma franchise is handed over to an enthusiastic young director for resurrection.",
             director: "Jane Schoenbrun",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/6Q6Zo6GNXMLP600OJSh6MhW21um.jpg",
@@ -487,7 +487,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 5.7,
             vote_count: 8,
             popularity: 126.39,
-            synopsis: "A romance about a man and a woman who, due to an unexpected event, end up switching bodies. Despite coming from completely different backgrounds and environments, the two try to overcome the various difficulties that arise from their body swap.",
+            synopsis: "A romance about a man and a woman who, due to an unexpected event, end up switching bodies.",
             director: "",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/3r0O6BW9USoZ9mteCVyNKMQriRL.jpg",
@@ -537,7 +537,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 6.8,
             vote_count: 561,
             popularity: 112.10,
-            synopsis: "Maia Marten, a brilliant London lawyer, has her life shattered by a single call on her morning run: her son has been taken. To get him back, she must keep running, obey every ruthless command, and trust no one-each second a test of how far a mother will go to save her child.",
+            synopsis: "Maia Marten, a brilliant London lawyer, has her life shattered by a single call on her morning run: her son has been taken.",
             director: "",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/uxCaBoYXsDC4A0SqTm3SISj0OwK.jpg",
@@ -562,7 +562,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 7.6,
             vote_count: 1162,
             popularity: 111.18,
-            synopsis: "This is the rambunctious, ridiculous and totally true story of how the Minions conquered Hollywood, became movie stars, lost everything, unleashed monsters onto the world and then banded together to try and save the planet from the mayhem they had just created.",
+            synopsis: "This is the rambunctious, ridiculous and totally true story of how the Minions conquered Hollywood, became movie stars, lost everything, unleashed monsters onto the world and then banded together.",
             director: "",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/4LwvU9SZc8QQzW1X1FAPhNbXnEU.jpg",
@@ -612,7 +612,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 6.2,
             vote_count: 97,
             popularity: 107.16,
-            synopsis: "Desperation drives two nuns to perform an exorcism no nun should attempt. With a possessed child at the mercy of evil and the opposition of the Catholic Church, they take on the dangerous forbidden rituals themselves, putting their immortal souls in grave danger.",
+            synopsis: "Desperation drives two nuns to perform an exorcism no nun should attempt.",
             director: "Kwon Hyeok-jae",
             cast: ["Song Hye-kyo", "Jeon Yeo-been"],
             poster_url: "https://image.tmdb.org/t/p/w500/2Abt2GgscAGtGAXTrhH44qPhugI.jpg",
@@ -662,7 +662,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 8.6,
             vote_count: 7948,
             popularity: 103.72,
-            synopsis: "Science teacher Ryland Grace wakes up on a spaceship light years from home with no recollection of who he is or how he got there. As his memory returns, he begins to uncover his mission: solve the riddle of the mysterious substance causing the sun to die out.",
+            synopsis: "Science teacher Ryland Grace wakes up on a spaceship light years from home with no recollection of who he is or how he got there.",
             director: "Phil Lord, Christopher Miller",
             cast: ["Ryan Gosling", "Sandra Hüller"],
             poster_url: "https://image.tmdb.org/t/p/w500/yihdXomYb5kTeSivtFndMy5iDmf.jpg",
@@ -687,7 +687,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 5.7,
             vote_count: 42,
             popularity: 99.16,
-            synopsis: "Alma Lancaster, 18, appears to lead a perfect life within a wealthy family who believes she is studying law. In secret, she pursues her true dream: filmmaking. On campus, she meets Vadim Arcadi, 20, a magnetic and solitary rebel with a troubled past.",
+            synopsis: "Alma Lancaster, 18, appears to lead a perfect life within a wealthy family who believes she is studying law.",
             director: "",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/bAbBNVplg7h79sm94OyHeKk8Phz.jpg",
@@ -737,7 +737,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 4.8,
             vote_count: 13,
             popularity: 96.91,
-            synopsis: "Sister Agnès runs away from her convent in Brittany and seeks refuge in Paris with prostitute Mona Lisa. With absolutely no qualifications, the young novice has a hard job finding work.",
+            synopsis: "Sister Agnès runs away from her convent in Brittany and seeks refuge in Paris with prostitute Mona Lisa.",
             director: "Guy Casaril",
             cast: ["Brigitte Bardot", "Annie Girardot"],
             poster_url: "https://image.tmdb.org/t/p/w500/a2SnSbRxMB4vktOxZapaspY2fTC.jpg",
@@ -762,7 +762,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 8.2,
             vote_count: 28761,
             popularity: 95.28,
-            synopsis: "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all.",
+            synopsis: "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos.",
             director: "Anthony Russo, Joe Russo",
             cast: ["Robert Downey Jr.", "Chris Evans", "Mark Ruffalo"],
             poster_url: "https://image.tmdb.org/t/p/w500/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg",
@@ -812,7 +812,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 5.9,
             vote_count: 2803,
             popularity: 94.29,
-            synopsis: "Once the booming home of pharmaceutical giant Umbrella Corporation, Raccoon City is now a dying Midwestern town. The company's exodus left the city a wasteland…with great evil brewing below the surface.",
+            synopsis: "Once the booming home of pharmaceutical giant Umbrella Corporation, Raccoon City is now a dying Midwestern town.",
             director: "Johannes Roberts",
             cast: ["Kaya Scodelario", "Hannah John-Kamen", "Robbie Amell"],
             poster_url: "https://image.tmdb.org/t/p/w500/bArhvjRHl535XMaSh9VjInF2mSZ.jpg",
@@ -862,7 +862,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 4.0,
             vote_count: 1145,
             popularity: 91.85,
-            synopsis: "Will Radford is a top analyst for Homeland Security who tracks potential threats through a mass surveillance program, until one day an attack by an unknown entity leads him to question whether the government is hiding something from him.",
+            synopsis: "Will Radford is a top analyst for Homeland Security who tracks potential threats through a mass surveillance program.",
             director: "Rich Lee",
             cast: ["Ice Cube", "Eva Longoria"],
             poster_url: "https://image.tmdb.org/t/p/w500/yvirUYrva23IudARHn3mMGVxWqM.jpg",
@@ -887,7 +887,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 6.8,
             vote_count: 189,
             popularity: 91.66,
-            synopsis: "Ry, a college student with a chronic illness, escapes to Mallorca for the summer with her mother, where she unexpectedly falls for a local and begins to embrace living in the moment.",
+            synopsis: "Ry, a college student with a chronic illness, escapes to Mallorca for the summer with her mother.",
             director: "",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/3PWJqDfygN0YNNjWsDUOXclCp3h.jpg",
@@ -912,7 +912,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 8.0,
             vote_count: 134,
             popularity: 90.52,
-            synopsis: "The Paw Patrol lands on a mysterious dinosaur island after a storm, where they meet Rex, a stranded pup. When Humdinger's reckless mining triggers a volcano, the team faces their biggest rescue mission yet.",
+            synopsis: "The Paw Patrol lands on a mysterious dinosaur island after a storm, where they meet Rex, a stranded pup.",
             director: "",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/qnin56Syy5rbG7KCaxWY7SPuy6p.jpg",
@@ -1062,7 +1062,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 6.1,
             vote_count: 55,
             popularity: 82.10,
-            synopsis: "When an American heir living in a luxurious Spanish villa decides to move in with his girlfriend, his departure triggers a family collapse as his brother uncovers the truth behind their mother's tragic death.",
+            synopsis: "When an American heir living in a luxurious Spanish villa decides to move in with his girlfriend, his departure triggers a family collapse.",
             director: "Karim Aïnouz",
             cast: ["Elle Fanning", "Callum Turner"],
             poster_url: "https://image.tmdb.org/t/p/w500/rsHEVjzxU8cxz1sm3vboj99daNv.jpg",
@@ -1112,7 +1112,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 5.5,
             vote_count: 13,
             popularity: 80.98,
-            synopsis: "After a debt-collector finds a portal to hell in a washing machine at his local laundromat, he's propositioned into feeding it sinners to save his neighbor's soul.",
+            synopsis: "After a debt-collector finds a portal to hell in a washing machine at his local laundromat, he's propositioned into feeding it sinners.",
             director: "",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/xuXCPJZjmP2FuGG3U16sI1TYEdR.jpg",
@@ -1137,7 +1137,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 7.2,
             vote_count: 74,
             popularity: 80.61,
-            synopsis: "In a notorious prison, an invisible force begins killing inmates brutally, compelling enemy gangs and corrupt guards to work together as they try to survive the mounting bloodshed.",
+            synopsis: "In a notorious prison, an invisible force begins killing inmates brutally.",
             director: "",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/zxcMdx0w5Zmg8yZuuiS7CJ8vOea.jpg",
@@ -1187,7 +1187,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 9.2,
             vote_count: 1184,
             popularity: 79.48,
-            synopsis: "Avatar Aang, the world's last Airbender, learns of an ancient power that could save his culture from extinction. With the help of his friends, he embarks on a global quest to find it before it falls into the wrong hands.",
+            synopsis: "Avatar Aang, the world's last Airbender, learns of an ancient power that could save his culture from extinction.",
             director: "",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/3sgnSfNT27Bx5O5ukr7B26mhEQq.jpg",
@@ -1237,7 +1237,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 7.7,
             vote_count: 3455,
             popularity: 77.23,
-            synopsis: "After cracking the biggest case in Zootopia's history, rookie cops Judy Hopps and Nick Wilde find themselves on the twisting trail of a great mystery when Gary De'Snake arrives and turns the animal metropolis upside down.",
+            synopsis: "After cracking the biggest case in Zootopia's history, rookie cops Judy Hopps and Nick Wilde find themselves on the twisting trail of a great mystery when Gary De'Snake arrives.",
             director: "Jared Bush, Byron Howard",
             cast: ["Ginnifer Goodwin", "Jason Bateman", "Ke Huy Quan"],
             poster_url: "https://image.tmdb.org/t/p/w500/oJ7g2CifqpStmoYQyaLQgEU32qO.jpg",
@@ -1262,7 +1262,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 7.6,
             vote_count: 4367,
             popularity: 75.36,
-            synopsis: "In the wake of the devastating war against the RDA and the loss of their eldest son, Jake Sully and Neytiri face a new threat on Pandora: the Ash People, a violent and power-hungry Na'vi tribe led by the ruthless Varang.",
+            synopsis: "In the wake of the devastating war against the RDA and the loss of their eldest son, Jake Sully and Neytiri face a new threat on Pandora: the Ash People.",
             director: "James Cameron",
             cast: ["Sam Worthington", "Zoe Saldana", "Sigourney Weaver"],
             poster_url: "https://image.tmdb.org/t/p/w500/bRBeSHfGHwkEpImlhxPmOcUsaeg.jpg",
@@ -1287,7 +1287,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 9.2,
             vote_count: 375,
             popularity: 75.09,
-            synopsis: "Arkham Asylum has been destroyed, and all its inmates have been unleashed upon Gotham City. As Batman races to round up some of his greatest enemies, he is pushed to his physical and mental limits.",
+            synopsis: "Arkham Asylum has been destroyed, and all its inmates have been unleashed upon Gotham City.",
             director: "",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/360qdtu2hLnqMu8SVHMywn420w1.jpg",
@@ -1312,7 +1312,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 5.5,
             vote_count: 262,
             popularity: 72.76,
-            synopsis: "An uptight New York City tax lawyer gets his life turned upside down one day when he's asked to escort a feisty free-spirited ex-convict who asks him to help prove her innocence of her crime.",
+            synopsis: "An uptight New York City tax lawyer gets his life turned upside down one day when he's asked to escort a feisty free-spirited ex-convict.",
             director: "James Foley",
             cast: ["Madonna", "Griffin Dunne"],
             poster_url: "https://image.tmdb.org/t/p/w500/2Yu6ciKKgSWIZAzUg4IrrifO23z.jpg",
@@ -1362,7 +1362,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 8.5,
             vote_count: 41245,
             popularity: 71.93,
-            synopsis: "The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
+            synopsis: "The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel.",
             director: "Christopher Nolan",
             cast: ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"],
             poster_url: "https://image.tmdb.org/t/p/w500/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg",
@@ -1412,7 +1412,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 7.6,
             vote_count: 7,
             popularity: 70.38,
-            synopsis: "Two strangers are brought together at an unusual wedding where, in one night, too many surprises unfold and several lies are told, spiraling into chaos that changes everything.",
+            synopsis: "Two strangers are brought together at an unusual wedding where, in one night, too many surprises unfold and several lies are told.",
             director: "",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/lZiTSLDLIkW9YS6CWo8uaXZMcO6.jpg",
@@ -1437,7 +1437,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 8.7,
             vote_count: 31403,
             popularity: 68.33,
-            synopsis: "Imprisoned in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden.",
+            synopsis: "Imprisoned in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison.",
             director: "Frank Darabont",
             cast: ["Tim Robbins", "Morgan Freeman", "Bob Gunton"],
             poster_url: "https://image.tmdb.org/t/p/w500/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg",
@@ -1487,7 +1487,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 8.7,
             vote_count: 23624,
             popularity: 65.48,
-            synopsis: "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers.",
+            synopsis: "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family.",
             director: "Francis Ford Coppola",
             cast: ["Marlon Brando", "Al Pacino", "James Caan"],
             poster_url: "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
@@ -1512,7 +1512,7 @@ window.SAVANNAH_INLINE_DATA = {
             imdb_rating: 3.0,
             vote_count: 1,
             popularity: 64.54,
-            synopsis: "Ramiro meets Damián again after years without seeing each other. Damián always has some shady business going on. This time he wants to go in a search of a certain treasure hidden in an abandoned convent.",
+            synopsis: "Ramiro meets Damián again after years without seeing each other. Damián always has some shady business going on.",
             director: "",
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/cULEEfczauEprB8IX1S6c62x4E9.jpg",
@@ -1532,81 +1532,104 @@ window.SAVANNAH_INLINE_DATA = {
             cinema_name: "Savannah Cinemas",
             logo: "",
             branches: [
-                {
-                    branch_id: "BR001",
-                    branch_code: "ACC-MALL",
-                    branch_name: "Accra Mall Cinema",
-                    city: "Accra",
-                    region: "Greater Accra",
-                    address: "Accra Mall, Spintex Road",
-                    phone: "+233 30 212 3456",
-                    screens: 8,
-                    capacity: 1550
-                },
-                {
-                    branch_id: "BR002",
-                    branch_code: "KUM-CITY",
-                    branch_name: "Kumasi City Cinema",
-                    city: "Kumasi",
-                    region: "Ashanti",
-                    address: "Kumasi City Mall, Lake Road",
-                    phone: "+233 32 212 3456",
-                    screens: 6,
-                    capacity: 1150
-                },
-                {
-                    branch_id: "BR003",
-                    branch_code: "TEM-SHOP",
-                    branch_name: "Tema Shopping Cinema",
-                    city: "Tema",
-                    region: "Greater Accra",
-                    address: "Tema Community 25",
-                    phone: "+233 30 312 3456",
-                    screens: 4,
-                    capacity: 700
-                },
-                {
-                    branch_id: "BR004",
-                    branch_code: "SEK-TOWN",
-                    branch_name: "Sekondi Cinema",
-                    city: "Sekondi-Takoradi",
-                    region: "Western",
-                    address: "Takoradi Mall, Sekondi Road",
-                    phone: "+233 31 212 3456",
-                    screens: 3,
-                    capacity: 500
-                }
+                { branch_id: "BR001", branch_code: "ACC-MALL", branch_name: "Accra Mall Cinema",  city: "Accra",             region: "Greater Accra", address: "Accra Mall, Spintex Road",       phone: "+233 30 212 3456", screens: 8, capacity: 1550 },
+                { branch_id: "BR002", branch_code: "KUM-CITY", branch_name: "Kumasi City Cinema", city: "Kumasi",            region: "Ashanti",       address: "Kumasi City Mall, Lake Road",    phone: "+233 32 212 3456", screens: 6, capacity: 1150 },
+                { branch_id: "BR003", branch_code: "TEM-SHOP", branch_name: "Tema Shopping Cinema", city: "Tema",            region: "Greater Accra", address: "Tema Community 25",              phone: "+233 30 312 3456", screens: 4, capacity: 700 },
+                { branch_id: "BR004", branch_code: "SEK-TOWN", branch_name: "Sekondi Cinema",      city: "Sekondi-Takoradi", region: "Western",       address: "Takoradi Mall, Sekondi Road",    phone: "+233 31 212 3456", screens: 3, capacity: 500 }
             ]
         }
     ],
 
     // ========================================================
-    // SHOWTIMES — populated from your showtimes.json
-    // ========================================================
-    showtimes: [
-        // Note: Add showtimes here if you want inline.
-        // For now, leave empty — the booking flow will read from showtimes.json when served.
-    ],
-
-    // ========================================================
-    // SEATS — screen layouts
+    // SCREENS + SEAT LAYOUTS (keyed by screen_id)
     // ========================================================
     seats: {
-        // Note: Add seat layouts here if you want inline.
-        // For now, leave empty — seats will be loaded from seats.json when served.
+        SCR001: { screen_id: "SCR001", screen_name: "IMAX Screen 1",         screen_type: "IMAX",        rows: 15, seats_per_row: 20, total_seats: 300, row_letters: ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"], premium_rows: ["A","B","C"], vip_rows: ["A"], standard_rows: ["D","E","F","G","H","I","J","K","L"], accessible_rows: ["N","O"], occupied_seats: ["A05","A06","B12","C08","D15","E10","F03","G18","H09","I14","J07","K11","L05"] },
+        SCR002: { screen_id: "SCR002", screen_name: "Dolby Atmos Screen 2",  screen_type: "DOLBY_ATMOS", rows: 12, seats_per_row: 21, total_seats: 250, row_letters: ["A","B","C","D","E","F","G","H","I","J","K","L"],           premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G","H","I"],           accessible_rows: ["K","L"], occupied_seats: ["A03","A04","B07","B08","C12","D05","E14","F09","G11","H06","I15"] },
+        SCR003: { screen_id: "SCR003", screen_name: "VIP Screen 3",          screen_type: "VIP",         rows: 8,  seats_per_row: 13, total_seats: 100, row_letters: ["A","B","C","D","E","F","G","H"],               premium_rows: [],           vip_rows: ["A","B","C","D","E"], standard_rows: ["F","G"],                       accessible_rows: ["H"],     occupied_seats: ["A03","A04","B07","C05","D09","E12","F06","G10","H04"] },
+        SCR004: { screen_id: "SCR004", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    rows: 12, seats_per_row: 17, total_seats: 200, row_letters: ["A","B","C","D","E","F","G","H","I","J","K","L"],           premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G","H","I","J"],        accessible_rows: ["K","L"], occupied_seats: ["A05","A06","B11","C08","D15","E03","F10","G07","H13","I04","J09"] },
+        SCR005: { screen_id: "SCR005", screen_name: "Dolby Atmos Screen 5",  screen_type: "DOLBY_ATMOS", rows: 12, seats_per_row: 21, total_seats: 250, row_letters: ["A","B","C","D","E","F","G","H","I","J","K","L"],           premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G","H","I","J"],        accessible_rows: ["K","L"], occupied_seats: ["A03","B12","C15","D08","E19","F07","G14","H05","I11","J18"] },
+        SCR006: { screen_id: "SCR006", screen_name: "Dolby Screen 6",         screen_type: "DOLBY",       rows: 10, seats_per_row: 15, total_seats: 150, row_letters: ["A","B","C","D","E","F","G","H","I","J"],                   premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G","H","I"],           accessible_rows: ["J"],     occupied_seats: ["A03","A04","B07","C12","D05","E09","F11","G06","H14"] },
+        SCR007: { screen_id: "SCR007", screen_name: "Standard Screen 7",      screen_type: "STANDARD",    rows: 10, seats_per_row: 15, total_seats: 150, row_letters: ["A","B","C","D","E","F","G","H","I","J"],                   premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G","H","I"],           accessible_rows: ["J"],     occupied_seats: ["A05","B08","C03","D11","E07","F14","G09","H02"] },
+        SCR008: { screen_id: "SCR008", screen_name: "Standard Screen 8",      screen_type: "STANDARD",    rows: 10, seats_per_row: 15, total_seats: 150, row_letters: ["A","B","C","D","E","F","G","H","I","J"],                   premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G","H","I"],           accessible_rows: ["J"],     occupied_seats: ["A02","A03","B12","C08","D15","E05","F10","G07","H13"] },
+        SCR009: { screen_id: "SCR009", screen_name: "IMAX Screen 1",         screen_type: "IMAX",        rows: 15, seats_per_row: 20, total_seats: 300, row_letters: ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"], premium_rows: ["A","B","C"], vip_rows: ["A"], standard_rows: ["D","E","F","G","H","I","J","K","L"], accessible_rows: ["N","O"], occupied_seats: ["A07","B14","C09","D12","E18","F05","G11","H16","I03","J08","K13","L06","M10"] },
+        SCR010: { screen_id: "SCR010", screen_name: "Dolby Atmos Screen 2",  screen_type: "DOLBY_ATMOS", rows: 12, seats_per_row: 21, total_seats: 250, row_letters: ["A","B","C","D","E","F","G","H","I","J","K","L"],           premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G","H","I","J"],        accessible_rows: ["K","L"], occupied_seats: ["A09","B04","C17","D11","E06","F19","G13","H08","I15","J03"] },
+        SCR011: { screen_id: "SCR011", screen_name: "VIP Screen 3",          screen_type: "VIP",         rows: 8,  seats_per_row: 13, total_seats: 100, row_letters: ["A","B","C","D","E","F","G","H"],               premium_rows: [],           vip_rows: ["A","B","C","D","E"], standard_rows: ["F","G"],                       accessible_rows: ["H"],     occupied_seats: ["A02","B09","C06","D11","E04","F08","G03","H12"] },
+        SCR012: { screen_id: "SCR012", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    rows: 12, seats_per_row: 17, total_seats: 200, row_letters: ["A","B","C","D","E","F","G","H","I","J","K","L"],           premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G","H","I","J"],        accessible_rows: ["K","L"], occupied_seats: ["A04","B09","C13","D07","E16","F02","G11","H05","I14","J08"] },
+        SCR013: { screen_id: "SCR013", screen_name: "Dolby Screen 5",         screen_type: "DOLBY",       rows: 10, seats_per_row: 15, total_seats: 150, row_letters: ["A","B","C","D","E","F","G","H","I","J"],                   premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G","H","I"],           accessible_rows: ["J"],     occupied_seats: ["A07","B03","C11","D06","E14","F08","G02","H12"] },
+        SCR014: { screen_id: "SCR014", screen_name: "Standard Screen 6",      screen_type: "STANDARD",    rows: 10, seats_per_row: 15, total_seats: 150, row_letters: ["A","B","C","D","E","F","G","H","I","J"],                   premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G","H","I"],           accessible_rows: ["J"],     occupied_seats: ["A05","B13","C04","D09","E11","F06","G14","H03"] },
+        SCR015: { screen_id: "SCR015", screen_name: "Dolby Atmos Screen 1",  screen_type: "DOLBY_ATMOS", rows: 12, seats_per_row: 21, total_seats: 250, row_letters: ["A","B","C","D","E","F","G","H","I","J","K","L"],           premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G","H","I","J"],        accessible_rows: ["K","L"], occupied_seats: ["A03","B14","C08","D17","E05","F12","G09","H15","I06","J11"] },
+        SCR016: { screen_id: "SCR016", screen_name: "VIP Screen 2",          screen_type: "VIP",         rows: 8,  seats_per_row: 13, total_seats: 100, row_letters: ["A","B","C","D","E","F","G","H"],               premium_rows: [],           vip_rows: ["A","B","C","D","E"], standard_rows: ["F","G"],                       accessible_rows: ["H"],     occupied_seats: ["A06","B02","C09","D13","E07","F04","G11","H05"] },
+        SCR017: { screen_id: "SCR017", screen_name: "Standard Screen 3",      screen_type: "STANDARD",    rows: 12, seats_per_row: 17, total_seats: 200, row_letters: ["A","B","C","D","E","F","G","H","I","J","K","L"],           premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G","H","I","J"],        accessible_rows: ["K","L"], occupied_seats: ["A08","B05","C12","D03","E16","F09","G14","H07","I11","J04"] },
+        SCR018: { screen_id: "SCR018", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    rows: 10, seats_per_row: 15, total_seats: 150, row_letters: ["A","B","C","D","E","F","G","H","I","J"],                   premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G","H","I"],           accessible_rows: ["J"],     occupied_seats: ["A04","B11","C06","D13","E08","F02","G10","H14"] },
+        SCR019: { screen_id: "SCR019", screen_name: "Dolby Atmos Screen 1",  screen_type: "DOLBY_ATMOS", rows: 12, seats_per_row: 21, total_seats: 250, row_letters: ["A","B","C","D","E","F","G","H","I","J","K","L"],           premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G","H","I","J"],        accessible_rows: ["K","L"], occupied_seats: ["A05","B09","C14","D07","E18","F03","G12","H08","I16","J10"] },
+        SCR020: { screen_id: "SCR020", screen_name: "Standard Screen 2",      screen_type: "STANDARD",    rows: 10, seats_per_row: 15, total_seats: 150, row_letters: ["A","B","C","D","E","F","G","H","I","J"],                   premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G","H","I"],           accessible_rows: ["J"],     occupied_seats: ["A06","B14","C08","D05","E11","F13","G03","H09"] },
+        SCR021: { screen_id: "SCR021", screen_name: "Standard Screen 3",      screen_type: "STANDARD",    rows: 8,  seats_per_row: 13, total_seats: 100, row_letters: ["A","B","C","D","E","F","G","H"],               premium_rows: ["A","B"],     vip_rows: [],      standard_rows: ["C","D","E","F","G"],                   accessible_rows: ["H"],     occupied_seats: ["A04","B09","C06","D12","E03","F08","G11"] }
     },
+
+    // ========================================================
+    // SHOWTIMES
+    // ========================================================
+    showtimes: [
+        // --- Accra Mall (BR001) ---
+        { showtime_id: "ST001", movie_id: "MOV001", branch_id: "BR001", screen_id: "SCR001", screen_name: "IMAX Screen 1",        screen_type: "IMAX",        date: "2025-01-20", start_time: "10:00", end_time: "12:41", session_type: "MORNING",    base_price: 25.00, vip_price: 40.00, premium_price: 32.00, available_seats: 287, total_seats: 300, status: "OPEN" },
+        { showtime_id: "ST002", movie_id: "MOV001", branch_id: "BR001", screen_id: "SCR002", screen_name: "Dolby Atmos Screen 2", screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "13:00", end_time: "15:41", session_type: "MATINEE",    base_price: 20.00, vip_price: 35.00, premium_price: 27.00, available_seats: 232, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST003", movie_id: "MOV001", branch_id: "BR001", screen_id: "SCR001", screen_name: "IMAX Screen 1",        screen_type: "IMAX",        date: "2025-01-20", start_time: "19:00", end_time: "21:41", session_type: "EVENING",    base_price: 30.00, vip_price: 45.00, premium_price: 38.00, available_seats: 287, total_seats: 300, status: "OPEN" },
+        { showtime_id: "ST004", movie_id: "MOV002", branch_id: "BR001", screen_id: "SCR001", screen_name: "IMAX Screen 1",        screen_type: "IMAX",        date: "2025-01-20", start_time: "22:00", end_time: "23:50", session_type: "LATE_NIGHT", base_price: 22.00, vip_price: 38.00, premium_price: 28.00, available_seats: 287, total_seats: 300, status: "OPEN" },
+        { showtime_id: "ST005", movie_id: "MOV005", branch_id: "BR001", screen_id: "SCR003", screen_name: "VIP Screen 3",          screen_type: "VIP",         date: "2025-01-20", start_time: "14:00", end_time: "16:45", session_type: "MATINEE",    base_price: 35.00, vip_price: 55.00, premium_price: 45.00, available_seats: 91,  total_seats: 100, status: "OPEN" },
+        { showtime_id: "ST006", movie_id: "MOV005", branch_id: "BR001", screen_id: "SCR003", screen_name: "VIP Screen 3",          screen_type: "VIP",         date: "2025-01-20", start_time: "19:30", end_time: "22:15", session_type: "EVENING",    base_price: 40.00, vip_price: 65.00, premium_price: 52.00, available_seats: 91,  total_seats: 100, status: "OPEN" },
+        { showtime_id: "ST007", movie_id: "MOV011", branch_id: "BR001", screen_id: "SCR004", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "11:00", end_time: "12:55", session_type: "MORNING",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 188, total_seats: 200, status: "OPEN" },
+        { showtime_id: "ST008", movie_id: "MOV011", branch_id: "BR001", screen_id: "SCR004", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "16:00", end_time: "17:55", session_type: "MATINEE",    base_price: 18.00, vip_price: 28.00, premium_price: 22.00, available_seats: 188, total_seats: 200, status: "OPEN" },
+        { showtime_id: "ST009", movie_id: "MOV012", branch_id: "BR001", screen_id: "SCR005", screen_name: "Dolby Atmos Screen 5",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "10:30", end_time: "12:10", session_type: "MORNING",    base_price: 22.00, vip_price: 35.00, premium_price: 28.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST010", movie_id: "MOV012", branch_id: "BR001", screen_id: "SCR005", screen_name: "Dolby Atmos Screen 5",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "14:00", end_time: "15:40", session_type: "MATINEE",    base_price: 24.00, vip_price: 38.00, premium_price: 30.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST011", movie_id: "MOV030", branch_id: "BR001", screen_id: "SCR006", screen_name: "Dolby Screen 6",         screen_type: "DOLBY",       date: "2025-01-20", start_time: "20:00", end_time: "23:01", session_type: "EVENING",    base_price: 28.00, vip_price: 42.00, premium_price: 35.00, available_seats: 141, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST012", movie_id: "MOV047", branch_id: "BR001", screen_id: "SCR007", screen_name: "Standard Screen 7",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "12:00", end_time: "13:45", session_type: "MATINEE",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST013", movie_id: "MOV047", branch_id: "BR001", screen_id: "SCR007", screen_name: "Standard Screen 7",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "18:00", end_time: "19:45", session_type: "EVENING",    base_price: 18.00, vip_price: 28.00, premium_price: 22.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST014", movie_id: "MOV050", branch_id: "BR001", screen_id: "SCR008", screen_name: "Standard Screen 8",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "13:00", end_time: "16:15", session_type: "MATINEE",    base_price: 20.00, vip_price: 30.00, premium_price: 24.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST015", movie_id: "MOV050", branch_id: "BR001", screen_id: "SCR008", screen_name: "Standard Screen 8",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "19:00", end_time: "22:15", session_type: "EVENING",    base_price: 24.00, vip_price: 35.00, premium_price: 28.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+
+        // --- Kumasi City (BR002) ---
+        { showtime_id: "ST016", movie_id: "MOV005", branch_id: "BR002", screen_id: "SCR009", screen_name: "IMAX Screen 1",        screen_type: "IMAX",        date: "2025-01-20", start_time: "10:00", end_time: "12:45", session_type: "MORNING",    base_price: 25.00, vip_price: 40.00, premium_price: 32.00, available_seats: 287, total_seats: 300, status: "OPEN" },
+        { showtime_id: "ST017", movie_id: "MOV005", branch_id: "BR002", screen_id: "SCR009", screen_name: "IMAX Screen 1",        screen_type: "IMAX",        date: "2025-01-20", start_time: "19:00", end_time: "21:45", session_type: "EVENING",    base_price: 30.00, vip_price: 45.00, premium_price: 38.00, available_seats: 287, total_seats: 300, status: "OPEN" },
+        { showtime_id: "ST018", movie_id: "MOV026", branch_id: "BR002", screen_id: "SCR010", screen_name: "Dolby Atmos Screen 2",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "12:00", end_time: "14:20", session_type: "MATINEE",    base_price: 22.00, vip_price: 35.00, premium_price: 28.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST019", movie_id: "MOV026", branch_id: "BR002", screen_id: "SCR010", screen_name: "Dolby Atmos Screen 2",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "18:30", end_time: "20:50", session_type: "EVENING",    base_price: 26.00, vip_price: 40.00, premium_price: 32.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST020", movie_id: "MOV030", branch_id: "BR002", screen_id: "SCR011", screen_name: "VIP Screen 3",          screen_type: "VIP",         date: "2025-01-20", start_time: "15:00", end_time: "18:01", session_type: "MATINEE",    base_price: 35.00, vip_price: 55.00, premium_price: 45.00, available_seats: 92,  total_seats: 100, status: "OPEN" },
+        { showtime_id: "ST021", movie_id: "MOV030", branch_id: "BR002", screen_id: "SCR011", screen_name: "VIP Screen 3",          screen_type: "VIP",         date: "2025-01-20", start_time: "20:00", end_time: "23:01", session_type: "EVENING",    base_price: 40.00, vip_price: 65.00, premium_price: 52.00, available_seats: 92,  total_seats: 100, status: "OPEN" },
+        { showtime_id: "ST022", movie_id: "MOV049", branch_id: "BR002", screen_id: "SCR012", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "11:00", end_time: "12:48", session_type: "MORNING",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 189, total_seats: 200, status: "OPEN" },
+        { showtime_id: "ST023", movie_id: "MOV049", branch_id: "BR002", screen_id: "SCR012", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "16:00", end_time: "17:48", session_type: "MATINEE",    base_price: 18.00, vip_price: 28.00, premium_price: 22.00, available_seats: 189, total_seats: 200, status: "OPEN" },
+        { showtime_id: "ST024", movie_id: "MOV054", branch_id: "BR002", screen_id: "SCR013", screen_name: "Dolby Screen 5",         screen_type: "DOLBY",       date: "2025-01-20", start_time: "21:00", end_time: "23:49", session_type: "LATE_NIGHT", base_price: 25.00, vip_price: 38.00, premium_price: 30.00, available_seats: 141, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST025", movie_id: "MOV058", branch_id: "BR002", screen_id: "SCR014", screen_name: "Standard Screen 6",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "14:00", end_time: "16:05", session_type: "MATINEE",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST026", movie_id: "MOV058", branch_id: "BR002", screen_id: "SCR014", screen_name: "Standard Screen 6",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "19:30", end_time: "21:35", session_type: "EVENING",    base_price: 20.00, vip_price: 30.00, premium_price: 24.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+
+        // --- Tema Shopping (BR003) ---
+        { showtime_id: "ST027", movie_id: "MOV001", branch_id: "BR003", screen_id: "SCR015", screen_name: "Dolby Atmos Screen 1",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "10:00", end_time: "12:41", session_type: "MORNING",    base_price: 20.00, vip_price: 32.00, premium_price: 26.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST028", movie_id: "MOV001", branch_id: "BR003", screen_id: "SCR015", screen_name: "Dolby Atmos Screen 1",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "18:00", end_time: "20:41", session_type: "EVENING",    base_price: 26.00, vip_price: 40.00, premium_price: 32.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST029", movie_id: "MOV030", branch_id: "BR003", screen_id: "SCR016", screen_name: "VIP Screen 2",          screen_type: "VIP",         date: "2025-01-20", start_time: "14:00", end_time: "17:01", session_type: "MATINEE",    base_price: 35.00, vip_price: 55.00, premium_price: 45.00, available_seats: 92,  total_seats: 100, status: "OPEN" },
+        { showtime_id: "ST030", movie_id: "MOV030", branch_id: "BR003", screen_id: "SCR016", screen_name: "VIP Screen 2",          screen_type: "VIP",         date: "2025-01-20", start_time: "20:00", end_time: "23:01", session_type: "EVENING",    base_price: 40.00, vip_price: 65.00, premium_price: 52.00, available_seats: 92,  total_seats: 100, status: "OPEN" },
+        { showtime_id: "ST031", movie_id: "MOV011", branch_id: "BR003", screen_id: "SCR017", screen_name: "Standard Screen 3",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "11:30", end_time: "13:25", session_type: "MORNING",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 189, total_seats: 200, status: "OPEN" },
+        { showtime_id: "ST032", movie_id: "MOV011", branch_id: "BR003", screen_id: "SCR017", screen_name: "Standard Screen 3",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "16:30", end_time: "18:25", session_type: "MATINEE",    base_price: 18.00, vip_price: 28.00, premium_price: 22.00, available_seats: 189, total_seats: 200, status: "OPEN" },
+        { showtime_id: "ST033", movie_id: "MOV047", branch_id: "BR003", screen_id: "SCR018", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "13:00", end_time: "14:45", session_type: "MATINEE",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST034", movie_id: "MOV047", branch_id: "BR003", screen_id: "SCR018", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "18:00", end_time: "19:45", session_type: "EVENING",    base_price: 20.00, vip_price: 30.00, premium_price: 24.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+
+        // --- Sekondi (BR004) ---
+        { showtime_id: "ST035", movie_id: "MOV050", branch_id: "BR004", screen_id: "SCR019", screen_name: "Dolby Atmos Screen 1",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "12:00", end_time: "15:15", session_type: "MATINEE",    base_price: 22.00, vip_price: 35.00, premium_price: 28.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST036", movie_id: "MOV050", branch_id: "BR004", screen_id: "SCR019", screen_name: "Dolby Atmos Screen 1",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "19:00", end_time: "22:15", session_type: "EVENING",    base_price: 28.00, vip_price: 42.00, premium_price: 35.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST037", movie_id: "MOV001", branch_id: "BR004", screen_id: "SCR020", screen_name: "Standard Screen 2",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "10:30", end_time: "13:11", session_type: "MORNING",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST038", movie_id: "MOV001", branch_id: "BR004", screen_id: "SCR020", screen_name: "Standard Screen 2",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "16:00", end_time: "18:41", session_type: "MATINEE",    base_price: 18.00, vip_price: 28.00, premium_price: 22.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST039", movie_id: "MOV030", branch_id: "BR004", screen_id: "SCR021", screen_name: "Standard Screen 3",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "20:00", end_time: "23:01", session_type: "EVENING",    base_price: 20.00, vip_price: 30.00, premium_price: 24.00, available_seats: 89,  total_seats: 100, status: "OPEN" }
+    ],
 
     // ========================================================
     // PRODUCTS (CONCESSIONS)
     // ========================================================
     products: [
-        { product_id: "PROD001", product_name: "Popcorn (Regular)", product_category: "Popcorn", description: "Freshly popped regular popcorn", price: 15.00, image_url: "", is_available: true },
-        { product_id: "PROD002", product_name: "Popcorn (Butter)",  product_category: "Popcorn", description: "Freshly popped butter popcorn",  price: 18.00, image_url: "", is_available: true },
-        { product_id: "PROD003", product_name: "Coca-Cola (Large)", product_category: "Beverages", description: "Large Coca-Cola beverage",       price: 8.00,  image_url: "", is_available: true },
-        { product_id: "PROD004", product_name: "Sprite (Large)",    product_category: "Beverages", description: "Large Sprite beverage",           price: 8.00,  image_url: "", is_available: true },
-        { product_id: "PROD005", product_name: "Nachos with Cheese", product_category: "Snacks",   description: "Crispy nachos with cheese sauce", price: 12.00, image_url: "", is_available: true },
-        { product_id: "PROD006", product_name: "Hot Dog",            product_category: "Hot Dogs", description: "Classic hot dog with bun",        price: 18.00, image_url: "", is_available: true },
-        { product_id: "PROD007", product_name: "Family Combo",       product_category: "Combo",    description: "2x Large Popcorn + 2x Large Drinks", price: 35.00, image_url: "", is_available: true },
-        { product_id: "PROD008", product_name: "Chocolate Bar",      product_category: "Candy",    description: "Premium chocolate bar",           price: 8.00,  image_url: "", is_available: true }
+        { product_id: "PROD001", product_name: "Popcorn (Regular)",  product_category: "Popcorn",   product_subcategory: "Regular",    description: "Freshly popped regular popcorn",           price: 15.00, image_url: "", is_available: true },
+        { product_id: "PROD002", product_name: "Popcorn (Butter)",   product_category: "Popcorn",   product_subcategory: "Butter",     description: "Freshly popped butter popcorn",            price: 18.00, image_url: "", is_available: true },
+        { product_id: "PROD003", product_name: "Coca-Cola (Large)",  product_category: "Beverages", product_subcategory: "Soda",       description: "Large Coca-Cola beverage",                 price: 8.00,  image_url: "", is_available: true },
+        { product_id: "PROD004", product_name: "Sprite (Large)",     product_category: "Beverages", product_subcategory: "Soda",       description: "Large Sprite beverage",                    price: 8.00,  image_url: "", is_available: true },
+        { product_id: "PROD005", product_name: "Nachos with Cheese", product_category: "Snacks",    product_subcategory: "Nachos",     description: "Crispy nachos with cheese sauce",          price: 12.00, image_url: "", is_available: true },
+        { product_id: "PROD006", product_name: "Hot Dog",            product_category: "Hot Dogs",  product_subcategory: "Classic",    description: "Classic hot dog with bun",                 price: 18.00, image_url: "", is_available: true },
+        { product_id: "PROD007", product_name: "Family Combo",       product_category: "Combo",     product_subcategory: "Family",     description: "2x Large Popcorn + 2x Large Drinks",       price: 35.00, image_url: "", is_available: true },
+        { product_id: "PROD008", product_name: "Chocolate Bar",      product_category: "Candy",     product_subcategory: "Chocolate",  description: "Premium chocolate bar",                    price: 8.00,  image_url: "", is_available: true }
     ]
 };

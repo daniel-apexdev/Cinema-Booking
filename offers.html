@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Offers & Promotions — Savannah Cinemas</title>
+    <meta name="description" content="Current promotions, loyalty rewards and exclusive offers at Savannah Cinemas.">
+    <meta name="theme-color" content="#14141C">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ink: #14141C; --ink-raised: #1D1D28; --ink-line: #2C2C3A;
+            --paper: #F2EFE9; --paper-dim: #B9B6AC;
+            --gold: #E8B34C; --gold-dim: #7A5C22;
+            --rust: #B33951; --success: #4C9A6A;
+            --font-display: 'Oswald', Impact, sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+            --radius-sm: 8px; --radius-md: 14px; --radius-lg: 20px;
+            --container-padding: clamp(16px, 4vw, 60px);
+            --container-max-width: 1400px;
+            --touch-target: 44px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--ink); color: var(--paper); font-family: var(--font-body); font-size: 15px; line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; }
+        button { cursor: pointer; border: none; background: none; color: inherit; font-family: inherit; }
+        ::selection { background: var(--gold); color: var(--ink); }
+
+        .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px var(--container-padding); border-bottom: 1px solid var(--ink-line); background: rgba(20,20,28,0.92); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; gap: 12px; min-height: 64px; }
+        .nav-left { display: flex; align-items: center; gap: 12px; }
+        .nav-brand { font-family: var(--font-display); font-size: clamp(18px, 2.4vw, 24px); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+        .nav-brand span { color: var(--gold); }
+        .nav-links { display: flex; gap: clamp(12px, 2vw, 32px); list-style: none; }
+        .nav-links a { color: var(--paper-dim); font-size: clamp(12px, 0.9vw, 14px); transition: 0.3s ease; white-space: nowrap; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-links a.active { position: relative; }
+        .nav-links a.active::after { content: ''; position: absolute; bottom: -6px; left: 0; right: 0; height: 2px; background: var(--gold); border-radius: 2px; }
+        .nav-right { display: flex; align-items: center; gap: 12px; z-index: 1001; position: relative; }
+        .btn-signin { padding: 8px 18px; background: var(--gold); color: var(--ink); border-radius: var(--radius-sm); font-size: clamp(12px, 0.8vw, 14px); font-weight: 500; min-height: 38px; display: inline-flex; align-items: center; gap: 6px; }
+        .btn-signin:hover { background: #F0C369; transform: translateY(-2px); }
+
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px 6px; min-width: var(--touch-target); min-height: var(--touch-target); justify-content: center; align-items: center; border-radius: var(--radius-sm); }
+        .menu-toggle span { display: block; width: 24px; height: 2.5px; background: var(--paper); transition: 0.3s ease; border-radius: 2px; transform-origin: center; }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .mobile-menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; opacity: 0; transition: opacity 0.3s ease; }
+        .mobile-menu-overlay.active { display: block; opacity: 1; }
+        .mobile-menu { position: fixed; top: 0; left: -100%; width: 85%; max-width: 380px; height: 100vh; background: var(--ink); z-index: 1000; transition: left 0.4s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; box-shadow: 8px 0 40px rgba(0,0,0,0.6); border-right: 1px solid var(--ink-line); display: flex; flex-direction: column; }
+        .mobile-menu.open { left: 0; }
+        .mobile-menu-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--ink-line); background: var(--ink-raised); }
+        .mobile-menu-brand { font-family: var(--font-display); font-size: 18px; font-weight: 500; text-transform: uppercase; }
+        .mobile-menu-brand span { color: var(--gold); }
+        .mobile-menu-close { padding: 10px; min-width: var(--touch-target); min-height: var(--touch-target); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .mobile-menu-links { list-style: none; padding: 8px 0; flex: 1; }
+        .mobile-menu-links li { padding: 0 16px; margin: 2px 0; }
+        .mobile-menu-links a { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 10px; min-height: var(--touch-target); }
+        .mobile-menu-links a i { width: 24px; text-align: center; color: var(--paper-dim); }
+        .mobile-menu-links a:hover { color: var(--gold); background: rgba(232,179,76,0.06); }
+        .mobile-menu-footer { padding: 14px 20px; border-top: 1px solid var(--ink-line); text-align: center; font-family: var(--font-mono); font-size: 11px; color: var(--paper-dim); margin-top: auto; }
+
+        /* HERO */
+        .page-hero { padding: 60px var(--container-padding) 40px; max-width: var(--container-max-width); margin: 0 auto; border-bottom: 1px solid var(--ink-line); }
+        .page-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+        .page-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 64px); font-weight: 500; line-height: 1.05; margin-bottom: 12px; }
+        .page-subtitle { font-size: 15px; color: var(--paper-dim); max-width: 560px; line-height: 1.7; }
+
+        /* HERO PROMO */
+        .hero-promo {
+            max-width: var(--container-max-width);
+            margin: 40px auto 0;
+            padding: 0 var(--container-padding);
+        }
+        .hero-promo-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(232,179,76,0.15) 0%, rgba(179,57,81,0.1) 100%);
+            border: 1px solid var(--gold-dim);
+            border-radius: var(--radius-lg);
+            padding: 50px 40px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+        }
+        .hero-promo-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(232,179,76,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-promo-content { position: relative; z-index: 1; }
+        .hero-promo-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: var(--rust);
+            color: white;
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .hero-promo-title {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 3.5vw, 44px);
+            font-weight: 500;
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+        .hero-promo-title .highlight { color: var(--gold); }
+        .hero-promo-desc {
+            font-size: 15px;
+            color: var(--paper-dim);
+            margin-bottom: 24px;
+            max-width: 500px;
+            line-height: 1.7;
+        }
+        .hero-promo-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        .hero-promo-visual {
+            position: relative;
+            z-index: 1;
+            font-size: 120px;
+            filter: drop-shadow(0 20px 40px rgba(232,179,76,0.4));
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* FILTERS */
+        .filter-bar {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 40px var(--container-padding) 20px;
+        }
+        .filter-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .chip {
+            padding: 8px 18px;
+            background: var(--ink-raised);
+            border: 1px solid var(--ink-line);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--paper-dim);
+            transition: 0.3s ease;
+            min-height: 36px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .chip:hover { border-color: var(--gold-dim); color: var(--paper); }
+        .chip.active { background: var(--gold); color: var(--ink); border-color: var(--gold); font-weight: 500; }
+
+        /* OFFERS GRID */
+        .offers-section { max-width: var(--container-max-width); margin: 0 auto; padding: 20px var(--container-padding) 60px; }
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        .offer-card {
+            background: var(--ink-raised);
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .offer-card:hover {
+            border-color: var(--gold-dim);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+        .offer-card.expired { opacity: 0.5; }
+        .offer-card.expired::after {
+            content: 'EXPIRED';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            padding: 4px 40px;
+            background: var(--rust);
+            color: white;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            transform: rotate(45deg);
+            z-index: 5;
+        }
+        .offer-banner {
+            padding: 30px 24px;
+            text-align: center;
+            position: relative;
+        }
+        .offer-banner.gold { background: linear-gradient(135deg, #E8B34C, #C69436); color: var(--ink); }
+        .offer-banner.rust { background: linear-gradient(135deg, #B33951, #8B2440); color: white; }
+        .offer-banner.ink { background: linear-gradient(135deg, #2C2C3A, #1D1D28); color: var(--gold); }
+        .offer-banner.success { background: linear-gradient(135deg, #4C9A6A, #2E7D32); color: white; }
+
+        .offer-discount {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 500;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .offer-discount-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        .offer-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+        .offer-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background: rgba(232,179,76,0.1);
+            border: 1px solid var(--gold-dim);
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            align-self: flex-start;
+        }
+        .offer-title {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        .offer-desc {
+            font-size: 13px;
+            color: var(--paper-dim);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex: 1;
+        }
+        .offer-details {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 14px;
+            background: rgba(255,255,255,0.02);
+            border-radius: var(--radius-sm);
+            margin-bottom: 16px;
+            font-size: 12px;
+        }
+        .offer-detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        .offer-detail-row .label {
+            color: var(--paper-dim);
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .offer-detail-row .value {
+            color: var(--paper);
+            font-weight: 500;
+        }
+        .offer-code {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 12px 16px;
+            background: rgba(232,179,76,0.08);
+            border: 1px dashed var(--gold-dim);
+            border-radius: var(--radius-sm);
+            margin-bottom: 14px;
+        }
+        .offer-code-value {
+            font-family: var(--font-mono);
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+        }
+        .copy-btn {
+            padding: 6px 12px;
+            background: var(--gold);
+            color: var(--ink);
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+        .copy-btn:hover { background: #F0C369; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            font-size: 13px;
+            transition: 0.3s ease;
+            min-height: 42px;
+            white-space: nowrap;
+            width: 100%;
+        }
+        .btn-primary { background: var(--gold); color: var(--ink); }
+        .btn-primary:hover { background: #F0C369; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,179,76,0.3); }
+        .btn-disabled { background: rgba(255,255,255,0.05); color: var(--paper-dim); cursor: not-allowed; }
+
+        /* LOYALTY SECTION */
+        .loyalty-section {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 60px var(--container-padding);
+            border-top: 1px solid var(--ink-line);
+        }
+        .loyalty-header { text-align: center; margin-bottom: 40px; }
+        .loyalty-header h2 { font-family: var(--font-display); font-size: clamp(28px, 3.5vw, 42px); font-weight: 500; margin-bottom: 10px; }
+        .loyalty-header p { color: var(--paper-dim); max-width: 560px; margin: 0 auto; }
+
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .tier-card {
+            padding: 30px 22px;
+            background: var(--ink-raised);
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: 0.3s ease;
+            position: relative;
+        }
+        .tier-card:hover { transform: translateY(-4px); }
+        .tier-card.bronze { border-top: 3px solid #CD7F32; }
+        .tier-card.silver { border-top: 3px solid #C0C0C0; }
+        .tier-card.gold-tier { border-top: 3px solid #FFD700; }
+        .tier-card.platinum { border-top: 3px solid #E5E4E2; }
+
+        .tier-icon {
+            font-size: 42px;
+            margin-bottom: 16px;
+            filter: drop-shadow(0 4px 12px rgba(232,179,76,0.3));
+        }
+        .tier-name {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .tier-requirement {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .tier-benefits {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .tier-benefit {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--paper-dim);
+            line-height: 1.5;
+        }
+        .tier-benefit i { color: var(--gold); margin-top: 4px; flex-shrink: 0; font-size: 10px; }
+
+        /* CTA */
+        .cta-strip { max-width: var(--container-max-width); margin: 0 auto 60px; padding: 0 var(--container-padding); }
+        .cta-card {
+            background: linear-gradient(135deg, rgba(232,179,76,0.08) 0%, rgba(179,57,81,0.05) 100%);
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            text-align: center;
+        }
+        .cta-card h3 { font-family: var(--font-display); font-size: 24px; font-weight: 500; margin-bottom: 10px; }
+        .cta-card p { color: var(--paper-dim); margin-bottom: 22px; max-width: 480px; margin-left: auto; margin-right: auto; font-size: 14px; }
+        .cta-form { display: flex; gap: 10px; max-width: 480px; margin: 0 auto; }
+        .cta-input { flex: 1; padding: 14px 18px; background: rgba(255,255,255,0.05); border: 1px solid var(--ink-line); border-radius: var(--radius-sm); color: var(--paper); font-size: 14px; outline: none; }
+        .cta-input:focus { border-color: var(--gold); }
+        .cta-input::placeholder { color: var(--paper-dim); }
+
+        /* FOOTER */
+        .footer { max-width: var(--container-max-width); margin: 60px auto 0; padding: 40px var(--container-padding) 0; border-top: 1px solid var(--ink-line); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 16px 0 24px; font-family: var(--font-mono); font-size: 11px; color: var(--paper-dim); }
+        .footer-bottom .legal a { color: var(--paper-dim); margin-left: 16px; }
+        .footer-bottom .legal a:hover { color: var(--gold); }
+
+        /* TOAST */
+        .toast {
+            position: fixed; top: 20px; right: 20px;
+            background: var(--success); color: white;
+            padding: 14px 20px; border-radius: var(--radius-sm);
+            font-size: 14px; font-weight: 500;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            z-index: 9999; display: flex; align-items: center; gap: 10px;
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+        @media (max-width: 900px) {
+            .menu-toggle { display: flex; }
+            .nav-links { display: none; }
+            .hero-promo-card { grid-template-columns: 1fr; text-align: center; }
+            .hero-promo-visual { display: none; }
+            .hero-promo-actions { justify-content: center; }
+        }
+        @media (max-width: 640px) {
+            .page-hero { padding: 40px var(--container-padding) 30px; }
+            .hero-promo-card { padding: 30px 22px; }
+            .offers-grid { grid-template-columns: 1fr; }
+            .tiers-grid { grid-template-columns: 1fr; }
+            .cta-form { flex-direction: column; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-bottom .legal a { margin: 0 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="index.html" class="nav-brand">Savannah <span>Cinemas</span></a>
+    </div>
+    <ul class="nav-links">
+        <li><a href="index.html">Now Showing</a></li>
+        <li><a href="coming-soon.html">Coming Soon</a></li>
+        <li><a href="cinemas.html">Cinemas</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="offers.html" class="active">Offers</a></li>
+    </ul>
+    <div class="nav-right">
+        <a href="login.html" class="btn-signin"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+    </div>
+</nav>
+
+<div class="mobile-menu-overlay" id="mobileOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-header">
+        <div class="mobile-menu-brand">Savannah <span>Cinemas</span></div>
+        <button class="mobile-menu-close" id="mobileMenuClose"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="mobile-menu-links">
+        <li><a href="index.html"><i class="fas fa-film"></i> Now Showing</a></li>
+        <li><a href="coming-soon.html"><i class="fas fa-calendar-alt"></i> Coming Soon</a></li>
+        <li><a href="cinemas.html"><i class="fas fa-map-marker-alt"></i> Cinemas</a></li>
+        <li><a href="events.html"><i class="fas fa-star"></i> Events</a></li>
+        <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+    </ul>
+    <div class="mobile-menu-footer"><p>© 2026 Savannah Cinemas</p></div>
+</aside>
+
+<section class="page-hero">
+    <p class="page-eyebrow">Save More</p>
+    <h1 class="page-title">Offers &amp; Rewards</h1>
+    <p class="page-subtitle">
+        From student discounts to loyalty perks — there's always a way to save at Savannah.
+    </p>
+</section>
+
+<!-- HERO PROMO -->
+<div class="hero-promo">
+    <div class="hero-promo-card">
+        <div class="hero-promo-content">
+            <span class="hero-promo-badge">Limited Time</span>
+            <h2 class="hero-promo-title">
+                Watch 5, Get 1 <span class="highlight">Free</span>
+            </h2>
+            <p class="hero-promo-desc">
+                For every 5 tickets you book, we'll reward you with a completely free ticket on your next visit. No code needed — it's automatic.
+            </p>
+            <div class="hero-promo-actions">
+                <a href="index.html" class="btn btn-primary" style="width:auto;">
+                    <i class="fas fa-ticket-alt"></i> Start Watching
+                </a>
+                <a href="#" class="btn btn-ghost" style="width:auto;" onclick="OffersPage.scrollToTiers(event)">
+                    <i class="fas fa-crown"></i> See Loyalty Tiers
+                </a>
+            </div>
+        </div>
+        <div class="hero-promo-visual">🎁</div>
+    </div>
+</div>
+
+<div class="filter-bar">
+    <div class="filter-chips" id="filterChips">
+        <button class="chip active" data-filter="all"><i class="fas fa-star"></i> All Offers</button>
+        <button class="chip" data-filter="ticket"><i class="fas fa-ticket-alt"></i> Ticket Deals</button>
+        <button class="chip" data-filter="concession"><i class="fas fa-utensils"></i> Concessions</button>
+        <button class="chip" data-filter="loyalty"><i class="fas fa-crown"></i> Loyalty</button>
+        <button class="chip" data-filter="event"><i class="fas fa-calendar-star"></i> Events</button>
+        <button class="chip" data-filter="seasonal"><i class="fas fa-snowflake"></i> Seasonal</button>
+    </div>
+</div>
+
+<section class="offers-section">
+    <div class="offers-grid" id="offersGrid"></div>
+</section>
+
+<!-- LOYALTY TIERS -->
+<section class="loyalty-section" id="loyaltyTiers">
+    <div class="loyalty-header">
+        <p class="page-eyebrow">Membership</p>
+        <h2>Savannah Loyalty Tiers</h2>
+        <p>The more you watch, the more you unlock. Points are earned automatically on every purchase.</p>
+    </div>
+
+    <div class="tiers-grid">
+        <div class="tier-card bronze">
+            <div class="tier-icon">🥉</div>
+            <div class="tier-name">Bronze</div>
+            <div class="tier-requirement">0+ Points</div>
+            <div class="tier-benefits">
+                <div class="tier-benefit"><i class="fas fa-check"></i> Earn 1 point per ₵1</div>
+                <div class="tier-benefit"><i class="fas fa-check"></i> Birthday gift</div>
+                <div class="tier-benefit"><i class="fas fa-check"></i> Newsletter access</div>
+            </div>
+        </div>
+
+        <div class="tier-card silver">
+            <div class="tier-icon">🥈</div>
+            <div class="tier-name">Silver</div>
+            <div class="tier-requirement">500+ Points</div>
+            <div class="tier-benefits">
+                <div class="tier-benefit"><i class="fas fa-check"></i> 5% off every purchase</div>
+                <div class="tier-benefit"><i class="fas fa-check"></i> 1.25x points on tickets</div>
+                <div class="tier-benefit"><i class="fas fa-check"></i> Early booking access</div>
+            </div>
+        </div>
+
+        <div class="tier-card gold-tier">
+            <div class="tier-icon">🥇</div>
+            <div class="tier-name">Gold</div>
+            <div class="tier-requirement">1,500+ Points</div>
+            <div class="tier-benefits">
+                <div class="tier-benefit"><i class="fas fa-check"></i> 10% off every purchase</div>
+                <div class="tier-benefit"><i class="fas fa-check"></i> 1.5x points on tickets</div>
+                <div class="tier-benefit"><i class="fas fa-check"></i> 1 free ticket per year</div>
+                <div class="tier-benefit"><i class="fas fa-check"></i> Free seat upgrades</div>
+            </div>
+        </div>
+
+        <div class="tier-card platinum">
+            <div class="tier-icon">💎</div>
+            <div class="tier-name">Platinum</div>
+            <div class="tier-requirement">3,000+ Points</div>
+            <div class="tier-benefits">
+                <div class="tier-benefit"><i class="fas fa-check"></i> 15% off every purchase</div>
+                <div class="tier-benefit"><i class="fas fa-check"></i> 2x points on tickets</div>
+                <div class="tier-benefit"><i class="fas fa-check"></i> Priority booking</div>
+                <div class="tier-benefit"><i class="fas fa-check"></i> Exclusive event invitations</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+    <div class="cta-card">
+        <h3>Never Miss an Offer</h3>
+        <p>Get weekly deals, exclusive discounts and early access to premieres.</p>
+        <form class="cta-form" id="subscribeForm">
+            <input type="email" class="cta-input" placeholder="your@email.com" required>
+            <button type="submit" class="btn btn-primary" style="width:auto;">
+                <i class="fas fa-envelope"></i> Subscribe
+            </button>
+        </form>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-bottom">
+        <span>© 2026 Savannah Cinemas</span>
+        <span class="legal">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="accessibility.html">Accessibility</a>
+        </span>
+    </div>
+</footer>
+
+<script src="data/movies-inline.js"></script>
+<script src="js/app.js"></script>
+<script src="js/storage.js"></script>
+
+<script>
+const OffersPage = {
+    allOffers: [],
+    filteredOffers: [],
+    currentFilter: 'all',
+
+    async init() {
+        await SavannahApp.init();
+        this.setupMobileMenu();
+        this.loadOffers();
+        this.setupFilters();
+        this.setupSubscribeForm();
+    },
+
+    setupMobileMenu() {
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileOverlay');
+        const closeBtn = document.getElementById('mobileMenuClose');
+        const open = () => { menu.classList.add('open'); overlay.classList.add('active'); toggle.classList.add('active'); document.body.style.overflow = 'hidden'; };
+        const close = () => { menu.classList.remove('open'); overlay.classList.remove('active'); toggle.classList.remove('active'); document.body.style.overflow = ''; };
+        toggle?.addEventListener('click', () => menu.classList.contains('open') ? close() : open());
+        closeBtn?.addEventListener('click', close);
+        overlay?.addEventListener('click', close);
+    },
+
+    loadOffers() {
+        this.allOffers = [
+            {
+                id: 'OFF001',
+                category: 'ticket',
+                tag: 'Every Day',
+                discount: '10%',
+                discountLabel: 'Off Tickets',
+                bannerClass: 'gold',
+                title: 'Student Discount',
+                description: 'Show your valid student ID at the box office and get 10% off any ticket, any day.',
+                details: [
+                    { label: 'Valid', value: 'Every Day' },
+                    { label: 'Requires', value: 'Student ID' },
+                    { label: 'Applies To', value: 'All showtimes' }
+                ],
+                code: 'STUDENT10',
+                available: true
+            },
+            {
+                id: 'OFF002',
+                category: 'ticket',
+                tag: 'Family',
+                discount: '15%',
+                discountLabel: 'Off Family Bookings',
+                bannerClass: 'rust',
+                title: 'Family Pack',
+                description: 'Book 4 or more tickets in a single transaction and save 15% off the total.',
+                details: [
+                    { label: 'Minimum', value: '4 tickets' },
+                    { label: 'Maximum Save', value: '₵30' },
+                    { label: 'Applies To', value: 'Single booking' }
+                ],
+                code: 'FAMILY15',
+                available: true
+            },
+            {
+                id: 'OFF003',
+                category: 'concession',
+                tag: 'Combo',
+                discount: '25%',
+                discountLabel: 'Off Snacks',
+                bannerClass: 'success',
+                title: 'Popcorn & Soda Combo',
+                description: 'Grab a large popcorn + any large drink for just ₵18. Was ₵24.',
+                details: [
+                    { label: 'Combo Price', value: '₵18.00' },
+                    { label: 'Original', value: '₵24.00' },
+                    { label: 'Available', value: 'All locations' }
+                ],
+                code: 'COMBO25',
+                available: true
+            },
+            {
+                id: 'OFF004',
+                category: 'loyalty',
+                tag: 'Members Only',
+                discount: '2x',
+                discountLabel: 'Points',
+                bannerClass: 'ink',
+                title: 'Double Points Weekend',
+                description: 'Earn 2x points on every ticket purchased Friday through Sunday.',
+                details: [
+                    { label: 'Days', value: 'Fri – Sun' },
+                    { label: 'Valid Until', value: '31 March 2026' },
+                    { label: 'Applies To', value: 'Ticket purchases' }
+                ],
+                code: 'DBLPOINTS',
+                available: true
+            },
+            {
+                id: 'OFF005',
+                category: 'seasonal',
+                tag: 'Seasonal',
+                discount: '20%',
+                discountLabel: 'Off Tickets',
+                bannerClass: 'gold',
+                title: 'Valentine\'s Special',
+                description: 'Perfect for couples — book two tickets and save 20% on select romantic films.',
+                details: [
+                    { label: 'Valid', value: '10 – 14 Feb' },
+                    { label: 'Requires', value: '2 tickets' },
+                    { label: 'Code Required', value: 'Yes' }
+                ],
+                code: 'LOVE20',
+                available: true
+            },
+            {
+                id: 'OFF006',
+                category: 'ticket',
+                tag: 'Students',
+                discount: '₵5',
+                discountLabel: 'Off Matinee',
+                bannerClass: 'ink',
+                title: 'Matinee Madness',
+                description: 'Any showtime before 3 PM on weekdays — save ₵5 per ticket automatically.',
+                details: [
+                    { label: 'Valid', value: 'Mon – Fri' },
+                    { label: 'Before', value: '3:00 PM' },
+                    { label: 'Auto-Applied', value: 'Yes' }
+                ],
+                code: 'MATINEE5',
+                available: true
+            },
+            {
+                id: 'OFF007',
+                category: 'event',
+                tag: 'Special Event',
+                discount: '25%',
+                discountLabel: 'Off Event Tickets',
+                bannerClass: 'rust',
+                title: 'Director\'s Cut Night',
+                description: 'Save 25% on tickets for our monthly Director\'s Cut Night screening.',
+                details: [
+                    { label: 'Event Date', value: '15 Feb 2026' },
+                    { label: 'Location', value: 'Accra Mall' },
+                    { label: 'Limited', value: '100 seats' }
+                ],
+                code: 'DIRECTOR25',
+                available: true
+            },
+            {
+                id: 'OFF008',
+                category: 'loyalty',
+                tag: 'New Members',
+                discount: '100',
+                discountLabel: 'Bonus Points',
+                bannerClass: 'success',
+                title: 'Welcome Bonus',
+                description: 'Join the Savannah loyalty program today and get 100 bonus points instantly.',
+                details: [
+                    { label: 'For', value: 'New members' },
+                    { label: 'Value', value: '≈ ₵10' },
+                    { label: 'One Time', value: 'Yes' }
+                ],
+                code: 'WELCOME100',
+                available: true
+            },
+            {
+                id: 'OFF009',
+                category: 'seasonal',
+                tag: 'Ended',
+                discount: '30%',
+                discountLabel: 'Off Tickets',
+                bannerClass: 'gold',
+                title: 'Black Friday Madness',
+                description: 'Our biggest sale of the year — 30% off all tickets for 24 hours only.',
+                details: [
+                    { label: 'Valid', value: 'Nov 2025' },
+                    { label: 'Status', value: 'Ended' },
+                    { label: 'Returns', value: 'Nov 2026' }
+                ],
+                code: 'BLACKFRI30',
+                available: false
+            }
+        ];
+
+        this.applyFilter();
+    },
+
+    applyFilter() {
+        let filtered = this.allOffers.slice();
+
+        if (this.currentFilter !== 'all') {
+            filtered = filtered.filter(o => o.category === this.currentFilter);
+        }
+
+        // Available first, then expired
+        filtered.sort((a, b) => {
+            if (a.available !== b.available) return a.available ? -1 : 1;
+            return 0;
+        });
+
+        this.filteredOffers = filtered;
+        this.render();
+    },
+
+    render() {
+        const grid = document.getElementById('offersGrid');
+        if (!this.filteredOffers.length) {
+            grid.innerHTML = `
+                <div style="grid-column:1/-1;text-align:center;padding:80px 20px;color:var(--paper-dim);">
+                    <i class="fas fa-tag" style="font-size:48px;color:var(--gold-dim);display:block;margin-bottom:16px;"></i>
+                    <h3 style="font-family:var(--font-display);font-size:22px;color:var(--paper);margin-bottom:8px;">No offers found</h3>
+                    <p>Try a different filter.</p>
+                </div>`;
+            return;
+        }
+
+        grid.innerHTML = this.filteredOffers.map(o => this.renderOfferCard(o)).join('');
+    },
+
+    renderOfferCard(offer) {
+        return `
+            <div class="offer-card ${!offer.available ? 'expired' : ''}">
+                <div class="offer-banner ${offer.bannerClass}">
+                    <div class="offer-discount">${offer.discount}</div>
+                    <div class="offer-discount-label">${offer.discountLabel}</div>
+                </div>
+                <div class="offer-body">
+                    <span class="offer-tag">${offer.tag}</span>
+                    <h3 class="offer-title">${offer.title}</h3>
+                    <p class="offer-desc">${offer.description}</p>
+
+                    <div class="offer-details">
+                        ${offer.details.map(d => `
+                            <div class="offer-detail-row">
+                                <span class="label">${d.label}</span>
+                                <span class="value">${d.value}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    ${offer.available && offer.code ? `
+                        <div class="offer-code">
+                            <span class="offer-code-value">${offer.code}</span>
+                            <button class="copy-btn" onclick="OffersPage.copyCode('${offer.code}')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    ` : ''}
+
+                    ${offer.available ? `
+                        <button class="btn btn-primary" onclick="window.location.href='index.html'">
+                            <i class="fas fa-ticket-alt"></i> Shop Now
+                        </button>
+                    ` : `
+                        <button class="btn btn-disabled" disabled>
+                            <i class="fas fa-clock"></i> Expired
+                        </button>
+                    `}
+                </div>
+            </div>
+        `;
+    },
+
+    copyCode(code) {
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(code).then(() => {
+                this.toast(`Copied "${code}" to clipboard`);
+            }).catch(() => {
+                this.toast(`Code: ${code}`);
+            });
+        } else {
+            this.toast(`Code: ${code}`);
+        }
+    },
+
+    toast(msg) {
+        const el = document.createElement('div');
+        el.className = 'toast';
+        el.innerHTML = `<i class="fas fa-check-circle"></i> ${msg}`;
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 2500);
+    },
+
+    setupFilters() {
+        document.getElementById('filterChips').addEventListener('click', (e) => {
+            const chip = e.target.closest('.chip');
+            if (!chip) return;
+            document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            this.currentFilter = chip.dataset.filter;
+            this.applyFilter();
+        });
+    },
+
+    setupSubscribeForm() {
+        document.getElementById('subscribeForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input').value;
+            this.toast(`Subscribed ${email}!`);
+            e.target.reset();
+        });
+    },
+
+    scrollToTiers(e) {
+        e.preventDefault();
+        document.getElementById('loyaltyTiers').scrollIntoView({ behavior: 'smooth' });
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => OffersPage.init());
+</script>
+</body>
+</html>
