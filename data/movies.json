@@ -1,4 +1,11 @@
 {
+    "hero_slides": [
+        "MOV001",
+        "MOV002",
+        "MOV003",
+        "MOV004",
+        "MOV005"
+    ],
   "movies": [
     {
       "movie_id": "MOV001",
@@ -23,6 +30,7 @@
       "backdrop_url": "https://image.tmdb.org/t/p/original/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg",
       "trailer_url": "",
       "is_featured": true,
+      "exclude_from_grid": true,
       "status": "now_showing"
     },
     {
