@@ -7,19 +7,14 @@
     <meta name="description" content="Savannah Cinemas — Book your next cinematic experience in Ghana. IMAX, Dolby Atmos, VIP screens and the latest blockbusters.">
     <meta name="theme-color" content="#14141C">
 
-    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
 
-    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
-        /* ============================================================
-           ROOT VARIABLES
-           ============================================================ */
         :root {
             --ink: #14141C;
             --ink-raised: #1D1D28;
@@ -45,9 +40,6 @@
             --touch-target: 44px;
         }
 
-        /* ============================================================
-           RESET & BASE
-           ============================================================ */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
 
@@ -60,7 +52,6 @@
             min-height: 100vh;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         img { max-width: 100%; display: block; }
@@ -68,9 +59,7 @@
         button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
         ::selection { background: var(--gold); color: var(--ink); }
 
-        /* ============================================================
-           NAV
-           ============================================================ */
+        /* NAV */
         .nav {
             display: flex;
             align-items: center;
@@ -79,7 +68,6 @@
             border-bottom: 1px solid var(--ink-line);
             background: rgba(20, 20, 28, 0.92);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -92,10 +80,8 @@
             font-family: var(--font-display);
             font-size: clamp(18px, 2.4vw, 24px);
             font-weight: 500;
-            color: var(--paper);
             letter-spacing: 0.04em;
             text-transform: uppercase;
-            line-height: 1.1;
             white-space: nowrap;
         }
         .nav-brand span { color: var(--gold); }
@@ -108,9 +94,7 @@
         .nav-links a {
             color: var(--paper-dim);
             font-size: clamp(12px, 0.9vw, 14px);
-            font-weight: 400;
             transition: 0.3s ease;
-            letter-spacing: 0.02em;
             position: relative;
             padding: 4px 0;
             white-space: nowrap;
@@ -123,7 +107,7 @@
 
         .nav-right { display: flex; align-items: center; gap: 12px; z-index: 1001; position: relative; }
 
-        /* ---------- HAMBURGER ---------- */
+        /* HAMBURGER */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -134,9 +118,7 @@
             justify-content: center;
             align-items: center;
             border-radius: var(--radius-sm);
-            touch-action: manipulation;
         }
-        .menu-toggle:hover { background: rgba(255,255,255,0.05); }
         .menu-toggle span {
             display: block;
             width: 24px; height: 2.5px;
@@ -149,7 +131,7 @@
         .menu-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
         .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-        /* ---------- MOBILE MENU ---------- */
+        /* MOBILE MENU */
         .mobile-menu-overlay {
             display: none;
             position: fixed;
@@ -176,7 +158,6 @@
             flex-direction: column;
         }
         .mobile-menu.open { left: 0; }
-
         .mobile-menu-header {
             display: flex;
             align-items: center;
@@ -184,17 +165,14 @@
             padding: 16px 20px;
             border-bottom: 1px solid var(--ink-line);
             background: var(--ink-raised);
-            flex-shrink: 0;
         }
         .mobile-menu-brand {
             font-family: var(--font-display);
             font-size: 18px;
             font-weight: 500;
-            letter-spacing: 0.04em;
             text-transform: uppercase;
         }
         .mobile-menu-brand span { color: var(--gold); }
-
         .mobile-menu-close {
             color: var(--paper);
             font-size: 20px;
@@ -207,18 +185,11 @@
             justify-content: center;
             transition: 0.3s ease;
         }
-        .mobile-menu-close:hover {
-            color: var(--gold);
-            transform: rotate(90deg);
-            background: rgba(255,255,255,0.05);
-        }
-
+        .mobile-menu-close:hover { color: var(--gold); transform: rotate(90deg); }
         .mobile-menu-links {
             list-style: none;
             padding: 8px 0;
             flex: 1;
-            display: flex;
-            flex-direction: column;
         }
         .mobile-menu-links li { padding: 0 16px; margin: 2px 0; }
         .mobile-menu-links a {
@@ -228,17 +199,13 @@
             padding: 12px 14px;
             color: var(--paper);
             font-size: 15px;
-            font-weight: 400;
             transition: 0.2s ease;
             border-radius: 10px;
             min-height: var(--touch-target);
         }
         .mobile-menu-links a i {
-            width: 24px;
-            text-align: center;
-            color: var(--paper-dim);
-            font-size: 17px;
-            transition: 0.2s ease;
+            width: 24px; text-align: center;
+            color: var(--paper-dim); font-size: 17px;
         }
         .mobile-menu-links a:hover {
             color: var(--gold);
@@ -246,7 +213,6 @@
             padding-left: 20px;
         }
         .mobile-menu-links a:hover i { color: var(--gold); }
-
         .mobile-menu-footer {
             padding: 14px 20px;
             border-top: 1px solid var(--ink-line);
@@ -254,71 +220,10 @@
             font-family: var(--font-mono);
             font-size: 11px;
             color: var(--paper-dim);
-            flex-shrink: 0;
             margin-top: auto;
         }
 
-        /* ---------- PROFILE ---------- */
-        .profile-wrapper { position: relative; }
-        .avatar {
-            width: 38px; height: 38px;
-            border-radius: 50%;
-            background: var(--gold);
-            color: var(--ink);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-display);
-            font-weight: 500;
-            font-size: 14px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: 0.3s ease;
-            user-select: none;
-        }
-        .avatar:hover { border-color: var(--gold-dim); }
-
-        .profile-menu {
-            position: absolute;
-            top: calc(100% + 10px);
-            right: 0;
-            background: var(--ink-raised);
-            border: 1px solid var(--ink-line);
-            border-radius: var(--radius-md);
-            width: 220px;
-            overflow: hidden;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-6px);
-            transition: 0.3s ease;
-            z-index: 20;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
-        }
-        .profile-wrapper.is-open .profile-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-        .profile-menu .who { padding: 14px 16px; border-bottom: 1px solid var(--ink-line); }
-        .profile-menu .who .name { font-weight: 500; font-size: 14px; color: var(--paper); }
-        .profile-menu .who .stat {
-            color: var(--gold);
-            font-size: 11px;
-            font-family: var(--font-mono);
-            margin-top: 3px;
-        }
-        .profile-menu a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 11px 16px;
-            font-size: 13px;
-            color: var(--paper-dim);
-            border-bottom: 1px solid var(--ink-line);
-            transition: 0.3s ease;
-        }
-        .profile-menu a:last-child { border-bottom: none; color: var(--rust); }
-        .profile-menu a:hover { background: rgba(255,255,255,0.04); color: var(--paper); }
-        .profile-menu a:last-child:hover { color: var(--rust-hover); }
-        .profile-menu a i { width: 16px; text-align: center; }
-
-        /* ---------- SIGN IN ---------- */
+        /* SIGN IN */
         .btn-signin {
             padding: 8px 18px;
             background: var(--gold);
@@ -333,15 +238,9 @@
             min-height: 38px;
             white-space: nowrap;
         }
-        .btn-signin:hover {
-            background: #F0C369;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(232, 179, 76, 0.3);
-        }
+        .btn-signin:hover { background: #F0C369; transform: translateY(-2px); }
 
-        /* ============================================================
-           HERO CAROUSEL
-           ============================================================ */
+        /* HERO */
         .hero-section-wrapper {
             max-width: var(--container-max-width);
             margin: 0 auto;
@@ -357,13 +256,11 @@
             max-height: 520px;
             background: var(--ink-raised);
             border: 1px solid var(--ink-line);
-            width: 100%;
         }
         .hero-carousel-slides {
             display: flex;
             transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
             height: 100%;
-            width: 100%;
         }
         .hero-slide {
             flex: 0 0 100%;
@@ -390,7 +287,6 @@
             position: relative;
             z-index: 2;
             max-width: 65%;
-            color: var(--paper);
         }
         .hero-slide .hero-eyebrow {
             font-family: var(--font-mono);
@@ -406,7 +302,6 @@
             font-weight: 500;
             line-height: 1.05;
             margin-bottom: 10px;
-            letter-spacing: 0.01em;
         }
         .hero-slide .hero-content p {
             font-size: clamp(12px, 0.9vw, 15px);
@@ -418,7 +313,6 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            line-height: 1.6;
         }
         .btn-hero {
             display: inline-flex;
@@ -433,11 +327,7 @@
             transition: 0.3s ease;
             min-height: 40px;
         }
-        .btn-hero:hover {
-            background: #F0C369;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(232, 179, 76, 0.35);
-        }
+        .btn-hero:hover { background: #F0C369; transform: translateY(-2px); }
         .hero-loading {
             display: flex;
             align-items: center;
@@ -449,7 +339,6 @@
             font-size: 14px;
             gap: 10px;
         }
-
         .hero-carousel-controls {
             position: absolute;
             bottom: 14px;
@@ -465,13 +354,10 @@
             width: 8px; height: 8px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
-            border: none;
             padding: 0;
             transition: 0.3s ease;
         }
         .hero-dot.active { background: var(--gold); transform: scale(1.3); }
-        .hero-dot:hover { background: rgba(255, 255, 255, 0.6); }
-
         .hero-carousel-arrows { display: flex; gap: 8px; }
         .hero-arrow {
             width: 36px; height: 36px;
@@ -486,15 +372,9 @@
             align-items: center;
             justify-content: center;
         }
-        .hero-arrow:hover {
-            background: var(--gold);
-            color: var(--ink);
-            border-color: var(--gold);
-        }
+        .hero-arrow:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
 
-        /* ============================================================
-           SECTIONS
-           ============================================================ */
+        /* SECTIONS */
         .section {
             max-width: var(--container-max-width);
             margin: 0 auto;
@@ -520,11 +400,8 @@
             font-family: var(--font-display);
             font-size: clamp(22px, 2.4vw, 34px);
             font-weight: 500;
-            line-height: 1.1;
-            color: var(--paper);
         }
         .section-title.centered { text-align: center; margin-bottom: 40px; }
-
         .carousel-arrows { display: flex; gap: 8px; }
         .carousel-arrow {
             width: 36px; height: 36px;
@@ -538,15 +415,9 @@
             align-items: center;
             justify-content: center;
         }
-        .carousel-arrow:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-            background: rgba(232, 179, 76, 0.06);
-        }
+        .carousel-arrow:hover { border-color: var(--gold); color: var(--gold); background: rgba(232, 179, 76, 0.06); }
 
-        /* ============================================================
-           CAROUSEL TRACK
-           ============================================================ */
+        /* CAROUSEL TRACK */
         .carousel-track {
             display: flex;
             gap: 16px;
@@ -558,10 +429,9 @@
             scrollbar-color: var(--gold-dim) transparent;
         }
         .carousel-track::-webkit-scrollbar { height: 5px; }
-        .carousel-track::-webkit-scrollbar-track { background: transparent; }
         .carousel-track::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 4px; }
-        .carousel-track::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
+        /* MOVIE CARD — Clean, no bookmark button */
         .movie-card {
             flex: 0 0 clamp(150px, 15vw, 210px);
             min-width: 150px;
@@ -571,6 +441,9 @@
             overflow: hidden;
             transition: 0.3s ease;
             cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
         }
         .movie-card:hover {
             transform: translateY(-4px);
@@ -614,7 +487,6 @@
             font-family: var(--font-display);
             font-size: 15px;
             font-weight: 500;
-            color: var(--paper);
             margin-bottom: 3px;
             white-space: nowrap;
             overflow: hidden;
@@ -626,17 +498,13 @@
             font-weight: 300;
         }
 
-        /* ============================================================
-           BUTTONS
-           ============================================================ */
+        /* BUTTONS */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             padding: 12px 26px;
-            border: none;
             border-radius: var(--radius-sm);
-            font-family: var(--font-body);
             font-weight: 500;
             font-size: 14px;
             transition: 0.3s ease;
@@ -662,9 +530,7 @@
             transform: translateY(-2px);
         }
 
-        /* ============================================================
-           FEATURE BANNER
-           ============================================================ */
+        /* FEATURE BANNER */
         .feature-banner {
             max-width: var(--container-max-width);
             margin: 60px auto;
@@ -724,9 +590,7 @@
         @keyframes pulse { 0%,100%{opacity:0.6;} 50%{opacity:1;} }
         @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
 
-        /* ============================================================
-           EVENTS
-           ============================================================ */
+        /* EVENTS */
         .events-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -764,10 +628,7 @@
             background: var(--gold);
             color: var(--ink);
         }
-        .event-card .event-badge.free {
-            background: var(--success);
-            color: var(--paper);
-        }
+        .event-card .event-badge.free { background: var(--success); color: var(--paper); }
         .event-card .event-body { padding: 16px 18px 18px; }
         .event-card .event-title {
             font-family: var(--font-display);
@@ -801,17 +662,11 @@
             border: 1px solid var(--gold-dim);
             border-radius: var(--radius-sm);
             font-size: 12px;
-            font-weight: 400;
             transition: 0.3s ease;
         }
-        .event-card .btn-event:hover {
-            background: var(--gold);
-            color: var(--ink);
-        }
+        .event-card .btn-event:hover { background: var(--gold); color: var(--ink); }
 
-        /* ============================================================
-           FEATURES
-           ============================================================ */
+        /* FEATURES */
         .features-section {
             max-width: var(--container-max-width);
             margin: 0 auto;
@@ -853,9 +708,7 @@
             font-weight: 300;
         }
 
-        /* ============================================================
-           NEWSLETTER
-           ============================================================ */
+        /* NEWSLETTER */
         .newsletter-section {
             max-width: var(--container-max-width);
             margin: 0 auto;
@@ -887,12 +740,7 @@
             line-height: 1.7;
             font-weight: 300;
         }
-        .newsletter-form {
-            display: flex;
-            gap: 10px;
-            max-width: 480px;
-            margin: 0 auto;
-        }
+        .newsletter-form { display: flex; gap: 10px; max-width: 480px; margin: 0 auto; }
         .newsletter-input {
             flex: 1;
             padding: 14px 20px;
@@ -908,9 +756,7 @@
         .newsletter-input:focus { border-color: var(--gold); }
         .newsletter-input::placeholder { color: var(--paper-dim); }
 
-        /* ============================================================
-           FOOTER
-           ============================================================ */
+        /* FOOTER */
         .footer {
             max-width: var(--container-max-width);
             margin: 0 auto;
@@ -923,11 +769,7 @@
             gap: 40px;
             padding-bottom: 30px;
         }
-        .footer-brand .nav-brand {
-            font-size: 20px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
+        .footer-brand .nav-brand { font-size: 20px; display: inline-block; margin-bottom: 10px; }
         .footer-brand p {
             color: var(--paper-dim);
             font-size: 13px;
@@ -944,9 +786,7 @@
             font-family: var(--font-display);
             font-size: 14px;
             font-weight: 500;
-            color: var(--paper);
             margin-bottom: 12px;
-            letter-spacing: 0.02em;
         }
         .footer-col a {
             display: block;
@@ -980,9 +820,7 @@
         }
         .footer-bottom .legal a:hover { color: var(--gold); }
 
-        /* ============================================================
-           TOAST
-           ============================================================ */
+        /* TOAST */
         .toast {
             position: fixed;
             top: 20px;
@@ -1000,14 +838,13 @@
             align-items: center;
             gap: 10px;
         }
+        .toast.gold { background: var(--gold); color: var(--ink); }
         @keyframes slideIn {
             from { transform: translateX(100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
 
-        /* ============================================================
-           RESPONSIVE
-           ============================================================ */
+        /* RESPONSIVE */
         @media (max-width: 1024px) {
             .hero-slide .hero-content { max-width: 80%; }
             .footer-top { grid-template-columns: 1fr; gap: 30px; }
@@ -1062,9 +899,7 @@
 
 <body>
 
-<!-- ============================================================
-     NAV
-     ============================================================ -->
+<!-- NAV -->
 <nav class="nav">
     <div class="nav-left">
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
@@ -1084,13 +919,11 @@
     </ul>
 
     <div class="nav-right" id="navRight">
-        <!-- Rendered by JS -->
+        <!-- NavWishlist injects wishlist icon + avatar here -->
     </div>
 </nav>
 
-<!-- ============================================================
-     MOBILE MENU
-     ============================================================ -->
+<!-- MOBILE MENU -->
 <div class="mobile-menu-overlay" id="mobileOverlay"></div>
 
 <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
@@ -1115,9 +948,7 @@
     </div>
 </aside>
 
-<!-- ============================================================
-     HERO
-     ============================================================ -->
+<!-- HERO -->
 <section class="hero-section-wrapper">
     <div class="hero-carousel-container" id="heroCarousel">
         <div class="hero-carousel-slides" id="heroSlides">
@@ -1137,9 +968,7 @@
     </div>
 </section>
 
-<!-- ============================================================
-     NOW SHOWING
-     ============================================================ -->
+<!-- NOW SHOWING -->
 <section class="section">
     <div class="carousel-head">
         <div>
@@ -1155,9 +984,7 @@
     <div class="carousel-track" id="popularTrack"></div>
 </section>
 
-<!-- ============================================================
-     UPCOMING
-     ============================================================ -->
+<!-- UPCOMING -->
 <section class="section">
     <div class="carousel-head">
         <div>
@@ -1178,9 +1005,7 @@
     </a>
 </section>
 
-<!-- ============================================================
-     IMAX BANNER
-     ============================================================ -->
+<!-- IMAX BANNER -->
 <section class="feature-banner">
     <div class="banner-content">
         <div class="banner-text">
@@ -1202,9 +1027,7 @@
     </div>
 </section>
 
-<!-- ============================================================
-     EVENTS
-     ============================================================ -->
+<!-- EVENTS -->
 <section class="section">
     <div class="carousel-head">
         <div>
@@ -1221,9 +1044,7 @@
     </a>
 </section>
 
-<!-- ============================================================
-     WHY
-     ============================================================ -->
+<!-- WHY -->
 <section class="features-section">
     <h2 class="section-title centered">Why Savannah Cinemas</h2>
 
@@ -1251,9 +1072,7 @@
     </div>
 </section>
 
-<!-- ============================================================
-     NEWSLETTER
-     ============================================================ -->
+<!-- NEWSLETTER -->
 <section class="newsletter-section">
     <div class="newsletter-card">
         <div class="newsletter-icon">📧</div>
@@ -1266,9 +1085,7 @@
     </div>
 </section>
 
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
+<!-- FOOTER -->
 <footer class="footer">
     <div class="footer-top">
         <div class="footer-brand">
@@ -1313,12 +1130,15 @@
     </div>
 </footer>
 
-<!-- ============================================================
-     SCRIPTS
-     ============================================================ -->
+<!-- ============================================================ -->
+<!-- SCRIPTS — Load order matters!                                 -->
+<!-- ============================================================ -->
+<script src="data/movies-inline.js"></script>
 <script src="js/app.js"></script>
 <script src="js/storage.js"></script>
 <script src="js/booking.js"></script>
+<script src="js/nav-avatar.js"></script>
+<script src="js/nav-wishlist.js"></script>
 
 <script>
 // ============================================================
@@ -1341,7 +1161,6 @@ const HomePage = {
             }
             await SavannahApp.init();
 
-            this.renderNav();
             this.renderHero();
             this.renderPopular();
             this.renderUpcoming();
@@ -1356,112 +1175,55 @@ const HomePage = {
     },
 
     // ========================================================
-    // NAV — avatar or sign-in
-    // ========================================================
-    renderNav() {
-        const navRight = document.getElementById('navRight');
-        const user = (typeof SavannahStorage !== 'undefined') ? SavannahStorage.getUser() : null;
-        const isLoggedIn = !!user && (!!user.email || !!user.name);
-
-        if (isLoggedIn) {
-            const first = (user.forenames || user.name || 'U').trim();
-            const initials = first.substring(0, 1).toUpperCase() +
-                             (user.surname ? user.surname.substring(0, 1).toUpperCase() : '');
-            const displayName = user.name || `${user.forenames || ''} ${user.surname || ''}`.trim() || 'Guest';
-
-            navRight.innerHTML = `
-                <div class="profile-wrapper" id="profileWrapper">
-                    <div class="avatar" id="avatarBtn" title="${displayName}">
-                        ${initials}
-                    </div>
-                    <div class="profile-menu">
-                        <div class="who">
-                            <div class="name">${displayName}</div>
-                            <div class="stat">Savannah Member</div>
-                        </div>
-                        <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
-                        <a href="bookings.html"><i class="fas fa-ticket-alt"></i> My Bookings</a>
-                        <a href="watchlist.html"><i class="fas fa-bookmark"></i> Watchlist</a>
-                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
-                    </div>
-                </div>
-            `;
-
-            document.getElementById('avatarBtn')?.addEventListener('click', (e) => {
-                e.stopPropagation();
-                document.getElementById('profileWrapper').classList.toggle('is-open');
-            });
-
-            document.addEventListener('click', (e) => {
-                const wrapper = document.getElementById('profileWrapper');
-                if (wrapper && !wrapper.contains(e.target)) wrapper.classList.remove('is-open');
-            });
-
-            document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (typeof SavannahStorage !== 'undefined') SavannahStorage.logout();
-                window.location.reload();
-            });
-
-        } else {
-            navRight.innerHTML = `
-                <a href="login.html" class="btn-signin">
-                    <i class="fas fa-sign-in-alt"></i> Sign In
-                </a>
-            `;
-        }
-    },
-
-    // ========================================================
     // HERO CAROUSEL
     // ========================================================
     renderHero() {
-    const slider = document.getElementById('heroSlides');
-    const dotsContainer = document.getElementById('heroDots');
+        const slider = document.getElementById('heroSlides');
+        const dotsContainer = document.getElementById('heroDots');
 
-    let featured = [];
-    const heroList = SavannahApp.data.hero_slides || [];
-    if (heroList.length) {
-        featured = heroList.map(id => SavannahApp.getMovieById(id)).filter(Boolean);
-    }
-    if (!featured.length) featured = SavannahApp.getFeaturedMovies();
-    if (!featured.length) featured = SavannahApp.getNowShowingMovies().slice(0, 5);
-    featured = featured.slice(0, 5);
-    this.heroSlides = featured;
+        let featured = [];
+        const heroList = SavannahApp.data.hero_slides || [];
+        if (heroList.length) {
+            featured = heroList.map(id => SavannahApp.getMovieById(id)).filter(Boolean);
+        }
+        if (!featured.length) featured = SavannahApp.getFeaturedMovies();
+        if (!featured.length) featured = SavannahApp.getNowShowingMovies().slice(0, 5);
+        featured = featured.slice(0, 5);
+        this.heroSlides = featured;
 
-    if (!featured.length) {
-        slider.innerHTML = `<div class="hero-loading">No featured films available.</div>`;
-        return;
-    }
+        if (!featured.length) {
+            slider.innerHTML = `<div class="hero-loading">No featured films available.</div>`;
+            return;
+        }
 
-    slider.innerHTML = featured.map((movie, i) => `
-        <div class="hero-slide" data-index="${i}"
-             style="background-image:url('${movie.backdrop_url || movie.poster_url}');">
-            <div class="hero-content">
-                <p class="hero-eyebrow">Now Showing</p>
-                <h2>${movie.title}</h2>
-                <p>${(movie.synopsis || '').substring(0, 180)}${movie.synopsis && movie.synopsis.length > 180 ? '…' : ''}</p>
-                <a href="movie.html?id=${movie.movie_id}" class="btn-hero">
-                    <i class="fas fa-ticket-alt"></i> Book Now
-                </a>
+        slider.innerHTML = featured.map((movie, i) => `
+            <div class="hero-slide" data-index="${i}"
+                 style="background-image:url('${movie.backdrop_url || movie.poster_url}');">
+                <div class="hero-content">
+                    <p class="hero-eyebrow">Now Showing</p>
+                    <h2>${movie.title}</h2>
+                    <p>${(movie.synopsis || '').substring(0, 180)}${movie.synopsis && movie.synopsis.length > 180 ? '…' : ''}</p>
+                    <a href="movie.html?id=${movie.movie_id}" class="btn-hero">
+                        <i class="fas fa-ticket-alt"></i> Book Now
+                    </a>
+                </div>
             </div>
-        </div>
-    `).join('');
+        `).join('');
 
-    dotsContainer.innerHTML = featured.map((_, i) => `
-        <button class="hero-dot ${i === 0 ? 'active' : ''}"
-                data-index="${i}" aria-label="Slide ${i + 1}"></button>
-    `).join('');
+        dotsContainer.innerHTML = featured.map((_, i) => `
+            <button class="hero-dot ${i === 0 ? 'active' : ''}"
+                    data-index="${i}" aria-label="Slide ${i + 1}"></button>
+        `).join('');
 
-    dotsContainer.querySelectorAll('.hero-dot').forEach(dot => {
-        dot.addEventListener('click', () => this.goToSlide(+dot.dataset.index));
-    });
+        dotsContainer.querySelectorAll('.hero-dot').forEach(dot => {
+            dot.addEventListener('click', () => this.goToSlide(+dot.dataset.index));
+        });
 
-    document.getElementById('heroPrev')?.addEventListener('click', () => this.prevSlide());
-    document.getElementById('heroNext')?.addEventListener('click', () => this.nextSlide());
+        document.getElementById('heroPrev')?.addEventListener('click', () => this.prevSlide());
+        document.getElementById('heroNext')?.addEventListener('click', () => this.nextSlide());
 
-    this.goToSlide(0);
-},
+        this.goToSlide(0);
+    },
 
     goToSlide(index) {
         const slides = document.querySelectorAll('.hero-slide');
@@ -1501,8 +1263,8 @@ const HomePage = {
     renderPopular() {
         const track = document.getElementById('popularTrack');
         const movies = SavannahApp.getNowShowingMovies()
-        .filter(m => !m.exclude_from_grid)   // ← skip carousel-only films
-        .slice(0, 10);
+            .filter(m => !m.exclude_from_grid)
+            .slice(0, 10);
 
         if (!movies.length) {
             track.innerHTML = `<div style="padding:30px;color:var(--paper-dim);font-family:var(--font-mono);">No films currently showing.</div>`;
@@ -1535,7 +1297,7 @@ const HomePage = {
     },
 
     // ========================================================
-    // MOVIE CARD
+    // MOVIE CARD (no bookmark button)
     // ========================================================
     movieCard(movie, showReleaseBadge = false) {
         const poster = movie.poster_url || '';
@@ -1544,7 +1306,6 @@ const HomePage = {
         const releaseLabel = movie.release_date
             ? new Date(movie.release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
             : 'TBA';
-        const inWatchlist = (typeof SavannahStorage !== 'undefined') ? SavannahStorage.isInWatchlist(movie.movie_id) : false;
 
         return `
             <div class="movie-card" onclick="window.location.href='movie.html?id=${movie.movie_id}'">
@@ -1552,16 +1313,15 @@ const HomePage = {
                     ${showReleaseBadge
                         ? `<span class="release-badge"><i class="far fa-calendar-alt"></i> ${releaseLabel}</span>`
                         : ''}
+                    <span class="rating-badge">⭐ ${rating}</span>
                 </div>
-                <button class="bookmark-btn" data-movie-id="${movie.movie_id}" title="${inWatchlist ? 'Remove from watchlist' : 'Save to watchlist'}" style="position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:50%;background:rgba(20,20,28,0.85);backdrop-filter:blur(8px);border:1px solid var(--ink-line);display:flex;align-items:center;justify-content:center;color:${inWatchlist ? 'var(--gold)' : 'var(--paper-dim)'};font-size:13px;z-index:3;cursor:pointer;">
-    <i class="fas fa-bookmark"></i>
-</button>
-                
+                <div class="card-body">
+                    <div class="title">${movie.title}</div>
+                    <div class="year">${year}${movie.genre && movie.genre[0] ? ' · ' + movie.genre[0] : ''}</div>
+                </div>
             </div>
         `;
     },
-
-    
 
     // ========================================================
     // EVENTS
@@ -1626,7 +1386,7 @@ const HomePage = {
     // EVENT LISTENERS
     // ========================================================
     setupEventListeners() {
-        // ---- Hamburger / slide-in menu ----
+        // Hamburger / slide-in menu
         const toggle = document.getElementById('menuToggle');
         const menu = document.getElementById('mobileMenu');
         const overlay = document.getElementById('mobileOverlay');
@@ -1662,7 +1422,7 @@ const HomePage = {
             if (e.key === 'ArrowLeft') this.prevSlide();
         });
 
-        // ---- Carousel arrows ----
+        // Carousel arrows
         const popularTrack = document.getElementById('popularTrack');
         document.getElementById('popularPrev')?.addEventListener('click', () =>
             popularTrack.scrollBy({ left: -300, behavior: 'smooth' })
@@ -1679,7 +1439,7 @@ const HomePage = {
             upcomingTrack.scrollBy({ left: 300, behavior: 'smooth' })
         );
 
-        // ---- Newsletter ----
+        // Newsletter
         document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
             e.preventDefault();
             const toast = document.createElement('div');
@@ -1689,33 +1449,10 @@ const HomePage = {
             setTimeout(() => toast.remove(), 3000);
             e.target.reset();
         });
-
-        // Bookmark buttons
-document.querySelectorAll('.bookmark-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const movieId = btn.dataset.movieId;
-        const isSaved = SavannahStorage.isInWatchlist(movieId);
-
-        if (isSaved) {
-            SavannahStorage.removeFromWatchlist(movieId);
-        } else {
-            SavannahStorage.addToWatchlist(movieId);
-        }
-
-        btn.style.color = isSaved ? 'var(--paper-dim)' : 'var(--gold)';
-    });
-});
     }
 };
 
 document.addEventListener('DOMContentLoaded', () => HomePage.init());
 </script>
-<script src="data/movies-inline.js"></script>
-<script src="js/app.js"></script>
-<script src="js/storage.js"></script>
-<script src="js/booking.js"></script>
-<script src="js/nav-avatar.js"></script>
-<script src="js/nav-wishlist.js"></script>
 </body>
 </html>

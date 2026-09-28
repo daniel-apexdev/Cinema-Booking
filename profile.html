@@ -40,7 +40,6 @@
         .nav-links a { color: var(--paper-dim); font-size: clamp(12px, 0.9vw, 14px); transition: 0.3s ease; white-space: nowrap; }
         .nav-links a:hover, .nav-links a.active { color: var(--gold); }
         .nav-right { display: flex; align-items: center; gap: 12px; z-index: 1001; position: relative; }
-        .btn-signin { padding: 8px 18px; background: var(--gold); color: var(--ink); border-radius: var(--radius-sm); font-size: clamp(12px, 0.8vw, 14px); font-weight: 500; min-height: 38px; display: inline-flex; align-items: center; gap: 6px; }
 
         .menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px 6px; min-width: var(--touch-target); min-height: var(--touch-target); justify-content: center; align-items: center; border-radius: var(--radius-sm); }
         .menu-toggle span { display: block; width: 24px; height: 2.5px; background: var(--paper); transition: 0.3s ease; border-radius: 2px; transform-origin: center; }
@@ -79,11 +78,7 @@
             align-items: center;
         }
 
-        /* Avatar with upload */
-        .avatar-wrap {
-            position: relative;
-            flex-shrink: 0;
-        }
+        .avatar-wrap { position: relative; flex-shrink: 0; }
         .profile-avatar {
             width: 120px;
             height: 120px;
@@ -104,12 +99,7 @@
             background-position: center;
             background-repeat: no-repeat;
         }
-        .profile-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+        .profile-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .avatar-edit-btn {
             position: absolute;
             bottom: 4px;
@@ -128,27 +118,11 @@
             cursor: pointer;
             z-index: 2;
         }
-        .avatar-edit-btn:hover {
-            background: var(--gold);
-            color: var(--ink);
-            transform: scale(1.1);
-        }
+        .avatar-edit-btn:hover { background: var(--gold); color: var(--ink); transform: scale(1.1); }
 
         .profile-info { min-width: 0; }
-        .profile-name {
-            font-family: var(--font-display);
-            font-size: 28px;
-            font-weight: 500;
-            margin-bottom: 6px;
-        }
-        .profile-meta {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            color: var(--paper-dim);
-            font-size: 13px;
-        }
+        .profile-name { font-family: var(--font-display); font-size: 28px; font-weight: 500; margin-bottom: 6px; }
+        .profile-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; color: var(--paper-dim); font-size: 13px; }
         .profile-meta-item { display: flex; align-items: center; gap: 6px; }
         .profile-meta-item i { color: var(--gold); }
         .profile-member-badge {
@@ -166,7 +140,7 @@
             color: var(--gold);
         }
 
-        /* ACCOUNT ACTIONS (separate card below) */
+        /* ACCOUNT ACTIONS */
         .account-actions {
             display: flex;
             flex-wrap: wrap;
@@ -179,22 +153,9 @@
             align-items: center;
             justify-content: space-between;
         }
-        .account-actions-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 13px;
-            color: var(--paper-dim);
-        }
-        .account-actions-info i {
-            color: var(--gold);
-            font-size: 16px;
-        }
-        .account-actions-buttons {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+        .account-actions-info { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--paper-dim); }
+        .account-actions-info i { color: var(--gold); font-size: 16px; }
+        .account-actions-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
 
         .btn-logout {
             padding: 10px 20px;
@@ -226,40 +187,13 @@
             transition: 0.3s ease;
             min-height: 42px;
         }
-        .btn-manage:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-        }
+        .btn-manage:hover { border-color: var(--gold); color: var(--gold); }
 
         /* STATS */
-        .profile-stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 40px;
-        }
-        .stat-card {
-            padding: 24px;
-            background: var(--ink-raised);
-            border: 1px solid var(--ink-line);
-            border-radius: var(--radius-md);
-            text-align: center;
-        }
-        .stat-card-value {
-            font-family: var(--font-display);
-            font-size: 32px;
-            font-weight: 500;
-            color: var(--gold);
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-        .stat-card-label {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--paper-dim);
-        }
+        .profile-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px; }
+        .stat-card { padding: 24px; background: var(--ink-raised); border: 1px solid var(--ink-line); border-radius: var(--radius-md); text-align: center; }
+        .stat-card-value { font-family: var(--font-display); font-size: 32px; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+        .stat-card-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper-dim); }
 
         /* TABS */
         .profile-tabs {
@@ -304,27 +238,10 @@
             transition: 0.3s ease;
         }
         .booking-row:hover { border-color: var(--gold-dim); }
-        .booking-poster {
-            width: 80px;
-            height: 120px;
-            border-radius: 8px;
-            object-fit: cover;
-            background: var(--ink);
-        }
+        .booking-poster { width: 80px; height: 120px; border-radius: 8px; object-fit: cover; background: var(--ink); }
         .booking-info { min-width: 0; }
-        .booking-title {
-            font-family: var(--font-display);
-            font-size: 18px;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-        .booking-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            font-size: 12px;
-            color: var(--paper-dim);
-        }
+        .booking-title { font-family: var(--font-display); font-size: 18px; font-weight: 500; margin-bottom: 8px; }
+        .booking-meta { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--paper-dim); }
         .booking-meta-item { display: flex; align-items: center; gap: 8px; }
         .booking-meta-item i { color: var(--gold); width: 12px; }
         .booking-ref {
@@ -351,48 +268,18 @@
         .booking-status.past { background: rgba(255,255,255,0.05); color: var(--paper-dim); border: 1px solid var(--ink-line); }
         .booking-status.cancelled { background: rgba(179,57,81,0.15); color: #F48FB1; border: 1px solid rgba(179,57,81,0.3); }
 
-        .empty-tab {
-            padding: 60px 20px;
-            text-align: center;
-            color: var(--paper-dim);
-        }
-        .empty-tab i {
-            font-size: 48px;
-            color: var(--gold-dim);
-            display: block;
-            margin-bottom: 16px;
-        }
-        .empty-tab h3 {
-            font-family: var(--font-display);
-            font-size: 20px;
-            color: var(--paper);
-            margin-bottom: 8px;
-        }
+        .empty-tab { padding: 60px 20px; text-align: center; color: var(--paper-dim); }
+        .empty-tab i { font-size: 48px; color: var(--gold-dim); display: block; margin-bottom: 16px; }
+        .empty-tab h3 { font-family: var(--font-display); font-size: 20px; color: var(--paper); margin-bottom: 8px; }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: var(--radius-sm);
-            font-weight: 500;
-            font-size: 14px;
-            transition: 0.3s ease;
-            min-height: 44px;
-        }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: var(--radius-sm); font-weight: 500; font-size: 14px; transition: 0.3s ease; min-height: 44px; }
         .btn-primary { background: var(--gold); color: var(--ink); }
         .btn-primary:hover { background: #F0C369; transform: translateY(-2px); }
         .btn-ghost { background: transparent; color: var(--paper); border: 1px solid var(--ink-line); }
         .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
         /* SETTINGS */
-        .settings-group {
-            background: var(--ink-raised);
-            border: 1px solid var(--ink-line);
-            border-radius: var(--radius-md);
-            padding: 24px;
-            margin-bottom: 20px;
-        }
+        .settings-group { background: var(--ink-raised); border: 1px solid var(--ink-line); border-radius: var(--radius-md); padding: 24px; margin-bottom: 20px; }
         .settings-group-title {
             font-family: var(--font-display);
             font-size: 18px;
@@ -405,7 +292,6 @@
             gap: 10px;
         }
         .settings-group-title i { color: var(--gold); font-size: 14px; }
-
         .settings-row {
             display: grid;
             grid-template-columns: 1fr auto;
@@ -419,6 +305,150 @@
         .settings-label { font-size: 14px; }
         .settings-sublabel { font-size: 12px; color: var(--paper-dim); margin-top: 2px; }
         .settings-value { font-family: var(--font-mono); font-size: 13px; color: var(--gold); }
+
+        /* PROFILE WATCHLIST */
+        .profile-watchlist-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--ink-line);
+        }
+        .profile-watchlist-title {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .profile-watchlist-title i { color: var(--gold); font-size: 14px; }
+        .profile-watchlist-count {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--paper-dim);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .profile-watchlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .profile-watchlist-card {
+            background: var(--ink-raised);
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            cursor: pointer;
+            transition: 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.3s ease both;
+        }
+        .profile-watchlist-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold-dim);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+        }
+
+        .profile-watchlist-poster {
+            position: relative;
+            aspect-ratio: 2/3;
+            background: var(--ink);
+            overflow: hidden;
+        }
+        .profile-watchlist-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .profile-watchlist-card:hover .profile-watchlist-poster img {
+            transform: scale(1.06);
+        }
+
+        .profile-watchlist-remove {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(20,20,28,0.85);
+            border: 1px solid var(--ink-line);
+            color: var(--paper-dim);
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            cursor: pointer;
+            opacity: 0;
+            transition: 0.3s ease;
+        }
+        .profile-watchlist-card:hover .profile-watchlist-remove { opacity: 1; }
+        .profile-watchlist-remove:hover {
+            background: var(--rust);
+            color: white;
+            border-color: var(--rust);
+        }
+
+        .profile-watchlist-rating {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            padding: 3px 8px;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(6px);
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--gold);
+            z-index: 2;
+        }
+
+        .profile-watchlist-info {
+            padding: 12px 14px 14px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .profile-watchlist-name {
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.25;
+            margin-bottom: 4px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            min-height: 34px;
+        }
+        .profile-watchlist-meta {
+            font-size: 11px;
+            color: var(--paper-dim);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+        .profile-watchlist-meta .dot { opacity: 0.4; }
+
+        .profile-watchlist-actions { margin-top: auto; }
+        .profile-watchlist-actions .btn {
+            width: 100%;
+            justify-content: center;
+            font-size: 12px;
+            padding: 8px 12px;
+            min-height: 34px;
+        }
 
         /* TOAST */
         .toast {
@@ -464,25 +494,13 @@
             max-width: 480px;
             width: 100%;
             animation: modalIn 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
         }
         @keyframes modalIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .modal h3 {
-            font-family: var(--font-display);
-            font-size: 22px;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-        .modal p {
-            color: var(--paper-dim);
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
-        .modal-preview {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
+        .modal h3 { font-family: var(--font-display); font-size: 22px; font-weight: 500; margin-bottom: 8px; }
+        .modal p { color: var(--paper-dim); font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+        .modal-preview { display: flex; justify-content: center; margin-bottom: 24px; }
         .preview-avatar {
             width: 120px;
             height: 120px;
@@ -501,12 +519,7 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
             border: 2px solid var(--gold-dim);
         }
-        .modal-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
+        .modal-preview img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
         .modal-tabs {
             display: flex;
             gap: 4px;
@@ -561,20 +574,10 @@
             transition: 0.3s ease;
             text-align: center;
         }
-        .file-upload-btn:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-            background: rgba(232,179,76,0.05);
-        }
-        .file-upload-btn input {
-            display: none;
-        }
+        .file-upload-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(232,179,76,0.05); }
+        .file-upload-btn input { display: none; }
 
-        .modal-actions {
-            display: flex;
-            gap: 12px;
-            margin-top: 24px;
-        }
+        .modal-actions { display: flex; gap: 12px; margin-top: 24px; }
         .modal-actions .btn { flex: 1; justify-content: center; }
 
         .modal-divider {
@@ -598,7 +601,6 @@
         .modal-divider::before { left: 0; }
         .modal-divider::after { right: 0; }
 
-        /* Crop preview — square container with dashed border */
         .crop-container {
             position: relative;
             width: 220px;
@@ -611,7 +613,6 @@
             cursor: grab;
         }
         .crop-container:active { cursor: grabbing; }
-
         .crop-container canvas {
             position: absolute;
             top: 0;
@@ -620,7 +621,6 @@
             height: 100%;
             display: block;
         }
-
         .crop-guides {
             position: absolute;
             inset: 0;
@@ -633,7 +633,6 @@
         .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 16px 0 24px; font-family: var(--font-mono); font-size: 11px; color: var(--paper-dim); }
         .footer-bottom .legal a { color: var(--paper-dim); margin-left: 16px; }
 
-        /* RESPONSIVE */
         @media (max-width: 900px) {
             .menu-toggle { display: flex; }
             .nav-links { display: none; }
@@ -659,11 +658,18 @@
             .settings-row { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .footer-bottom .legal a { margin: 0 8px; }
+            .profile-watchlist-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+            .profile-watchlist-name { font-size: 13px; }
+            .profile-watchlist-remove { opacity: 1; }
+        }
+        @media (max-width: 400px) {
+            .profile-watchlist-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="nav">
     <div class="nav-left">
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
@@ -678,11 +684,12 @@
         <li><a href="events.html">Events</a></li>
         <li><a href="offers.html">Offers</a></li>
     </ul>
-    <div class="nav-right">
-        <div id="navUser"></div>
+    <div class="nav-right" id="navRight">
+        <!-- NavWishlist injects the avatar dropdown here -->
     </div>
 </nav>
 
+<!-- MOBILE MENU -->
 <div class="mobile-menu-overlay" id="mobileOverlay"></div>
 <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <div class="mobile-menu-header">
@@ -700,11 +707,9 @@
     <div class="mobile-menu-footer"><p>© 2026 Savannah Cinemas</p></div>
 </aside>
 
-<section class="profile-section" id="profileSection">
-    <!-- Populated by JS -->
-</section>
+<!-- PROFILE -->
+<section class="profile-section" id="profileSection"></section>
 
-<!-- AVATAR MODAL -->
 <!-- AVATAR MODAL -->
 <div class="modal-overlay" id="avatarModal">
     <div class="modal">
@@ -720,7 +725,6 @@
             <button class="modal-tab" data-mtab="url">From URL</button>
         </div>
 
-        <!-- UPLOAD TAB -->
         <div class="modal-tab-panel active" id="uploadPanel">
             <label class="file-upload-btn" id="fileUploadLabel">
                 <i class="fas fa-cloud-upload-alt" style="font-size:20px;"></i>
@@ -728,15 +732,13 @@
                 <input type="file" id="avatarFileInput" accept="image/*">
             </label>
 
-            <!-- Cropping controls (only shown when a file is selected) -->
             <div id="cropControls" style="display:none; margin-top:20px;">
                 <div style="margin-bottom:12px;">
                     <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper-dim);margin-bottom:6px;">
                         <span>Zoom</span>
                         <span id="zoomLabel">100%</span>
                     </div>
-                    <input type="range" id="zoomSlider" min="100" max="300" value="100"
-                           style="width:100%;accent-color:var(--gold);">
+                    <input type="range" id="zoomSlider" min="100" max="300" value="100" style="width:100%;accent-color:var(--gold);">
                 </div>
 
                 <div style="margin-bottom:12px;">
@@ -744,8 +746,7 @@
                         <span>Horizontal</span>
                         <span id="panXLabel">0</span>
                     </div>
-                    <input type="range" id="panXSlider" min="-100" max="100" value="0"
-                           style="width:100%;accent-color:var(--gold);">
+                    <input type="range" id="panXSlider" min="-100" max="100" value="0" style="width:100%;accent-color:var(--gold);">
                 </div>
 
                 <div style="margin-bottom:12px;">
@@ -753,8 +754,7 @@
                         <span>Vertical</span>
                         <span id="panYLabel">0</span>
                     </div>
-                    <input type="range" id="panYSlider" min="-100" max="100" value="0"
-                           style="width:100%;accent-color:var(--gold);">
+                    <input type="range" id="panYSlider" min="-100" max="100" value="0" style="width:100%;accent-color:var(--gold);">
                 </div>
 
                 <button class="btn btn-ghost" id="resetCropBtn" style="width:100%;justify-content:center;font-size:12px;">
@@ -763,7 +763,6 @@
             </div>
         </div>
 
-        <!-- URL TAB -->
         <div class="modal-tab-panel" id="urlPanel">
             <input type="url" class="modal-input" id="avatarUrlInput" placeholder="https://example.com/photo.jpg">
         </div>
@@ -771,13 +770,13 @@
         <div class="modal-divider">or</div>
 
         <div class="modal-actions" style="margin-top:0;">
-            <button class="btn btn-ghost" onclick="ProfilePage.removeAvatar()">
+            <button class="btn btn-ghost" id="removeAvatarBtn">
                 <i class="fas fa-trash-alt"></i> Remove
             </button>
         </div>
 
         <div class="modal-actions">
-            <button class="btn btn-ghost" onclick="ProfilePage.closeAvatarModal()">Cancel</button>
+            <button class="btn btn-ghost" id="cancelAvatarBtn">Cancel</button>
             <button class="btn btn-primary" id="saveAvatarBtn">
                 <i class="fas fa-check"></i> Save
             </button>
@@ -796,9 +795,12 @@
     </div>
 </footer>
 
+<!-- SCRIPTS — order matters -->
 <script src="data/movies-inline.js"></script>
 <script src="js/app.js"></script>
 <script src="js/storage.js"></script>
+<script src="js/nav-avatar.js"></script>
+<script src="js/nav-wishlist.js"></script>
 
 <script>
 // ============================================================
@@ -808,7 +810,7 @@
 const ProfilePage = {
     user: null,
     bookingHistory: [],
-    pendingAvatar: null,   // { type: 'upload' | 'url', value: string }
+    pendingAvatar: null,
 
     async init() {
         await SavannahApp.init();
@@ -821,79 +823,27 @@ const ProfilePage = {
         }
 
         this.bookingHistory = SavannahStorage.get(SavannahStorage.KEYS.BOOKING_HISTORY, []);
-        this.renderNavUser();
         this.render();
         this.setupTabs();
         this.setupAvatarModal();
     },
 
     // ========================================================
-    // INITIALS — first two letters of first + first two of last
+    // AVATAR HELPERS — delegate to NavAvatar
     // ========================================================
     getInitials(user) {
-        if (!user) return 'SV';
-
-        const first = (user.forenames || user.first_name || user.name || '').trim();
-        const last = (user.surname || user.last_name || '').trim();
-
-        // If we have separate first/last
-        if (first && last) {
-            const f = first.replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase();
-            const l = last.replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase();
-            return (f + l) || 'SV';
-        }
-
-        // Fallback: use full name split
-        const full = (user.name || first || '').trim();
-        if (!full) return 'SV';
-
-        const parts = full.split(/\s+/).filter(Boolean);
-        if (parts.length >= 2) {
-            const f = parts[0].replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase();
-            const l = parts[parts.length - 1].replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase();
-            return (f + l) || 'SV';
-        }
-
-        // Single name: take first 2 letters
-        const single = parts[0].replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase();
-        return single || 'SV';
+        if (typeof NavAvatar !== 'undefined') return NavAvatar.getInitials(user);
+        return 'SV';
     },
 
-    // ========================================================
-    // AVATAR
-    // ========================================================
     getAvatarUrl(user) {
-        // Returns the stored avatar URL from localStorage if set
-        const avatars = SavannahStorage.get('savannah_avatars', {});
-        const email = (user?.email || '').toLowerCase();
-        return avatars[email] || null;
+        if (typeof NavAvatar !== 'undefined') return NavAvatar.getAvatarUrl(user);
+        return null;
     },
 
     saveAvatarToStorage(url) {
-        const avatars = SavannahStorage.get('savannah_avatars', {});
-        const email = (this.user?.email || '').toLowerCase();
-        if (url) {
-            avatars[email] = url;
-        } else {
-            delete avatars[email];
-        }
-        SavannahStorage.set('savannah_avatars', avatars);
-    },
-
-    // ========================================================
-    // NAV USER
-    // ========================================================
-        renderNavUser() {
-        const navUser = document.getElementById('navUser');
-        if (!navUser) return;
-
-        const user = this.user;
         if (typeof NavAvatar !== 'undefined') {
-            navUser.innerHTML = `<div style="display:flex;align-items:center;gap:10px;">${NavAvatar.renderHTML(user, 34, 11)}</div>`;
-        } else {
-            // Fallback
-            const initials = this.getInitials(user);
-            navUser.innerHTML = `<div style="width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:500;font-size:11px;">${initials}</div>`;
+            NavAvatar.setAvatarUrl(this.user?.email, url);
         }
     },
 
@@ -906,17 +856,15 @@ const ProfilePage = {
         const avatarUrl = this.getAvatarUrl(u);
         const displayName = u.name || `${u.forenames || ''} ${u.surname || ''}`.trim() || 'Guest';
 
-        // Compute stats
         const upcoming = this.bookingHistory.filter(b => new Date(b.showtimeDate) >= new Date()).length;
         const watched = this.bookingHistory.filter(b => new Date(b.showtimeDate) < new Date()).length;
         const totalSpent = this.bookingHistory.reduce((sum, b) => sum + (parseFloat(b.totalAmountRaw) || 0), 0);
 
         const avatarInner = avatarUrl
-        ? `<img src="${avatarUrl}" alt="${displayName}">`
-        : initials;
+            ? `<img src="${avatarUrl}" alt="${displayName}">`
+            : initials;
 
         document.getElementById('profileSection').innerHTML = `
-            <!-- HEADER -->
             <div class="profile-header">
                 <div class="avatar-wrap">
                     <div class="profile-avatar" id="profileAvatarEl">${avatarInner}</div>
@@ -938,23 +886,21 @@ const ProfilePage = {
                 </div>
             </div>
 
-            <!-- ACCOUNT ACTIONS -->
             <div class="account-actions">
                 <div class="account-actions-info">
                     <i class="fas fa-shield-alt"></i>
                     <span>Manage your account and session</span>
                 </div>
                 <div class="account-actions-buttons">
-                    <button class="btn-manage" onclick="ProfilePage.scrollToSettings()">
+                    <button class="btn-manage" id="accountSettingsBtn">
                         <i class="fas fa-cog"></i> Account Settings
                     </button>
-                    <button class="btn-logout" onclick="ProfilePage.logout()">
+                    <button class="btn-logout" id="signOutBtn">
                         <i class="fas fa-sign-out-alt"></i> Sign Out
                     </button>
                 </div>
             </div>
 
-            <!-- STATS -->
             <div class="profile-stats">
                 <div class="stat-card">
                     <div class="stat-card-value">${upcoming}</div>
@@ -974,40 +920,38 @@ const ProfilePage = {
                 </div>
             </div>
 
-            <!-- TABS -->
             <div class="profile-tabs" id="settingsAnchor">
                 <button class="profile-tab active" data-tab="bookings">My Bookings</button>
                 <button class="profile-tab" data-tab="watchlist">Watchlist</button>
                 <button class="profile-tab" data-tab="settings">Settings</button>
             </div>
 
-            <!-- BOOKINGS -->
             <div class="tab-panel active" id="bookingsPanel">
                 ${this.renderBookings()}
             </div>
 
-            <!-- WATCHLIST -->
             <div class="tab-panel" id="watchlistPanel">
-                <div class="empty-tab">
-                    <i class="fas fa-bookmark"></i>
-                    <h3>No saved films yet</h3>
-                    <p>Browse movies and tap the bookmark icon to save them here.</p>
-                    <a href="index.html" class="btn btn-primary" style="display:inline-flex;margin-top:20px;">
-                        <i class="fas fa-film"></i> Browse Movies
-                    </a>
-                </div>
+                ${this.renderWatchlist()}
             </div>
 
-            <!-- SETTINGS -->
             <div class="tab-panel" id="settingsPanel">
                 ${this.renderSettings()}
             </div>
         `;
 
-        // Wire up avatar edit button
         document.getElementById('avatarEditBtn')?.addEventListener('click', () => this.openAvatarModal());
+        document.getElementById('accountSettingsBtn')?.addEventListener('click', () => this.scrollToSettings());
+        document.getElementById('signOutBtn')?.addEventListener('click', () => this.logout());
+
+        // Wire watchlist handlers if it's already the visible tab
+        if (document.querySelector('.profile-tab.active')?.dataset.tab === 'watchlist') {
+            this.wireWatchlistHandlers();
+        }
     },
 
+    // ========================================================
+    // BOOKINGS
+    // ========================================================
     renderBookings() {
         if (!this.bookingHistory.length) {
             return `
@@ -1061,13 +1005,158 @@ const ProfilePage = {
         `;
     },
 
+    // ========================================================
+    // WATCHLIST
+    // ========================================================
+    renderWatchlist() {
+        const watchlistIds = SavannahStorage.getWatchlist() || [];
+
+        if (!watchlistIds.length) {
+            return `
+                <div class="empty-tab">
+                    <i class="fas fa-bookmark"></i>
+                    <h3>No saved films yet</h3>
+                    <p>Browse movies and tap the bookmark icon to save them here.</p>
+                    <a href="index.html" class="btn btn-primary" style="display:inline-flex;margin-top:20px;">
+                        <i class="fas fa-film"></i> Browse Movies
+                    </a>
+                </div>`;
+        }
+
+        const movies = watchlistIds
+            .map(id => SavannahApp.getMovieById(id))
+            .filter(Boolean);
+
+        if (!movies.length) {
+            return `
+                <div class="empty-tab">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h3>Watchlist is out of sync</h3>
+                    <p>Some saved films are no longer in the catalog.</p>
+                    <a href="index.html" class="btn btn-primary" style="display:inline-flex;margin-top:20px;">
+                        <i class="fas fa-film"></i> Browse Movies
+                    </a>
+                </div>`;
+        }
+
+        return `
+            <div class="profile-watchlist-head">
+                <div class="profile-watchlist-title">
+                    <i class="fas fa-bookmark"></i>
+                    Saved Films
+                </div>
+                <div class="profile-watchlist-count">
+                    ${movies.length} film${movies.length !== 1 ? 's' : ''}
+                </div>
+            </div>
+            <div class="profile-watchlist-grid" id="profileWatchlistGrid">
+                ${movies.map(m => this.renderWatchlistCard(m)).join('')}
+            </div>
+        `;
+    },
+
+    renderWatchlistCard(movie) {
+        const poster = movie.poster_url || '';
+        const rating = movie.imdb_rating ? Number(movie.imdb_rating).toFixed(1) : 'NR';
+        const year = movie.release_year || (movie.release_date ? movie.release_date.substring(0, 4) : 'TBA');
+
+        const hasShowtimes = SavannahApp.data.showtimes.some(s => s.movie_id === movie.movie_id);
+        const isNowShowing = movie.status === 'now_showing' && hasShowtimes;
+
+        return `
+            <div class="profile-watchlist-card" data-movie-id="${movie.movie_id}">
+                <div class="profile-watchlist-poster">
+                    <img src="${poster}" alt="${movie.title}" loading="lazy"
+                         onerror="this.style.background='var(--ink)';this.src='';">
+                    <button class="profile-watchlist-remove" data-movie-id="${movie.movie_id}" title="Remove from watchlist">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <span class="profile-watchlist-rating">⭐ ${rating}</span>
+                </div>
+                <div class="profile-watchlist-info">
+                    <div class="profile-watchlist-name">${movie.title}</div>
+                    <div class="profile-watchlist-meta">
+                        <span>${year}</span>
+                        ${movie.genre && movie.genre[0] ? `<span class="dot">·</span><span>${movie.genre[0]}</span>` : ''}
+                    </div>
+                    <div class="profile-watchlist-actions">
+                        ${isNowShowing ? `
+                            <button class="btn btn-primary profile-watchlist-book" data-movie-id="${movie.movie_id}">
+                                <i class="fas fa-ticket-alt"></i> Book
+                            </button>
+                        ` : `
+                            <button class="btn btn-ghost profile-watchlist-details" data-movie-id="${movie.movie_id}">
+                                <i class="fas fa-info-circle"></i> Details
+                            </button>
+                        `}
+                    </div>
+                </div>
+            </div>
+        `;
+    },
+
+    wireWatchlistHandlers() {
+        document.querySelectorAll('.profile-watchlist-remove').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.removeFromWatchlist(btn.dataset.movieId);
+            });
+        });
+
+        document.querySelectorAll('.profile-watchlist-book').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                window.location.href = `movie.html?id=${btn.dataset.movieId}`;
+            });
+        });
+
+        document.querySelectorAll('.profile-watchlist-details').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                window.location.href = `movie.html?id=${btn.dataset.movieId}`;
+            });
+        });
+
+        document.querySelectorAll('.profile-watchlist-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('button')) return;
+                window.location.href = `movie.html?id=${card.dataset.movieId}`;
+            });
+        });
+    },
+
+    removeFromWatchlist(movieId) {
+        if (typeof SavannahStorage === 'undefined') return;
+
+        const movie = SavannahApp.getMovieById(movieId);
+        if (!movie) return;
+
+        if (!confirm(`Remove "${movie.title}" from your watchlist?`)) return;
+
+        SavannahStorage.removeFromWatchlist(movieId);
+
+        const panel = document.getElementById('watchlistPanel');
+        if (panel) {
+            panel.innerHTML = this.renderWatchlist();
+            this.wireWatchlistHandlers();
+        }
+
+        if (typeof NavWishlist !== 'undefined' && NavWishlist.refresh) {
+            NavWishlist.refresh();
+        }
+
+        this.toast(`Removed "${movie.title}" from watchlist`);
+    },
+
+    // ========================================================
+    // SETTINGS
+    // ========================================================
     renderSettings() {
         const u = this.user;
         return `
             <div class="settings-group">
                 <div class="settings-group-title">
-                    <i class="fas fa-user"></i>
-                    Personal Information
+                    <i class="fas fa-user"></i> Personal Information
                 </div>
                 <div class="settings-row">
                     <div>
@@ -1094,8 +1183,7 @@ const ProfilePage = {
 
             <div class="settings-group">
                 <div class="settings-group-title">
-                    <i class="fas fa-bell"></i>
-                    Notifications
+                    <i class="fas fa-bell"></i> Notifications
                 </div>
                 <div class="settings-row">
                     <div>
@@ -1115,15 +1203,14 @@ const ProfilePage = {
 
             <div class="settings-group">
                 <div class="settings-group-title">
-                    <i class="fas fa-shield-alt"></i>
-                    Security
+                    <i class="fas fa-shield-alt"></i> Security
                 </div>
                 <div class="settings-row">
                     <div>
                         <div class="settings-label">Password</div>
                         <div class="settings-sublabel">Last changed —</div>
                     </div>
-                    <button class="btn btn-ghost" onclick="ProfilePage.changePassword()">
+                    <button class="btn btn-ghost" id="changePasswordBtn">
                         <i class="fas fa-key"></i> Change
                     </button>
                 </div>
@@ -1132,7 +1219,7 @@ const ProfilePage = {
                         <div class="settings-label">Two-Factor Authentication</div>
                         <div class="settings-sublabel">Extra security for your account</div>
                     </div>
-                    <button class="btn btn-ghost" onclick="ProfilePage.enableTwoFactor()">
+                    <button class="btn btn-ghost" id="enable2FABtn">
                         <i class="fas fa-lock"></i> Enable
                     </button>
                 </div>
@@ -1140,24 +1227,35 @@ const ProfilePage = {
         `;
     },
 
+    // ========================================================
+    // TABS
+    // ========================================================
     setupTabs() {
         document.querySelectorAll('.profile-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
                 document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
                 tab.classList.add('active');
-                document.getElementById(`${tab.dataset.tab}Panel`).classList.add('active');
+                const panel = document.getElementById(`${tab.dataset.tab}Panel`);
+                panel.classList.add('active');
+
+                if (tab.dataset.tab === 'watchlist') {
+                    panel.innerHTML = this.renderWatchlist();
+                    this.wireWatchlistHandlers();
+                }
             });
         });
     },
 
     scrollToSettings() {
-        // Switch to settings tab and scroll
         const settingsTab = document.querySelector('.profile-tab[data-tab="settings"]');
         settingsTab?.click();
         document.getElementById('settingsAnchor')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     },
 
+    // ========================================================
+    // MOBILE MENU
+    // ========================================================
     setupMobileMenu() {
         const toggle = document.getElementById('menuToggle');
         const menu = document.getElementById('mobileMenu');
@@ -1173,20 +1271,16 @@ const ProfilePage = {
     // ========================================================
     // AVATAR MODAL
     // ========================================================
-        // ========================================================
-    // AVATAR MODAL WITH CROPPING
-    // ========================================================
     cropState: {
-        img: null,          // HTMLImageElement of the source
-        zoom: 1,            // 1 to 3
-        panX: 0,            // -100 to 100 (percent of crop box)
+        img: null,
+        zoom: 1,
+        panX: 0,
         panY: 0,
         canvas: null,
         ctx: null
     },
 
     setupAvatarModal() {
-        // Modal tab switching
         document.querySelectorAll('.modal-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
@@ -1196,21 +1290,17 @@ const ProfilePage = {
             });
         });
 
-        // File input
         document.getElementById('avatarFileInput')?.addEventListener('change', async (e) => {
             const file = e.target.files?.[0];
             if (!file) return;
 
-            // Validate size (max 5MB source)
             if (file.size > 5 * 1024 * 1024) {
                 this.toast('Image must be under 5 MB', 'error');
                 return;
             }
-
             await this.loadCropImage(file);
         });
 
-        // URL input
         document.getElementById('avatarUrlInput')?.addEventListener('input', (e) => {
             const url = e.target.value.trim();
             if (!url) {
@@ -1222,49 +1312,36 @@ const ProfilePage = {
             this.updatePreview(url);
         });
 
-        // Zoom slider
         document.getElementById('zoomSlider')?.addEventListener('input', (e) => {
             this.cropState.zoom = parseInt(e.target.value) / 100;
             document.getElementById('zoomLabel').textContent = e.target.value + '%';
             this.drawCropPreview();
         });
-
-        // Pan X slider
         document.getElementById('panXSlider')?.addEventListener('input', (e) => {
             this.cropState.panX = parseInt(e.target.value);
             document.getElementById('panXLabel').textContent = e.target.value;
             this.drawCropPreview();
         });
-
-        // Pan Y slider
         document.getElementById('panYSlider')?.addEventListener('input', (e) => {
             this.cropState.panY = parseInt(e.target.value);
             document.getElementById('panYLabel').textContent = e.target.value;
             this.drawCropPreview();
         });
 
-        // Reset crop
-        document.getElementById('resetCropBtn')?.addEventListener('click', () => {
-            this.resetCrop();
-        });
-
-        // Save
+        document.getElementById('resetCropBtn')?.addEventListener('click', () => this.resetCrop());
         document.getElementById('saveAvatarBtn')?.addEventListener('click', () => this.saveAvatar());
+        document.getElementById('cancelAvatarBtn')?.addEventListener('click', () => this.closeAvatarModal());
+        document.getElementById('removeAvatarBtn')?.addEventListener('click', () => this.removeAvatar());
 
-        // Close on overlay click
         document.getElementById('avatarModal')?.addEventListener('click', (e) => {
             if (e.target.id === 'avatarModal') this.closeAvatarModal();
         });
 
-        // ESC to close
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') this.closeAvatarModal();
         });
     },
 
-    // ========================================================
-    // LOAD IMAGE FOR CROPPING
-    // ========================================================
     async loadCropImage(file) {
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -1275,7 +1352,6 @@ const ProfilePage = {
                 this.cropState.panX = 0;
                 this.cropState.panY = 0;
 
-                // Reset sliders
                 document.getElementById('zoomSlider').value = 100;
                 document.getElementById('panXSlider').value = 0;
                 document.getElementById('panYSlider').value = 0;
@@ -1283,7 +1359,6 @@ const ProfilePage = {
                 document.getElementById('panXLabel').textContent = '0';
                 document.getElementById('panYLabel').textContent = '0';
 
-                // Replace preview with canvas
                 const preview = document.getElementById('previewAvatar');
                 preview.innerHTML = `
                     <div class="crop-container" id="cropContainer">
@@ -1295,11 +1370,9 @@ const ProfilePage = {
                 this.cropState.canvas = document.getElementById('cropCanvas');
                 this.cropState.ctx = this.cropState.canvas.getContext('2d');
 
-                // Show crop controls
                 document.getElementById('cropControls').style.display = 'block';
                 document.getElementById('fileUploadLabelText').textContent = 'Choose a different image';
 
-                // Draw initial crop
                 this.drawCropPreview();
             };
             img.src = e.target.result;
@@ -1307,40 +1380,29 @@ const ProfilePage = {
         reader.readAsDataURL(file);
     },
 
-    // ========================================================
-    // DRAW CROP PREVIEW
-    // ========================================================
     drawCropPreview() {
         const { img, zoom, panX, panY, canvas, ctx } = this.cropState;
         if (!img || !canvas || !ctx) return;
 
-        const size = canvas.width;   // 440
+        const size = canvas.width;
         ctx.clearRect(0, 0, size, size);
 
-        // Compute source rect: base square centered on image, then zoom
         const baseSize = Math.min(img.width, img.height);
         const cropSize = baseSize / zoom;
 
-        // Center + pan offset
         const centerX = img.width / 2 + (panX / 100) * (img.width - cropSize) / 2;
         const centerY = img.height / 2 + (panY / 100) * (img.height - cropSize) / 2;
 
         let sx = centerX - cropSize / 2;
         let sy = centerY - cropSize / 2;
 
-        // Clamp to image bounds
         sx = Math.max(0, Math.min(sx, img.width - cropSize));
         sy = Math.max(0, Math.min(sy, img.height - cropSize));
 
         ctx.drawImage(img, sx, sy, cropSize, cropSize, 0, 0, size, size);
-
-        // Save the crop bounds for later
         this.cropState.lastCrop = { sx, sy, cropSize };
     },
 
-    // ========================================================
-    // RESET CROP
-    // ========================================================
     resetCrop() {
         this.cropState.zoom = 1;
         this.cropState.panX = 0;
@@ -1356,18 +1418,13 @@ const ProfilePage = {
         this.drawCropPreview();
     },
 
-    // ========================================================
-    // UPDATE PREVIEW (for URL tab)
-    // ========================================================
     updatePreview(url) {
         const preview = document.getElementById('previewAvatar');
         const initials = this.getInitials(this.user);
 
-        // Remove any crop canvas
         const cropContainer = document.getElementById('cropContainer');
         if (cropContainer) cropContainer.remove();
 
-        // Hide crop controls
         document.getElementById('cropControls').style.display = 'none';
         document.getElementById('fileUploadLabelText').textContent = 'Click to choose an image';
 
@@ -1378,9 +1435,6 @@ const ProfilePage = {
         }
     },
 
-    // ========================================================
-    // OPEN / CLOSE MODAL
-    // ========================================================
     openAvatarModal() {
         const url = this.getAvatarUrl(this.user);
         const initials = this.getInitials(this.user);
@@ -1391,15 +1445,12 @@ const ProfilePage = {
         document.getElementById('avatarUrlInput').value = '';
         document.getElementById('avatarFileInput').value = '';
 
-        // Reset tabs to "Upload"
         document.querySelectorAll('.modal-tab').forEach(t => t.classList.toggle('active', t.dataset.mtab === 'upload'));
         document.querySelectorAll('.modal-tab-panel').forEach(p => p.classList.toggle('active', p.id === 'uploadPanel'));
 
-        // Hide crop controls by default
         document.getElementById('cropControls').style.display = 'none';
         document.getElementById('fileUploadLabelText').textContent = 'Click to choose an image';
 
-        // Set initial preview
         const preview = document.getElementById('previewAvatar');
         if (url) {
             preview.innerHTML = `<img src="${url}" alt="Preview">`;
@@ -1418,21 +1469,13 @@ const ProfilePage = {
         this.cropState.img = null;
     },
 
-    // ========================================================
-    // SAVE AVATAR (handles both upload + URL)
-    // ========================================================
     saveAvatar() {
-        // If user uploaded & cropped an image
         if (this.cropState.img && this.cropState.canvas) {
-            // Export the canvas as a 400x400 JPEG
             const exportCanvas = document.createElement('canvas');
             exportCanvas.width = 400;
             exportCanvas.height = 400;
             const ectx = exportCanvas.getContext('2d');
-
-            // Draw the crop canvas scaled down to 400x400
             ectx.drawImage(this.cropState.canvas, 0, 0, 400, 400);
-
             const dataUrl = exportCanvas.toDataURL('image/jpeg', 0.85);
 
             this.saveAvatarToStorage(dataUrl);
@@ -1442,7 +1485,6 @@ const ProfilePage = {
             return;
         }
 
-        // If user provided a URL
         if (this.pendingAvatar && this.pendingAvatar.type === 'url') {
             this.saveAvatarToStorage(this.pendingAvatar.value);
             this.closeAvatarModal();
@@ -1455,21 +1497,16 @@ const ProfilePage = {
     },
 
     refreshAvatarEverywhere() {
-        // Re-render profile page
-        this.renderNavUser();
         this.render();
         this.setupTabs();
         this.setupAvatarModal();
 
-        // Re-render nav (via NavWishlist helper)
-        if (typeof NavWishlist !== 'undefined' && NavWishlist.renderAvatar) {
-            NavWishlist.renderAvatar();
+        if (typeof NavWishlist !== 'undefined') {
+            if (NavWishlist.renderAvatar) NavWishlist.renderAvatar();
+            if (NavWishlist.refresh) NavWishlist.refresh();
         }
     },
 
-    // ========================================================
-    // REMOVE AVATAR
-    // ========================================================
     removeAvatar() {
         if (!this.getAvatarUrl(this.user)) {
             this.toast('No profile picture set', 'error');
@@ -1485,44 +1522,12 @@ const ProfilePage = {
     },
 
     // ========================================================
-    // STORAGE HELPERS (delegate to NavAvatar if available)
-    // ========================================================
-    getInitials(user) {
-        if (typeof NavAvatar !== 'undefined') return NavAvatar.getInitials(user);
-
-        // Fallback (shouldn't be needed)
-        if (!user) return 'SV';
-        const first = (user.forenames || user.name || 'S').substring(0, 2).toUpperCase();
-        const last = (user.surname || '').substring(0, 2).toUpperCase();
-        return (first + last) || 'SV';
-    },
-
-    getAvatarUrl(user) {
-        if (typeof NavAvatar !== 'undefined') return NavAvatar.getAvatarUrl(user);
-        return null;
-    },
-
-    saveAvatarToStorage(url) {
-        if (typeof NavAvatar !== 'undefined') {
-            NavAvatar.setAvatarUrl(this.user?.email, url);
-        }
-    },
-
-    // ========================================================
     // ACTIONS
     // ========================================================
     logout() {
         if (!confirm('Are you sure you want to sign out?')) return;
         SavannahStorage.logout();
         window.location.href = 'index.html';
-    },
-
-    changePassword() {
-        this.toast('Password change coming soon');
-    },
-
-    enableTwoFactor() {
-        this.toast('2FA setup coming soon');
     },
 
     toast(msg, variant = 'success') {
@@ -1539,7 +1544,5 @@ const ProfilePage = {
 
 document.addEventListener('DOMContentLoaded', () => ProfilePage.init());
 </script>
-<script src="js/nav-avatar.js"></script>
-<script src="js/nav-wishlist.js"></script>
 </body>
 </html>

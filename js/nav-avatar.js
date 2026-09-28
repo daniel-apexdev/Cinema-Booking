@@ -14,14 +14,12 @@ const NavAvatar = {
         const first = (user.forenames || user.first_name || user.name || '').trim();
         const last = (user.surname || user.last_name || '').trim();
 
-        // If we have separate first/last
         if (first && last) {
             const f = first.replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase();
             const l = last.replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase();
             return (f + l) || 'SV';
         }
 
-        // Fallback: split full name
         const full = (user.name || first || '').trim();
         if (!full) return 'SV';
 
@@ -32,7 +30,6 @@ const NavAvatar = {
             return (f + l) || 'SV';
         }
 
-        // Single name: first 2 letters
         const single = parts[0].replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase();
         return single || 'SV';
     },
@@ -73,17 +70,46 @@ const NavAvatar = {
     },
 
     // ========================================================
-    // RENDER — build the avatar HTML
+    // RENDER HTML — self-contained avatar
     // ========================================================
     renderHTML(user, size = 34, fontSize = 11) {
         const initials = this.getInitials(user);
         const url = this.getAvatarUrl(user);
 
-        const inner = url
-            ? `<img src="${url}" alt="${initials}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;">`
-            : initials;
+        // Font-size scales with the size unless caller specifies
+        const computedFontSize = fontSize || Math.round(size * 0.36);
 
-        return `<div style="width:${size}px;height:${size}px;border-radius:50%;background:linear-gradient(135deg,var(--gold,#E8B34C),#C69436);color:var(--ink,#14141C);display:flex;align-items:center;justify-content:center;font-family:'Oswald',Impact,sans-serif;font-weight:500;font-size:${fontSize}px;overflow:hidden;letter-spacing:0.02em;flex-shrink:0;">${inner}</div>`;
+        // Common container styles — bulletproof centering
+        const containerStyle = [
+            `width:${size}px`,
+            `height:${size}px`,
+            `min-width:${size}px`,
+            `min-height:${size}px`,
+            `border-radius:50%`,
+            `background:linear-gradient(135deg, #E8B34C 0%, #C69436 100%)`,
+            `color:#14141C`,
+            `display:inline-flex`,
+            `align-items:center`,
+            `justify-content:center`,
+            `font-family:'Oswald', Impact, sans-serif`,
+            `font-weight:500`,
+            `font-size:${computedFontSize}px`,
+            `line-height:1`,
+            `letter-spacing:0.02em`,
+            `overflow:hidden`,
+            `text-align:center`,
+            `user-select:none`,
+            `flex-shrink:0`,
+            `box-sizing:border-box`,
+            `padding:0`,
+            `margin:0`
+        ].join(';');
+
+        if (url) {
+            return `<div style="${containerStyle}"><img src="${url}" alt="${initials}" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:50%;"></div>`;
+        }
+
+        return `<div style="${containerStyle}">${initials}</div>`;
     },
 
     // ========================================================
@@ -97,12 +123,6 @@ const NavAvatar = {
     // ========================================================
     // IMAGE CROP — canvas-based square crop
     // ========================================================
-    /**
-     * Reads a File, crops it to a centered square, resizes to 400x400,
-     * and returns a base64 JPEG data URL.
-     * @param {File} file
-     * @returns {Promise<string>}
-     */
     async cropToSquare(file, targetSize = 400, quality = 0.85) {
         return new Promise((resolve, reject) => {
             if (!file || !file.type.startsWith('image/')) {
@@ -115,25 +135,21 @@ const NavAvatar = {
                 const img = new Image();
                 img.onload = () => {
                     try {
-                        // Determine the square crop area (centered)
                         const size = Math.min(img.width, img.height);
                         const sx = (img.width - size) / 2;
                         const sy = (img.height - size) / 2;
 
-                        // Create canvas
                         const canvas = document.createElement('canvas');
                         canvas.width = targetSize;
                         canvas.height = targetSize;
                         const ctx = canvas.getContext('2d');
 
-                        // Draw center-cropped square
                         ctx.drawImage(
                             img,
                             sx, sy, size, size,
                             0, 0, targetSize, targetSize
                         );
 
-                        // Convert to JPEG data URL
                         const dataUrl = canvas.toDataURL('image/jpeg', quality);
                         resolve(dataUrl);
                     } catch (err) {
