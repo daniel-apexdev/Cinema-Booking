@@ -1502,7 +1502,7 @@ const HomePage = {
         const track = document.getElementById('popularTrack');
         const movies = SavannahApp.getNowShowingMovies()
         .filter(m => !m.exclude_from_grid)   // ← skip carousel-only films
-        .slice(0, 20);
+        .slice(0, 10);
 
         if (!movies.length) {
             track.innerHTML = `<div style="padding:30px;color:var(--paper-dim);font-family:var(--font-mono);">No films currently showing.</div>`;
@@ -1551,12 +1551,8 @@ const HomePage = {
                     ${showReleaseBadge
                         ? `<span class="release-badge"><i class="far fa-calendar-alt"></i> ${releaseLabel}</span>`
                         : ''}
-                    <span class="rating-badge">⭐ ${rating}</span>
                 </div>
-                <div class="card-body">
-                    <div class="title">${movie.title}</div>
-                    <div class="year">${year}${movie.genre && movie.genre[0] ? ' · ' + movie.genre[0] : ''}</div>
-                </div>
+                
             </div>
         `;
     },
