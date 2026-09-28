@@ -6,275 +6,71 @@
     <title>Movie Details — Savannah Cinemas</title>
     <meta name="description" content="View movie details, watch the trailer, and book tickets at Savannah Cinemas.">
     <meta name="theme-color" content="#14141C">
-
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
-        /* ============================================================
-           ROOT VARIABLES
-           ============================================================ */
         :root {
-            --ink: #14141C;
-            --ink-raised: #1D1D28;
-            --ink-line: #2C2C3A;
-            --paper: #F2EFE9;
-            --paper-dim: #B9B6AC;
-            --gold: #E8B34C;
-            --gold-dim: #7A5C22;
-            --rust: #B33951;
-            --rust-hover: #C94661;
-            --success: #4C9A6A;
-
-            --font-display: 'Oswald', 'Bebas Neue', Impact, sans-serif;
-            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Playfair Display', Georgia, serif;
-            --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
-
-            --radius-sm: 8px;
-            --radius-md: 14px;
-            --radius-lg: 20px;
+            --ink: #14141C; --ink-raised: #1D1D28; --ink-line: #2C2C3A;
+            --paper: #F2EFE9; --paper-dim: #B9B6AC;
+            --gold: #E8B34C; --gold-dim: #7A5C22;
+            --rust: #B33951; --success: #4C9A6A;
+            --font-display: 'Oswald', Impact, sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+            --radius-sm: 8px; --radius-md: 14px; --radius-lg: 20px;
             --container-padding: clamp(16px, 4vw, 60px);
             --container-max-width: 1400px;
             --touch-target: 44px;
         }
-
-        /* ============================================================
-           RESET & BASE
-           ============================================================ */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body {
-            background: var(--ink);
-            color: var(--paper);
-            font-family: var(--font-body);
-            font-size: 15px;
-            line-height: 1.6;
-            min-height: 100vh;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
+        body { background: var(--ink); color: var(--paper); font-family: var(--font-body); font-size: 15px; line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         img { max-width: 100%; display: block; }
         a { color: inherit; text-decoration: none; }
-        button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+        button { cursor: pointer; border: none; background: none; color: inherit; font-family: inherit; }
         ::selection { background: var(--gold); color: var(--ink); }
 
-        /* ============================================================
-           NAV
-           ============================================================ */
-        .nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px var(--container-padding);
-            border-bottom: 1px solid var(--ink-line);
-            background: rgba(20, 20, 28, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            gap: 12px;
-            min-height: 64px;
-        }
+        /* NAV */
+        .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px var(--container-padding); border-bottom: 1px solid var(--ink-line); background: rgba(20,20,28,0.92); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; gap: 12px; min-height: 64px; }
         .nav-left { display: flex; align-items: center; gap: 12px; }
-        .nav-brand {
-            font-family: var(--font-display);
-            font-size: clamp(18px, 2.4vw, 24px);
-            font-weight: 500;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
+        .nav-brand { font-family: var(--font-display); font-size: clamp(18px, 2.4vw, 24px); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
         .nav-brand span { color: var(--gold); }
-        .nav-links {
-            display: flex;
-            gap: clamp(12px, 2vw, 32px);
-            list-style: none;
-        }
-        .nav-links a {
-            color: var(--paper-dim);
-            font-size: clamp(12px, 0.9vw, 14px);
-            transition: 0.3s ease;
-            white-space: nowrap;
-        }
+        .nav-links { display: flex; gap: clamp(12px, 2vw, 32px); list-style: none; }
+        .nav-links a { color: var(--paper-dim); font-size: clamp(12px, 0.9vw, 14px); transition: 0.3s ease; white-space: nowrap; }
         .nav-links a:hover, .nav-links a.active { color: var(--gold); }
         .nav-right { display: flex; align-items: center; gap: 12px; z-index: 1001; position: relative; }
-        .btn-signin {
-            padding: 8px 18px;
-            background: var(--gold);
-            color: var(--ink);
-            border-radius: var(--radius-sm);
-            font-size: clamp(12px, 0.8vw, 14px);
-            font-weight: 500;
-            transition: 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            min-height: 38px;
-            white-space: nowrap;
-        }
-        .btn-signin:hover { background: #F0C369; transform: translateY(-2px); }
+        .btn-signin { padding: 8px 18px; background: var(--gold); color: var(--ink); border-radius: var(--radius-sm); font-size: clamp(12px, 0.8vw, 14px); font-weight: 500; min-height: 38px; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
 
-        /* ============================================================
-           HAMBURGER MENU
-           ============================================================ */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            padding: 8px 6px;
-            min-width: var(--touch-target);
-            min-height: var(--touch-target);
-            justify-content: center;
-            align-items: center;
-            border-radius: var(--radius-sm);
-            touch-action: manipulation;
-        }
-        .menu-toggle:hover { background: rgba(255,255,255,0.05); }
-        .menu-toggle span {
-            display: block;
-            width: 24px; height: 2.5px;
-            background: var(--paper);
-            transition: 0.3s ease;
-            border-radius: 2px;
-            transform-origin: center;
-        }
+        /* HAMBURGER */
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px 6px; min-width: var(--touch-target); min-height: var(--touch-target); justify-content: center; align-items: center; border-radius: var(--radius-sm); }
+        .menu-toggle span { display: block; width: 24px; height: 2.5px; background: var(--paper); transition: 0.3s ease; border-radius: 2px; transform-origin: center; }
         .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .menu-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
         .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-        /* ============================================================
-           MOBILE MENU
-           ============================================================ */
-        .mobile-menu-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+        /* MOBILE MENU */
+        .mobile-menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; opacity: 0; transition: opacity 0.3s ease; }
         .mobile-menu-overlay.active { display: block; opacity: 1; }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0; left: -100%;
-            width: 85%; max-width: 380px;
-            height: 100vh;
-            background: var(--ink);
-            z-index: 1000;
-            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow-y: auto;
-            box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
-            border-right: 1px solid var(--ink-line);
-            display: flex;
-            flex-direction: column;
-        }
+        .mobile-menu { position: fixed; top: 0; left: -100%; width: 85%; max-width: 380px; height: 100vh; background: var(--ink); z-index: 1000; transition: left 0.4s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; box-shadow: 8px 0 40px rgba(0,0,0,0.6); border-right: 1px solid var(--ink-line); display: flex; flex-direction: column; }
         .mobile-menu.open { left: 0; }
-
-        .mobile-menu-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--ink-line);
-            background: var(--ink-raised);
-            flex-shrink: 0;
-        }
-        .mobile-menu-brand {
-            font-family: var(--font-display);
-            font-size: 18px;
-            font-weight: 500;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
+        .mobile-menu-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--ink-line); background: var(--ink-raised); }
+        .mobile-menu-brand { font-family: var(--font-display); font-size: 18px; font-weight: 500; text-transform: uppercase; }
         .mobile-menu-brand span { color: var(--gold); }
-        .mobile-menu-close {
-            color: var(--paper);
-            font-size: 20px;
-            padding: 10px;
-            border-radius: 50%;
-            min-width: var(--touch-target);
-            min-height: var(--touch-target);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s ease;
-        }
-        .mobile-menu-close:hover {
-            color: var(--gold);
-            transform: rotate(90deg);
-            background: rgba(255,255,255,0.05);
-        }
-
-        .mobile-menu-links {
-            list-style: none;
-            padding: 8px 0;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
+        .mobile-menu-close { padding: 10px; min-width: var(--touch-target); min-height: var(--touch-target); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .mobile-menu-links { list-style: none; padding: 8px 0; flex: 1; }
         .mobile-menu-links li { padding: 0 16px; margin: 2px 0; }
-        .mobile-menu-links a {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 12px 14px;
-            color: var(--paper);
-            font-size: 15px;
-            transition: 0.2s ease;
-            border-radius: 10px;
-            min-height: var(--touch-target);
-        }
-        .mobile-menu-links a i {
-            width: 24px;
-            text-align: center;
-            color: var(--paper-dim);
-            font-size: 17px;
-            transition: 0.2s ease;
-        }
-        .mobile-menu-links a:hover {
-            color: var(--gold);
-            background: rgba(232,179,76,0.06);
-            padding-left: 20px;
-        }
-        .mobile-menu-links a:hover i { color: var(--gold); }
+        .mobile-menu-links a { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 10px; min-height: var(--touch-target); }
+        .mobile-menu-links a i { width: 24px; text-align: center; color: var(--paper-dim); }
+        .mobile-menu-links a:hover { color: var(--gold); background: rgba(232,179,76,0.06); }
+        .mobile-menu-footer { padding: 14px 20px; border-top: 1px solid var(--ink-line); text-align: center; font-family: var(--font-mono); font-size: 11px; color: var(--paper-dim); margin-top: auto; }
 
-        .mobile-menu-footer {
-            padding: 14px 20px;
-            border-top: 1px solid var(--ink-line);
-            text-align: center;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--paper-dim);
-            flex-shrink: 0;
-            margin-top: auto;
-        }
-
-        /* ============================================================
-           MOVIE HERO
-           ============================================================ */
-        .movie-hero {
-            position: relative;
-            min-height: 70vh;
-            overflow: hidden;
-            border-bottom: 1px solid var(--ink-line);
-        }
-        .movie-hero-backdrop {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center 20%;
-            filter: blur(2px);
-            transform: scale(1.05);
-            background-color: var(--ink-raised);
-        }
+        /* MOVIE HERO */
+        .movie-hero { position: relative; min-height: 70vh; overflow: hidden; border-bottom: 1px solid var(--ink-line); }
+        .movie-hero-backdrop { position: absolute; inset: 0; background-size: cover; background-position: center 20%; filter: blur(2px); transform: scale(1.05); background-color: var(--ink-raised); }
         .movie-hero-backdrop::after {
             content: '';
             position: absolute;
@@ -307,559 +103,186 @@
             transition: transform 0.3s ease;
         }
         .movie-poster-large:hover { transform: scale(1.02); }
-        .movie-poster-large img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .movie-poster-large img { width: 100%; height: 100%; object-fit: cover; }
         .movie-poster-badge {
-            position: absolute;
-            top: 12px; left: 12px;
-            padding: 6px 14px;
-            background: rgba(0, 0, 0, 0.85);
-            border: 1px solid var(--gold-dim);
-            border-radius: 10px;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--gold);
+            position: absolute; top: 12px; left: 12px;
+            padding: 6px 14px; background: rgba(0, 0, 0, 0.85);
+            border: 1px solid var(--gold-dim); border-radius: 10px;
+            font-family: var(--font-mono); font-size: 11px; color: var(--gold);
             letter-spacing: 0.05em;
         }
         .movie-poster-play {
-            position: absolute;
-            top: 50%; left: 50%;
+            position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: rgba(232, 179, 76, 0.9);
-            color: var(--ink);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            opacity: 0;
-            transition: 0.3s ease;
+            width: 70px; height: 70px; border-radius: 50%;
+            background: rgba(232, 179, 76, 0.9); color: var(--ink);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 26px; opacity: 0; transition: 0.3s ease;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
         }
-        .movie-poster-large:hover .movie-poster-play {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.1);
-        }
+        .movie-poster-large:hover .movie-poster-play { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
 
-        .movie-info {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-        .movie-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--gold);
-        }
-        .movie-title-large {
-            font-family: var(--font-display);
-            font-size: clamp(32px, 5vw, 64px);
-            font-weight: 500;
-            line-height: 1.05;
-            letter-spacing: 0.01em;
-        }
-        .movie-original-title {
-            font-family: var(--font-serif);
-            font-style: italic;
-            font-size: clamp(14px, 1.2vw, 18px);
-            color: var(--paper-dim);
-        }
-        .movie-meta-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-            align-items: center;
-            font-size: 13px;
-            color: var(--paper-dim);
-        }
+        .movie-info { display: flex; flex-direction: column; gap: 18px; }
+        .movie-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+        .movie-title-large { font-family: var(--font-display); font-size: clamp(32px, 5vw, 64px); font-weight: 500; line-height: 1.05; letter-spacing: 0.01em; }
+        .movie-original-title { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(14px, 1.2vw, 18px); color: var(--paper-dim); }
+        .movie-meta-row { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; font-size: 13px; color: var(--paper-dim); }
         .movie-meta-item { display: flex; align-items: center; gap: 6px; }
         .movie-meta-item i { color: var(--gold); }
-        .movie-rating-badge {
-            padding: 4px 12px;
-            border: 1px solid var(--gold-dim);
-            border-radius: 6px;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--gold);
-            letter-spacing: 0.05em;
-        }
+        .movie-rating-badge { padding: 4px 12px; border: 1px solid var(--gold-dim); border-radius: 6px; font-family: var(--font-mono); font-size: 11px; color: var(--gold); letter-spacing: 0.05em; }
         .movie-genres { display: flex; flex-wrap: wrap; gap: 8px; }
-        .genre-chip {
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--ink-line);
-            border-radius: 100px;
-            font-size: 12px;
-            color: var(--paper-dim);
-            transition: 0.3s ease;
-        }
-        .genre-chip:hover {
-            border-color: var(--gold-dim);
-            color: var(--gold);
-        }
-        .movie-synopsis {
-            font-size: 15px;
-            line-height: 1.75;
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 780px;
-        }
-        .movie-crew {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            padding-top: 16px;
-            border-top: 1px solid var(--ink-line);
-            max-width: 780px;
-        }
+        .genre-chip { padding: 6px 14px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--ink-line); border-radius: 100px; font-size: 12px; color: var(--paper-dim); transition: 0.3s ease; }
+        .genre-chip:hover { border-color: var(--gold-dim); color: var(--gold); }
+        .movie-synopsis { font-size: 15px; line-height: 1.75; color: rgba(255, 255, 255, 0.85); max-width: 780px; }
+        .movie-crew { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; padding-top: 16px; border-top: 1px solid var(--ink-line); max-width: 780px; }
         .movie-crew-item { font-size: 13px; }
-        .movie-crew-item .label {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--paper-dim);
-            margin-bottom: 4px;
-        }
-        .movie-crew-item .value {
-            color: var(--paper);
-            font-weight: 500;
-        }
+        .movie-crew-item .label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--paper-dim); margin-bottom: 4px; }
+        .movie-crew-item .value { color: var(--paper); font-weight: 500; }
 
-        /* Buttons row */
-        .movie-actions {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 8px;
-        }
+        .movie-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
 
-        /* ============================================================
-           SECTION
-           ============================================================ */
-        .section {
-            max-width: var(--container-max-width);
-            margin: 0 auto;
-            padding: 50px var(--container-padding);
-        }
-        .section-header {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 20px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-        }
-        .eyebrow {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 6px;
-        }
-        .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(22px, 2.4vw, 32px);
-            font-weight: 500;
-        }
+        /* SECTION */
+        .section { max-width: var(--container-max-width); margin: 0 auto; padding: 50px var(--container-padding); }
+        .section-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 24px; flex-wrap: wrap; }
+        .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+        .section-title { font-family: var(--font-display); font-size: clamp(22px, 2.4vw, 32px); font-weight: 500; }
 
-        /* ============================================================
-           FILTER BAR
-           ============================================================ */
-        .filter-bar {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            align-items: center;
-            padding: 16px;
-            background: var(--ink-raised);
-            border: 1px solid var(--ink-line);
-            border-radius: var(--radius-md);
-            margin-bottom: 24px;
-        }
-        .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .filter-group label {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--paper-dim);
-        }
-        .filter-select {
-            padding: 8px 12px;
-            background: var(--ink);
-            border: 1px solid var(--ink-line);
-            border-radius: var(--radius-sm);
-            color: var(--paper);
-            font-family: inherit;
-            font-size: 13px;
-            outline: none;
-            cursor: pointer;
-            min-width: 160px;
-        }
+        /* FILTER BAR */
+        .filter-bar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; padding: 16px; background: var(--ink-raised); border: 1px solid var(--ink-line); border-radius: var(--radius-md); margin-bottom: 24px; }
+        .filter-group { display: flex; align-items: center; gap: 8px; }
+        .filter-group label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper-dim); }
+        .filter-select { padding: 8px 12px; background: var(--ink); border: 1px solid var(--ink-line); border-radius: var(--radius-sm); color: var(--paper); font-family: inherit; font-size: 13px; outline: none; cursor: pointer; min-width: 160px; }
         .filter-select:focus { border-color: var(--gold); }
 
-        /* ============================================================
-           SHOWTIMES
-           ============================================================ */
-        .branch-group {
-            margin-bottom: 32px;
-            border: 1px solid var(--ink-line);
-            border-radius: var(--radius-md);
-            background: var(--ink-raised);
-            overflow: hidden;
-        }
-        .branch-header {
-            padding: 18px 22px;
-            background: rgba(232, 179, 76, 0.05);
-            border-bottom: 1px solid var(--ink-line);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        .branch-name {
-            font-family: var(--font-display);
-            font-size: 20px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        /* SHOWTIMES */
+        .branch-group { margin-bottom: 32px; border: 1px solid var(--ink-line); border-radius: var(--radius-md); background: var(--ink-raised); overflow: hidden; }
+        .branch-header { padding: 18px 22px; background: rgba(232, 179, 76, 0.05); border-bottom: 1px solid var(--ink-line); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+        .branch-name { font-family: var(--font-display); font-size: 20px; font-weight: 500; display: flex; align-items: center; gap: 12px; }
         .branch-name i { color: var(--gold); }
-        .branch-city {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--paper-dim);
-        }
+        .branch-city { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper-dim); }
 
-        .showtime-grid {
-            padding: 20px 22px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 14px;
-        }
-        .showtime-card {
-            padding: 16px;
-            background: var(--ink);
-            border: 1px solid var(--ink-line);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .showtime-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-        .showtime-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 4px; height: 100%;
-            background: var(--gold);
-            opacity: 0;
-            transition: 0.3s ease;
-        }
+        .showtime-grid { padding: 20px 22px; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+        .showtime-card { padding: 16px; background: var(--ink); border: 1px solid var(--ink-line); border-radius: var(--radius-sm); cursor: pointer; transition: 0.3s ease; position: relative; overflow: hidden; }
+        .showtime-card:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); }
+        .showtime-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); opacity: 0; transition: 0.3s ease; }
         .showtime-card:hover::before { opacity: 1; }
 
-        .showtime-time {
-            font-family: var(--font-display);
-            font-size: 22px;
-            font-weight: 500;
-            color: var(--paper);
-            margin-bottom: 4px;
-            letter-spacing: 0.02em;
-        }
-        .showtime-screen {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 11px;
-            color: var(--paper-dim);
-            margin-bottom: 10px;
-            font-family: var(--font-mono);
-            letter-spacing: 0.05em;
-            flex-wrap: wrap;
-        }
-        .screen-badge {
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 9px;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
+        .showtime-time { font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--paper); margin-bottom: 4px; letter-spacing: 0.02em; }
+        .showtime-screen { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--paper-dim); margin-bottom: 10px; font-family: var(--font-mono); letter-spacing: 0.05em; flex-wrap: wrap; }
+        .screen-badge { padding: 2px 8px; border-radius: 4px; font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
         .screen-badge.imax { background: rgba(255, 87, 34, 0.2); color: #FF8A65; }
         .screen-badge.dolby_atmos { background: rgba(33, 150, 243, 0.2); color: #64B5F6; }
         .screen-badge.dolby { background: rgba(156, 39, 176, 0.2); color: #BA68C8; }
         .screen-badge.vip { background: rgba(232, 179, 76, 0.2); color: var(--gold); }
         .screen-badge.standard { background: rgba(255, 255, 255, 0.08); color: var(--paper-dim); }
 
-        .showtime-price-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-            margin-top: 8px;
-            padding-top: 10px;
-            border-top: 1px solid var(--ink-line);
-        }
-        .showtime-price {
-            font-family: var(--font-mono);
-            font-size: 14px;
-            color: var(--gold);
-            font-weight: 500;
-        }
-        .showtime-seats {
-            font-size: 11px;
-            color: var(--paper-dim);
-        }
+        .showtime-price-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--ink-line); }
+        .showtime-price { font-family: var(--font-mono); font-size: 14px; color: var(--gold); font-weight: 500; }
+        .showtime-seats { font-size: 11px; color: var(--paper-dim); }
         .showtime-seats.low { color: var(--rust); }
 
-        .empty-state {
-            padding: 60px 20px;
+        /* NO SHOWTIMES STATE */
+        .no-showtimes {
+            padding: 60px 30px;
             text-align: center;
-            color: var(--paper-dim);
+            background: var(--ink-raised);
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-md);
         }
-        .empty-state i {
-            font-size: 48px;
-            color: var(--gold-dim);
-            margin-bottom: 16px;
-            display: block;
+        .no-showtimes-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            background: rgba(232,179,76,0.1);
+            border: 1px solid var(--gold-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--gold);
         }
-        .empty-state h3 {
+        .no-showtimes h3 {
             font-family: var(--font-display);
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 500;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             color: var(--paper);
         }
+        .no-showtimes p {
+            color: var(--paper-dim);
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 480px;
+            margin: 0 auto 24px;
+        }
+        .no-showtimes-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-        /* ============================================================
-           BUTTONS
-           ============================================================ */
-        .btn {
+        /* RELEASE DATE INFO CARD */
+        .release-info {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 26px;
-            border-radius: var(--radius-sm);
-            font-weight: 500;
-            font-size: 14px;
-            transition: 0.3s ease;
-            min-height: 42px;
-        }
-        .btn-primary {
-            background: var(--gold);
-            color: var(--ink);
-        }
-        .btn-primary:hover {
-            background: #F0C369;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(232, 179, 76, 0.3);
-        }
-        .btn-ghost {
-            background: transparent;
-            color: var(--paper);
-            border: 1px solid var(--ink-line);
-        }
-        .btn-ghost:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-        }
-        .btn-trailer {
-            background: rgba(232, 179, 76, 0.1);
-            color: var(--gold);
+            gap: 12px;
+            padding: 12px 20px;
+            background: rgba(232,179,76,0.08);
             border: 1px solid var(--gold-dim);
-        }
-        .btn-trailer:hover {
-            background: rgba(232, 179, 76, 0.2);
-            border-color: var(--gold);
-            transform: translateY(-2px);
-        }
-
-        /* ============================================================
-           TRAILER MODAL
-           ============================================================ */
-        .trailer-modal {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        .trailer-modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .trailer-modal-inner {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            animation: trailerFadeIn 0.4s ease;
-        }
-        @keyframes trailerFadeIn {
-            from { transform: scale(0.95); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-        .trailer-modal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 4px 14px;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .trailer-modal-title {
-            font-family: var(--font-display);
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--paper);
-        }
-        .trailer-modal-title span {
-            color: var(--paper-dim);
-            font-weight: 300;
-            font-family: var(--font-mono);
-            font-size: 12px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-right: 8px;
-        }
-        .trailer-modal-close {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--paper);
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s ease;
-            flex-shrink: 0;
-        }
-        .trailer-modal-close:hover {
-            background: var(--rust);
-            transform: rotate(90deg);
-        }
-        .trailer-player-wrap {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: #000;
             border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.8);
-            border: 1px solid var(--ink-line);
+            margin-bottom: 24px;
+            font-size: 14px;
         }
-        .trailer-player-wrap iframe,
-        .trailer-player-wrap video {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .trailer-no-video {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            color: var(--paper-dim);
-            padding: 40px;
-            text-align: center;
-        }
-        .trailer-no-video i {
-            font-size: 48px;
-            color: var(--gold-dim);
-        }
-        .trailer-no-video h3 {
-            font-family: var(--font-display);
-            font-size: 20px;
-            font-weight: 500;
-            color: var(--paper);
-        }
+        .release-info i { color: var(--gold); font-size: 18px; }
+        .release-info strong { color: var(--gold); font-weight: 500; }
 
-        /* ============================================================
-           FOOTER
-           ============================================================ */
-        .footer {
-            max-width: var(--container-max-width);
-            margin: 0 auto;
-            padding: 50px var(--container-padding) 0;
-            border-top: 1px solid var(--ink-line);
-        }
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding: 16px 0 24px;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--paper-dim);
-        }
-        .footer-bottom .legal a {
-            color: var(--paper-dim);
-            margin-left: 16px;
-            transition: 0.3s ease;
-        }
+        /* BUTTONS */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 26px; border-radius: var(--radius-sm); font-weight: 500; font-size: 14px; transition: 0.3s ease; min-height: 42px; }
+        .btn-primary { background: var(--gold); color: var(--ink); }
+        .btn-primary:hover { background: #F0C369; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232, 179, 76, 0.3); }
+        .btn-ghost { background: transparent; color: var(--paper); border: 1px solid var(--ink-line); }
+        .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+        .btn-trailer { background: rgba(232, 179, 76, 0.1); color: var(--gold); border: 1px solid var(--gold-dim); }
+        .btn-trailer:hover { background: rgba(232, 179, 76, 0.2); border-color: var(--gold); transform: translateY(-2px); }
+        .btn-notify { background: rgba(232, 179, 76, 0.1); color: var(--gold); border: 1px solid var(--gold-dim); }
+        .btn-notify:hover { background: rgba(232, 179, 76, 0.2); border-color: var(--gold); }
+
+        /* TRAILER MODAL */
+        .trailer-modal { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(12px); opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .trailer-modal.active { opacity: 1; visibility: visible; }
+        .trailer-modal-inner { position: relative; width: 100%; max-width: 1200px; animation: trailerFadeIn 0.4s ease; }
+        @keyframes trailerFadeIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .trailer-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 0 4px 14px; gap: 12px; flex-wrap: wrap; }
+        .trailer-modal-title { font-family: var(--font-display); font-size: 18px; font-weight: 500; color: var(--paper); }
+        .trailer-modal-title span { color: var(--paper-dim); font-weight: 300; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; margin-right: 8px; }
+        .trailer-modal-close { width: 44px; height: 44px; border-radius: 50%; background: rgba(255, 255, 255, 0.08); color: var(--paper); font-size: 20px; display: flex; align-items: center; justify-content: center; transition: 0.3s ease; flex-shrink: 0; }
+        .trailer-modal-close:hover { background: var(--rust); transform: rotate(90deg); }
+        .trailer-player-wrap { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 20px 80px rgba(0, 0, 0, 0.8); border: 1px solid var(--ink-line); }
+        .trailer-player-wrap iframe, .trailer-player-wrap video { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+        .trailer-no-video { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--paper-dim); padding: 40px; text-align: center; }
+        .trailer-no-video i { font-size: 48px; color: var(--gold-dim); }
+        .trailer-no-video h3 { font-family: var(--font-display); font-size: 20px; font-weight: 500; color: var(--paper); }
+
+        /* TOAST */
+        .toast { position: fixed; top: 20px; right: 20px; background: var(--success); color: white; padding: 14px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; box-shadow: 0 10px 40px rgba(0,0,0,0.5); z-index: 9999; display: flex; align-items: center; gap: 10px; animation: slideIn 0.3s ease; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+        /* FOOTER */
+        .footer { max-width: var(--container-max-width); margin: 60px auto 0; padding: 40px var(--container-padding) 0; border-top: 1px solid var(--ink-line); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 16px 0 24px; font-family: var(--font-mono); font-size: 11px; color: var(--paper-dim); }
+        .footer-bottom .legal a { color: var(--paper-dim); margin-left: 16px; }
         .footer-bottom .legal a:hover { color: var(--gold); }
 
-        /* ============================================================
-           RESPONSIVE
-           ============================================================ */
-        @media (max-width: 1024px) {
-            .movie-hero-inner {
-                grid-template-columns: 260px 1fr;
-                gap: 40px;
-            }
-        }
-
+        /* RESPONSIVE */
+        @media (max-width: 1024px) { .movie-hero-inner { grid-template-columns: 260px 1fr; gap: 40px; } }
         @media (max-width: 900px) {
             .menu-toggle { display: flex; }
             .nav-links { display: none; }
-
-            .movie-hero-inner {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                padding: 40px var(--container-padding) 30px;
-                min-height: auto;
-            }
+            .movie-hero-inner { grid-template-columns: 1fr; gap: 30px; padding: 40px var(--container-padding) 30px; min-height: auto; }
             .movie-hero { min-height: auto; }
-            .movie-poster-large {
-                max-width: 220px;
-                margin: 0 auto;
-            }
+            .movie-poster-large { max-width: 220px; margin: 0 auto; }
             .movie-info { text-align: center; align-items: center; }
             .movie-meta-row { justify-content: center; }
             .movie-genres { justify-content: center; }
@@ -867,7 +290,6 @@
             .movie-crew { text-align: left; }
             .movie-actions { justify-content: center; }
         }
-
         @media (max-width: 640px) {
             .movie-poster-large { max-width: 180px; }
             .movie-title-large { font-size: 32px; }
@@ -878,13 +300,11 @@
             .filter-select { width: 100%; }
             .branch-header { flex-direction: column; align-items: flex-start; gap: 6px; }
             .movie-crew { grid-template-columns: 1fr; }
-
             .trailer-modal { padding: 12px; }
             .trailer-modal-title { font-size: 15px; }
             .trailer-modal-title span { display: none; }
             .trailer-modal-close { width: 40px; height: 40px; font-size: 18px; }
         }
-
         @media (max-width: 480px) {
             .movie-poster-large { max-width: 160px; }
             .movie-title-large { font-size: 28px; }
@@ -894,26 +314,21 @@
             .footer-bottom { flex-direction: column; text-align: center; }
             .footer-bottom .legal a { margin: 0 8px; }
             .btn-signin { padding: 6px 14px; font-size: 12px; }
-            .movie-actions { flex-direction: column; }
+            .movie-actions { flex-direction: column; width: 100%; }
             .movie-actions .btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-<!-- ============================================================
-     NAV
-     ============================================================ -->
+<!-- NAV -->
 <nav class="nav">
     <div class="nav-left">
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
         <a href="index.html" class="nav-brand">Savannah <span>Cinemas</span></a>
     </div>
-
     <ul class="nav-links">
         <li><a href="index.html" class="active">Now Showing</a></li>
         <li><a href="coming-soon.html">Coming Soon</a></li>
@@ -921,27 +336,18 @@
         <li><a href="events.html">Events</a></li>
         <li><a href="offers.html">Offers</a></li>
     </ul>
-
     <div class="nav-right">
-        <a href="login.html" class="btn-signin">
-            <i class="fas fa-sign-in-alt"></i> Sign In
-        </a>
+        <a href="login.html" class="btn-signin"><i class="fas fa-sign-in-alt"></i> Sign In</a>
     </div>
 </nav>
 
-<!-- ============================================================
-     MOBILE MENU
-     ============================================================ -->
+<!-- MOBILE MENU -->
 <div class="mobile-menu-overlay" id="mobileOverlay"></div>
-
 <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <div class="mobile-menu-header">
         <div class="mobile-menu-brand">Savannah <span>Cinemas</span></div>
-        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
-            <i class="fas fa-times"></i>
-        </button>
+        <button class="mobile-menu-close" id="mobileMenuClose"><i class="fas fa-times"></i></button>
     </div>
-
     <ul class="mobile-menu-links">
         <li><a href="index.html"><i class="fas fa-film"></i> Now Showing</a></li>
         <li><a href="coming-soon.html"><i class="fas fa-calendar-alt"></i> Coming Soon</a></li>
@@ -950,15 +356,10 @@
         <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
         <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
     </ul>
-
-    <div class="mobile-menu-footer">
-        <p>© 2026 Savannah Cinemas</p>
-    </div>
+    <div class="mobile-menu-footer"><p>© 2026 Savannah Cinemas</p></div>
 </aside>
 
-<!-- ============================================================
-     MOVIE HERO
-     ============================================================ -->
+<!-- MOVIE HERO -->
 <section class="movie-hero">
     <div class="movie-hero-backdrop" id="movieBackdrop"></div>
 
@@ -989,25 +390,14 @@
 
             <div class="movie-crew" id="movieCrew"></div>
 
-            <div class="movie-actions">
-                <button class="btn btn-primary" id="bookBtn">
-                    <i class="fas fa-ticket-alt"></i> Book Tickets
-                </button>
-                <button class="btn btn-trailer" id="trailerBtn">
-                    <i class="fas fa-play"></i> Watch Trailer
-                </button>
-                <a href="index.html" class="btn btn-ghost">
-                    <i class="fas fa-arrow-left"></i> Back
-                </a>
-            </div>
+            <!-- ACTION BUTTONS — dynamically rendered -->
+            <div class="movie-actions" id="movieActions"></div>
         </div>
     </div>
 </section>
 
-<!-- ============================================================
-     SHOWTIMES
-     ============================================================ -->
-<section class="section" id="showtimes">
+<!-- SHOWTIMES SECTION (only rendered if showtimes exist) -->
+<section class="section" id="showtimesSection" style="display:none;">
     <div class="section-header">
         <div>
             <p class="eyebrow">Book Your Seats</p>
@@ -1015,7 +405,7 @@
         </div>
     </div>
 
-    <div class="filter-bar">
+    <div class="filter-bar" id="filterBar">
         <div class="filter-group">
             <label for="filterBranch">Cinema</label>
             <select class="filter-select" id="filterBranch">
@@ -1033,9 +423,28 @@
     <div id="showtimesContainer"></div>
 </section>
 
-<!-- ============================================================
-     TRAILER MODAL
-     ============================================================ -->
+<!-- NO SHOWTIMES SECTION (only rendered when no showtimes) -->
+<section class="section" id="noShowtimesSection" style="display:none;">
+    <div class="no-showtimes">
+        <div class="no-showtimes-icon" id="noShowtimesIcon">
+            <i class="fas fa-calendar-times"></i>
+        </div>
+        <h3 id="noShowtimesTitle">Not Yet Available</h3>
+        <p id="noShowtimesMessage">
+            Showtimes for this film haven't been scheduled yet. Check back soon or be the first to know when tickets go live.
+        </p>
+        <div class="no-showtimes-actions">
+            <button class="btn btn-notify" id="notifyMeBtn">
+                <i class="fas fa-bell"></i> Notify Me
+            </button>
+            <a href="index.html" class="btn btn-ghost">
+                <i class="fas fa-arrow-left"></i> Back to Movies
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- TRAILER MODAL -->
 <div class="trailer-modal" id="trailerModal" aria-hidden="true">
     <div class="trailer-modal-inner">
         <div class="trailer-modal-header">
@@ -1047,15 +456,11 @@
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="trailer-player-wrap" id="trailerPlayerWrap">
-            <!-- Player injected by JS -->
-        </div>
+        <div class="trailer-player-wrap" id="trailerPlayerWrap"></div>
     </div>
 </div>
 
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
+<!-- FOOTER -->
 <footer class="footer">
     <div class="footer-bottom">
         <span>© 2026 Savannah Cinemas</span>
@@ -1067,9 +472,6 @@
     </div>
 </footer>
 
-<!-- ============================================================
-     SCRIPTS
-     ============================================================ -->
 <script src="data/movies-inline.js"></script>
 <script src="js/app.js"></script>
 <script src="js/storage.js"></script>
@@ -1084,10 +486,12 @@ const MoviePage = {
     movie: null,
     showtimes: [],
     trailerOpen: false,
+    hasShowtimes: false,
 
     async init() {
         try {
             await SavannahApp.init();
+            this.setupMobileMenu();
 
             const movieId = this.getMovieIdFromUrl();
             if (!movieId) { this.redirectToHome('No movie selected'); return; }
@@ -1095,12 +499,24 @@ const MoviePage = {
             this.movie = SavannahApp.getMovieById(movieId);
             if (!this.movie) { this.redirectToHome('Movie not found'); return; }
 
-            this.setupMobileMenu();
             this.renderMovie();
+
+            // Determine showtimes FIRST so we know whether to show Book button
             this.loadShowtimes();
-            this.setupFilters();
+            this.hasShowtimes = this.showtimes.length > 0;
+
+            // Render actions based on showtime availability
+            this.renderActions();
+
+            // Show/hide sections
+            this.toggleShowtimeSections();
+
+            // Filters (only relevant if showtimes exist)
+            if (this.hasShowtimes) this.setupFilters();
+
             this.setupTrailer();
-            this.setupBookButton();
+            this.setupNotifyButton();
+
             document.title = `${this.movie.title} — Savannah Cinemas`;
 
         } catch (err) {
@@ -1117,40 +533,22 @@ const MoviePage = {
         window.location.href = 'index.html';
     },
 
-    // ---- MOBILE MENU ----
     setupMobileMenu() {
         const toggle = document.getElementById('menuToggle');
         const menu = document.getElementById('mobileMenu');
         const overlay = document.getElementById('mobileOverlay');
         const closeBtn = document.getElementById('mobileMenuClose');
-
-        const open = () => {
-            menu.classList.add('open');
-            overlay.classList.add('active');
-            toggle.classList.add('active');
-            menu.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-        };
-        const close = () => {
-            menu.classList.remove('open');
-            overlay.classList.remove('active');
-            toggle.classList.remove('active');
-            menu.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-        };
-
+        const open = () => { menu.classList.add('open'); overlay.classList.add('active'); toggle.classList.add('active'); document.body.style.overflow = 'hidden'; };
+        const close = () => { menu.classList.remove('open'); overlay.classList.remove('active'); toggle.classList.remove('active'); document.body.style.overflow = ''; };
         toggle?.addEventListener('click', () => menu.classList.contains('open') ? close() : open());
         closeBtn?.addEventListener('click', close);
         overlay?.addEventListener('click', close);
-        document.querySelectorAll('.mobile-menu-links a').forEach(a =>
-            a.addEventListener('click', close)
-        );
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') close();
-        });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
     },
 
-    // ---- RENDER MOVIE ----
+    // ========================================================
+    // RENDER MOVIE DETAILS
+    // ========================================================
     renderMovie() {
         const m = this.movie;
 
@@ -1177,6 +575,8 @@ const MoviePage = {
         if (m.status === 'coming_soon') {
             statusEl.textContent = 'COMING SOON';
             statusEl.style.color = 'var(--rust)';
+        } else {
+            statusEl.textContent = 'NOW SHOWING';
         }
 
         document.getElementById('movieImdbRating').textContent =
@@ -1203,11 +603,118 @@ const MoviePage = {
         crewEl.innerHTML = crewHTML;
     },
 
-    // ---- LOAD SHOWTIMES ----
+    // ========================================================
+    // RENDER ACTIONS (Book + Trailer + Back)
+    // ========================================================
+    renderActions() {
+        const m = this.movie;
+        const actionsEl = document.getElementById('movieActions');
+        const hasTrailer = !!this.buildEmbed(m.trailer_url);
+        const isComingSoon = m.status === 'coming_soon';
+        const releaseDate = m.release_date;
+
+        let html = '';
+
+        // ---- BOOK TICKETS (only if showtimes exist) ----
+        if (this.hasShowtimes) {
+            html += `
+                <button class="btn btn-primary" id="bookBtn">
+                    <i class="fas fa-ticket-alt"></i> Book Tickets
+                </button>
+            `;
+        } else {
+    // Determine if already tracking
+    const NOTIFY_KEY = 'savannah_notify_movies';
+    const isTracking = (typeof SavannahStorage !== 'undefined')
+        ? SavannahStorage.get(NOTIFY_KEY, []).includes(m.movie_id)
+        : false;
+
+    const label = isTracking ? 'Tracking — You\'ll Be Notified' : 'Notify Me When Tickets Are Live';
+    const icon = isTracking ? 'fa-bell' : 'fa-bell';
+    const style = isTracking
+        ? 'style="background:rgba(232,179,76,0.2);border-color:var(--gold);"'
+        : '';
+
+    html += `
+        <button class="btn btn-notify" id="notifyMeBtn2" ${style}>
+            <i class="fas ${icon}"></i> ${label}
+        </button>
+    `;
+}
+
+        // ---- WATCH TRAILER (only if trailer URL present) ----
+        if (hasTrailer) {
+            html += `
+                <button class="btn btn-trailer" id="trailerBtn">
+                    <i class="fas fa-play"></i> Watch Trailer
+                </button>
+            `;
+        }
+
+                // Watchlist toggle button
+        const inWatchlist = SavannahStorage.isInWatchlist(this.movie.movie_id);
+        html += `
+            <button class="btn btn-ghost" id="watchlistBtn" style="border-color:${inWatchlist ? 'var(--gold)' : 'var(--ink-line)'};color:${inWatchlist ? 'var(--gold)' : 'var(--paper)'};">
+                <i class="fas ${inWatchlist ? 'fa-bookmark' : 'fa-bookmark'}"></i>
+                <span>${inWatchlist ? 'Saved' : 'Save'}</span>
+            </button>
+        `;
+
+        // ---- BACK BUTTON (always) ----
+        html += `
+            <a href="index.html" class="btn btn-ghost">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+        `;
+
+
+        actionsEl.innerHTML = html;
+
+        // Wire up buttons
+        document.getElementById('bookBtn')?.addEventListener('click', () => {
+            document.getElementById('showtimesSection').scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('notifyMeBtn2')?.addEventListener('click', () => this.notifyMe());
+
+        document.getElementById('watchlistBtn')?.addEventListener('click', () => {
+            const movieId = this.movie.movie_id;
+            const isSaved = SavannahStorage.isInWatchlist(movieId);
+
+            if (isSaved) {
+                SavannahStorage.removeFromWatchlist(movieId);
+            } else {
+                SavannahStorage.addToWatchlist(movieId);
+            }
+
+            // Update button UI
+            const btn = document.getElementById('watchlistBtn');
+            const nowSaved = !isSaved;
+            btn.innerHTML = `
+                <i class="fas fa-bookmark"></i>
+                <span>${nowSaved ? 'Saved' : 'Save'}</span>
+            `;
+            btn.style.borderColor = nowSaved ? 'var(--gold)' : 'var(--ink-line)';
+            btn.style.color = nowSaved ? 'var(--gold)' : 'var(--paper)';
+
+            // Toast
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `<i class="fas fa-bookmark"></i> ${nowSaved ? 'Added to watchlist' : 'Removed from watchlist'}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2500);
+        });
+    },
+
+    // ========================================================
+    // LOAD SHOWTIMES
+    // ========================================================
     loadShowtimes() {
         const movieId = this.movie.movie_id;
         this.showtimes = SavannahApp.data.showtimes.filter(s => s.movie_id === movieId);
 
+        if (this.showtimes.length === 0) return;
+
+        // Populate branch filter
         const branchFilter = document.getElementById('filterBranch');
         const branchIds = [...new Set(this.showtimes.map(s => s.branch_id))];
         branchFilter.innerHTML = '<option value="">All Cinemas</option>';
@@ -1221,6 +728,7 @@ const MoviePage = {
             }
         });
 
+        // Populate date filter
         const dateFilter = document.getElementById('filterDate');
         const dates = [...new Set(this.showtimes.map(s => s.date))].sort();
         dateFilter.innerHTML = '<option value="">All Dates</option>';
@@ -1234,7 +742,43 @@ const MoviePage = {
         this.renderShowtimes();
     },
 
-    // ---- RENDER SHOWTIMES ----
+    // ========================================================
+    // SHOW/HIDE SECTIONS BASED ON SHOWTIME AVAILABILITY
+    // ========================================================
+    toggleShowtimeSections() {
+        if (this.hasShowtimes) {
+            document.getElementById('showtimesSection').style.display = 'block';
+            document.getElementById('noShowtimesSection').style.display = 'none';
+        } else {
+            document.getElementById('showtimesSection').style.display = 'none';
+            document.getElementById('noShowtimesSection').style.display = 'block';
+
+            // Customize the no-showtimes message based on status
+            const m = this.movie;
+            const icon = document.getElementById('noShowtimesIcon');
+            const title = document.getElementById('noShowtimesTitle');
+            const msg = document.getElementById('noShowtimesMessage');
+
+            if (m.status === 'coming_soon' && m.release_date) {
+                const dateLabel = new Date(m.release_date).toLocaleDateString('en-GB', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+                icon.innerHTML = '<i class="fas fa-calendar-alt"></i>';
+                title.textContent = 'Coming Soon';
+                msg.innerHTML = `This film premieres on <strong style="color:var(--gold)">${dateLabel}</strong>. Tickets will go on sale closer to release — sign up to be the first to know.`;
+            } else {
+                icon.innerHTML = '<i class="fas fa-calendar-times"></i>';
+                title.textContent = 'Showtimes Not Yet Available';
+                msg.textContent = "Showtimes for this film haven't been scheduled yet. Check back soon or sign up to be notified.";
+            }
+        }
+    },
+
+    // ========================================================
+    // RENDER SHOWTIMES
+    // ========================================================
     renderShowtimes() {
         const container = document.getElementById('showtimesContainer');
         const branchFilterValue = document.getElementById('filterBranch').value;
@@ -1246,14 +790,15 @@ const MoviePage = {
 
         if (!filtered.length) {
             container.innerHTML = `
-                <div class="empty-state">
-                    <i class="fas fa-calendar-times"></i>
-                    <h3>No showtimes available</h3>
+                <div class="no-showtimes">
+                    <div class="no-showtimes-icon"><i class="fas fa-filter"></i></div>
+                    <h3>No showtimes match your filters</h3>
                     <p>Try a different cinema or date.</p>
                 </div>`;
             return;
         }
 
+        // Group by branch
         const grouped = {};
         filtered.forEach(s => {
             if (!grouped[s.branch_id]) grouped[s.branch_id] = [];
@@ -1325,7 +870,9 @@ const MoviePage = {
         return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
     },
 
-    // ---- SELECT SHOWTIME ----
+    // ========================================================
+    // SELECT SHOWTIME
+    // ========================================================
     selectShowtime(showtimeId) {
         if (typeof SavannahBooking !== 'undefined') {
             SavannahBooking.loadBookingState();
@@ -1339,17 +886,79 @@ const MoviePage = {
         window.location.href = `seats.html?showtime=${showtimeId}`;
     },
 
+    // ========================================================
+    // FILTERS
+    // ========================================================
     setupFilters() {
         document.getElementById('filterBranch').addEventListener('change', () => this.renderShowtimes());
         document.getElementById('filterDate').addEventListener('change', () => this.renderShowtimes());
     },
 
-    // ---- BOOK BUTTON ----
-    setupBookButton() {
-        document.getElementById('bookBtn').addEventListener('click', () => {
-            document.getElementById('showtimes').scrollIntoView({ behavior: 'smooth' });
-        });
+    // ========================================================
+    // NOTIFY ME
+    // ========================================================
+    setupNotifyButton() {
+        document.getElementById('notifyMeBtn')?.addEventListener('click', () => this.notifyMe());
     },
+
+    notifyMe() {
+    if (typeof SavannahStorage === 'undefined') return;
+
+    const movieId = this.movie.movie_id;
+    const movie = this.movie;
+    const NOTIFY_KEY = 'savannah_notify_movies';
+    const NOTIFY_META_KEY = 'savannah_notify_meta';
+
+    let list = SavannahStorage.get(NOTIFY_KEY, []);
+    const isTracking = list.includes(movieId);
+
+    if (isTracking) {
+        // Stop tracking
+        list = list.filter(id => id !== movieId);
+        SavannahStorage.set(NOTIFY_KEY, list);
+
+        const meta = SavannahStorage.get(NOTIFY_META_KEY, {});
+        delete meta[movieId];
+        SavannahStorage.set(NOTIFY_META_KEY, meta);
+
+        this.toast(`Stopped tracking "${movie.title}"`, 'gold');
+    } else {
+        // Start tracking
+        list.push(movieId);
+        SavannahStorage.set(NOTIFY_KEY, list);
+
+        const meta = SavannahStorage.get(NOTIFY_META_KEY, {});
+        meta[movieId] = Date.now();
+        SavannahStorage.set(NOTIFY_META_KEY, meta);
+
+        this.toast(`We'll notify you about "${movie.title}"!`, 'success');
+    }
+
+    // Re-render the action buttons so the notify button updates its label
+    this.renderActions();
+
+    // Update nav wishlist/notify badge
+    if (typeof NavWishlist !== 'undefined' && NavWishlist.updateCount) {
+        NavWishlist.updateCount();
+    }
+},
+
+// Small toast helper for movie.html
+toast(msg, variant = 'success') {
+    const icons = { success: 'fa-check-circle', danger: 'fa-trash-alt', gold: 'fa-bell-slash' };
+    const el = document.createElement('div');
+    el.className = 'toast';
+    if (variant === 'gold') {
+        el.style.background = 'var(--gold)';
+        el.style.color = 'var(--ink)';
+    } else if (variant === 'danger') {
+        el.style.background = 'var(--rust)';
+        el.style.color = 'white';
+    }
+    el.innerHTML = `<i class="fas ${icons[variant] || 'fa-check-circle'}"></i> ${msg}`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 3000);
+},
 
     // ========================================================
     // TRAILER
@@ -1360,16 +969,19 @@ const MoviePage = {
         const closeBtn = document.getElementById('trailerClose');
         const modal = document.getElementById('trailerModal');
 
-        trailerBtn?.addEventListener('click', () => this.openTrailer());
-        posterWrap?.addEventListener('click', () => this.openTrailer());
+        // Only attach poster click if trailer exists
+        if (trailerBtn) {
+            trailerBtn.addEventListener('click', () => this.openTrailer());
+            posterWrap?.addEventListener('click', () => this.openTrailer());
+            posterWrap.style.cursor = 'pointer';
+        } else {
+            // No trailer — remove play button from poster, remove pointer
+            document.getElementById('posterPlayBtn')?.remove();
+            if (posterWrap) posterWrap.style.cursor = 'default';
+        }
+
         closeBtn?.addEventListener('click', () => this.closeTrailer());
-
-        // Click outside player closes
-        modal?.addEventListener('click', (e) => {
-            if (e.target === modal) this.closeTrailer();
-        });
-
-        // ESC closes
+        modal?.addEventListener('click', (e) => { if (e.target === modal) this.closeTrailer(); });
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.trailerOpen) this.closeTrailer();
         });
@@ -1382,7 +994,6 @@ const MoviePage = {
 
         titleEl.textContent = this.movie.title;
 
-        // Detect trailer URL and embed
         const embedHTML = this.buildEmbed(this.movie.trailer_url);
 
         if (!embedHTML) {
@@ -1411,45 +1022,30 @@ const MoviePage = {
         this.trailerOpen = false;
         document.body.style.overflow = '';
 
-        // Stop video by clearing the iframe
         setTimeout(() => { wrap.innerHTML = ''; }, 300);
     },
 
-    // ---- BUILD EMBED HTML ----
-    // Detects YouTube / Vimeo / direct MP4
     buildEmbed(url) {
         if (!url || typeof url !== 'string') return null;
         url = url.trim();
         if (!url) return null;
 
-        // YouTube
         const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|v\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
         if (ytMatch) {
-            const id = ytMatch[1];
-            return `<iframe
-                src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0"
+            return `<iframe src="https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1&rel=0"
                 title="Trailer"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>`;
         }
 
-        // Vimeo
         const vimeoMatch = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
         if (vimeoMatch) {
-            const id = vimeoMatch[1];
-            return `<iframe
-                src="https://player.vimeo.com/video/${id}?autoplay=1"
-                title="Trailer"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowfullscreen></iframe>`;
+            return `<iframe src="https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1"
+                title="Trailer" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
         }
 
-        // Direct video file
         if (/\.(mp4|webm|ogg|mov)(\?|$)/i.test(url)) {
-            return `<video controls autoplay playsinline>
-                <source src="${url}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>`;
+            return `<video controls autoplay playsinline><source src="${url}" type="video/mp4">Your browser does not support the video tag.</video>`;
         }
 
         return null;
@@ -1458,5 +1054,7 @@ const MoviePage = {
 
 document.addEventListener('DOMContentLoaded', () => MoviePage.init());
 </script>
+<script src="js/nav-avatar.js"></script>
+<script src="js/nav-wishlist.js"></script>
 </body>
 </html>

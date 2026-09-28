@@ -296,35 +296,47 @@ const SavannahStorage = {
         this.remove(this.KEYS.WATCHED);
     },
     
-    // ========================================================
+        // ========================================================
     // WATCHLIST (SAVED FOR LATER)
     // ========================================================
     getWatchlist() {
         return this.get(this.KEYS.WATCHLIST, []);
     },
-    
+
     addToWatchlist(movieId) {
         const watchlist = this.getWatchlist();
         if (!watchlist.includes(movieId)) {
             watchlist.push(movieId);
             this.set(this.KEYS.WATCHLIST, watchlist);
+
+            // Track timestamp for sorting
+            const meta = this.get('savannah_watchlist_meta', {});
+            meta[movieId] = Date.now();
+            this.set('savannah_watchlist_meta', meta);
         }
         return watchlist;
     },
-    
+
     removeFromWatchlist(movieId) {
         const watchlist = this.getWatchlist();
         const filtered = watchlist.filter(id => id !== movieId);
         this.set(this.KEYS.WATCHLIST, filtered);
+
+        // Remove timestamp
+        const meta = this.get('savannah_watchlist_meta', {});
+        delete meta[movieId];
+        this.set('savannah_watchlist_meta', meta);
+
         return filtered;
     },
-    
+
     isInWatchlist(movieId) {
         return this.getWatchlist().includes(movieId);
     },
-    
+
     clearWatchlist() {
         this.remove(this.KEYS.WATCHLIST);
+        this.remove('savannah_watchlist_meta');
     },
     
     // ========================================================

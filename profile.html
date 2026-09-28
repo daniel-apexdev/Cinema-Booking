@@ -72,27 +72,68 @@
             border: 1px solid var(--ink-line);
             border-radius: var(--radius-lg);
             padding: 40px;
-            margin-bottom: 40px;
+            margin-bottom: 24px;
             display: grid;
-            grid-template-columns: auto 1fr auto;
+            grid-template-columns: auto 1fr;
             gap: 30px;
             align-items: center;
         }
+
+        /* Avatar with upload */
+        .avatar-wrap {
+            position: relative;
+            flex-shrink: 0;
+        }
         .profile-avatar {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            background: var(--gold);
+            background: linear-gradient(135deg, var(--gold), #C69436);
             color: var(--ink);
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: var(--font-display);
-            font-size: 40px;
+            font-size: 42px;
             font-weight: 500;
-            flex-shrink: 0;
+            letter-spacing: 0.02em;
             box-shadow: 0 10px 40px rgba(232,179,76,0.4);
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .avatar-edit-btn {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--ink);
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            transition: 0.3s ease;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .avatar-edit-btn:hover {
+            background: var(--gold);
+            color: var(--ink);
+            transform: scale(1.1);
+        }
+
         .profile-info { min-width: 0; }
         .profile-name {
             font-family: var(--font-display);
@@ -125,6 +166,36 @@
             color: var(--gold);
         }
 
+        /* ACCOUNT ACTIONS (separate card below) */
+        .account-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 20px 24px;
+            background: var(--ink-raised);
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-md);
+            margin-bottom: 40px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .account-actions-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--paper-dim);
+        }
+        .account-actions-info i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+        .account-actions-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
         .btn-logout {
             padding: 10px 20px;
             border: 1px solid var(--rust);
@@ -137,8 +208,28 @@
             align-items: center;
             gap: 8px;
             transition: 0.3s ease;
+            min-height: 42px;
         }
         .btn-logout:hover { background: var(--rust); color: white; }
+
+        .btn-manage {
+            padding: 10px 20px;
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-sm);
+            background: transparent;
+            color: var(--paper);
+            font-size: 13px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s ease;
+            min-height: 42px;
+        }
+        .btn-manage:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
 
         /* STATS */
         .profile-stats {
@@ -345,28 +436,225 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+        /* AVATAR MODAL */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal {
+            background: var(--ink-raised);
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            max-width: 480px;
+            width: 100%;
+            animation: modalIn 0.3s ease;
+        }
+        @keyframes modalIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .modal h3 {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .modal p {
+            color: var(--paper-dim);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .modal-preview {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        .preview-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #C69436);
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 500;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            border: 2px solid var(--gold-dim);
+        }
+        .modal-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .modal-tabs {
+            display: flex;
+            gap: 4px;
+            padding: 4px;
+            background: var(--ink);
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-sm);
+            margin-bottom: 20px;
+        }
+        .modal-tab {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--paper-dim);
+            transition: 0.3s ease;
+            text-align: center;
+        }
+        .modal-tab.active { background: var(--gold); color: var(--ink); }
+        .modal-tab-panel { display: none; }
+        .modal-tab-panel.active { display: block; }
+
+        .modal-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--ink);
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-sm);
+            color: var(--paper);
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s ease;
+            font-family: inherit;
+        }
+        .modal-input:focus { border-color: var(--gold); }
+        .modal-input::placeholder { color: var(--paper-dim); opacity: 0.6; }
+
+        .file-upload-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 20px;
+            border: 2px dashed var(--ink-line);
+            border-radius: var(--radius-sm);
+            background: var(--ink);
+            color: var(--paper-dim);
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            text-align: center;
+        }
+        .file-upload-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(232,179,76,0.05);
+        }
+        .file-upload-btn input {
+            display: none;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .modal-actions .btn { flex: 1; justify-content: center; }
+
+        .modal-divider {
+            text-align: center;
+            color: var(--paper-dim);
+            font-size: 11px;
+            font-family: var(--font-mono);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin: 16px 0;
+            position: relative;
+        }
+        .modal-divider::before, .modal-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: var(--ink-line);
+        }
+        .modal-divider::before { left: 0; }
+        .modal-divider::after { right: 0; }
+
+        /* Crop preview — square container with dashed border */
+        .crop-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: var(--ink);
+            border: 2px dashed var(--gold-dim);
+            cursor: grab;
+        }
+        .crop-container:active { cursor: grabbing; }
+
+        .crop-container canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .crop-guides {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 1px rgba(232,179,76,0.15);
         }
 
         .footer { max-width: var(--container-max-width); margin: 60px auto 0; padding: 40px var(--container-padding) 0; border-top: 1px solid var(--ink-line); }
         .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 16px 0 24px; font-family: var(--font-mono); font-size: 11px; color: var(--paper-dim); }
         .footer-bottom .legal a { color: var(--paper-dim); margin-left: 16px; }
 
+        /* RESPONSIVE */
         @media (max-width: 900px) {
             .menu-toggle { display: flex; }
             .nav-links { display: none; }
-            .profile-header { grid-template-columns: 1fr; text-align: center; gap: 20px; }
-            .profile-avatar { margin: 0 auto; }
+            .profile-header { grid-template-columns: 1fr; text-align: center; gap: 20px; padding: 30px 24px; }
+            .avatar-wrap { margin: 0 auto; }
             .profile-meta { justify-content: center; }
             .profile-stats { grid-template-columns: 1fr 1fr; }
             .booking-row { grid-template-columns: 60px 1fr; gap: 14px; }
             .booking-poster { width: 60px; height: 90px; }
             .booking-status { grid-column: 1 / -1; justify-self: start; }
+            .account-actions { flex-direction: column; align-items: stretch; gap: 14px; }
+            .account-actions-buttons { justify-content: stretch; }
+            .account-actions-buttons .btn-manage,
+            .account-actions-buttons .btn-logout { flex: 1; justify-content: center; }
         }
         @media (max-width: 640px) {
             .profile-section { padding: 30px var(--container-padding); }
             .profile-header { padding: 24px; }
             .profile-name { font-size: 22px; }
-            .profile-avatar { width: 80px; height: 80px; font-size: 32px; }
+            .profile-avatar { width: 100px; height: 100px; font-size: 36px; }
+            .avatar-edit-btn { width: 34px; height: 34px; font-size: 12px; }
             .stat-card-value { font-size: 24px; }
             .settings-row { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
@@ -416,6 +704,87 @@
     <!-- Populated by JS -->
 </section>
 
+<!-- AVATAR MODAL -->
+<!-- AVATAR MODAL -->
+<div class="modal-overlay" id="avatarModal">
+    <div class="modal">
+        <h3>Change Profile Picture</h3>
+        <p>Upload a photo and adjust it below, or paste an image URL.</p>
+
+        <div class="modal-preview">
+            <div class="preview-avatar" id="previewAvatar">--</div>
+        </div>
+
+        <div class="modal-tabs">
+            <button class="modal-tab active" data-mtab="upload">Upload</button>
+            <button class="modal-tab" data-mtab="url">From URL</button>
+        </div>
+
+        <!-- UPLOAD TAB -->
+        <div class="modal-tab-panel active" id="uploadPanel">
+            <label class="file-upload-btn" id="fileUploadLabel">
+                <i class="fas fa-cloud-upload-alt" style="font-size:20px;"></i>
+                <span id="fileUploadLabelText">Click to choose an image</span>
+                <input type="file" id="avatarFileInput" accept="image/*">
+            </label>
+
+            <!-- Cropping controls (only shown when a file is selected) -->
+            <div id="cropControls" style="display:none; margin-top:20px;">
+                <div style="margin-bottom:12px;">
+                    <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper-dim);margin-bottom:6px;">
+                        <span>Zoom</span>
+                        <span id="zoomLabel">100%</span>
+                    </div>
+                    <input type="range" id="zoomSlider" min="100" max="300" value="100"
+                           style="width:100%;accent-color:var(--gold);">
+                </div>
+
+                <div style="margin-bottom:12px;">
+                    <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper-dim);margin-bottom:6px;">
+                        <span>Horizontal</span>
+                        <span id="panXLabel">0</span>
+                    </div>
+                    <input type="range" id="panXSlider" min="-100" max="100" value="0"
+                           style="width:100%;accent-color:var(--gold);">
+                </div>
+
+                <div style="margin-bottom:12px;">
+                    <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper-dim);margin-bottom:6px;">
+                        <span>Vertical</span>
+                        <span id="panYLabel">0</span>
+                    </div>
+                    <input type="range" id="panYSlider" min="-100" max="100" value="0"
+                           style="width:100%;accent-color:var(--gold);">
+                </div>
+
+                <button class="btn btn-ghost" id="resetCropBtn" style="width:100%;justify-content:center;font-size:12px;">
+                    <i class="fas fa-undo"></i> Reset Crop
+                </button>
+            </div>
+        </div>
+
+        <!-- URL TAB -->
+        <div class="modal-tab-panel" id="urlPanel">
+            <input type="url" class="modal-input" id="avatarUrlInput" placeholder="https://example.com/photo.jpg">
+        </div>
+
+        <div class="modal-divider">or</div>
+
+        <div class="modal-actions" style="margin-top:0;">
+            <button class="btn btn-ghost" onclick="ProfilePage.removeAvatar()">
+                <i class="fas fa-trash-alt"></i> Remove
+            </button>
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn btn-ghost" onclick="ProfilePage.closeAvatarModal()">Cancel</button>
+            <button class="btn btn-primary" id="saveAvatarBtn">
+                <i class="fas fa-check"></i> Save
+            </button>
+        </div>
+    </div>
+</div>
+
 <footer class="footer">
     <div class="footer-bottom">
         <span>© 2026 Savannah Cinemas</span>
@@ -432,9 +801,14 @@
 <script src="js/storage.js"></script>
 
 <script>
+// ============================================================
+// PROFILE PAGE CONTROLLER
+// ============================================================
+
 const ProfilePage = {
     user: null,
     bookingHistory: [],
+    pendingAvatar: null,   // { type: 'upload' | 'url', value: string }
 
     async init() {
         await SavannahApp.init();
@@ -450,35 +824,86 @@ const ProfilePage = {
         this.renderNavUser();
         this.render();
         this.setupTabs();
+        this.setupAvatarModal();
     },
 
-    setupMobileMenu() {
-        const toggle = document.getElementById('menuToggle');
-        const menu = document.getElementById('mobileMenu');
-        const overlay = document.getElementById('mobileOverlay');
-        const closeBtn = document.getElementById('mobileMenuClose');
-        const open = () => { menu.classList.add('open'); overlay.classList.add('active'); toggle.classList.add('active'); document.body.style.overflow = 'hidden'; };
-        const close = () => { menu.classList.remove('open'); overlay.classList.remove('active'); toggle.classList.remove('active'); document.body.style.overflow = ''; };
-        toggle?.addEventListener('click', () => menu.classList.contains('open') ? close() : open());
-        closeBtn?.addEventListener('click', close);
-        overlay?.addEventListener('click', close);
+    // ========================================================
+    // INITIALS — first two letters of first + first two of last
+    // ========================================================
+    getInitials(user) {
+        if (!user) return 'SV';
+
+        const first = (user.forenames || user.first_name || user.name || '').trim();
+        const last = (user.surname || user.last_name || '').trim();
+
+        // If we have separate first/last
+        if (first && last) {
+            const f = first.replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase();
+            const l = last.replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase();
+            return (f + l) || 'SV';
+        }
+
+        // Fallback: use full name split
+        const full = (user.name || first || '').trim();
+        if (!full) return 'SV';
+
+        const parts = full.split(/\s+/).filter(Boolean);
+        if (parts.length >= 2) {
+            const f = parts[0].replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase();
+            const l = parts[parts.length - 1].replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase();
+            return (f + l) || 'SV';
+        }
+
+        // Single name: take first 2 letters
+        const single = parts[0].replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase();
+        return single || 'SV';
     },
 
-    renderNavUser() {
+    // ========================================================
+    // AVATAR
+    // ========================================================
+    getAvatarUrl(user) {
+        // Returns the stored avatar URL from localStorage if set
+        const avatars = SavannahStorage.get('savannah_avatars', {});
+        const email = (user?.email || '').toLowerCase();
+        return avatars[email] || null;
+    },
+
+    saveAvatarToStorage(url) {
+        const avatars = SavannahStorage.get('savannah_avatars', {});
+        const email = (this.user?.email || '').toLowerCase();
+        if (url) {
+            avatars[email] = url;
+        } else {
+            delete avatars[email];
+        }
+        SavannahStorage.set('savannah_avatars', avatars);
+    },
+
+    // ========================================================
+    // NAV USER
+    // ========================================================
+        renderNavUser() {
         const navUser = document.getElementById('navUser');
-        const u = this.user;
-        const initials = ((u.forenames || u.name || 'U').substring(0, 1) + (u.surname ? u.surname.substring(0, 1) : '')).toUpperCase();
+        if (!navUser) return;
 
-        navUser.innerHTML = `
-            <div style="display:flex;align-items:center;gap:10px;">
-                <div style="width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:500;font-size:13px;">${initials}</div>
-            </div>
-        `;
+        const user = this.user;
+        if (typeof NavAvatar !== 'undefined') {
+            navUser.innerHTML = `<div style="display:flex;align-items:center;gap:10px;">${NavAvatar.renderHTML(user, 34, 11)}</div>`;
+        } else {
+            // Fallback
+            const initials = this.getInitials(user);
+            navUser.innerHTML = `<div style="width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:500;font-size:11px;">${initials}</div>`;
+        }
     },
 
+    // ========================================================
+    // RENDER
+    // ========================================================
     render() {
         const u = this.user;
-        const initials = ((u.forenames || u.name || 'U').substring(0, 1) + (u.surname ? u.surname.substring(0, 1) : '')).toUpperCase();
+        const initials = this.getInitials(u);
+        const avatarUrl = this.getAvatarUrl(u);
         const displayName = u.name || `${u.forenames || ''} ${u.surname || ''}`.trim() || 'Guest';
 
         // Compute stats
@@ -486,10 +911,19 @@ const ProfilePage = {
         const watched = this.bookingHistory.filter(b => new Date(b.showtimeDate) < new Date()).length;
         const totalSpent = this.bookingHistory.reduce((sum, b) => sum + (parseFloat(b.totalAmountRaw) || 0), 0);
 
+        const avatarInner = avatarUrl
+        ? `<img src="${avatarUrl}" alt="${displayName}">`
+        : initials;
+
         document.getElementById('profileSection').innerHTML = `
             <!-- HEADER -->
             <div class="profile-header">
-                <div class="profile-avatar">${initials}</div>
+                <div class="avatar-wrap">
+                    <div class="profile-avatar" id="profileAvatarEl">${avatarInner}</div>
+                    <button class="avatar-edit-btn" id="avatarEditBtn" title="Change profile picture" aria-label="Change profile picture">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                </div>
                 <div class="profile-info">
                     <div class="profile-name">${displayName}</div>
                     <div class="profile-meta">
@@ -502,7 +936,18 @@ const ProfilePage = {
                         </span>
                     </div>
                 </div>
-                <div>
+            </div>
+
+            <!-- ACCOUNT ACTIONS -->
+            <div class="account-actions">
+                <div class="account-actions-info">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Manage your account and session</span>
+                </div>
+                <div class="account-actions-buttons">
+                    <button class="btn-manage" onclick="ProfilePage.scrollToSettings()">
+                        <i class="fas fa-cog"></i> Account Settings
+                    </button>
                     <button class="btn-logout" onclick="ProfilePage.logout()">
                         <i class="fas fa-sign-out-alt"></i> Sign Out
                     </button>
@@ -530,7 +975,7 @@ const ProfilePage = {
             </div>
 
             <!-- TABS -->
-            <div class="profile-tabs">
+            <div class="profile-tabs" id="settingsAnchor">
                 <button class="profile-tab active" data-tab="bookings">My Bookings</button>
                 <button class="profile-tab" data-tab="watchlist">Watchlist</button>
                 <button class="profile-tab" data-tab="settings">Settings</button>
@@ -558,6 +1003,9 @@ const ProfilePage = {
                 ${this.renderSettings()}
             </div>
         `;
+
+        // Wire up avatar edit button
+        document.getElementById('avatarEditBtn')?.addEventListener('click', () => this.openAvatarModal());
     },
 
     renderBookings() {
@@ -703,6 +1151,366 @@ const ProfilePage = {
         });
     },
 
+    scrollToSettings() {
+        // Switch to settings tab and scroll
+        const settingsTab = document.querySelector('.profile-tab[data-tab="settings"]');
+        settingsTab?.click();
+        document.getElementById('settingsAnchor')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    },
+
+    setupMobileMenu() {
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileOverlay');
+        const closeBtn = document.getElementById('mobileMenuClose');
+        const open = () => { menu.classList.add('open'); overlay.classList.add('active'); toggle.classList.add('active'); document.body.style.overflow = 'hidden'; };
+        const close = () => { menu.classList.remove('open'); overlay.classList.remove('active'); toggle.classList.remove('active'); document.body.style.overflow = ''; };
+        toggle?.addEventListener('click', () => menu.classList.contains('open') ? close() : open());
+        closeBtn?.addEventListener('click', close);
+        overlay?.addEventListener('click', close);
+    },
+
+    // ========================================================
+    // AVATAR MODAL
+    // ========================================================
+        // ========================================================
+    // AVATAR MODAL WITH CROPPING
+    // ========================================================
+    cropState: {
+        img: null,          // HTMLImageElement of the source
+        zoom: 1,            // 1 to 3
+        panX: 0,            // -100 to 100 (percent of crop box)
+        panY: 0,
+        canvas: null,
+        ctx: null
+    },
+
+    setupAvatarModal() {
+        // Modal tab switching
+        document.querySelectorAll('.modal-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.modal-tab-panel').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(`${tab.dataset.mtab}Panel`).classList.add('active');
+            });
+        });
+
+        // File input
+        document.getElementById('avatarFileInput')?.addEventListener('change', async (e) => {
+            const file = e.target.files?.[0];
+            if (!file) return;
+
+            // Validate size (max 5MB source)
+            if (file.size > 5 * 1024 * 1024) {
+                this.toast('Image must be under 5 MB', 'error');
+                return;
+            }
+
+            await this.loadCropImage(file);
+        });
+
+        // URL input
+        document.getElementById('avatarUrlInput')?.addEventListener('input', (e) => {
+            const url = e.target.value.trim();
+            if (!url) {
+                this.pendingAvatar = null;
+                this.updatePreview(null);
+                return;
+            }
+            this.pendingAvatar = { type: 'url', value: url };
+            this.updatePreview(url);
+        });
+
+        // Zoom slider
+        document.getElementById('zoomSlider')?.addEventListener('input', (e) => {
+            this.cropState.zoom = parseInt(e.target.value) / 100;
+            document.getElementById('zoomLabel').textContent = e.target.value + '%';
+            this.drawCropPreview();
+        });
+
+        // Pan X slider
+        document.getElementById('panXSlider')?.addEventListener('input', (e) => {
+            this.cropState.panX = parseInt(e.target.value);
+            document.getElementById('panXLabel').textContent = e.target.value;
+            this.drawCropPreview();
+        });
+
+        // Pan Y slider
+        document.getElementById('panYSlider')?.addEventListener('input', (e) => {
+            this.cropState.panY = parseInt(e.target.value);
+            document.getElementById('panYLabel').textContent = e.target.value;
+            this.drawCropPreview();
+        });
+
+        // Reset crop
+        document.getElementById('resetCropBtn')?.addEventListener('click', () => {
+            this.resetCrop();
+        });
+
+        // Save
+        document.getElementById('saveAvatarBtn')?.addEventListener('click', () => this.saveAvatar());
+
+        // Close on overlay click
+        document.getElementById('avatarModal')?.addEventListener('click', (e) => {
+            if (e.target.id === 'avatarModal') this.closeAvatarModal();
+        });
+
+        // ESC to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') this.closeAvatarModal();
+        });
+    },
+
+    // ========================================================
+    // LOAD IMAGE FOR CROPPING
+    // ========================================================
+    async loadCropImage(file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const img = new Image();
+            img.onload = () => {
+                this.cropState.img = img;
+                this.cropState.zoom = 1;
+                this.cropState.panX = 0;
+                this.cropState.panY = 0;
+
+                // Reset sliders
+                document.getElementById('zoomSlider').value = 100;
+                document.getElementById('panXSlider').value = 0;
+                document.getElementById('panYSlider').value = 0;
+                document.getElementById('zoomLabel').textContent = '100%';
+                document.getElementById('panXLabel').textContent = '0';
+                document.getElementById('panYLabel').textContent = '0';
+
+                // Replace preview with canvas
+                const preview = document.getElementById('previewAvatar');
+                preview.innerHTML = `
+                    <div class="crop-container" id="cropContainer">
+                        <canvas id="cropCanvas" width="440" height="440"></canvas>
+                        <div class="crop-guides"></div>
+                    </div>
+                `;
+
+                this.cropState.canvas = document.getElementById('cropCanvas');
+                this.cropState.ctx = this.cropState.canvas.getContext('2d');
+
+                // Show crop controls
+                document.getElementById('cropControls').style.display = 'block';
+                document.getElementById('fileUploadLabelText').textContent = 'Choose a different image';
+
+                // Draw initial crop
+                this.drawCropPreview();
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    },
+
+    // ========================================================
+    // DRAW CROP PREVIEW
+    // ========================================================
+    drawCropPreview() {
+        const { img, zoom, panX, panY, canvas, ctx } = this.cropState;
+        if (!img || !canvas || !ctx) return;
+
+        const size = canvas.width;   // 440
+        ctx.clearRect(0, 0, size, size);
+
+        // Compute source rect: base square centered on image, then zoom
+        const baseSize = Math.min(img.width, img.height);
+        const cropSize = baseSize / zoom;
+
+        // Center + pan offset
+        const centerX = img.width / 2 + (panX / 100) * (img.width - cropSize) / 2;
+        const centerY = img.height / 2 + (panY / 100) * (img.height - cropSize) / 2;
+
+        let sx = centerX - cropSize / 2;
+        let sy = centerY - cropSize / 2;
+
+        // Clamp to image bounds
+        sx = Math.max(0, Math.min(sx, img.width - cropSize));
+        sy = Math.max(0, Math.min(sy, img.height - cropSize));
+
+        ctx.drawImage(img, sx, sy, cropSize, cropSize, 0, 0, size, size);
+
+        // Save the crop bounds for later
+        this.cropState.lastCrop = { sx, sy, cropSize };
+    },
+
+    // ========================================================
+    // RESET CROP
+    // ========================================================
+    resetCrop() {
+        this.cropState.zoom = 1;
+        this.cropState.panX = 0;
+        this.cropState.panY = 0;
+
+        document.getElementById('zoomSlider').value = 100;
+        document.getElementById('panXSlider').value = 0;
+        document.getElementById('panYSlider').value = 0;
+        document.getElementById('zoomLabel').textContent = '100%';
+        document.getElementById('panXLabel').textContent = '0';
+        document.getElementById('panYLabel').textContent = '0';
+
+        this.drawCropPreview();
+    },
+
+    // ========================================================
+    // UPDATE PREVIEW (for URL tab)
+    // ========================================================
+    updatePreview(url) {
+        const preview = document.getElementById('previewAvatar');
+        const initials = this.getInitials(this.user);
+
+        // Remove any crop canvas
+        const cropContainer = document.getElementById('cropContainer');
+        if (cropContainer) cropContainer.remove();
+
+        // Hide crop controls
+        document.getElementById('cropControls').style.display = 'none';
+        document.getElementById('fileUploadLabelText').textContent = 'Click to choose an image';
+
+        if (url) {
+            preview.innerHTML = `<img src="${url}" alt="Preview" onerror="this.style.display='none';this.parentElement.textContent='${initials}';">`;
+        } else {
+            preview.innerHTML = initials;
+        }
+    },
+
+    // ========================================================
+    // OPEN / CLOSE MODAL
+    // ========================================================
+    openAvatarModal() {
+        const url = this.getAvatarUrl(this.user);
+        const initials = this.getInitials(this.user);
+
+        this.pendingAvatar = null;
+        this.cropState.img = null;
+
+        document.getElementById('avatarUrlInput').value = '';
+        document.getElementById('avatarFileInput').value = '';
+
+        // Reset tabs to "Upload"
+        document.querySelectorAll('.modal-tab').forEach(t => t.classList.toggle('active', t.dataset.mtab === 'upload'));
+        document.querySelectorAll('.modal-tab-panel').forEach(p => p.classList.toggle('active', p.id === 'uploadPanel'));
+
+        // Hide crop controls by default
+        document.getElementById('cropControls').style.display = 'none';
+        document.getElementById('fileUploadLabelText').textContent = 'Click to choose an image';
+
+        // Set initial preview
+        const preview = document.getElementById('previewAvatar');
+        if (url) {
+            preview.innerHTML = `<img src="${url}" alt="Preview">`;
+        } else {
+            preview.innerHTML = initials;
+        }
+
+        document.getElementById('avatarModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    },
+
+    closeAvatarModal() {
+        document.getElementById('avatarModal').classList.remove('active');
+        document.body.style.overflow = '';
+        this.pendingAvatar = null;
+        this.cropState.img = null;
+    },
+
+    // ========================================================
+    // SAVE AVATAR (handles both upload + URL)
+    // ========================================================
+    saveAvatar() {
+        // If user uploaded & cropped an image
+        if (this.cropState.img && this.cropState.canvas) {
+            // Export the canvas as a 400x400 JPEG
+            const exportCanvas = document.createElement('canvas');
+            exportCanvas.width = 400;
+            exportCanvas.height = 400;
+            const ectx = exportCanvas.getContext('2d');
+
+            // Draw the crop canvas scaled down to 400x400
+            ectx.drawImage(this.cropState.canvas, 0, 0, 400, 400);
+
+            const dataUrl = exportCanvas.toDataURL('image/jpeg', 0.85);
+
+            this.saveAvatarToStorage(dataUrl);
+            this.closeAvatarModal();
+            this.refreshAvatarEverywhere();
+            this.toast('Profile picture updated!');
+            return;
+        }
+
+        // If user provided a URL
+        if (this.pendingAvatar && this.pendingAvatar.type === 'url') {
+            this.saveAvatarToStorage(this.pendingAvatar.value);
+            this.closeAvatarModal();
+            this.refreshAvatarEverywhere();
+            this.toast('Profile picture updated!');
+            return;
+        }
+
+        this.toast('Please upload an image or paste a URL first', 'error');
+    },
+
+    refreshAvatarEverywhere() {
+        // Re-render profile page
+        this.renderNavUser();
+        this.render();
+        this.setupTabs();
+        this.setupAvatarModal();
+
+        // Re-render nav (via NavWishlist helper)
+        if (typeof NavWishlist !== 'undefined' && NavWishlist.renderAvatar) {
+            NavWishlist.renderAvatar();
+        }
+    },
+
+    // ========================================================
+    // REMOVE AVATAR
+    // ========================================================
+    removeAvatar() {
+        if (!this.getAvatarUrl(this.user)) {
+            this.toast('No profile picture set', 'error');
+            return;
+        }
+
+        if (!confirm('Remove your profile picture?')) return;
+
+        this.saveAvatarToStorage(null);
+        this.closeAvatarModal();
+        this.refreshAvatarEverywhere();
+        this.toast('Profile picture removed');
+    },
+
+    // ========================================================
+    // STORAGE HELPERS (delegate to NavAvatar if available)
+    // ========================================================
+    getInitials(user) {
+        if (typeof NavAvatar !== 'undefined') return NavAvatar.getInitials(user);
+
+        // Fallback (shouldn't be needed)
+        if (!user) return 'SV';
+        const first = (user.forenames || user.name || 'S').substring(0, 2).toUpperCase();
+        const last = (user.surname || '').substring(0, 2).toUpperCase();
+        return (first + last) || 'SV';
+    },
+
+    getAvatarUrl(user) {
+        if (typeof NavAvatar !== 'undefined') return NavAvatar.getAvatarUrl(user);
+        return null;
+    },
+
+    saveAvatarToStorage(url) {
+        if (typeof NavAvatar !== 'undefined') {
+            NavAvatar.setAvatarUrl(this.user?.email, url);
+        }
+    },
+
+    // ========================================================
+    // ACTIONS
+    // ========================================================
     logout() {
         if (!confirm('Are you sure you want to sign out?')) return;
         SavannahStorage.logout();
@@ -717,10 +1525,13 @@ const ProfilePage = {
         this.toast('2FA setup coming soon');
     },
 
-    toast(msg) {
+    toast(msg, variant = 'success') {
         const el = document.createElement('div');
         el.className = 'toast';
-        el.innerHTML = `<i class="fas fa-info-circle"></i> ${msg}`;
+        if (variant === 'error') {
+            el.style.background = 'var(--rust)';
+        }
+        el.innerHTML = `<i class="fas ${variant === 'error' ? 'fa-exclamation-circle' : 'fa-check-circle'}"></i> ${msg}`;
         document.body.appendChild(el);
         setTimeout(() => el.remove(), 3000);
     }
@@ -728,5 +1539,7 @@ const ProfilePage = {
 
 document.addEventListener('DOMContentLoaded', () => ProfilePage.init());
 </script>
+<script src="js/nav-avatar.js"></script>
+<script src="js/nav-wishlist.js"></script>
 </body>
 </html>
