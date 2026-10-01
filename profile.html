@@ -450,6 +450,131 @@
             min-height: 34px;
         }
 
+        /* PROFILE TROPHIES TAB */
+        .stat-card-link { cursor: pointer; transition: 0.3s ease; }
+        .stat-card-link:hover {
+            border-color: var(--gold-dim);
+            transform: translateY(-2px);
+        }
+
+        .profile-trophies-head {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 12px; margin-bottom: 16px;
+            padding-bottom: 14px; border-bottom: 1px solid var(--ink-line);
+        }
+        .profile-trophies-title {
+            font-family: var(--font-display);
+            font-size: 18px; font-weight: 500;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .profile-trophies-title i { color: var(--gold); font-size: 14px; }
+        .profile-trophies-count {
+            font-family: var(--font-mono);
+            font-size: 11px; letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--paper-dim);
+        }
+
+        .profile-trophies-progress { margin-bottom: 24px; }
+        .profile-trophies-progress-labels {
+            display: flex; justify-content: space-between;
+            font-family: var(--font-mono); font-size: 10px;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--paper-dim); margin-bottom: 6px;
+        }
+        .profile-trophies-progress-labels strong { color: var(--gold); font-weight: 500; }
+        .profile-trophies-progress-bar {
+            height: 6px; border-radius: 100px;
+            background: rgba(255,255,255,0.06);
+            overflow: hidden;
+        }
+        .profile-trophies-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+            border-radius: 100px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .profile-featured-block {
+            background: var(--ink-raised);
+            border: 1px solid var(--ink-line);
+            border-radius: var(--radius-md);
+            padding: 20px 22px;
+            margin-bottom: 24px;
+        }
+        .profile-featured-title {
+            font-family: var(--font-display);
+            font-size: 15px; font-weight: 500;
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 16px;
+        }
+        .profile-featured-title i { color: var(--gold); font-size: 13px; }
+
+        .profile-featured-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .profile-featured-slot {
+            aspect-ratio: 1;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--rarity-color, var(--gold-dim));
+            background: linear-gradient(135deg,
+                rgba(232,179,76,0.06), rgba(20,20,28,0.9));
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 6px; padding: 10px;
+            box-shadow: inset 0 0 20px rgba(232,179,76,0.06);
+        }
+        .profile-featured-icon {
+            font-size: 28px; line-height: 1;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6));
+        }
+        .profile-featured-name {
+            font-family: var(--font-display);
+            font-size: 10px; font-weight: 500;
+            text-align: center; line-height: 1.2;
+            color: var(--paper);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .profile-featured-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 20px;
+            color: var(--paper-dim);
+        }
+        .profile-featured-empty i {
+            font-size: 24px;
+            color: var(--gold-dim);
+            display: block; margin-bottom: 8px;
+        }
+        .profile-featured-empty p { font-size: 12px; line-height: 1.5; }
+
+        .profile-trophies-cta {
+            display: flex; flex-direction: column;
+            align-items: center; gap: 14px;
+            padding: 4px 0 8px;
+        }
+        .profile-trophies-cta .btn { width: 100%; max-width: 300px; justify-content: center; }
+        .profile-trophies-stats {
+            display: flex; align-items: center; gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 11px; letter-spacing: 0.06em;
+            color: var(--paper-dim);
+        }
+        .profile-trophies-stats strong { color: var(--gold); font-weight: 500; }
+        .profile-trophies-stats .dot { opacity: 0.4; }
+
+        @media (max-width: 640px) {
+            .profile-featured-grid { gap: 8px; }
+            .profile-featured-icon { font-size: 22px; }
+            .profile-featured-name { font-size: 9px; }
+            .profile-featured-block { padding: 16px; }
+        }
+
         /* TOAST */
         .toast {
             position: fixed;
@@ -669,7 +794,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav">
     <div class="nav-left">
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
@@ -684,12 +808,9 @@
         <li><a href="events.html">Events</a></li>
         <li><a href="offers.html">Offers</a></li>
     </ul>
-    <div class="nav-right" id="navRight">
-        <!-- NavWishlist injects the avatar dropdown here -->
-    </div>
+    <div class="nav-right" id="navRight"></div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu-overlay" id="mobileOverlay"></div>
 <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <div class="mobile-menu-header">
@@ -707,10 +828,8 @@
     <div class="mobile-menu-footer"><p>© 2026 Savannah Cinemas</p></div>
 </aside>
 
-<!-- PROFILE -->
 <section class="profile-section" id="profileSection"></section>
 
-<!-- AVATAR MODAL -->
 <div class="modal-overlay" id="avatarModal">
     <div class="modal">
         <h3>Change Profile Picture</h3>
@@ -795,73 +914,529 @@
     </div>
 </footer>
 
-<!-- SCRIPTS — order matters -->
-<script src="data/movies-inline.js"></script>
-<script src="js/app.js"></script>
-<script src="js/storage.js"></script>
-<script src="js/nav-avatar.js"></script>
-<script src="js/nav-wishlist.js"></script>
+<!-- ============================================================
+     SHARED DEPS (optional)
+     ============================================================ -->
+<script src="data/movies-inline.js" onerror="console.warn('[BOOT] movies-inline.js not found')"></script>
+<script src="js/app.js" onerror="console.warn('[BOOT] app.js not found — using fallback')"></script>
+<script src="js/storage.js" onerror="console.warn('[BOOT] storage.js not found — using fallback')"></script>
+<script src="js/nav-avatar.js" onerror="console.warn('[BOOT] nav-avatar.js not found')"></script>
+<script src="js/nav-wishlist.js" onerror="console.warn('[BOOT] nav-wishlist.js not found')"></script>
 
+<!-- ============================================================
+     FALLBACK: SavannahStorage + SavannahApp (only if missing)
+     ============================================================ -->
 <script>
-// ============================================================
-// PROFILE PAGE CONTROLLER
-// ============================================================
+if (typeof SavannahStorage === 'undefined') {
+    window.SavannahStorage = {
+        KEYS: {
+            USER: 'svn_user',
+            BOOKING_HISTORY: 'svn_booking_history',
+            WATCHLIST: 'svn_watchlist',
+            LAST_BOOKING: 'svn_last_booking'
+        },
+        _get(key, fallback) {
+            try { const raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : fallback; }
+            catch (e) { return fallback; }
+        },
+        _set(key, value) {
+            try { localStorage.setItem(key, JSON.stringify(value)); return true; }
+            catch (e) { return false; }
+        },
+        get(key, fallback) { return this._get(key, fallback); },
+        set(key, value) { return this._set(key, value); },
+        getUser() { return this._get(this.KEYS.USER, null); },
+        getWatchlist() { return this._get(this.KEYS.WATCHLIST, []); },
+        removeFromWatchlist(id) {
+            const list = this.getWatchlist().filter(x => String(x) !== String(id));
+            this._set(this.KEYS.WATCHLIST, list);
+            return list;
+        },
+        logout() {
+            try {
+                localStorage.removeItem(this.KEYS.USER);
+                localStorage.removeItem(this.KEYS.BOOKING_HISTORY);
+                localStorage.removeItem(this.KEYS.WATCHLIST);
+            } catch (e) {}
+        }
+    };
+}
 
+if (typeof SavannahApp === 'undefined') {
+    window.SavannahApp = {
+        data: { movies: [], showtimes: [], cinemas: [], branches: [] },
+        config: { bookingFee: 0, taxRate: 0 },
+        async init() {},
+        getMovieById() { return null; },
+        formatCurrency(n) { return String(n); },
+        formatDate(d) { return String(d); },
+        formatTime(t) { return String(t); }
+    };
+}
+</script>
+
+<!-- ============================================================
+     INLINE: TROPHY DEFINITIONS
+     ============================================================ -->
+<script>
+window.SAVANNAH_TROPHIES = {
+    RARITIES: {
+        common:    { id: 'common',    label: 'Common',    icon: '🥉', color: '#B08D57', order: 1 },
+        rare:      { id: 'rare',      label: 'Rare',      icon: '🥈', color: '#9FB4C7', order: 2 },
+        epic:      { id: 'epic',      label: 'Epic',      icon: '🥇', color: '#E8B34C', order: 3 },
+        legendary: { id: 'legendary', label: 'Legendary', icon: '💎', color: '#B33951', order: 4 }
+    },
+    WINDOWS: {
+        halloween_2026:  { id: 'halloween_2026',  label: 'Halloween 2026',  start: '2026-10-01', end: '2026-10-31' },
+        valentines_2027: { id: 'valentines_2027', label: "Valentine's 2027", start: '2027-02-10', end: '2027-02-14' },
+        christmas_2026:  { id: 'christmas_2026',  label: 'Christmas 2026',  start: '2026-12-01', end: '2026-12-31' }
+    },
+    POINTS: {
+        per_currency_unit: 1,
+        bonuses: { weekend: 0.10, matinee: 0.05, premium_seat: 0.15 },
+        rarity_bonus: { common: 0, rare: 50, epic: 150, legendary: 500 }
+    },
+    STREAKS: { week_reset_day: 0, grace_days: 7, timezone: 'Africa/Accra' },
+
+    CATEGORIES: {
+        milestones: { id: 'milestones', label: 'Cinema Milestones', icon: '🎬', order: 1 },
+        genre:      { id: 'genre',      label: 'Genre',             icon: '🎭', order: 2 },
+        franchise:  { id: 'franchise',  label: 'Collections',       icon: '🦸', order: 3 },
+        attendance: { id: 'attendance', label: 'Attendance',        icon: '📅', order: 4 },
+        social:     { id: 'social',     label: 'Social',            icon: '👥', order: 5 },
+        challenge:  { id: 'challenge',  label: 'Challenges',        icon: '🎯', order: 6 },
+        secret:     { id: 'secret',     label: 'Secret',            icon: '❓', order: 7 }
+    },
+
+    SETS: {
+        movie_lover: {
+            id: 'movie_lover', name: 'Movie Lover Set', icon: '🎬',
+            description: 'Collect every milestone trophy.',
+            members: ['first_screening', 'movie_buff', 'film_enthusiast', 'cinema_regular', 'silver_screen_veteran', 'savannah_legend'],
+            master: { id: 'movie_lover_master', name: 'Movie Lover Master', description: 'Complete the Movie Lover Set.', icon: '💎', rarity: 'legendary', reward_type: 'unlock', perk: 'Exclusive Movie Lover Master badge' }
+        },
+        genre_explorer: {
+            id: 'genre_explorer', name: 'Genre Explorer Set', icon: '🌍',
+            description: 'Collect every genre trophy.',
+            members: ['action_hero', 'comedy_king', 'fearless', 'romantic', 'beyond_earth', 'detective', 'genre_collector'],
+            master: { id: 'genre_explorer_master', name: 'Genre Explorer Master', description: 'Complete the Genre Explorer Set.', icon: '💎', rarity: 'legendary', reward_type: 'unlock', perk: 'Exclusive Genre Explorer Master badge' }
+        },
+        streak: {
+            id: 'streak', name: 'Streak Set', icon: '🔥',
+            description: 'Collect every attendance streak trophy.',
+            members: ['weekend_warrior', 'cinema_streak', 'monthly_regular'],
+            master: { id: 'streak_master', name: 'Streak Master', description: 'Complete the Streak Set.', icon: '💎', rarity: 'legendary', reward_type: 'unlock', perk: 'Exclusive Streak Master badge' }
+        },
+        social: {
+            id: 'social', name: 'Social Set', icon: '👥',
+            description: 'Collect every social trophy.',
+            members: ['movie_buddy', 'dynamic_duo', 'group_screening', 'the_connector'],
+            master: { id: 'social_master', name: 'Social Master', description: 'Complete the Social Set.', icon: '💎', rarity: 'legendary', reward_type: 'unlock', perk: 'Exclusive Social Master badge' }
+        }
+    },
+
+    TROPHIES: [
+        { id: 'first_screening', name: 'First Screening', description: 'Watch your first movie at Savannah Cinemas.', icon: '🎬', category: 'milestones', rarity: 'common', reward_type: 'reward', points: 100, requirement: { type: 'movies_watched', value: 1 }, set: 'movie_lover' },
+        { id: 'movie_buff', name: 'Movie Buff', description: 'Watch 5 movies.', icon: '🍿', category: 'milestones', rarity: 'common', reward_type: 'reward', points: 250, requirement: { type: 'movies_watched', value: 5 }, set: 'movie_lover' },
+        { id: 'film_enthusiast', name: 'Film Enthusiast', description: 'Watch 10 movies.', icon: '🎞️', category: 'milestones', rarity: 'rare', reward_type: 'reward', points: 500, requirement: { type: 'movies_watched', value: 10 }, set: 'movie_lover' },
+        { id: 'cinema_regular', name: 'Cinema Regular', description: 'Watch 25 movies at Savannah Cinemas.', icon: '🎥', category: 'milestones', rarity: 'epic', reward_type: 'reward', points: 500, requirement: { type: 'movies_watched', value: 25 }, set: 'movie_lover' },
+        { id: 'silver_screen_veteran', name: 'Silver Screen Veteran', description: 'Watch 50 movies.', icon: '🎦', category: 'milestones', rarity: 'epic', reward_type: 'recognition', requirement: { type: 'movies_watched', value: 50 }, set: 'movie_lover' },
+        { id: 'savannah_legend', name: 'Savannah Legend', description: 'Watch 100 movies.', icon: '👑', category: 'milestones', rarity: 'legendary', reward_type: 'unlock', perk: 'Permanent Legendary badge on your profile', requirement: { type: 'movies_watched', value: 100 }, set: 'movie_lover' },
+
+        { id: 'action_hero', name: 'Action Hero', description: 'Watch 10 action movies.', icon: '💥', category: 'genre', rarity: 'rare', reward_type: 'reward', points: 300, requirement: { type: 'genre_watched', value: 10, filter: 'Action' }, set: 'genre_explorer' },
+        { id: 'comedy_king', name: 'Comedy King', description: 'Watch 10 comedies.', icon: '😂', category: 'genre', rarity: 'rare', reward_type: 'reward', points: 300, requirement: { type: 'genre_watched', value: 10, filter: 'Comedy' }, set: 'genre_explorer' },
+        { id: 'fearless', name: 'Fearless', description: 'Watch 10 horror movies.', icon: '👻', category: 'genre', rarity: 'rare', reward_type: 'reward', points: 300, requirement: { type: 'genre_watched', value: 10, filter: 'Horror' }, set: 'genre_explorer' },
+        { id: 'romantic', name: 'Romantic', description: 'Watch 10 romance movies.', icon: '💕', category: 'genre', rarity: 'rare', reward_type: 'reward', points: 300, requirement: { type: 'genre_watched', value: 10, filter: 'Romance' }, set: 'genre_explorer' },
+        { id: 'beyond_earth', name: 'Beyond Earth', description: 'Watch 10 sci-fi movies.', icon: '🚀', category: 'genre', rarity: 'rare', reward_type: 'reward', points: 300, requirement: { type: 'genre_watched', value: 10, filter: 'Sci-Fi' }, set: 'genre_explorer' },
+        { id: 'detective', name: 'Detective', description: 'Watch 10 thriller movies.', icon: '🕵️', category: 'genre', rarity: 'rare', reward_type: 'reward', points: 300, requirement: { type: 'genre_watched', value: 10, filter: 'Thriller' }, set: 'genre_explorer' },
+        { id: 'genre_collector', name: 'Genre Collector', description: 'Watch at least 5 movies from 8 different genres.', icon: '🌍', category: 'genre', rarity: 'epic', reward_type: 'reward', points: 750, requirement: { type: 'genre_variety', value: 5, filter: 8 }, set: 'genre_explorer' },
+
+        { id: 'marvel_collector', name: 'Marvel Collector', description: 'Watch 5 Marvel movies.', icon: '🦸', category: 'franchise', rarity: 'rare', reward_type: 'reward', points: 400, requirement: { type: 'franchise_watched', value: 5, filter: 'Marvel' } },
+        { id: 'dc_collector', name: 'DC Collector', description: 'Watch 5 DC movies.', icon: '🦇', category: 'franchise', rarity: 'rare', reward_type: 'reward', points: 400, requirement: { type: 'franchise_watched', value: 5, filter: 'DC' } },
+
+        { id: 'weekend_warrior', name: 'Weekend Warrior', description: 'Watch movies on 3 consecutive weekends.', icon: '📅', category: 'attendance', rarity: 'rare', reward_type: 'reward', points: 300, requirement: { type: 'weekend_streak', value: 3 }, set: 'streak' },
+        { id: 'night_owl', name: 'Night Owl', description: 'Attend 5 evening screenings.', icon: '🌙', category: 'attendance', rarity: 'rare', reward_type: 'reward', points: 250, requirement: { type: 'evening_screenings', value: 5 } },
+        { id: 'early_bird', name: 'Early Bird', description: 'Attend 5 afternoon screenings.', icon: '☀️', category: 'attendance', rarity: 'rare', reward_type: 'reward', points: 250, requirement: { type: 'afternoon_screenings', value: 5 } },
+        { id: 'cinema_streak', name: 'Cinema Streak', description: 'Visit Savannah 4 weeks in a row.', icon: '🔥', category: 'attendance', rarity: 'epic', reward_type: 'reward', points: 600, requirement: { type: 'week_streak', value: 4 }, set: 'streak' },
+        { id: 'monthly_regular', name: 'Monthly Regular', description: 'Watch at least one movie every month for 6 months.', icon: '🗓️', category: 'attendance', rarity: 'epic', reward_type: 'reward', points: 800, requirement: { type: 'month_streak', value: 6 }, set: 'streak' },
+
+        { id: 'movie_buddy', name: 'Movie Buddy', description: 'Watch 5 movies with another Savannah user.', icon: '👥', category: 'social', rarity: 'rare', reward_type: 'reward', points: 300, requirement: { type: 'with_friend', value: 5 }, set: 'social' },
+        { id: 'dynamic_duo', name: 'Dynamic Duo', description: 'Watch 3 movies with the same friend.', icon: '👫', category: 'social', rarity: 'rare', reward_type: 'reward', points: 400, requirement: { type: 'with_friend', value: 3, filter: 'same_friend' }, set: 'social' },
+        { id: 'group_screening', name: 'Group Screening', description: 'Book 4 or more seats in a single booking.', icon: '👨‍👩‍👧‍👦', category: 'social', rarity: 'common', reward_type: 'reward', points: 200, requirement: { type: 'group_booking', value: 4 }, set: 'social' },
+        { id: 'the_connector', name: 'The Connector', description: 'Refer 5 friends who complete their first booking.', icon: '🎟️', category: 'social', rarity: 'epic', reward_type: 'reward', points: 1000, requirement: { type: 'referrals', value: 5 }, set: 'social' },
+
+        { id: 'halloween_horror_hunter', name: 'Halloween Horror Hunter', description: 'Watch 3 horror movies in October.', icon: '🎃', category: 'challenge', rarity: 'rare', reward_type: 'reward', points: 500, requirement: { type: 'date_window', value: 3, filter: 'halloween_2026' }, window: 'halloween_2026' },
+        { id: 'cinema_cupid', name: 'Cinema Cupid', description: 'Watch a romance movie between February 10–14.', icon: '❤️', category: 'challenge', rarity: 'rare', reward_type: 'reward', points: 400, requirement: { type: 'date_window', value: 1, filter: 'valentines_2027' }, window: 'valentines_2027' },
+        { id: 'christmas_movie_buff', name: 'Christmas Movie Buff', description: 'Watch 2 Christmas movies.', icon: '🎄', category: 'challenge', rarity: 'rare', reward_type: 'reward', points: 400, requirement: { type: 'date_window', value: 2, filter: 'christmas_2026' }, window: 'christmas_2026' },
+        { id: 'made_in_ghana', name: 'Made in Ghana', description: 'Watch 5 Ghanaian films.', icon: '🇬🇭', category: 'challenge', rarity: 'epic', reward_type: 'reward', points: 750, requirement: { type: 'genre_watched', value: 5, filter: 'Ghanaian' } },
+
+        { id: 'the_marathoner', name: 'The Marathoner', description: 'Watch 3 movies in one day.', icon: '🏃', category: 'secret', rarity: 'epic', reward_type: 'reward', points: 750, requirement: { type: 'movies_in_one_day', value: 3 }, secret: true },
+        { id: 'first_in_line', name: 'First in Line', description: 'Attend the first screening of the day 5 times.', icon: '🥇', category: 'secret', rarity: 'rare', reward_type: 'reward', points: 400, requirement: { type: 'first_of_day', value: 5 }, secret: true },
+        { id: 'last_one_standing', name: 'Last One Standing', description: 'Attend the final screening of the day 5 times.', icon: '🌌', category: 'secret', rarity: 'rare', reward_type: 'reward', points: 400, requirement: { type: 'last_of_day', value: 5 }, secret: true },
+        { id: 'popcorn_addict', name: 'Popcorn Addict', description: 'Purchase popcorn 10 times.', icon: '🍿', category: 'secret', rarity: 'rare', reward_type: 'reward', points: 300, requirement: { type: 'concessions_purchases', value: 10 }, secret: true },
+        { id: 'the_critic', name: 'The Critic', description: 'Review 10 movies.', icon: '📝', category: 'secret', rarity: 'rare', reward_type: 'reward', points: 400, requirement: { type: 'reviews_written', value: 10 }, secret: true },
+        { id: 'explorer', name: 'Explorer', description: 'Watch a movie in every available screen.', icon: '🧭', category: 'secret', rarity: 'epic', reward_type: 'reward', points: 600, requirement: { type: 'screens_visited', value: 6 }, secret: true }
+    ]
+};
+</script>
+
+<!-- ============================================================
+     INLINE: TROPHY ENGINE
+     ============================================================ -->
+<script>
+window.SavannahTrophies = {
+    KEYS: {
+        USER_TROPHIES:  'svn_user_trophies_v1',
+        POINTS_LEDGER:  'svn_points_ledger_v1',
+        POINTS_BALANCE: 'svn_points_balance_v1',
+        USER_STATS:     'svn_user_stats_v1',
+        UNLOCK_QUEUE:   'svn_unlock_queue_v1'
+    },
+
+    init() {
+        if (typeof SavannahStorage !== 'undefined' && SavannahStorage.KEYS) {
+            Object.keys(this.KEYS).forEach(k => {
+                if (!SavannahStorage.KEYS[k]) SavannahStorage.KEYS[k] = this.KEYS[k];
+            });
+        }
+        this._ensureStatsShape();
+    },
+
+    _defaultStats() {
+        return {
+            lifetimeMoviesWatched: 0, lifetimeBookings: 0, lifetimeSpentRaw: 0,
+            lifetimePointsEarned: 0, lifetimePointsSpent: 0,
+            genreCounts: {}, franchiseCounts: {},
+            distinctScreens: {},
+            eveningScreenings: 0, afternoonScreenings: 0,
+            firstOfDayCount: 0, lastOfDayCount: 0,
+            moviesPerDay: {},
+            weekVisitStamps: [], monthVisitStamps: [], weekendVisitStamps: [],
+            currentWeekStreak: 0, longestWeekStreak: 0,
+            currentWeekendStreak: 0, longestWeekendStreak: 0,
+            currentMonthStreak: 0, longestMonthStreak: 0,
+            firstVisitDate: null, lastVisitDate: null,
+            concessionsPurchaseCount: 0, popcornPurchaseCount: 0,
+            reviewsWritten: 0, referralCount: 0, groupBookingMax: 0,
+            processedBookingRefs: {}
+        };
+    },
+
+    _ensureStatsShape() {
+        const stats = this.getStats();
+        const defs = this._defaultStats();
+        let changed = false;
+        Object.keys(defs).forEach(k => {
+            if (stats[k] === undefined) { stats[k] = defs[k]; changed = true; }
+        });
+        if (changed) this._setStats(stats);
+    },
+
+    getStats() {
+        try {
+            return (typeof SavannahStorage !== 'undefined')
+                ? SavannahStorage.get(this.KEYS.USER_STATS, this._defaultStats())
+                : this._defaultStats();
+        } catch (e) { return this._defaultStats(); }
+    },
+    _setStats(stats) {
+        try { SavannahStorage.set(this.KEYS.USER_STATS, stats); } catch (e) {}
+    },
+
+    getPointsBalance() {
+        try { return Number(SavannahStorage.get(this.KEYS.POINTS_BALANCE, 0)) || 0; }
+        catch (e) { return 0; }
+    },
+    getPointsLedger() {
+        try { return SavannahStorage.get(this.KEYS.POINTS_LEDGER, []) || []; }
+        catch (e) { return []; }
+    },
+    awardPoints(delta, reason, meta = {}) {
+        const d = Number(delta) || 0;
+        if (!d) return this.getPointsBalance();
+        try {
+            const ledger = this.getPointsLedger();
+            ledger.unshift({
+                id: 'pts_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
+                ts: new Date().toISOString(), delta: d, reason, meta
+            });
+            SavannahStorage.set(this.KEYS.POINTS_LEDGER, ledger.slice(0, 500));
+            const balance = this.getPointsBalance() + d;
+            SavannahStorage.set(this.KEYS.POINTS_BALANCE, balance);
+            const stats = this.getStats();
+            if (d > 0) stats.lifetimePointsEarned += d;
+            else stats.lifetimePointsSpent += Math.abs(d);
+            this._setStats(stats);
+            return balance;
+        } catch (e) { return this.getPointsBalance(); }
+    },
+
+    getUserTrophies() {
+        try { return SavannahStorage.get(this.KEYS.USER_TROPHIES, {}) || {}; }
+        catch (e) { return {}; }
+    },
+    hasTrophy(id) { return !!this.getUserTrophies()[id]; },
+
+    getTrophyDefinition(id) {
+        return (SAVANNAH_TROPHIES.TROPHIES || []).find(t => t.id === id) || null;
+    },
+    getMasterForSet(setId) {
+        const set = SAVANNAH_TROPHIES.SETS && SAVANNAH_TROPHIES.SETS[setId];
+        return (set && set.master) ? set.master : null;
+    },
+    getAllDefinitions() {
+        const base = (SAVANNAH_TROPHIES.TROPHIES || []).slice();
+        const masters = Object.values(SAVANNAH_TROPHIES.SETS || {}).map(s => s.master).filter(Boolean);
+        return base.concat(masters);
+    },
+    getUnlockedCount() { return Object.keys(this.getUserTrophies()).length; },
+    getTotalCount() { return this.getAllDefinitions().filter(t => this._isAvailable(t)).length; },
+
+    _isAvailable(def) {
+        if (!def) return false;
+        if (def.active === false) return false;
+        if (def.window) {
+            const w = SAVANNAH_TROPHIES.WINDOWS && SAVANNAH_TROPHIES.WINDOWS[def.window];
+            if (!w) return false;
+            const today = new Date().toISOString().slice(0, 10);
+            if (today < w.start || today > w.end) return false;
+        }
+        return true;
+    },
+
+    _unlockTrophy(trophyId, meta = {}) {
+        if (this.hasTrophy(trophyId)) return null;
+        const def = this.getTrophyDefinition(trophyId) || this.getMasterForSet(trophyId);
+        if (!def) return null;
+        try {
+            const owned = this.getUserTrophies();
+            owned[trophyId] = { unlockedAt: new Date().toISOString(), featured: false, ...meta };
+            SavannahStorage.set(this.KEYS.USER_TROPHIES, owned);
+            const queue = SavannahStorage.get(this.KEYS.UNLOCK_QUEUE, []) || [];
+            queue.push({ trophyId, unlockedAt: new Date().toISOString() });
+            SavannahStorage.set(this.KEYS.UNLOCK_QUEUE, queue);
+        } catch (e) { return null; }
+        const rarityBonus = (SAVANNAH_TROPHIES.POINTS && SAVANNAH_TROPHIES.POINTS.rarity_bonus && SAVANNAH_TROPHIES.POINTS.rarity_bonus[def.rarity]) || 0;
+        const trophyPoints = (def.reward_type === 'reward' && def.points) ? def.points : 0;
+        const totalPoints = trophyPoints + (def.reward_type !== 'recognition' ? rarityBonus : 0);
+        if (totalPoints > 0) this.awardPoints(totalPoints, 'trophy', { trophyId, rarity: def.rarity });
+        this._checkSetCompletion(def.set);
+        return { def, pointsAwarded: totalPoints };
+    },
+
+    _checkSetCompletion(setId) {
+        if (!setId) return;
+        const set = SAVANNAH_TROPHIES.SETS && SAVANNAH_TROPHIES.SETS[setId];
+        if (!set || !set.master) return;
+        if (this.hasTrophy(set.master.id)) return;
+        if (set.members.every(m => this.hasTrophy(m))) this._unlockTrophy(set.master.id);
+    },
+
+    drainUnlockQueue() {
+        try {
+            const q = SavannahStorage.get(this.KEYS.UNLOCK_QUEUE, []) || [];
+            SavannahStorage.set(this.KEYS.UNLOCK_QUEUE, []);
+            return q;
+        } catch (e) { return []; }
+    },
+
+    evaluateTrophies() {
+        const stats = this.getStats();
+        const newly = [];
+        (SAVANNAH_TROPHIES.TROPHIES || []).forEach(def => {
+            if (!this._isAvailable(def)) return;
+            if (this.hasTrophy(def.id)) return;
+            if (this._meetsRequirement(def.requirement, stats)) {
+                const r = this._unlockTrophy(def.id);
+                if (r) newly.push(def.id);
+            }
+        });
+        return newly;
+    },
+
+    _meetsRequirement(req, stats) {
+        if (!req || !req.type) return false;
+        const v = Number(req.value) || 0;
+        switch (req.type) {
+            case 'movies_watched': return stats.lifetimeMoviesWatched >= v;
+            case 'genre_watched': return (stats.genreCounts[req.filter] || 0) >= v;
+            case 'genre_variety': {
+                const q = Object.values(stats.genreCounts || {}).filter(c => c >= v).length;
+                return q >= (Number(req.filter) || 0);
+            }
+            case 'franchise_watched': return (stats.franchiseCounts[req.filter] || 0) >= v;
+            case 'weekend_streak': return stats.longestWeekendStreak >= v;
+            case 'week_streak': return stats.longestWeekStreak >= v;
+            case 'month_streak': return stats.longestMonthStreak >= v;
+            case 'evening_screenings': return stats.eveningScreenings >= v;
+            case 'afternoon_screenings': return stats.afternoonScreenings >= v;
+            case 'first_of_day': return stats.firstOfDayCount >= v;
+            case 'last_of_day': return stats.lastOfDayCount >= v;
+            case 'movies_in_one_day': return Object.values(stats.moviesPerDay || {}).some(c => c >= v);
+            case 'group_booking': return stats.groupBookingMax >= v;
+            case 'referrals': return stats.referralCount >= v;
+            case 'concessions_purchases': return stats.concessionsPurchaseCount >= v;
+            case 'reviews_written': return stats.reviewsWritten >= v;
+            case 'screens_visited': return Object.keys(stats.distinctScreens || {}).length >= v;
+            case 'date_window': {
+                const w = SAVANNAH_TROPHIES.WINDOWS && SAVANNAH_TROPHIES.WINDOWS[req.filter];
+                if (!w) return false;
+                const inW = Object.entries(stats.moviesPerDay || {})
+                    .filter(([d]) => d >= w.start && d <= w.end)
+                    .reduce((s, [, c]) => s + c, 0);
+                return inW >= v;
+            }
+            default: return false;
+        }
+    },
+
+    setFeatured(id, on = true) {
+        const owned = this.getUserTrophies();
+        if (!owned[id]) return false;
+        owned[id].featured = !!on;
+        try { SavannahStorage.set(this.KEYS.USER_TROPHIES, owned); return true; }
+        catch (e) { return false; }
+    },
+    getFeatured(limit = 4) {
+        const owned = this.getUserTrophies();
+        return Object.entries(owned)
+            .filter(([, v]) => v.featured)
+            .slice(0, limit)
+            .map(([id]) => id);
+    },
+
+    getCabinetViewModel() {
+        const owned = this.getUserTrophies();
+        const all = this.getAllDefinitions();
+        const byCategory = {};
+        all.forEach(def => {
+            const cat = def.category || 'milestones';
+            byCategory[cat] = byCategory[cat] || [];
+            const unlocked = !!owned[def.id];
+            const hidden = def.secret && !unlocked;
+            byCategory[cat].push({
+                id: def.id,
+                name: hidden ? '???' : def.name,
+                description: hidden ? 'Something special is waiting…' : def.description,
+                icon: hidden ? '❓' : def.icon,
+                rarity: def.rarity, category: cat,
+                reward_type: def.reward_type,
+                points: def.points || 0,
+                perk: def.perk || null,
+                secret: !!def.secret, hidden, unlocked,
+                unlockedAt: unlocked ? owned[def.id].unlockedAt : null,
+                featured: unlocked ? !!owned[def.id].featured : false,
+                set: def.set || null
+            });
+        });
+        return {
+            unlockedCount: this.getUnlockedCount(),
+            totalCount: this.getTotalCount(),
+            pointsBalance: this.getPointsBalance(),
+            stats: this.getStats(),
+            categories: byCategory
+        };
+    },
+
+    backfillFromHistory() {
+        // Intentionally no-op in the fallback — real bookings integration lives in js/trophies.js
+    }
+};
+</script>
+
+<!-- ============================================================
+     PROFILE PAGE CONTROLLER
+     ============================================================ -->
+<script>
 const ProfilePage = {
     user: null,
     bookingHistory: [],
     pendingAvatar: null,
 
     async init() {
-        await SavannahApp.init();
+        try {
+            if (typeof SavannahApp !== 'undefined' && SavannahApp.init) {
+                await SavannahApp.init();
+            }
+        } catch (err) {
+            console.error('[ProfilePage] SavannahApp.init failed:', err);
+        }
+
         this.setupMobileMenu();
 
-        this.user = SavannahStorage.getUser();
+        this.user = (typeof SavannahStorage !== 'undefined' && SavannahStorage.getUser)
+            ? SavannahStorage.getUser()
+            : null;
+
         if (!this.user) {
             window.location.href = 'login.html?redirect=profile.html';
             return;
         }
 
-        this.bookingHistory = SavannahStorage.get(SavannahStorage.KEYS.BOOKING_HISTORY, []);
+        this.bookingHistory = (typeof SavannahStorage !== 'undefined')
+            ? SavannahStorage.get(SavannahStorage.KEYS.BOOKING_HISTORY, []) || []
+            : [];
+
+        try {
+            if (typeof SavannahTrophies !== 'undefined' && typeof SAVANNAH_TROPHIES !== 'undefined') {
+                SavannahTrophies.init();
+                SavannahTrophies.backfillFromHistory();
+                SavannahTrophies.evaluateTrophies();
+            }
+        } catch (err) {
+            console.warn('[ProfilePage] Trophy engine boot failed:', err);
+        }
+
         this.render();
         this.setupTabs();
         this.setupAvatarModal();
     },
 
-    // ========================================================
-    // AVATAR HELPERS — delegate to NavAvatar
-    // ========================================================
     getInitials(user) {
-        if (typeof NavAvatar !== 'undefined') return NavAvatar.getInitials(user);
-        return 'SV';
+        if (typeof NavAvatar !== 'undefined' && NavAvatar.getInitials) return NavAvatar.getInitials(user);
+        if (!user) return 'SV';
+        const name = user.name || `${user.forenames || ''} ${user.surname || ''}`.trim() || user.email || '';
+        const parts = name.split(/\s+/).filter(Boolean);
+        if (!parts.length) return 'SV';
+        if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+        return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
     },
 
     getAvatarUrl(user) {
-        if (typeof NavAvatar !== 'undefined') return NavAvatar.getAvatarUrl(user);
+        if (typeof NavAvatar !== 'undefined' && NavAvatar.getAvatarUrl) return NavAvatar.getAvatarUrl(user);
         return null;
     },
 
     saveAvatarToStorage(url) {
-        if (typeof NavAvatar !== 'undefined') {
-            NavAvatar.setAvatarUrl(this.user?.email, url);
+        if (typeof NavAvatar !== 'undefined' && NavAvatar.setAvatarUrl) {
+            NavAvatar.setAvatarUrl(this.user && this.user.email, url);
         }
     },
 
-    // ========================================================
-    // RENDER
-    // ========================================================
     render() {
         const u = this.user;
         const initials = this.getInitials(u);
         const avatarUrl = this.getAvatarUrl(u);
         const displayName = u.name || `${u.forenames || ''} ${u.surname || ''}`.trim() || 'Guest';
 
-        const upcoming = this.bookingHistory.filter(b => new Date(b.showtimeDate) >= new Date()).length;
         const watched = this.bookingHistory.filter(b => new Date(b.showtimeDate) < new Date()).length;
-        const totalSpent = this.bookingHistory.reduce((sum, b) => sum + (parseFloat(b.totalAmountRaw) || 0), 0);
+
+        let trophyStats = { unlocked: 0, total: 0, points: 0, weekStreak: 0 };
+        try {
+            if (typeof SavannahTrophies !== 'undefined' && typeof SAVANNAH_TROPHIES !== 'undefined') {
+                trophyStats = {
+                    unlocked: SavannahTrophies.getUnlockedCount(),
+                    total: SavannahTrophies.getTotalCount(),
+                    points: SavannahTrophies.getPointsBalance(),
+                    weekStreak: SavannahTrophies.getStats().currentWeekStreak || 0
+                };
+            }
+        } catch (err) {
+            console.warn('[ProfilePage] Trophy stats failed:', err);
+        }
 
         const avatarInner = avatarUrl
-            ? `<img src="${avatarUrl}" alt="${displayName}">`
+            ? '<img src="' + avatarUrl + '" alt="' + displayName + '">'
             : initials;
 
         document.getElementById('profileSection').innerHTML = `
@@ -876,7 +1451,7 @@ const ProfilePage = {
                     <div class="profile-name">${displayName}</div>
                     <div class="profile-meta">
                         <span class="profile-meta-item"><i class="fas fa-envelope"></i> ${u.email || '—'}</span>
-                        ${u.phone ? `<span class="profile-meta-item"><i class="fas fa-phone"></i> ${u.phone}</span>` : ''}
+                        ${u.phone ? '<span class="profile-meta-item"><i class="fas fa-phone"></i> ' + u.phone + '</span>' : ''}
                     </div>
                     <div style="margin-top:12px;">
                         <span class="profile-member-badge">
@@ -903,26 +1478,27 @@ const ProfilePage = {
 
             <div class="profile-stats">
                 <div class="stat-card">
-                    <div class="stat-card-value">${upcoming}</div>
-                    <div class="stat-card-label">Upcoming</div>
-                </div>
-                <div class="stat-card">
                     <div class="stat-card-value">${watched}</div>
-                    <div class="stat-card-label">Watched</div>
+                    <div class="stat-card-label">Films Watched</div>
+                </div>
+                <div class="stat-card stat-card-link" data-goto="trophies" role="button" tabindex="0">
+                    <div class="stat-card-value">${trophyStats.unlocked}<span style="font-size:16px;opacity:0.5;">/${trophyStats.total}</span></div>
+                    <div class="stat-card-label">🏆 Trophies</div>
+                </div>
+                <div class="stat-card stat-card-link" data-goto="trophies" role="button" tabindex="0">
+                    <div class="stat-card-value">${trophyStats.points.toLocaleString()}</div>
+                    <div class="stat-card-label">⭐ Points</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-card-value">0</div>
-                    <div class="stat-card-label">Loyalty Points</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-card-value">${SavannahApp.formatCurrency(totalSpent)}</div>
-                    <div class="stat-card-label">Total Spent</div>
+                    <div class="stat-card-value">${trophyStats.weekStreak}w</div>
+                    <div class="stat-card-label">🔥 Streak</div>
                 </div>
             </div>
 
             <div class="profile-tabs" id="settingsAnchor">
                 <button class="profile-tab active" data-tab="bookings">My Bookings</button>
                 <button class="profile-tab" data-tab="watchlist">Watchlist</button>
+                <button class="profile-tab" data-tab="trophies">Trophies</button>
                 <button class="profile-tab" data-tab="settings">Settings</button>
             </div>
 
@@ -934,6 +1510,10 @@ const ProfilePage = {
                 ${this.renderWatchlist()}
             </div>
 
+            <div class="tab-panel" id="trophiesPanel">
+                ${this.renderTrophies()}
+            </div>
+
             <div class="tab-panel" id="settingsPanel">
                 ${this.renderSettings()}
             </div>
@@ -943,33 +1523,36 @@ const ProfilePage = {
         document.getElementById('accountSettingsBtn')?.addEventListener('click', () => this.scrollToSettings());
         document.getElementById('signOutBtn')?.addEventListener('click', () => this.logout());
 
-        // Wire watchlist handlers if it's already the visible tab
+        document.querySelectorAll('.stat-card-link').forEach(card => {
+            const go = () => {
+                const target = card.dataset.goto;
+                const tabBtn = document.querySelector('.profile-tab[data-tab="' + target + '"]');
+                if (tabBtn) tabBtn.click();
+                document.getElementById('settingsAnchor')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            };
+            card.addEventListener('click', go);
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+            });
+        });
+
         if (document.querySelector('.profile-tab.active')?.dataset.tab === 'watchlist') {
             this.wireWatchlistHandlers();
         }
     },
 
-    // ========================================================
-    // BOOKINGS
-    // ========================================================
     renderBookings() {
         if (!this.bookingHistory.length) {
-            return `
-                <div class="empty-tab">
-                    <i class="fas fa-ticket-alt"></i>
-                    <h3>No bookings yet</h3>
-                    <p>Your ticket history will appear here once you make your first booking.</p>
-                    <a href="index.html" class="btn btn-primary" style="display:inline-flex;margin-top:20px;">
-                        <i class="fas fa-film"></i> Browse Movies
-                    </a>
-                </div>`;
+            return '<div class="empty-tab">' +
+                '<i class="fas fa-ticket-alt"></i>' +
+                '<h3>No bookings yet</h3>' +
+                '<p>Your ticket history will appear here once you make your first booking.</p>' +
+                '<a href="index.html" class="btn btn-primary" style="display:inline-flex;margin-top:20px;">' +
+                '<i class="fas fa-film"></i> Browse Movies</a></div>';
         }
-
-        return `
-            <div class="bookings-list">
-                ${this.bookingHistory.map(b => this.renderBookingRow(b)).join('')}
-            </div>
-        `;
+        return '<div class="bookings-list">' +
+            this.bookingHistory.map(b => this.renderBookingRow(b)).join('') +
+            '</div>';
     },
 
     renderBookingRow(b) {
@@ -978,49 +1561,33 @@ const ProfilePage = {
         const statusClass = isUpcoming ? 'upcoming' : 'past';
         const statusLabel = isUpcoming ? 'Upcoming' : 'Past';
 
-        return `
-            <div class="booking-row">
-                <img src="${b.moviePoster || ''}" alt="${b.movieTitle}" class="booking-poster"
-                     onerror="this.style.background='var(--ink)';this.src='';">
-                <div class="booking-info">
-                    <div class="booking-title">${b.movieTitle}</div>
-                    <div class="booking-meta">
-                        <div class="booking-meta-item">
-                            <i class="far fa-calendar"></i>
-                            <span>${b.showtimeFormatted}</span>
-                        </div>
-                        <div class="booking-meta-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>${b.branchName}</span>
-                        </div>
-                        <div class="booking-meta-item">
-                            <i class="fas fa-chair"></i>
-                            <span>Seats: ${(b.seats || []).join(', ')}</span>
-                        </div>
-                    </div>
-                    <span class="booking-ref">${b.bookingReference}</span>
-                </div>
-                <span class="booking-status ${statusClass}">${statusLabel}</span>
-            </div>
-        `;
+        return '<div class="booking-row">' +
+            '<img src="' + (b.moviePoster || '') + '" alt="' + (b.movieTitle || '') + '" class="booking-poster" onerror="this.style.background=\'var(--ink)\';this.src=\'\';">' +
+            '<div class="booking-info">' +
+                '<div class="booking-title">' + (b.movieTitle || 'Unknown') + '</div>' +
+                '<div class="booking-meta">' +
+                    '<div class="booking-meta-item"><i class="far fa-calendar"></i><span>' + (b.showtimeFormatted || '') + '</span></div>' +
+                    '<div class="booking-meta-item"><i class="fas fa-map-marker-alt"></i><span>' + (b.branchName || '') + '</span></div>' +
+                    '<div class="booking-meta-item"><i class="fas fa-chair"></i><span>Seats: ' + ((b.seats || []).join(', ')) + '</span></div>' +
+                '</div>' +
+                '<span class="booking-ref">' + (b.bookingReference || '') + '</span>' +
+            '</div>' +
+            '<span class="booking-status ' + statusClass + '">' + statusLabel + '</span>' +
+        '</div>';
     },
 
-    // ========================================================
-    // WATCHLIST
-    // ========================================================
     renderWatchlist() {
-        const watchlistIds = SavannahStorage.getWatchlist() || [];
+        const watchlistIds = (typeof SavannahStorage !== 'undefined')
+            ? (SavannahStorage.getWatchlist() || [])
+            : [];
 
         if (!watchlistIds.length) {
-            return `
-                <div class="empty-tab">
-                    <i class="fas fa-bookmark"></i>
-                    <h3>No saved films yet</h3>
-                    <p>Browse movies and tap the bookmark icon to save them here.</p>
-                    <a href="index.html" class="btn btn-primary" style="display:inline-flex;margin-top:20px;">
-                        <i class="fas fa-film"></i> Browse Movies
-                    </a>
-                </div>`;
+            return '<div class="empty-tab">' +
+                '<i class="fas fa-bookmark"></i>' +
+                '<h3>No saved films yet</h3>' +
+                '<p>Browse movies and tap the bookmark icon to save them here.</p>' +
+                '<a href="index.html" class="btn btn-primary" style="display:inline-flex;margin-top:20px;">' +
+                '<i class="fas fa-film"></i> Browse Movies</a></div>';
         }
 
         const movies = watchlistIds
@@ -1028,31 +1595,21 @@ const ProfilePage = {
             .filter(Boolean);
 
         if (!movies.length) {
-            return `
-                <div class="empty-tab">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <h3>Watchlist is out of sync</h3>
-                    <p>Some saved films are no longer in the catalog.</p>
-                    <a href="index.html" class="btn btn-primary" style="display:inline-flex;margin-top:20px;">
-                        <i class="fas fa-film"></i> Browse Movies
-                    </a>
-                </div>`;
+            return '<div class="empty-tab">' +
+                '<i class="fas fa-exclamation-circle"></i>' +
+                '<h3>Watchlist is out of sync</h3>' +
+                '<p>Some saved films are no longer in the catalog.</p>' +
+                '<a href="index.html" class="btn btn-primary" style="display:inline-flex;margin-top:20px;">' +
+                '<i class="fas fa-film"></i> Browse Movies</a></div>';
         }
 
-        return `
-            <div class="profile-watchlist-head">
-                <div class="profile-watchlist-title">
-                    <i class="fas fa-bookmark"></i>
-                    Saved Films
-                </div>
-                <div class="profile-watchlist-count">
-                    ${movies.length} film${movies.length !== 1 ? 's' : ''}
-                </div>
-            </div>
-            <div class="profile-watchlist-grid" id="profileWatchlistGrid">
-                ${movies.map(m => this.renderWatchlistCard(m)).join('')}
-            </div>
-        `;
+        return '<div class="profile-watchlist-head">' +
+                '<div class="profile-watchlist-title"><i class="fas fa-bookmark"></i> Saved Films</div>' +
+                '<div class="profile-watchlist-count">' + movies.length + ' film' + (movies.length !== 1 ? 's' : '') + '</div>' +
+            '</div>' +
+            '<div class="profile-watchlist-grid" id="profileWatchlistGrid">' +
+                movies.map(m => this.renderWatchlistCard(m)).join('') +
+            '</div>';
     },
 
     renderWatchlistCard(movie) {
@@ -1063,36 +1620,104 @@ const ProfilePage = {
         const hasShowtimes = SavannahApp.data.showtimes.some(s => s.movie_id === movie.movie_id);
         const isNowShowing = movie.status === 'now_showing' && hasShowtimes;
 
-        return `
-            <div class="profile-watchlist-card" data-movie-id="${movie.movie_id}">
-                <div class="profile-watchlist-poster">
-                    <img src="${poster}" alt="${movie.title}" loading="lazy"
-                         onerror="this.style.background='var(--ink)';this.src='';">
-                    <button class="profile-watchlist-remove" data-movie-id="${movie.movie_id}" title="Remove from watchlist">
-                        <i class="fas fa-times"></i>
-                    </button>
-                    <span class="profile-watchlist-rating">⭐ ${rating}</span>
-                </div>
-                <div class="profile-watchlist-info">
-                    <div class="profile-watchlist-name">${movie.title}</div>
-                    <div class="profile-watchlist-meta">
-                        <span>${year}</span>
-                        ${movie.genre && movie.genre[0] ? `<span class="dot">·</span><span>${movie.genre[0]}</span>` : ''}
-                    </div>
-                    <div class="profile-watchlist-actions">
-                        ${isNowShowing ? `
-                            <button class="btn btn-primary profile-watchlist-book" data-movie-id="${movie.movie_id}">
-                                <i class="fas fa-ticket-alt"></i> Book
-                            </button>
-                        ` : `
-                            <button class="btn btn-ghost profile-watchlist-details" data-movie-id="${movie.movie_id}">
-                                <i class="fas fa-info-circle"></i> Details
-                            </button>
-                        `}
-                    </div>
-                </div>
-            </div>
-        `;
+        return '<div class="profile-watchlist-card" data-movie-id="' + movie.movie_id + '">' +
+            '<div class="profile-watchlist-poster">' +
+                '<img src="' + poster + '" alt="' + movie.title + '" loading="lazy" onerror="this.style.background=\'var(--ink)\';this.src=\'\';">' +
+                '<button class="profile-watchlist-remove" data-movie-id="' + movie.movie_id + '" title="Remove from watchlist"><i class="fas fa-times"></i></button>' +
+                '<span class="profile-watchlist-rating">⭐ ' + rating + '</span>' +
+            '</div>' +
+            '<div class="profile-watchlist-info">' +
+                '<div class="profile-watchlist-name">' + movie.title + '</div>' +
+                '<div class="profile-watchlist-meta">' +
+                    '<span>' + year + '</span>' +
+                    (movie.genre && movie.genre[0] ? '<span class="dot">·</span><span>' + movie.genre[0] + '</span>' : '') +
+                '</div>' +
+                '<div class="profile-watchlist-actions">' +
+                    (isNowShowing
+                        ? '<button class="btn btn-primary profile-watchlist-book" data-movie-id="' + movie.movie_id + '"><i class="fas fa-ticket-alt"></i> Book</button>'
+                        : '<button class="btn btn-ghost profile-watchlist-details" data-movie-id="' + movie.movie_id + '"><i class="fas fa-info-circle"></i> Details</button>'
+                    ) +
+                '</div>' +
+            '</div>' +
+        '</div>';
+    },
+
+    renderTrophies() {
+        const engineReady =
+            typeof SavannahTrophies !== 'undefined' &&
+            typeof SAVANNAH_TROPHIES !== 'undefined';
+
+        if (!engineReady) {
+            return '<div class="empty-tab">' +
+                '<i class="fas fa-trophy"></i>' +
+                '<h3>Trophies are warming up</h3>' +
+                '<p>The trophy engine has not loaded yet. Try refreshing the page.</p>' +
+                '<a href="trophy.html" class="btn btn-primary" style="display:inline-flex;margin-top:20px;">' +
+                '<i class="fas fa-trophy"></i> Open Trophy Cabinet</a></div>';
+        }
+
+        let vm, featuredIds;
+        try {
+            vm = SavannahTrophies.getCabinetViewModel();
+            featuredIds = SavannahTrophies.getFeatured(4);
+        } catch (err) {
+            console.warn('[ProfilePage] Cabinet view model failed:', err);
+            return '<div class="empty-tab">' +
+                '<i class="fas fa-trophy"></i>' +
+                '<h3>Trophy cabinet unavailable</h3>' +
+                '<p>Something went wrong loading your trophies.</p>' +
+                '<a href="trophy.html" class="btn btn-primary" style="display:inline-flex;margin-top:20px;">' +
+                '<i class="fas fa-trophy"></i> Try Full Cabinet</a></div>';
+        }
+
+        const pct = vm.totalCount
+            ? Math.round((vm.unlockedCount / vm.totalCount) * 100)
+            : 0;
+
+        let featuredHtml = '';
+        if (featuredIds.length) {
+            featuredHtml = featuredIds.map(id => {
+                const def = SavannahTrophies.getTrophyDefinition(id) || SavannahTrophies.getMasterForSet(id);
+                if (!def) return '';
+                const rarity = (SAVANNAH_TROPHIES.RARITIES && SAVANNAH_TROPHIES.RARITIES[def.rarity]) || {};
+                return '<div class="profile-featured-slot" style="--rarity-color:' + (rarity.color || 'var(--gold-dim)') + ';">' +
+                    '<div class="profile-featured-icon">' + (def.icon || '🏆') + '</div>' +
+                    '<div class="profile-featured-name">' + (def.name || '') + '</div>' +
+                '</div>';
+            }).join('');
+        } else {
+            featuredHtml = '<div class="profile-featured-empty">' +
+                '<i class="fas fa-star"></i>' +
+                '<p>No featured trophies yet.<br>Pick up to 4 to show on your profile.</p>' +
+            '</div>';
+        }
+
+        const points = Number(vm.pointsBalance) || 0;
+        const movies = Number(vm.stats && vm.stats.lifetimeMoviesWatched) || 0;
+        const streak = Number(vm.stats && vm.stats.currentWeekStreak) || 0;
+
+        return '<div class="profile-trophies-head">' +
+                '<div class="profile-trophies-title"><i class="fas fa-trophy"></i> Trophy Progress</div>' +
+                '<div class="profile-trophies-count">' + vm.unlockedCount + ' / ' + vm.totalCount + ' Collected</div>' +
+            '</div>' +
+            '<div class="profile-trophies-progress">' +
+                '<div class="profile-trophies-progress-labels"><span>Collection</span><span><strong>' + pct + '%</strong></span></div>' +
+                '<div class="profile-trophies-progress-bar"><div class="profile-trophies-progress-fill" style="width:' + pct + '%"></div></div>' +
+            '</div>' +
+            '<div class="profile-featured-block">' +
+                '<div class="profile-featured-title"><i class="fas fa-star"></i> Featured</div>' +
+                '<div class="profile-featured-grid">' + featuredHtml + '</div>' +
+            '</div>' +
+            '<div class="profile-trophies-cta">' +
+                '<a href="trophy.html" class="btn btn-primary"><i class="fas fa-trophy"></i> View Full Cabinet</a>' +
+                '<div class="profile-trophies-stats">' +
+                    '<span><strong>' + points.toLocaleString() + '</strong> points</span>' +
+                    '<span class="dot">·</span>' +
+                    '<span><strong>' + movies + '</strong> films</span>' +
+                    '<span class="dot">·</span>' +
+                    '<span><strong>' + streak + 'w</strong> streak</span>' +
+                '</div>' +
+            '</div>';
     },
 
     wireWatchlistHandlers() {
@@ -1102,146 +1727,83 @@ const ProfilePage = {
                 this.removeFromWatchlist(btn.dataset.movieId);
             });
         });
-
         document.querySelectorAll('.profile-watchlist-book').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                window.location.href = `movie.html?id=${btn.dataset.movieId}`;
+                window.location.href = 'movie.html?id=' + btn.dataset.movieId;
             });
         });
-
         document.querySelectorAll('.profile-watchlist-details').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                window.location.href = `movie.html?id=${btn.dataset.movieId}`;
+                window.location.href = 'movie.html?id=' + btn.dataset.movieId;
             });
         });
-
         document.querySelectorAll('.profile-watchlist-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 if (e.target.closest('button')) return;
-                window.location.href = `movie.html?id=${card.dataset.movieId}`;
+                window.location.href = 'movie.html?id=' + card.dataset.movieId;
             });
         });
     },
 
     removeFromWatchlist(movieId) {
         if (typeof SavannahStorage === 'undefined') return;
-
         const movie = SavannahApp.getMovieById(movieId);
         if (!movie) return;
-
-        if (!confirm(`Remove "${movie.title}" from your watchlist?`)) return;
-
+        if (!confirm('Remove "' + movie.title + '" from your watchlist?')) return;
         SavannahStorage.removeFromWatchlist(movieId);
-
         const panel = document.getElementById('watchlistPanel');
         if (panel) {
             panel.innerHTML = this.renderWatchlist();
             this.wireWatchlistHandlers();
         }
-
-        if (typeof NavWishlist !== 'undefined' && NavWishlist.refresh) {
-            NavWishlist.refresh();
-        }
-
-        this.toast(`Removed "${movie.title}" from watchlist`);
+        if (typeof NavWishlist !== 'undefined' && NavWishlist.refresh) NavWishlist.refresh();
+        this.toast('Removed "' + movie.title + '" from watchlist');
     },
 
-    // ========================================================
-    // SETTINGS
-    // ========================================================
     renderSettings() {
         const u = this.user;
-        return `
-            <div class="settings-group">
-                <div class="settings-group-title">
-                    <i class="fas fa-user"></i> Personal Information
-                </div>
-                <div class="settings-row">
-                    <div>
-                        <div class="settings-label">Full Name</div>
-                        <div class="settings-sublabel">Your display name</div>
-                    </div>
-                    <div class="settings-value">${u.name || '—'}</div>
-                </div>
-                <div class="settings-row">
-                    <div>
-                        <div class="settings-label">Email Address</div>
-                        <div class="settings-sublabel">Used for confirmations</div>
-                    </div>
-                    <div class="settings-value">${u.email || '—'}</div>
-                </div>
-                <div class="settings-row">
-                    <div>
-                        <div class="settings-label">Phone Number</div>
-                        <div class="settings-sublabel">For booking updates</div>
-                    </div>
-                    <div class="settings-value">${u.phone || '—'}</div>
-                </div>
-            </div>
-
-            <div class="settings-group">
-                <div class="settings-group-title">
-                    <i class="fas fa-bell"></i> Notifications
-                </div>
-                <div class="settings-row">
-                    <div>
-                        <div class="settings-label">Email Notifications</div>
-                        <div class="settings-sublabel">Booking confirmations, offers</div>
-                    </div>
-                    <div class="settings-value">Enabled</div>
-                </div>
-                <div class="settings-row">
-                    <div>
-                        <div class="settings-label">SMS Notifications</div>
-                        <div class="settings-sublabel">Showtime reminders</div>
-                    </div>
-                    <div class="settings-value">Enabled</div>
-                </div>
-            </div>
-
-            <div class="settings-group">
-                <div class="settings-group-title">
-                    <i class="fas fa-shield-alt"></i> Security
-                </div>
-                <div class="settings-row">
-                    <div>
-                        <div class="settings-label">Password</div>
-                        <div class="settings-sublabel">Last changed —</div>
-                    </div>
-                    <button class="btn btn-ghost" id="changePasswordBtn">
-                        <i class="fas fa-key"></i> Change
-                    </button>
-                </div>
-                <div class="settings-row">
-                    <div>
-                        <div class="settings-label">Two-Factor Authentication</div>
-                        <div class="settings-sublabel">Extra security for your account</div>
-                    </div>
-                    <button class="btn btn-ghost" id="enable2FABtn">
-                        <i class="fas fa-lock"></i> Enable
-                    </button>
-                </div>
-            </div>
-        `;
+        return '<div class="settings-group">' +
+                '<div class="settings-group-title"><i class="fas fa-user"></i> Personal Information</div>' +
+                '<div class="settings-row"><div><div class="settings-label">Full Name</div><div class="settings-sublabel">Your display name</div></div><div class="settings-value">' + (u.name || '—') + '</div></div>' +
+                '<div class="settings-row"><div><div class="settings-label">Email Address</div><div class="settings-sublabel">Used for confirmations</div></div><div class="settings-value">' + (u.email || '—') + '</div></div>' +
+                '<div class="settings-row"><div><div class="settings-label">Phone Number</div><div class="settings-sublabel">For booking updates</div></div><div class="settings-value">' + (u.phone || '—') + '</div></div>' +
+            '</div>' +
+            '<div class="settings-group">' +
+                '<div class="settings-group-title"><i class="fas fa-bell"></i> Notifications</div>' +
+                '<div class="settings-row"><div><div class="settings-label">Email Notifications</div><div class="settings-sublabel">Booking confirmations, offers</div></div><div class="settings-value">Enabled</div></div>' +
+                '<div class="settings-row"><div><div class="settings-label">SMS Notifications</div><div class="settings-sublabel">Showtime reminders</div></div><div class="settings-value">Enabled</div></div>' +
+            '</div>' +
+            '<div class="settings-group">' +
+                '<div class="settings-group-title"><i class="fas fa-shield-alt"></i> Security</div>' +
+                '<div class="settings-row"><div><div class="settings-label">Password</div><div class="settings-sublabel">Last changed —</div></div><button class="btn btn-ghost" id="changePasswordBtn"><i class="fas fa-key"></i> Change</button></div>' +
+                '<div class="settings-row"><div><div class="settings-label">Two-Factor Authentication</div><div class="settings-sublabel">Extra security for your account</div></div><button class="btn btn-ghost" id="enable2FABtn"><i class="fas fa-lock"></i> Enable</button></div>' +
+            '</div>';
     },
 
-    // ========================================================
-    // TABS
-    // ========================================================
     setupTabs() {
         document.querySelectorAll('.profile-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
                 document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
                 tab.classList.add('active');
-                const panel = document.getElementById(`${tab.dataset.tab}Panel`);
+                const panel = document.getElementById(tab.dataset.tab + 'Panel');
+                if (!panel) return;
                 panel.classList.add('active');
 
                 if (tab.dataset.tab === 'watchlist') {
                     panel.innerHTML = this.renderWatchlist();
                     this.wireWatchlistHandlers();
+                } else if (tab.dataset.tab === 'trophies') {
+                    try {
+                        if (typeof SavannahTrophies !== 'undefined' && typeof SAVANNAH_TROPHIES !== 'undefined') {
+                            SavannahTrophies.evaluateTrophies();
+                        }
+                    } catch (err) {
+                        console.warn('[ProfilePage] Trophy re-evaluate failed:', err);
+                    }
+                    panel.innerHTML = this.renderTrophies();
                 }
             });
         });
@@ -1249,13 +1811,10 @@ const ProfilePage = {
 
     scrollToSettings() {
         const settingsTab = document.querySelector('.profile-tab[data-tab="settings"]');
-        settingsTab?.click();
+        if (settingsTab) settingsTab.click();
         document.getElementById('settingsAnchor')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     },
 
-    // ========================================================
-    // MOBILE MENU
-    // ========================================================
     setupMobileMenu() {
         const toggle = document.getElementById('menuToggle');
         const menu = document.getElementById('mobileMenu');
@@ -1268,16 +1827,8 @@ const ProfilePage = {
         overlay?.addEventListener('click', close);
     },
 
-    // ========================================================
-    // AVATAR MODAL
-    // ========================================================
     cropState: {
-        img: null,
-        zoom: 1,
-        panX: 0,
-        panY: 0,
-        canvas: null,
-        ctx: null
+        img: null, zoom: 1, panX: 0, panY: 0, canvas: null, ctx: null
     },
 
     setupAvatarModal() {
@@ -1286,14 +1837,13 @@ const ProfilePage = {
                 document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
                 document.querySelectorAll('.modal-tab-panel').forEach(p => p.classList.remove('active'));
                 tab.classList.add('active');
-                document.getElementById(`${tab.dataset.mtab}Panel`).classList.add('active');
+                document.getElementById(tab.dataset.mtab + 'Panel').classList.add('active');
             });
         });
 
         document.getElementById('avatarFileInput')?.addEventListener('change', async (e) => {
-            const file = e.target.files?.[0];
+            const file = e.target.files && e.target.files[0];
             if (!file) return;
-
             if (file.size > 5 * 1024 * 1024) {
                 this.toast('Image must be under 5 MB', 'error');
                 return;
@@ -1360,12 +1910,9 @@ const ProfilePage = {
                 document.getElementById('panYLabel').textContent = '0';
 
                 const preview = document.getElementById('previewAvatar');
-                preview.innerHTML = `
-                    <div class="crop-container" id="cropContainer">
-                        <canvas id="cropCanvas" width="440" height="440"></canvas>
-                        <div class="crop-guides"></div>
-                    </div>
-                `;
+                preview.innerHTML = '<div class="crop-container" id="cropContainer">' +
+                    '<canvas id="cropCanvas" width="440" height="440"></canvas>' +
+                    '<div class="crop-guides"></div></div>';
 
                 this.cropState.canvas = document.getElementById('cropCanvas');
                 this.cropState.ctx = this.cropState.canvas.getContext('2d');
@@ -1381,55 +1928,44 @@ const ProfilePage = {
     },
 
     drawCropPreview() {
-        const { img, zoom, panX, panY, canvas, ctx } = this.cropState;
-        if (!img || !canvas || !ctx) return;
-
-        const size = canvas.width;
-        ctx.clearRect(0, 0, size, size);
-
-        const baseSize = Math.min(img.width, img.height);
-        const cropSize = baseSize / zoom;
-
-        const centerX = img.width / 2 + (panX / 100) * (img.width - cropSize) / 2;
-        const centerY = img.height / 2 + (panY / 100) * (img.height - cropSize) / 2;
-
+        const s = this.cropState;
+        if (!s.img || !s.canvas || !s.ctx) return;
+        const size = s.canvas.width;
+        s.ctx.clearRect(0, 0, size, size);
+        const baseSize = Math.min(s.img.width, s.img.height);
+        const cropSize = baseSize / s.zoom;
+        const centerX = s.img.width / 2 + (s.panX / 100) * (s.img.width - cropSize) / 2;
+        const centerY = s.img.height / 2 + (s.panY / 100) * (s.img.height - cropSize) / 2;
         let sx = centerX - cropSize / 2;
         let sy = centerY - cropSize / 2;
-
-        sx = Math.max(0, Math.min(sx, img.width - cropSize));
-        sy = Math.max(0, Math.min(sy, img.height - cropSize));
-
-        ctx.drawImage(img, sx, sy, cropSize, cropSize, 0, 0, size, size);
-        this.cropState.lastCrop = { sx, sy, cropSize };
+        sx = Math.max(0, Math.min(sx, s.img.width - cropSize));
+        sy = Math.max(0, Math.min(sy, s.img.height - cropSize));
+        s.ctx.drawImage(s.img, sx, sy, cropSize, cropSize, 0, 0, size, size);
+        s.lastCrop = { sx, sy, cropSize };
     },
 
     resetCrop() {
         this.cropState.zoom = 1;
         this.cropState.panX = 0;
         this.cropState.panY = 0;
-
         document.getElementById('zoomSlider').value = 100;
         document.getElementById('panXSlider').value = 0;
         document.getElementById('panYSlider').value = 0;
         document.getElementById('zoomLabel').textContent = '100%';
         document.getElementById('panXLabel').textContent = '0';
         document.getElementById('panYLabel').textContent = '0';
-
         this.drawCropPreview();
     },
 
     updatePreview(url) {
         const preview = document.getElementById('previewAvatar');
         const initials = this.getInitials(this.user);
-
         const cropContainer = document.getElementById('cropContainer');
         if (cropContainer) cropContainer.remove();
-
         document.getElementById('cropControls').style.display = 'none';
         document.getElementById('fileUploadLabelText').textContent = 'Click to choose an image';
-
         if (url) {
-            preview.innerHTML = `<img src="${url}" alt="Preview" onerror="this.style.display='none';this.parentElement.textContent='${initials}';">`;
+            preview.innerHTML = '<img src="' + url + '" alt="Preview">';
         } else {
             preview.innerHTML = initials;
         }
@@ -1438,26 +1974,20 @@ const ProfilePage = {
     openAvatarModal() {
         const url = this.getAvatarUrl(this.user);
         const initials = this.getInitials(this.user);
-
         this.pendingAvatar = null;
         this.cropState.img = null;
-
         document.getElementById('avatarUrlInput').value = '';
         document.getElementById('avatarFileInput').value = '';
-
         document.querySelectorAll('.modal-tab').forEach(t => t.classList.toggle('active', t.dataset.mtab === 'upload'));
         document.querySelectorAll('.modal-tab-panel').forEach(p => p.classList.toggle('active', p.id === 'uploadPanel'));
-
         document.getElementById('cropControls').style.display = 'none';
         document.getElementById('fileUploadLabelText').textContent = 'Click to choose an image';
-
         const preview = document.getElementById('previewAvatar');
         if (url) {
-            preview.innerHTML = `<img src="${url}" alt="Preview">`;
+            preview.innerHTML = '<img src="' + url + '" alt="Preview">';
         } else {
             preview.innerHTML = initials;
         }
-
         document.getElementById('avatarModal').classList.add('active');
         document.body.style.overflow = 'hidden';
     },
@@ -1477,14 +2007,12 @@ const ProfilePage = {
             const ectx = exportCanvas.getContext('2d');
             ectx.drawImage(this.cropState.canvas, 0, 0, 400, 400);
             const dataUrl = exportCanvas.toDataURL('image/jpeg', 0.85);
-
             this.saveAvatarToStorage(dataUrl);
             this.closeAvatarModal();
             this.refreshAvatarEverywhere();
             this.toast('Profile picture updated!');
             return;
         }
-
         if (this.pendingAvatar && this.pendingAvatar.type === 'url') {
             this.saveAvatarToStorage(this.pendingAvatar.value);
             this.closeAvatarModal();
@@ -1492,7 +2020,6 @@ const ProfilePage = {
             this.toast('Profile picture updated!');
             return;
         }
-
         this.toast('Please upload an image or paste a URL first', 'error');
     },
 
@@ -1500,7 +2027,6 @@ const ProfilePage = {
         this.render();
         this.setupTabs();
         this.setupAvatarModal();
-
         if (typeof NavWishlist !== 'undefined') {
             if (NavWishlist.renderAvatar) NavWishlist.renderAvatar();
             if (NavWishlist.refresh) NavWishlist.refresh();
@@ -1512,31 +2038,24 @@ const ProfilePage = {
             this.toast('No profile picture set', 'error');
             return;
         }
-
         if (!confirm('Remove your profile picture?')) return;
-
         this.saveAvatarToStorage(null);
         this.closeAvatarModal();
         this.refreshAvatarEverywhere();
         this.toast('Profile picture removed');
     },
 
-    // ========================================================
-    // ACTIONS
-    // ========================================================
     logout() {
         if (!confirm('Are you sure you want to sign out?')) return;
-        SavannahStorage.logout();
+        if (typeof SavannahStorage !== 'undefined') SavannahStorage.logout();
         window.location.href = 'index.html';
     },
 
     toast(msg, variant = 'success') {
         const el = document.createElement('div');
         el.className = 'toast';
-        if (variant === 'error') {
-            el.style.background = 'var(--rust)';
-        }
-        el.innerHTML = `<i class="fas ${variant === 'error' ? 'fa-exclamation-circle' : 'fa-check-circle'}"></i> ${msg}`;
+        if (variant === 'error') el.style.background = 'var(--rust)';
+        el.innerHTML = '<i class="fas ' + (variant === 'error' ? 'fa-exclamation-circle' : 'fa-check-circle') + '"></i> ' + msg;
         document.body.appendChild(el);
         setTimeout(() => el.remove(), 3000);
     }
