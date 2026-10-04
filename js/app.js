@@ -71,6 +71,7 @@ const SavannahApp = {
                 products: this.data.products.length,
                 screens: Object.keys(this.data.seats).length
             });
+            this.normalizeShowtimeDates();
         } catch (error) {
             console.error('❌ Failed to initialize app:', error);
             this.showError('Failed to load application data. Please refresh the page.');
@@ -260,6 +261,57 @@ const SavannahApp = {
             m.synopsis?.toLowerCase().includes(q) ||
             m.genre?.some(g => g.toLowerCase().includes(q))
         );
+    },
+
+        // ========================================================
+    // SHOWTIME DATE NORMALIZATION
+    // If every showtime in the catalog is in the past, shift the
+    // whole schedule forward so the earliest showtime lands on
+    // today. Preserves the relative layout of the schedule.
+    // Idempotent: running it again with dates already in the
+    // future is a no-op.
+    // ========================================================
+    normalizeShowtimeDates() {
+        if (!this.data || !Array.isArray(this.data.showtimes) || !this.data.showtimes.length) {
+            return;
+        }
+
+        // Use local midnight for "today" so we compare whole days
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        // Find the earliest date among the showtimes
+        let earliest = null;
+        for (const s of this.data.showtimes) {
+            if (!s.date) continue;
+            const d = new Date(s.date + 'T00:00:00');
+            if (isNaN(d.getTime())) continue;
+            if (!earliest || d < earliest) earliest = d;
+        }
+        if (!earliest) return;
+
+        // Already future-dated? Nothing to do.
+        if (earliest >= today) return;
+
+        // How many whole days to shift forward?
+        const dayMs = 1000 * 60 * 60 * 24;
+        const offsetDays = Math.round((today - earliest) / dayMs);
+        if (offsetDays <= 0) return;
+
+        // Rebase every showtime's date
+        for (const s of this.data.showtimes) {
+            if (!s.date) continue;
+            const d = new Date(s.date + 'T00:00:00');
+            if (isNaN(d.getTime())) continue;
+            d.setDate(d.getDate() + offsetDays);
+            // Preserve as YYYY-MM-DD in local time
+            const yyyy = d.getFullYear();
+            const mm = String(d.getMonth() + 1).padStart(2, '0');
+            const dd = String(d.getDate()).padStart(2, '0');
+            s.date = `${yyyy}-${mm}-${dd}`;
+        }
+
+        console.log(`[SavannahApp] Showtime dates rebased +${offsetDays} day(s) so earliest = today`);
     },
     
     // ========================================================

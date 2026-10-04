@@ -167,7 +167,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Jun Ji-hyun", "Koo Kyo-hwan"],
             poster_url: "https://image.tmdb.org/t/p/w500/tN799oUR0f1gUKDYdMNrDaY7I51.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/hpBGCnzOvdtQoMyE48gvwp2y5yx.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/Je122ZNo6uw?si=lTPhDn3KmoYVeIXU",
             is_featured: false,
             status: "now_showing"
         },
@@ -192,7 +192,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/iRIhPqqoUHiFBxn8oYf3gCQnaKk.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/aHrMFtt40_Q?si=2ZK6kg00auzGWsRv",
             is_featured: false,
             status: "coming_soon"
         },
@@ -217,7 +217,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Jason Statham", "Annabelle Wallis"],
             poster_url: "https://image.tmdb.org/t/p/w500/pu2VxGlpGwffOx292w18b1tv96j.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/e2QAGrEmbpmZpMymDRkDisJkvg9.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/FKSdXH89jbo?si=cX4CqUHgrCWLuOf2",
             is_featured: false,
             status: "now_showing"
         },
@@ -242,7 +242,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/vfZxVHextAGC70zrNhS8lsROqP1.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/o7Oy9Gbx1CCyaweL8xUhtMW4Puq.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/xwdamnfS6IM?si=HzuySlVDeyjVK9rW",
             is_featured: false,
             status: "coming_soon"
         },
@@ -292,7 +292,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Dwayne Johnson", "Catherine Laga'aia"],
             poster_url: "https://image.tmdb.org/t/p/w500/gaet1xQ2nxrG0V1Ep9T20ZMNEIC.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/c6BPbkO5Npt1OdwttAxCFo06wtH.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/n7f6hlKsxxo?si=IOZG_elsHd5LFhzd",
             is_featured: true,
             status: "now_showing"
         },
@@ -317,7 +317,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Tom Hanks", "Tim Allen", "Joan Cusack"],
             poster_url: "https://image.tmdb.org/t/p/w500/sfQtVlIHljToOwYjhe21KPGzZWK.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/qjTqY5coNiz6sVtPng40IzltsoN.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/c51ND9Hdbw0?si=hkaelJZtshcO1s4o",
             is_featured: true,
             status: "now_showing"
         },
@@ -417,7 +417,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Michael Johnston", "Inde Navarrette"],
             poster_url: "https://image.tmdb.org/t/p/w500/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/rZfmzpixLKLR3Hg2u0WgC7XLFl8.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/gMC8kkwbIQQ?si=8x9N1l8E9j8hpXRW",
             is_featured: false,
             status: "now_showing"
         },
@@ -542,7 +542,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/uxCaBoYXsDC4A0SqTm3SISj0OwK.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/jzBWExXacS33rMQ2zLBrqIVweyG.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/zz4rsZLcauY?si=ThhwQKWrOZJ5iIi5",
             is_featured: false,
             status: "coming_soon"
         },
@@ -567,7 +567,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/4LwvU9SZc8QQzW1X1FAPhNbXnEU.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/kkcwhgSFd81QDlXo8ytrpHPQjhy.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/ZSdOwt-G49w?si=BvsRtO1d-A9KPKUx",
             is_featured: true,
             status: "now_showing"
         },
@@ -667,7 +667,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Ryan Gosling", "Sandra Hüller"],
             poster_url: "https://image.tmdb.org/t/p/w500/yihdXomYb5kTeSivtFndMy5iDmf.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/8Tfys3mDZVp4tNoH2ktm06a0Tau.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/m08TxIsFTRI?si=fZtktexQslezIh7W",
             is_featured: true,
             status: "now_showing"
         },
@@ -742,7 +742,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Brigitte Bardot", "Annie Girardot"],
             poster_url: "https://image.tmdb.org/t/p/w500/a2SnSbRxMB4vktOxZapaspY2fTC.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/yhGCxn4pYIQhK52g6JjM4bL9fVX.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/wtqTrMjhT2U?si=rWNAGwCJeiBHSd4h",
             is_featured: false,
             status: "now_showing"
         },
@@ -792,7 +792,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/rhGx6E3qRNMgj3i5su2oukNHwIQ.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/dqmMWNWfLnExDRpMtIMqI97GQFR.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/0HjdiohVOik?si=eViDoF4zsUYsBxX7",
             is_featured: false,
             status: "now_showing"
         },
@@ -817,7 +817,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Kaya Scodelario", "Hannah John-Kamen", "Robbie Amell"],
             poster_url: "https://image.tmdb.org/t/p/w500/bArhvjRHl535XMaSh9VjInF2mSZ.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/wYtEvBmpBRXPdwGgr1gcWiwJSI7.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/4q6UGCyHZCI?si=_98XEGpWFioxVEjc",
             is_featured: false,
             status: "now_showing"
         },
@@ -842,7 +842,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Robert Downey Jr.", "Chris Hemsworth", "Mark Ruffalo"],
             poster_url: "https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/mDfJG3LC3Dqb67AZ52x3Z0jU0uB.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/6ZfuNTqbHE8?si=ELRSkeecBkSNLXCN",
             is_featured: false,
             status: "now_showing"
         },
@@ -867,7 +867,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: ["Ice Cube", "Eva Longoria"],
             poster_url: "https://image.tmdb.org/t/p/w500/yvirUYrva23IudARHn3mMGVxWqM.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/iZLqwEwUViJdSkGVjePGhxYzbDb.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/d9erkpdh5o0?si=j62gxhkO9Yl8xiT0",
             is_featured: false,
             status: "now_showing"
         },
@@ -892,7 +892,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/3PWJqDfygN0YNNjWsDUOXclCp3h.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/zFCWfU2ViMIm38G1W8UsnSpqmWn.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/NhI2UpkFAFw?si=euRn6soePFE9n1Nl",
             is_featured: false,
             status: "now_showing"
         },
@@ -917,7 +917,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/qnin56Syy5rbG7KCaxWY7SPuy6p.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/6TSxLmwT7j1ugtKi8NyMmdzWAGj.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/xgI5iYmOf5Q?si=POVYbx263QLT-oZ8",
             is_featured: false,
             status: "now_showing"
         },
@@ -942,7 +942,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/hVXjX1jLZ1ljFSNGXpjJfbTUOa7.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/g7Ccid5kuD7A8hXWlsQiNfwOxaD.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/om5Un9X720M?si=l9JowH5ugT10Zinu",
             is_featured: false,
             status: "coming_soon"
         },
@@ -1017,7 +1017,7 @@ window.SAVANNAH_INLINE_DATA = {
             cast: [],
             poster_url: "https://image.tmdb.org/t/p/w500/AnJ8IQJI23hNpYXVNaythu061Ru.jpg",
             backdrop_url: "https://image.tmdb.org/t/p/original/flxau5Iu7bChQHsESqvGZ3FQRaI.jpg",
-            trailer_url: "",
+            trailer_url: "https://youtu.be/SCYT8vb2siQ?si=rRUu7MNzqkgWSH_q",
             is_featured: false,
             status: "now_showing"
         },
@@ -1568,55 +1568,56 @@ window.SAVANNAH_INLINE_DATA = {
     },
 
     // ========================================================
-    // SHOWTIMES
+    // SHOWTIMES — dates relative to 2026-10-04
+    // Spread across today + next 6 days so filtering works
     // ========================================================
     showtimes: [
-        // --- Accra Mall (BR001) ---
-        { showtime_id: "ST001", movie_id: "MOV001", branch_id: "BR001", screen_id: "SCR001", screen_name: "IMAX Screen 1",        screen_type: "IMAX",        date: "2025-01-20", start_time: "10:00", end_time: "12:41", session_type: "MORNING",    base_price: 25.00, vip_price: 40.00, premium_price: 32.00, available_seats: 287, total_seats: 300, status: "OPEN" },
-        { showtime_id: "ST002", movie_id: "MOV001", branch_id: "BR001", screen_id: "SCR002", screen_name: "Dolby Atmos Screen 2", screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "13:00", end_time: "15:41", session_type: "MATINEE",    base_price: 20.00, vip_price: 35.00, premium_price: 27.00, available_seats: 232, total_seats: 250, status: "OPEN" },
-        { showtime_id: "ST003", movie_id: "MOV001", branch_id: "BR001", screen_id: "SCR001", screen_name: "IMAX Screen 1",        screen_type: "IMAX",        date: "2025-01-20", start_time: "19:00", end_time: "21:41", session_type: "EVENING",    base_price: 30.00, vip_price: 45.00, premium_price: 38.00, available_seats: 287, total_seats: 300, status: "OPEN" },
-        { showtime_id: "ST004", movie_id: "MOV002", branch_id: "BR001", screen_id: "SCR001", screen_name: "IMAX Screen 1",        screen_type: "IMAX",        date: "2025-01-20", start_time: "22:00", end_time: "23:50", session_type: "LATE_NIGHT", base_price: 22.00, vip_price: 38.00, premium_price: 28.00, available_seats: 287, total_seats: 300, status: "OPEN" },
-        { showtime_id: "ST005", movie_id: "MOV005", branch_id: "BR001", screen_id: "SCR003", screen_name: "VIP Screen 3",          screen_type: "VIP",         date: "2025-01-20", start_time: "14:00", end_time: "16:45", session_type: "MATINEE",    base_price: 35.00, vip_price: 55.00, premium_price: 45.00, available_seats: 91,  total_seats: 100, status: "OPEN" },
-        { showtime_id: "ST006", movie_id: "MOV005", branch_id: "BR001", screen_id: "SCR003", screen_name: "VIP Screen 3",          screen_type: "VIP",         date: "2025-01-20", start_time: "19:30", end_time: "22:15", session_type: "EVENING",    base_price: 40.00, vip_price: 65.00, premium_price: 52.00, available_seats: 91,  total_seats: 100, status: "OPEN" },
-        { showtime_id: "ST007", movie_id: "MOV011", branch_id: "BR001", screen_id: "SCR004", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "11:00", end_time: "12:55", session_type: "MORNING",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 188, total_seats: 200, status: "OPEN" },
-        { showtime_id: "ST008", movie_id: "MOV011", branch_id: "BR001", screen_id: "SCR004", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "16:00", end_time: "17:55", session_type: "MATINEE",    base_price: 18.00, vip_price: 28.00, premium_price: 22.00, available_seats: 188, total_seats: 200, status: "OPEN" },
-        { showtime_id: "ST009", movie_id: "MOV012", branch_id: "BR001", screen_id: "SCR005", screen_name: "Dolby Atmos Screen 5",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "10:30", end_time: "12:10", session_type: "MORNING",    base_price: 22.00, vip_price: 35.00, premium_price: 28.00, available_seats: 240, total_seats: 250, status: "OPEN" },
-        { showtime_id: "ST010", movie_id: "MOV012", branch_id: "BR001", screen_id: "SCR005", screen_name: "Dolby Atmos Screen 5",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "14:00", end_time: "15:40", session_type: "MATINEE",    base_price: 24.00, vip_price: 38.00, premium_price: 30.00, available_seats: 240, total_seats: 250, status: "OPEN" },
-        { showtime_id: "ST011", movie_id: "MOV030", branch_id: "BR001", screen_id: "SCR006", screen_name: "Dolby Screen 6",         screen_type: "DOLBY",       date: "2025-01-20", start_time: "20:00", end_time: "23:01", session_type: "EVENING",    base_price: 28.00, vip_price: 42.00, premium_price: 35.00, available_seats: 141, total_seats: 150, status: "OPEN" },
-        { showtime_id: "ST012", movie_id: "MOV047", branch_id: "BR001", screen_id: "SCR007", screen_name: "Standard Screen 7",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "12:00", end_time: "13:45", session_type: "MATINEE",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 142, total_seats: 150, status: "OPEN" },
-        { showtime_id: "ST013", movie_id: "MOV047", branch_id: "BR001", screen_id: "SCR007", screen_name: "Standard Screen 7",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "18:00", end_time: "19:45", session_type: "EVENING",    base_price: 18.00, vip_price: 28.00, premium_price: 22.00, available_seats: 142, total_seats: 150, status: "OPEN" },
-        { showtime_id: "ST014", movie_id: "MOV050", branch_id: "BR001", screen_id: "SCR008", screen_name: "Standard Screen 8",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "13:00", end_time: "16:15", session_type: "MATINEE",    base_price: 20.00, vip_price: 30.00, premium_price: 24.00, available_seats: 142, total_seats: 150, status: "OPEN" },
-        { showtime_id: "ST015", movie_id: "MOV050", branch_id: "BR001", screen_id: "SCR008", screen_name: "Standard Screen 8",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "19:00", end_time: "22:15", session_type: "EVENING",    base_price: 24.00, vip_price: 35.00, premium_price: 28.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        // --- Accra Mall (BR001) — Oct 4 to Oct 10 ---
+        { showtime_id: "ST001", movie_id: "MOV001", branch_id: "BR001", screen_id: "SCR001", screen_name: "IMAX Screen 1",        screen_type: "IMAX",        date: "2026-10-04", start_time: "10:00", end_time: "12:11", session_type: "MORNING",    base_price: 25.00, vip_price: 40.00, premium_price: 32.00, available_seats: 287, total_seats: 300, status: "OPEN" },
+        { showtime_id: "ST002", movie_id: "MOV001", branch_id: "BR001", screen_id: "SCR002", screen_name: "Dolby Atmos Screen 2", screen_type: "DOLBY_ATMOS", date: "2026-10-04", start_time: "13:00", end_time: "15:11", session_type: "MATINEE",    base_price: 20.00, vip_price: 35.00, premium_price: 27.00, available_seats: 232, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST003", movie_id: "MOV001", branch_id: "BR001", screen_id: "SCR001", screen_name: "IMAX Screen 1",        screen_type: "IMAX",        date: "2026-10-04", start_time: "19:00", end_time: "21:11", session_type: "EVENING",    base_price: 30.00, vip_price: 45.00, premium_price: 38.00, available_seats: 287, total_seats: 300, status: "OPEN" },
+        { showtime_id: "ST004", movie_id: "MOV002", branch_id: "BR001", screen_id: "SCR001", screen_name: "IMAX Screen 1",        screen_type: "IMAX",        date: "2026-10-05", start_time: "22:00", end_time: "23:50", session_type: "LATE_NIGHT", base_price: 22.00, vip_price: 38.00, premium_price: 28.00, available_seats: 287, total_seats: 300, status: "OPEN" },
+        { showtime_id: "ST005", movie_id: "MOV005", branch_id: "BR001", screen_id: "SCR003", screen_name: "VIP Screen 3",          screen_type: "VIP",         date: "2026-10-05", start_time: "14:00", end_time: "16:45", session_type: "MATINEE",    base_price: 35.00, vip_price: 55.00, premium_price: 45.00, available_seats: 91,  total_seats: 100, status: "OPEN" },
+        { showtime_id: "ST006", movie_id: "MOV005", branch_id: "BR001", screen_id: "SCR003", screen_name: "VIP Screen 3",          screen_type: "VIP",         date: "2026-10-05", start_time: "19:30", end_time: "22:15", session_type: "EVENING",    base_price: 40.00, vip_price: 65.00, premium_price: 52.00, available_seats: 91,  total_seats: 100, status: "OPEN" },
+        { showtime_id: "ST007", movie_id: "MOV011", branch_id: "BR001", screen_id: "SCR004", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2026-10-06", start_time: "11:00", end_time: "12:55", session_type: "MORNING",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 188, total_seats: 200, status: "OPEN" },
+        { showtime_id: "ST008", movie_id: "MOV011", branch_id: "BR001", screen_id: "SCR004", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2026-10-06", start_time: "16:00", end_time: "17:55", session_type: "MATINEE",    base_price: 18.00, vip_price: 28.00, premium_price: 22.00, available_seats: 188, total_seats: 200, status: "OPEN" },
+        { showtime_id: "ST009", movie_id: "MOV012", branch_id: "BR001", screen_id: "SCR005", screen_name: "Dolby Atmos Screen 5",  screen_type: "DOLBY_ATMOS", date: "2026-10-06", start_time: "10:30", end_time: "12:10", session_type: "MORNING",    base_price: 22.00, vip_price: 35.00, premium_price: 28.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST010", movie_id: "MOV012", branch_id: "BR001", screen_id: "SCR005", screen_name: "Dolby Atmos Screen 5",  screen_type: "DOLBY_ATMOS", date: "2026-10-07", start_time: "14:00", end_time: "15:40", session_type: "MATINEE",    base_price: 24.00, vip_price: 38.00, premium_price: 30.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST011", movie_id: "MOV030", branch_id: "BR001", screen_id: "SCR006", screen_name: "Dolby Screen 6",         screen_type: "DOLBY",       date: "2026-10-07", start_time: "20:00", end_time: "23:01", session_type: "EVENING",    base_price: 28.00, vip_price: 42.00, premium_price: 35.00, available_seats: 141, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST012", movie_id: "MOV047", branch_id: "BR001", screen_id: "SCR007", screen_name: "Standard Screen 7",      screen_type: "STANDARD",    date: "2026-10-08", start_time: "12:00", end_time: "13:45", session_type: "MATINEE",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST013", movie_id: "MOV047", branch_id: "BR001", screen_id: "SCR007", screen_name: "Standard Screen 7",      screen_type: "STANDARD",    date: "2026-10-08", start_time: "18:00", end_time: "19:45", session_type: "EVENING",    base_price: 18.00, vip_price: 28.00, premium_price: 22.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST014", movie_id: "MOV050", branch_id: "BR001", screen_id: "SCR008", screen_name: "Standard Screen 8",      screen_type: "STANDARD",    date: "2026-10-09", start_time: "13:00", end_time: "16:15", session_type: "MATINEE",    base_price: 20.00, vip_price: 30.00, premium_price: 24.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST015", movie_id: "MOV050", branch_id: "BR001", screen_id: "SCR008", screen_name: "Standard Screen 8",      screen_type: "STANDARD",    date: "2026-10-10", start_time: "19:00", end_time: "22:15", session_type: "EVENING",    base_price: 24.00, vip_price: 35.00, premium_price: 28.00, available_seats: 142, total_seats: 150, status: "OPEN" },
 
         // --- Kumasi City (BR002) ---
-        { showtime_id: "ST016", movie_id: "MOV005", branch_id: "BR002", screen_id: "SCR009", screen_name: "IMAX Screen 1",        screen_type: "IMAX",        date: "2025-01-20", start_time: "10:00", end_time: "12:45", session_type: "MORNING",    base_price: 25.00, vip_price: 40.00, premium_price: 32.00, available_seats: 287, total_seats: 300, status: "OPEN" },
-        { showtime_id: "ST017", movie_id: "MOV005", branch_id: "BR002", screen_id: "SCR009", screen_name: "IMAX Screen 1",        screen_type: "IMAX",        date: "2025-01-20", start_time: "19:00", end_time: "21:45", session_type: "EVENING",    base_price: 30.00, vip_price: 45.00, premium_price: 38.00, available_seats: 287, total_seats: 300, status: "OPEN" },
-        { showtime_id: "ST018", movie_id: "MOV026", branch_id: "BR002", screen_id: "SCR010", screen_name: "Dolby Atmos Screen 2",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "12:00", end_time: "14:20", session_type: "MATINEE",    base_price: 22.00, vip_price: 35.00, premium_price: 28.00, available_seats: 240, total_seats: 250, status: "OPEN" },
-        { showtime_id: "ST019", movie_id: "MOV026", branch_id: "BR002", screen_id: "SCR010", screen_name: "Dolby Atmos Screen 2",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "18:30", end_time: "20:50", session_type: "EVENING",    base_price: 26.00, vip_price: 40.00, premium_price: 32.00, available_seats: 240, total_seats: 250, status: "OPEN" },
-        { showtime_id: "ST020", movie_id: "MOV030", branch_id: "BR002", screen_id: "SCR011", screen_name: "VIP Screen 3",          screen_type: "VIP",         date: "2025-01-20", start_time: "15:00", end_time: "18:01", session_type: "MATINEE",    base_price: 35.00, vip_price: 55.00, premium_price: 45.00, available_seats: 92,  total_seats: 100, status: "OPEN" },
-        { showtime_id: "ST021", movie_id: "MOV030", branch_id: "BR002", screen_id: "SCR011", screen_name: "VIP Screen 3",          screen_type: "VIP",         date: "2025-01-20", start_time: "20:00", end_time: "23:01", session_type: "EVENING",    base_price: 40.00, vip_price: 65.00, premium_price: 52.00, available_seats: 92,  total_seats: 100, status: "OPEN" },
-        { showtime_id: "ST022", movie_id: "MOV049", branch_id: "BR002", screen_id: "SCR012", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "11:00", end_time: "12:48", session_type: "MORNING",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 189, total_seats: 200, status: "OPEN" },
-        { showtime_id: "ST023", movie_id: "MOV049", branch_id: "BR002", screen_id: "SCR012", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "16:00", end_time: "17:48", session_type: "MATINEE",    base_price: 18.00, vip_price: 28.00, premium_price: 22.00, available_seats: 189, total_seats: 200, status: "OPEN" },
-        { showtime_id: "ST024", movie_id: "MOV054", branch_id: "BR002", screen_id: "SCR013", screen_name: "Dolby Screen 5",         screen_type: "DOLBY",       date: "2025-01-20", start_time: "21:00", end_time: "23:49", session_type: "LATE_NIGHT", base_price: 25.00, vip_price: 38.00, premium_price: 30.00, available_seats: 141, total_seats: 150, status: "OPEN" },
-        { showtime_id: "ST025", movie_id: "MOV058", branch_id: "BR002", screen_id: "SCR014", screen_name: "Standard Screen 6",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "14:00", end_time: "16:05", session_type: "MATINEE",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 142, total_seats: 150, status: "OPEN" },
-        { showtime_id: "ST026", movie_id: "MOV058", branch_id: "BR002", screen_id: "SCR014", screen_name: "Standard Screen 6",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "19:30", end_time: "21:35", session_type: "EVENING",    base_price: 20.00, vip_price: 30.00, premium_price: 24.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST016", movie_id: "MOV005", branch_id: "BR002", screen_id: "SCR009", screen_name: "IMAX Screen 1",        screen_type: "IMAX",        date: "2026-10-04", start_time: "10:00", end_time: "12:45", session_type: "MORNING",    base_price: 25.00, vip_price: 40.00, premium_price: 32.00, available_seats: 287, total_seats: 300, status: "OPEN" },
+        { showtime_id: "ST017", movie_id: "MOV005", branch_id: "BR002", screen_id: "SCR009", screen_name: "IMAX Screen 1",        screen_type: "IMAX",        date: "2026-10-04", start_time: "19:00", end_time: "21:45", session_type: "EVENING",    base_price: 30.00, vip_price: 45.00, premium_price: 38.00, available_seats: 287, total_seats: 300, status: "OPEN" },
+        { showtime_id: "ST018", movie_id: "MOV026", branch_id: "BR002", screen_id: "SCR010", screen_name: "Dolby Atmos Screen 2",  screen_type: "DOLBY_ATMOS", date: "2026-10-05", start_time: "12:00", end_time: "14:20", session_type: "MATINEE",    base_price: 22.00, vip_price: 35.00, premium_price: 28.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST019", movie_id: "MOV026", branch_id: "BR002", screen_id: "SCR010", screen_name: "Dolby Atmos Screen 2",  screen_type: "DOLBY_ATMOS", date: "2026-10-05", start_time: "18:30", end_time: "20:50", session_type: "EVENING",    base_price: 26.00, vip_price: 40.00, premium_price: 32.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST020", movie_id: "MOV030", branch_id: "BR002", screen_id: "SCR011", screen_name: "VIP Screen 3",          screen_type: "VIP",         date: "2026-10-06", start_time: "15:00", end_time: "18:01", session_type: "MATINEE",    base_price: 35.00, vip_price: 55.00, premium_price: 45.00, available_seats: 92,  total_seats: 100, status: "OPEN" },
+        { showtime_id: "ST021", movie_id: "MOV030", branch_id: "BR002", screen_id: "SCR011", screen_name: "VIP Screen 3",          screen_type: "VIP",         date: "2026-10-06", start_time: "20:00", end_time: "23:01", session_type: "EVENING",    base_price: 40.00, vip_price: 65.00, premium_price: 52.00, available_seats: 92,  total_seats: 100, status: "OPEN" },
+        { showtime_id: "ST022", movie_id: "MOV049", branch_id: "BR002", screen_id: "SCR012", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2026-10-07", start_time: "11:00", end_time: "12:48", session_type: "MORNING",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 189, total_seats: 200, status: "OPEN" },
+        { showtime_id: "ST023", movie_id: "MOV049", branch_id: "BR002", screen_id: "SCR012", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2026-10-07", start_time: "16:00", end_time: "17:48", session_type: "MATINEE",    base_price: 18.00, vip_price: 28.00, premium_price: 22.00, available_seats: 189, total_seats: 200, status: "OPEN" },
+        { showtime_id: "ST024", movie_id: "MOV054", branch_id: "BR002", screen_id: "SCR013", screen_name: "Dolby Screen 5",         screen_type: "DOLBY",       date: "2026-10-08", start_time: "21:00", end_time: "23:49", session_type: "LATE_NIGHT", base_price: 25.00, vip_price: 38.00, premium_price: 30.00, available_seats: 141, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST025", movie_id: "MOV058", branch_id: "BR002", screen_id: "SCR014", screen_name: "Standard Screen 6",      screen_type: "STANDARD",    date: "2026-10-09", start_time: "14:00", end_time: "16:05", session_type: "MATINEE",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST026", movie_id: "MOV058", branch_id: "BR002", screen_id: "SCR014", screen_name: "Standard Screen 6",      screen_type: "STANDARD",    date: "2026-10-10", start_time: "19:30", end_time: "21:35", session_type: "EVENING",    base_price: 20.00, vip_price: 30.00, premium_price: 24.00, available_seats: 142, total_seats: 150, status: "OPEN" },
 
         // --- Tema Shopping (BR003) ---
-        { showtime_id: "ST027", movie_id: "MOV001", branch_id: "BR003", screen_id: "SCR015", screen_name: "Dolby Atmos Screen 1",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "10:00", end_time: "12:41", session_type: "MORNING",    base_price: 20.00, vip_price: 32.00, premium_price: 26.00, available_seats: 240, total_seats: 250, status: "OPEN" },
-        { showtime_id: "ST028", movie_id: "MOV001", branch_id: "BR003", screen_id: "SCR015", screen_name: "Dolby Atmos Screen 1",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "18:00", end_time: "20:41", session_type: "EVENING",    base_price: 26.00, vip_price: 40.00, premium_price: 32.00, available_seats: 240, total_seats: 250, status: "OPEN" },
-        { showtime_id: "ST029", movie_id: "MOV030", branch_id: "BR003", screen_id: "SCR016", screen_name: "VIP Screen 2",          screen_type: "VIP",         date: "2025-01-20", start_time: "14:00", end_time: "17:01", session_type: "MATINEE",    base_price: 35.00, vip_price: 55.00, premium_price: 45.00, available_seats: 92,  total_seats: 100, status: "OPEN" },
-        { showtime_id: "ST030", movie_id: "MOV030", branch_id: "BR003", screen_id: "SCR016", screen_name: "VIP Screen 2",          screen_type: "VIP",         date: "2025-01-20", start_time: "20:00", end_time: "23:01", session_type: "EVENING",    base_price: 40.00, vip_price: 65.00, premium_price: 52.00, available_seats: 92,  total_seats: 100, status: "OPEN" },
-        { showtime_id: "ST031", movie_id: "MOV011", branch_id: "BR003", screen_id: "SCR017", screen_name: "Standard Screen 3",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "11:30", end_time: "13:25", session_type: "MORNING",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 189, total_seats: 200, status: "OPEN" },
-        { showtime_id: "ST032", movie_id: "MOV011", branch_id: "BR003", screen_id: "SCR017", screen_name: "Standard Screen 3",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "16:30", end_time: "18:25", session_type: "MATINEE",    base_price: 18.00, vip_price: 28.00, premium_price: 22.00, available_seats: 189, total_seats: 200, status: "OPEN" },
-        { showtime_id: "ST033", movie_id: "MOV047", branch_id: "BR003", screen_id: "SCR018", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "13:00", end_time: "14:45", session_type: "MATINEE",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 142, total_seats: 150, status: "OPEN" },
-        { showtime_id: "ST034", movie_id: "MOV047", branch_id: "BR003", screen_id: "SCR018", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "18:00", end_time: "19:45", session_type: "EVENING",    base_price: 20.00, vip_price: 30.00, premium_price: 24.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST027", movie_id: "MOV001", branch_id: "BR003", screen_id: "SCR015", screen_name: "Dolby Atmos Screen 1",  screen_type: "DOLBY_ATMOS", date: "2026-10-04", start_time: "10:00", end_time: "12:41", session_type: "MORNING",    base_price: 20.00, vip_price: 32.00, premium_price: 26.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST028", movie_id: "MOV001", branch_id: "BR003", screen_id: "SCR015", screen_name: "Dolby Atmos Screen 1",  screen_type: "DOLBY_ATMOS", date: "2026-10-05", start_time: "18:00", end_time: "20:41", session_type: "EVENING",    base_price: 26.00, vip_price: 40.00, premium_price: 32.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST029", movie_id: "MOV030", branch_id: "BR003", screen_id: "SCR016", screen_name: "VIP Screen 2",          screen_type: "VIP",         date: "2026-10-06", start_time: "14:00", end_time: "17:01", session_type: "MATINEE",    base_price: 35.00, vip_price: 55.00, premium_price: 45.00, available_seats: 92,  total_seats: 100, status: "OPEN" },
+        { showtime_id: "ST030", movie_id: "MOV030", branch_id: "BR003", screen_id: "SCR016", screen_name: "VIP Screen 2",          screen_type: "VIP",         date: "2026-10-07", start_time: "20:00", end_time: "23:01", session_type: "EVENING",    base_price: 40.00, vip_price: 65.00, premium_price: 52.00, available_seats: 92,  total_seats: 100, status: "OPEN" },
+        { showtime_id: "ST031", movie_id: "MOV011", branch_id: "BR003", screen_id: "SCR017", screen_name: "Standard Screen 3",      screen_type: "STANDARD",    date: "2026-10-08", start_time: "11:30", end_time: "13:25", session_type: "MORNING",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 189, total_seats: 200, status: "OPEN" },
+        { showtime_id: "ST032", movie_id: "MOV011", branch_id: "BR003", screen_id: "SCR017", screen_name: "Standard Screen 3",      screen_type: "STANDARD",    date: "2026-10-09", start_time: "16:30", end_time: "18:25", session_type: "MATINEE",    base_price: 18.00, vip_price: 28.00, premium_price: 22.00, available_seats: 189, total_seats: 200, status: "OPEN" },
+        { showtime_id: "ST033", movie_id: "MOV047", branch_id: "BR003", screen_id: "SCR018", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2026-10-09", start_time: "13:00", end_time: "14:45", session_type: "MATINEE",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST034", movie_id: "MOV047", branch_id: "BR003", screen_id: "SCR018", screen_name: "Standard Screen 4",      screen_type: "STANDARD",    date: "2026-10-10", start_time: "18:00", end_time: "19:45", session_type: "EVENING",    base_price: 20.00, vip_price: 30.00, premium_price: 24.00, available_seats: 142, total_seats: 150, status: "OPEN" },
 
         // --- Sekondi (BR004) ---
-        { showtime_id: "ST035", movie_id: "MOV050", branch_id: "BR004", screen_id: "SCR019", screen_name: "Dolby Atmos Screen 1",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "12:00", end_time: "15:15", session_type: "MATINEE",    base_price: 22.00, vip_price: 35.00, premium_price: 28.00, available_seats: 240, total_seats: 250, status: "OPEN" },
-        { showtime_id: "ST036", movie_id: "MOV050", branch_id: "BR004", screen_id: "SCR019", screen_name: "Dolby Atmos Screen 1",  screen_type: "DOLBY_ATMOS", date: "2025-01-20", start_time: "19:00", end_time: "22:15", session_type: "EVENING",    base_price: 28.00, vip_price: 42.00, premium_price: 35.00, available_seats: 240, total_seats: 250, status: "OPEN" },
-        { showtime_id: "ST037", movie_id: "MOV001", branch_id: "BR004", screen_id: "SCR020", screen_name: "Standard Screen 2",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "10:30", end_time: "13:11", session_type: "MORNING",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 142, total_seats: 150, status: "OPEN" },
-        { showtime_id: "ST038", movie_id: "MOV001", branch_id: "BR004", screen_id: "SCR020", screen_name: "Standard Screen 2",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "16:00", end_time: "18:41", session_type: "MATINEE",    base_price: 18.00, vip_price: 28.00, premium_price: 22.00, available_seats: 142, total_seats: 150, status: "OPEN" },
-        { showtime_id: "ST039", movie_id: "MOV030", branch_id: "BR004", screen_id: "SCR021", screen_name: "Standard Screen 3",      screen_type: "STANDARD",    date: "2025-01-20", start_time: "20:00", end_time: "23:01", session_type: "EVENING",    base_price: 20.00, vip_price: 30.00, premium_price: 24.00, available_seats: 89,  total_seats: 100, status: "OPEN" }
+        { showtime_id: "ST035", movie_id: "MOV050", branch_id: "BR004", screen_id: "SCR019", screen_name: "Dolby Atmos Screen 1",  screen_type: "DOLBY_ATMOS", date: "2026-10-04", start_time: "12:00", end_time: "15:15", session_type: "MATINEE",    base_price: 22.00, vip_price: 35.00, premium_price: 28.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST036", movie_id: "MOV050", branch_id: "BR004", screen_id: "SCR019", screen_name: "Dolby Atmos Screen 1",  screen_type: "DOLBY_ATMOS", date: "2026-10-05", start_time: "19:00", end_time: "22:15", session_type: "EVENING",    base_price: 28.00, vip_price: 42.00, premium_price: 35.00, available_seats: 240, total_seats: 250, status: "OPEN" },
+        { showtime_id: "ST037", movie_id: "MOV001", branch_id: "BR004", screen_id: "SCR020", screen_name: "Standard Screen 2",      screen_type: "STANDARD",    date: "2026-10-06", start_time: "10:30", end_time: "13:11", session_type: "MORNING",    base_price: 15.00, vip_price: 25.00, premium_price: 20.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST038", movie_id: "MOV001", branch_id: "BR004", screen_id: "SCR020", screen_name: "Standard Screen 2",      screen_type: "STANDARD",    date: "2026-10-07", start_time: "16:00", end_time: "18:41", session_type: "MATINEE",    base_price: 18.00, vip_price: 28.00, premium_price: 22.00, available_seats: 142, total_seats: 150, status: "OPEN" },
+        { showtime_id: "ST039", movie_id: "MOV030", branch_id: "BR004", screen_id: "SCR021", screen_name: "Standard Screen 3",      screen_type: "STANDARD",    date: "2026-10-08", start_time: "20:00", end_time: "23:01", session_type: "EVENING",    base_price: 20.00, vip_price: 30.00, premium_price: 24.00, available_seats: 89,  total_seats: 100, status: "OPEN" }
     ],
 
     // ========================================================
