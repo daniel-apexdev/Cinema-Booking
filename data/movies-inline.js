@@ -19,6 +19,8 @@ window.SAVANNAH_INLINE_DATA = {
 
     // ========================================================
     // MOVIES — 60 films from TMDb pages 1–3
+    // status = now_showing when release_date <= today
+    // status = coming_soon when release_date > today
     // ========================================================
     movies: [
         {
@@ -244,7 +246,7 @@ window.SAVANNAH_INLINE_DATA = {
             backdrop_url: "https://image.tmdb.org/t/p/original/o7Oy9Gbx1CCyaweL8xUhtMW4Puq.jpg",
             trailer_url: "https://youtu.be/xwdamnfS6IM?si=HzuySlVDeyjVK9rW",
             is_featured: false,
-            status: "coming_soon"
+            status: "now_showing"
         },
         {
             movie_id: "MOV010",
@@ -344,7 +346,7 @@ window.SAVANNAH_INLINE_DATA = {
             backdrop_url: "https://image.tmdb.org/t/p/original/i65y7cMae36K0giN0GRaMjAHUru.jpg",
             trailer_url: "",
             is_featured: false,
-            status: "coming_soon"
+            status: "now_showing"
         },
         {
             movie_id: "MOV014",
@@ -369,7 +371,7 @@ window.SAVANNAH_INLINE_DATA = {
             backdrop_url: "https://image.tmdb.org/t/p/original/8giIQcHpxgsPVP6c7aQtHl3txuh.jpg",
             trailer_url: "",
             is_featured: false,
-            status: "coming_soon"
+            status: "now_showing"
         },
         {
             movie_id: "MOV015",
@@ -394,7 +396,7 @@ window.SAVANNAH_INLINE_DATA = {
             backdrop_url: "https://image.tmdb.org/t/p/original/dJTWIecL2vxsCRl5G0lRhPsfrhc.jpg",
             trailer_url: "",
             is_featured: false,
-            status: "coming_soon"
+            status: "now_showing"
         },
         {
             movie_id: "MOV016",
@@ -519,7 +521,7 @@ window.SAVANNAH_INLINE_DATA = {
             backdrop_url: "https://image.tmdb.org/t/p/original/k22XyPbce7zvzzf5OnT4uaY8ZD1.jpg",
             trailer_url: "",
             is_featured: false,
-            status: "coming_soon"
+            status: "now_showing"
         },
         {
             movie_id: "MOV021",
@@ -544,7 +546,7 @@ window.SAVANNAH_INLINE_DATA = {
             backdrop_url: "https://image.tmdb.org/t/p/original/jzBWExXacS33rMQ2zLBrqIVweyG.jpg",
             trailer_url: "https://youtu.be/zz4rsZLcauY?si=ThhwQKWrOZJ5iIi5",
             is_featured: false,
-            status: "coming_soon"
+            status: "now_showing"
         },
         {
             movie_id: "MOV022",
@@ -694,7 +696,7 @@ window.SAVANNAH_INLINE_DATA = {
             backdrop_url: "https://image.tmdb.org/t/p/original/nkEhDomjmPHJSA4Tx8pxv0NlKEy.jpg",
             trailer_url: "",
             is_featured: false,
-            status: "coming_soon"
+            status: "now_showing"
         },
         {
             movie_id: "MOV028",
@@ -944,7 +946,7 @@ window.SAVANNAH_INLINE_DATA = {
             backdrop_url: "https://image.tmdb.org/t/p/original/g7Ccid5kuD7A8hXWlsQiNfwOxaD.jpg",
             trailer_url: "https://youtu.be/om5Un9X720M?si=l9JowH5ugT10Zinu",
             is_featured: false,
-            status: "coming_soon"
+            status: "now_showing"
         },
         {
             movie_id: "MOV038",
@@ -969,7 +971,7 @@ window.SAVANNAH_INLINE_DATA = {
             backdrop_url: "https://image.tmdb.org/t/p/original/bicMU6xVD5deVyKP2azpyx7xkmH.jpg",
             trailer_url: "",
             is_featured: false,
-            status: "coming_soon"
+            status: "now_showing"
         },
         {
             movie_id: "MOV039",
@@ -1394,7 +1396,7 @@ window.SAVANNAH_INLINE_DATA = {
             backdrop_url: "https://image.tmdb.org/t/p/original/hDwl0YMxwGhNe7u8wgHHk2Hyw3W.jpg",
             trailer_url: "",
             is_featured: false,
-            status: "coming_soon"
+            status: "now_showing"
         },
         {
             movie_id: "MOV056",
@@ -1569,7 +1571,6 @@ window.SAVANNAH_INLINE_DATA = {
 
     // ========================================================
     // SHOWTIMES — dates relative to 2026-10-04
-    // Spread across today + next 6 days so filtering works
     // ========================================================
     showtimes: [
         // --- Accra Mall (BR001) — Oct 4 to Oct 10 ---

@@ -72,6 +72,8 @@ const SavannahApp = {
                 screens: Object.keys(this.data.seats).length
             });
             this.normalizeShowtimeDates();
+            this.normalizeComingSoonDates();
+            this.generateMissingShowtimes();
         } catch (error) {
             console.error('❌ Failed to initialize app:', error);
             this.showError('Failed to load application data. Please refresh the page.');
@@ -312,6 +314,218 @@ const SavannahApp = {
         }
 
         console.log(`[SavannahApp] Showtime dates rebased +${offsetDays} day(s) so earliest = today`);
+    },
+
+        // ========================================================
+    // COMING-SOON DATE NORMALIZATION
+    // Ensures every movie marked status: "coming_soon" has a
+    // release_date strictly in the future. Movies whose release
+    // date has already passed get pushed forward by enough weeks
+    // to land comfortably in the coming-soon window, preserving
+    // their relative order.
+    // Idempotent: already-future movies are untouched.
+    // ========================================================
+    normalizeComingSoonDates() {
+        if (!this.data || !Array.isArray(this.data.movies)) return;
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const dayMs = 1000 * 60 * 60 * 24;
+
+        // How far out must a release be to count as "coming soon"?
+        const minDaysAhead = 7;      // push anything too close to next week
+        const minFuture = new Date(today.getTime() + minDaysAhead * dayMs);
+
+        // Collect all coming-soon movies so we can preserve relative spacing
+        const comingSoon = this.data.movies.filter(m => m.status === 'coming_soon');
+        if (!comingSoon.length) return;
+
+        // Find how far back the earliest past-dated coming-soon movie is
+        let earliestPast = null;
+        for (const m of comingSoon) {
+            if (!m.release_date) continue;
+            const d = new Date(m.release_date + 'T00:00:00');
+            if (isNaN(d.getTime())) continue;
+            if (d < minFuture && (!earliestPast || d < earliestPast)) {
+                earliestPast = d;
+            }
+        }
+
+        // If none are in the past/near-future, nothing to do
+        if (!earliestPast) return;
+
+        // Shift forward so the earliest coming-soon movie lands
+        // exactly on minFuture, and everything else shifts by the same offset
+        const offsetDays = Math.ceil((minFuture - earliestPast) / dayMs);
+
+        for (const m of comingSoon) {
+            if (!m.release_date) continue;
+            const d = new Date(m.release_date + 'T00:00:00');
+            if (isNaN(d.getTime())) continue;
+
+            // If this one is already comfortably in the future, leave it
+            if (d >= minFuture) continue;
+
+            d.setDate(d.getDate() + offsetDays);
+            const yyyy = d.getFullYear();
+            const mm = String(d.getMonth() + 1).padStart(2, '0');
+            const dd = String(d.getDate()).padStart(2, '0');
+            m.release_date = `${yyyy}-${mm}-${dd}`;
+            m.release_year = yyyy;
+        }
+
+        console.log(`[SavannahApp] Coming-soon dates rebased +${offsetDays} day(s)`);
+    },
+
+        // ========================================================
+    // AUTO-GENERATE SHOWTIMES
+    // For any now_showing movie that has no showtimes, generate
+    // a small weekly schedule across the branches. Idempotent:
+    // movies that already have showtimes are skipped.
+    // ========================================================
+    generateMissingShowtimes() {
+        if (!this.data || !Array.isArray(this.data.movies)) return;
+        if (!Array.isArray(this.data.showtimes)) this.data.showtimes = [];
+
+        const nowShowing = this.data.movies.filter(m => m.status === 'now_showing');
+        const branches = (this.data.cinemas && this.data.cinemas[0] && this.data.cinemas[0].branches) || [];
+        if (!branches.length) return;
+
+        // Which movies already have at least one showtime?
+        const coveredMovieIds = new Set(this.data.showtimes.map(s => s.movie_id));
+
+        // Which screens are available per branch? Use the seats map.
+        const screensByBranch = {};
+        for (const branch of branches) {
+            screensByBranch[branch.branch_id] = [];
+        }
+        // Map screens to branches based on the existing showtimes' pattern
+        // (each screen belongs to one branch based on its number)
+        const screenBranchMap = {
+            SCR001: 'BR001', SCR002: 'BR001', SCR003: 'BR001', SCR004: 'BR001',
+            SCR005: 'BR001', SCR006: 'BR001', SCR007: 'BR001', SCR008: 'BR001',
+            SCR009: 'BR002', SCR010: 'BR002', SCR011: 'BR002', SCR012: 'BR002',
+            SCR013: 'BR002', SCR014: 'BR002',
+            SCR015: 'BR003', SCR016: 'BR003', SCR017: 'BR003', SCR018: 'BR003',
+            SCR019: 'BR004', SCR020: 'BR004', SCR021: 'BR004'
+        };
+        Object.entries(screenBranchMap).forEach(([sid, bid]) => {
+            if (!screensByBranch[bid]) screensByBranch[bid] = [];
+            const seatLayout = this.data.seats && this.data.seats[sid];
+            if (seatLayout) {
+                screensByBranch[bid].push({ screen_id: sid, ...seatLayout });
+            }
+        });
+
+        // Time slots to use per day
+        const slots = [
+            { start: '10:00', session: 'MORNING' },
+            { start: '13:00', session: 'MATINEE' },
+            { start: '16:00', session: 'MATINEE' },
+            { start: '19:00', session: 'EVENING' },
+            { start: '21:30', session: 'LATE_NIGHT' }
+        ];
+
+        // Base prices by screen type
+        const priceByScreenType = {
+            IMAX:         { base: 25, premium: 32, vip: 40 },
+            DOLBY_ATMOS:  { base: 22, premium: 28, vip: 35 },
+            DOLBY:        { base: 20, premium: 26, vip: 32 },
+            VIP:          { base: 35, premium: 45, vip: 55 },
+            STANDARD:     { base: 15, premium: 20, vip: 25 }
+        };
+
+        // Build the next 7 days starting from today
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const days = [];
+        for (let i = 0; i < 7; i++) {
+            const d = new Date(today.getTime() + i * 86400000);
+            const yyyy = d.getFullYear();
+            const mm = String(d.getMonth() + 1).padStart(2, '0');
+            const dd = String(d.getDate()).padStart(2, '0');
+            days.push(`${yyyy}-${mm}-${dd}`);
+        }
+
+        // Existing showtime IDs — start a counter above the highest STxxx
+        let nextId = 1;
+        for (const s of this.data.showtimes) {
+            const match = String(s.showtime_id || '').match(/^ST(\d+)$/);
+            if (match) nextId = Math.max(nextId, parseInt(match[1], 10) + 1);
+        }
+
+        // Add a helper to compute end_time from start_time + duration
+        const addMinutes = (hhmm, minutes) => {
+            const [h, m] = hhmm.split(':').map(Number);
+            const total = h * 60 + m + minutes;
+            const eh = Math.floor(total / 60) % 24;
+            const em = total % 60;
+            return `${String(eh).padStart(2, '0')}:${String(em).padStart(2, '0')}`;
+        };
+
+        // For each uncovered now-showing movie, generate a schedule
+        for (const movie of nowShowing) {
+            if (coveredMovieIds.has(movie.movie_id)) continue;
+            const runtime = movie.duration_minutes || 110;
+
+            // Pick 2 branches (rotate through them) and 2 screens each
+            const branchIds = Object.keys(screensByBranch).filter(b => screensByBranch[b].length);
+            if (!branchIds.length) continue;
+
+            // Deterministic assignment based on movie_id hash so the
+            // layout stays stable across reloads
+            const hash = movie.movie_id.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+            const chosenBranches = [
+                branchIds[hash % branchIds.length],
+                branchIds[(hash + 1) % branchIds.length]
+            ];
+
+            for (const bid of chosenBranches) {
+                const screens = screensByBranch[bid];
+                // Pick 2 screens deterministically
+                const s1 = screens[hash % screens.length];
+                const s2 = screens[(hash + 2) % screens.length];
+
+                const chosenScreens = s1.screen_id === s2.screen_id ? [s1] : [s1, s2];
+
+                for (const screen of chosenScreens) {
+                    // 3 showtimes spread across the 7-day window
+                    const picks = [
+                        { dayIdx: 0, slotIdx: 1 },       // today, matinee
+                        { dayIdx: 2, slotIdx: 3 },       // +2 days, evening
+                        { dayIdx: 5, slotIdx: 2 }        // +5 days, afternoon
+                    ];
+
+                    for (const { dayIdx, slotIdx } of picks) {
+                        const slot = slots[slotIdx];
+                        const prices = priceByScreenType[screen.screen_type] || priceByScreenType.STANDARD;
+                        const totalSeats = screen.total_seats || 200;
+                        const available = totalSeats - Math.floor(Math.random() * 30);
+
+                        this.data.showtimes.push({
+                            showtime_id: 'ST' + String(nextId++).padStart(3, '0'),
+                            movie_id: movie.movie_id,
+                            branch_id: bid,
+                            screen_id: screen.screen_id,
+                            screen_name: screen.screen_name,
+                            screen_type: screen.screen_type,
+                            date: days[dayIdx],
+                            start_time: slot.start,
+                            end_time: addMinutes(slot.start, runtime),
+                            session_type: slot.session,
+                            base_price: prices.base,
+                            vip_price: prices.vip,
+                            premium_price: prices.premium,
+                            available_seats: available,
+                            total_seats: totalSeats,
+                            status: 'OPEN'
+                        });
+                    }
+                }
+            }
+        }
+
+        console.log(`[SavannahApp] Auto-generated showtimes for ${nowShowing.length - coveredMovieIds.size} movie(s)`);
     },
     
     // ========================================================
